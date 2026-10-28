@@ -1,0 +1,86 @@
+/* pulp-paperback — 1950s lurid dime-novel cover. Aged newsprint, hot red/yellow,
+   ben-day dots, diagonal drama. CSS + inline-SVG + system fonts only. */
+:root{
+  --paper:#e8ddbf; --paper-dk:#d8c9a0; --ink:#241c15;
+  --red:#c0271d; --red-dk:#8a160f; --yellow:#f5c518; --cream:#f3ead0;
+  --sky-top:#7a2f1c; --sky-bot:#1d1510; --beam:#f5c518; --city:#120d0a;
+  --figure:#0f0b08; --dame:#1a1310; --hair:#c0271d;
+  --dot:rgba(36,28,21,.22);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#201913; --paper-dk:#2c231a; --ink:#e8ddbf;
+  --red:#d8473c; --red-dk:#c0271d; --yellow:#f5c518; --cream:#2c231a;
+  --dot:rgba(232,221,191,.14);
+}}
+:root[data-theme="dark"]{
+  --paper:#201913; --paper-dk:#2c231a; --ink:#e8ddbf;
+  --red:#d8473c; --red-dk:#c0271d; --yellow:#f5c518; --cream:#2c231a;
+  --dot:rgba(232,221,191,.14);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper-dk);color:var(--ink);
+  font-family:"Arial Narrow","Helvetica Neue",Impact,sans-serif;line-height:1.4;
+  padding:24px 12px;display:flex;justify-content:center}
+
+/* aged newsprint page, tilted a hair for that warped-pulp feel */
+.cover{width:100%;max-width:460px;background:var(--paper);
+  border:1px solid var(--paper-dk);
+  box-shadow:0 2px 0 var(--paper-dk),0 14px 34px rgba(0,0,0,.4);
+  transform:rotate(-.5deg);position:relative;overflow:hidden}
+/* foxing / grain wash over the whole cover */
+.cover::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(120,90,40,.12),transparent 40%),
+    radial-gradient(circle at 88% 78%,rgba(120,90,40,.14),transparent 45%);
+  mix-blend-mode:multiply}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;
+  background:var(--ink);color:var(--paper);padding:5px 10px;
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.price{background:var(--yellow);color:var(--ink);font-weight:900;
+  padding:2px 7px;border-radius:50%;font-size:14px;letter-spacing:0}
+.imprint{font-weight:700}
+.num{opacity:.75;letter-spacing:.2em}
+
+.banner{background:var(--red);color:var(--yellow);text-align:center;
+  font-weight:900;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  padding:6px 8px;border-top:2px solid var(--red-dk);border-bottom:2px solid var(--red-dk);
+  transform:skewY(-1.2deg)}
+
+/* the illustration stage */
+.art{position:relative;aspect-ratio:400/520;overflow:hidden}
+.scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+/* ben-day / halftone dot screen printed over the art */
+.dots{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:.5;
+  background-image:radial-gradient(var(--dot) 28%,transparent 29%);
+  background-size:6px 6px}
+
+.titlebox{position:absolute;left:0;right:0;top:4%;text-align:center;padding:0 14px}
+.kicker{margin:0;display:inline-block;background:var(--ink);color:var(--yellow);
+  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  padding:3px 9px;transform:rotate(-2deg)}
+.title{margin:4px 0 0;color:var(--red);font-size:clamp(38px,13vw,66px);line-height:.86;
+  font-weight:900;letter-spacing:.01em;text-transform:uppercase;font-style:italic;
+  -webkit-text-stroke:2px var(--ink);
+  text-shadow:3px 3px 0 var(--ink),4px 4px 0 var(--yellow)}
+.tagline{margin:8px auto 0;max-width:22ch;color:var(--cream);font-style:italic;
+  font-size:clamp(14px,4vw,18px);text-shadow:1px 1px 2px #000}
+
+.byline{position:absolute;left:0;right:0;bottom:3%;text-align:center;margin:0;
+  color:var(--yellow);font-weight:700;font-size:13px;letter-spacing:.14em;
+  text-transform:uppercase;text-shadow:1px 1px 0 #000}
+
+/* back-cover blurb block */
+.backblurb{background:var(--cream);color:var(--ink);padding:20px 22px 26px;
+  border-top:3px solid var(--red)}
+.backblurb h2{margin:0 0 10px;color:var(--red);font-size:clamp(20px,6vw,28px);
+  font-style:italic;font-weight:900;letter-spacing:.01em}
+.backblurb p{margin:0 0 12px;font-family:Georgia,"Times New Roman",serif;
+  font-size:15px;line-height:1.55}
+.pullquote{font-family:inherit !important;font-size:10px !important;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink);opacity:.7;margin-bottom:0}
+
+@media (prefers-reduced-motion:no-preference){
+  .price{transition:transform .2s}
+  .cover:hover .price{transform:scale(1.12) rotate(-8deg)}
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dame in the Dark</title>
+<!-- pulp-paperback — mid-century lurid dime-novel crime/sci-fi cover. Ben-day dots, hot red/yellow, diagonal composition, inline-SVG silhouette. CSS + system fonts only. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cover">
+
+    <div class="topbar">
+      <span class="price" data-slot="card-title">25&cent;</span>
+      <span class="imprint" data-slot="site-name">RAZOR&middot;EDGE BOOKS</span>
+      <span class="num">No. 47</span>
+    </div>
+
+    <div class="banner" data-slot="nav-item">A COMPLETE NOVEL &mdash; NOTHING LEFT OUT</div>
+
+    <main class="art">
+      <!-- bold geometric silhouette "illustration": a woman turning, a looming figure, a searchlight beam -->
+      <svg class="scene" viewBox="0 0 400 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="var(--sky-top)"/>
+            <stop offset="1" stop-color="var(--sky-bot)"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="520" fill="url(#sky)"/>
+        <!-- searchlight beam -->
+        <polygon points="400,40 400,160 70,420 20,380" fill="var(--beam)" opacity=".55"/>
+        <!-- skyline -->
+        <path d="M0,420 L0,320 L30,320 L30,280 L60,280 L60,340 L100,340 L100,250 L130,250 L130,340 L170,340 L170,300 L200,300 L200,420 Z" fill="var(--city)"/>
+        <!-- looming hat-and-coat figure, background -->
+        <path d="M250,520 C250,400 270,360 300,355 C292,335 300,310 322,310 C344,310 352,335 344,355 C374,360 395,400 395,520 Z" fill="var(--figure)"/>
+        <path d="M268,315 h108 l-14,-16 h-80 Z" fill="var(--figure)"/>
+        <!-- the dame, foreground, turning over her shoulder -->
+        <path d="M120,520 C118,430 128,392 150,384 C150,384 128,372 134,344 C139,320 160,308 182,316 C206,324 206,352 192,368 C214,378 224,414 222,520 Z" fill="var(--dame)"/>
+        <!-- hair sweep -->
+        <path d="M150,384 C120,372 112,336 138,320 C128,352 150,364 168,360 C156,378 150,384 150,384 Z" fill="var(--hair)"/>
+      </svg>
+      <div class="dots" aria-hidden="true"></div>
+
+      <div class="titlebox">
+        <p class="kicker" data-slot="page-title">ONE WOMAN. ONE CITY. ONE WAY OUT.</p>
+        <h1 class="title" data-slot="hero-title">DAME IN THE DARK</h1>
+        <p class="tagline" data-slot="tagline">She knew too much &mdash; and the city knew her name&hellip;</p>
+      </div>
+
+      <p class="byline" data-slot="card-body">by VINCENT &ldquo;SLUG&rdquo; MALORY</p>
+    </main>
+
+    <section class="backblurb">
+      <h2 data-slot="hero-body">&ldquo;A thrill on every page&rdquo;</h2>
+      <p data-slot="page-body">Carla Reyes clocked out of the all-night diner at 3 a.m. and clocked
+      into a nightmare. One wrong booth, one dropped envelope, one dead man in a camel coat &mdash; and
+      suddenly every taxi was following her and every phone was ringing in an empty room. She had sixty
+      cents, a borrowed pistol, and until sunrise to prove she wasn't the one who pulled the trigger.
+      They said nobody beats the Syndicate. Carla never was much for being told.</p>
+      <p class="pullquote" data-slot="footer">Complete and unabridged &middot; Printed in the U.S.A. &middot;
+      &copy; 1954 Razor&middot;Edge Books &middot; A DIME DREADFUL original</p>
+    </section>
+
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

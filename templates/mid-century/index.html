@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starlite Living</title>
+<!-- Mid-Century — 1950s-60s Atomic-age googie. Mustard/teal/burnt-orange/cream.
+     Starbursts, boomerangs, kidneys, atom orbits. CSS + inline-SVG. System sans. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="banner">
+    <svg class="starburst" viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="3">
+        <!-- long/short alternating rays -->
+        <path d="M100 8V60M100 192V140M8 100H60M192 100H140
+                 M30 30l38 38M170 30l-38 38M30 170l38-38M170 170l-38-38
+                 M100 24l9 25-9-25M135 35l-14 22M65 35l14 22
+                 M24 100l25 9-25-9M176 100l-25 9M100 176l9-25M100 176l-9-25"/>
+      </g>
+      <polygon class="star" points="100,70 108,92 130,92 112,106 119,128 100,114 81,128 88,106 70,92 92,92"/>
+    </svg>
+    <h1 data-slot="site-name">Starlite Living</h1>
+    <p class="tagline" data-slot="tagline">The Push-Button Future, Delivered Today!</p>
+  </header>
+
+  <nav aria-label="Primary">
+    <a href="index.html" data-slot="nav-item" aria-current="page">Showroom</a>
+    <a href="index.html" data-slot="nav-item">Appliances</a>
+    <a href="index.html" data-slot="nav-item">The Patio</a>
+    <a href="index.html" data-slot="nav-item">Easy Terms</a>
+    <a href="index.html" data-slot="nav-item">Visit Us</a>
+  </nav>
+
+  <div class="wrap">
+
+    <section class="hero">
+      <div class="hero-art">
+        <svg class="atom" viewBox="0 0 120 120" aria-hidden="true">
+          <g class="orbits" fill="none" stroke="currentColor" stroke-width="2.5">
+            <ellipse cx="60" cy="60" rx="52" ry="20"/>
+            <ellipse cx="60" cy="60" rx="52" ry="20" transform="rotate(60 60 60)"/>
+            <ellipse cx="60" cy="60" rx="52" ry="20" transform="rotate(120 60 60)"/>
+          </g>
+          <circle class="nucleus" cx="60" cy="60" r="9"/>
+          <circle class="e" cx="112" cy="60" r="4"/>
+        </svg>
+      </div>
+      <div class="hero-text">
+        <span class="badge">1961 Model Year</span>
+        <h2 data-slot="hero-title">Tomorrow Moves In Before You Do.</h2>
+        <p data-slot="hero-body">Step off the welcome mat and into the atomic age. Every Starlite home
+        hums with chrome, color, and clever gadgets that do the work so you can throw the party.
+        It's gracious living at the speed of the Space Race — and it's all on easy monthly terms.</p>
+      </div>
+    </section>
+
+    <section class="pitch">
+      <h2 class="kidney-head" data-slot="page-title">Why the Whole Block Is Talking</h2>
+      <p data-slot="page-body">We believe a home should wink at the future and still hand you a cold one on
+      the patio. From the boomerang countertops to the starlight carport, every Starlite feature was
+      dreamed up by engineers who honestly thought the jetpack was right around the corner. They
+      weren't entirely wrong — just look at the kitchen.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <span class="chip">New!</span>
+        <h3 data-slot="card-title">The Atomic Kitchen</h3>
+        <p data-slot="card-body">Mustard enamel, a built-in rotisserie, and a refrigerator that
+        practically restocks itself. Supper's ready before the cartoons are over.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Hot</span>
+        <h3 data-slot="card-title">Boomerang Patio</h3>
+        <p data-slot="card-body">Kidney pool, flagstone, and a tiki bar that lights up at dusk.
+        The neighbors came for a dip in '59 and simply never left.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Deluxe</span>
+        <h3 data-slot="card-title">The Conversation Pit</h3>
+        <p data-slot="card-body">Sink into teal upholstery, spin a record, and let the hi-fi do the
+        talking. Sunken floors, soaring ceilings, zero stuffiness.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Free Gift</span>
+        <h3 data-slot="card-title">Starlight Carport</h3>
+        <p data-slot="card-body">A swooping cantilever roof that shelters your two-tone cruiser
+        and doubles as the smartest silhouette on the street.</p>
+      </div>
+    </div>
+
+    <section class="ribbon">
+      <p>Visit the model home this weekend — free orange sherbet floats for the whole family!</p>
+    </section>
+
+  </div>
+
+  <footer data-slot="footer">&copy; 1961–2026 Starlite Living Corp. · Showroom open 'til 9 · Easy terms, friendly smiles, atomic style.</footer>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
