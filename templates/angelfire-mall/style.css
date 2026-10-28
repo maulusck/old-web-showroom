@@ -1,0 +1,95 @@
+/* angelfire-mall — loud late-90s free-host link directory. Tiled gradient, blue underlines, spinning NEW!/HOT! */
+:root{
+  --bg1:#1a0e4d; --bg2:#4b1178; --paper:#fffbe6; --ink:#101010;
+  --link:#0000ee; --vlink:#551a8b; --hot:#ff2a00; --new:#009900;
+  --gold:#ffd700; --band:#000088; --band2:#008000;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#161018; --ink:#f0e6ff; --link:#7fb0ff; --vlink:#c79bff; --bg1:#0a0520; --bg2:#2a0845;
+}}
+:root[data-theme="dark"]{
+  --paper:#161018; --ink:#f0e6ff; --link:#7fb0ff; --vlink:#c79bff; --bg1:#0a0520; --bg2:#2a0845;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  font:16px/1.5 "Comic Sans MS","Trebuchet MS",Verdana,sans-serif;
+  background:var(--bg1);
+  /* tiled starry diagonal — pure CSS, no images */
+  background-image:
+    repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 2px,transparent 2px 22px),
+    radial-gradient(circle at 20% 30%,rgba(255,255,255,.18) 0 1px,transparent 2px),
+    radial-gradient(circle at 70% 60%,rgba(255,255,255,.14) 0 1px,transparent 2px),
+    linear-gradient(160deg,var(--bg1),var(--bg2));
+  background-size:44px 44px,120px 120px,90px 90px,cover;
+}
+
+/* banner-ad strip */
+.adbar{display:flex;flex-direction:column;gap:3px;padding:3px}
+.ad{text-align:center;padding:5px 8px;font-size:12px;font-weight:bold;letter-spacing:.03em;
+  color:#fff;background:var(--band);border:2px ridge #ff0;overflow:hidden}
+.ad2{background:var(--band2)}
+.ad-blink{color:var(--gold)}
+
+/* hero header */
+.hero{text-align:center;padding:22px 14px 0;color:#fff}
+.hero h1{margin:0;font-size:clamp(30px,8vw,60px);font-weight:900;color:var(--gold);
+  text-shadow:3px 3px 0 var(--hot),-1px -1px 0 #000,2px 2px 6px #000;letter-spacing:.02em}
+.tagline{margin:8px 0 0;font-style:italic;font-size:clamp(14px,3vw,19px);color:#9ff}
+.hero-body{max-width:56ch;margin:14px auto 0;background:var(--paper);color:var(--ink);
+  padding:10px 14px;border:3px double var(--gold);font-size:14px}
+
+/* marquee */
+.marquee{overflow:hidden;white-space:nowrap;margin:16px 0 0;background:#000;color:var(--gold);
+  border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);font-size:13px;padding:5px 0}
+.marquee span{display:inline-block;padding-left:100%;animation:scroll 22s linear infinite}
+@keyframes scroll{to{transform:translateX(-100%)}}
+
+/* nav */
+nav{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;padding:10px;background:#000}
+nav a{background:linear-gradient(#eee,#aaa);color:#000;text-decoration:none;padding:6px 14px;
+  border:2px outset #ccc;font-size:13px;font-weight:bold}
+nav a:hover,nav a[aria-current]{background:linear-gradient(var(--gold),#cc9900);color:#000;border-style:inset}
+
+/* award badges */
+.awards{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;padding:16px 10px}
+.award svg{display:block;border:1px solid #000}
+.a-gold,.a-top{animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+
+/* content */
+.wrap{max-width:760px;margin:0 auto;padding:0 14px 50px}
+.cat{background:var(--paper);color:var(--ink);border:3px ridge var(--gold);margin:16px 0;padding:14px 18px}
+.cat h2{margin:0 0 10px;font-size:20px;color:#b00;border-bottom:2px dashed #b00;padding-bottom:6px}
+.links{list-style:none;margin:0;padding:0}
+.links li{padding:7px 0;border-bottom:1px dotted #999}
+.links a{color:var(--link);text-decoration:underline;font-weight:bold;font-size:16px}
+.links a:visited{color:var(--vlink)}
+.note{display:block;font-size:13px;color:#555;margin-top:2px;font-family:Verdana,sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .note{color:#b8a8cc}}
+:root[data-theme="dark"] .note{color:#b8a8cc}
+
+/* spinning NEW! / HOT! markers */
+.new,.hot{display:inline-block;font-style:normal;font-weight:bold;font-size:11px;
+  padding:1px 5px;border-radius:3px;color:#fff;vertical-align:middle;
+  animation:spin 3s linear infinite}
+.new{background:var(--new)}
+.hot{background:var(--hot)}
+@keyframes spin{0%,70%{transform:rotate(0)}85%{transform:rotate(6deg)}100%{transform:rotate(0)}}
+
+/* hit counter + webring */
+.meta{background:#000;color:var(--gold);border:3px double var(--gold);margin:16px 0;padding:14px 18px;text-align:center}
+.counter{margin:0 0 14px;font-size:14px}
+.odometer{display:inline-block;background:#111;color:#0f0;font-family:"Courier New",monospace;
+  font-weight:bold;letter-spacing:.2em;padding:2px 8px;border:1px solid #0f0}
+.webring p{margin:4px 0}
+.ring-nav a{color:#9ff;font-weight:bold}
+.guest-body{font-size:15px;margin:0}
+
+/* footer */
+footer{text-align:center;color:#ffd;font-size:12px;padding:20px 14px 40px;text-shadow:1px 1px 2px #000}
+
+@media (prefers-reduced-motion:reduce){
+  .marquee span,.new,.hot,.a-gold,.a-top{animation:none}
+  .marquee span{padding-left:0}
+}
