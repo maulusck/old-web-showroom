@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dark Sky Society</title>
+<!-- frames-site — mid-90s frameset homepage, simulated with CSS grid.
+     Beveled frame borders, Times/Arial, tiny text, Netscape badge, hit counter. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="frameset">
+
+  <header class="banner">
+    <h1 data-slot="site-name">The Dark Sky Society</h1>
+    <p class="tagline" data-slot="tagline">Backyard astronomers of the Tri-County Region &mdash; est. 1994</p>
+  </header>
+
+  <nav class="sidebar" aria-label="Site navigation">
+    <p class="navhead">[ MAIN MENU ]</p>
+    <ul>
+      <li><a href="index.html" data-slot="nav-item" aria-current="page">&#9654; Home</a></li>
+      <li><a href="#" data-slot="nav-item">&#9654; About Us</a></li>
+      <li><a href="#" data-slot="nav-item">&#9654; The Star Log</a></li>
+      <li><a href="#" data-slot="nav-item">&#9654; Sky Charts</a></li>
+      <li><a href="#" data-slot="nav-item">&#9654; Downloads</a></li>
+      <li><a href="#" data-slot="nav-item">&#9654; Cool Links</a></li>
+      <li><a href="#" data-slot="nav-item">&#9654; Sign Guestbook</a></li>
+    </ul>
+
+    <div class="badge">
+      <svg viewBox="0 0 88 32" width="88" height="32" role="img" aria-label="Best viewed in Netscape">
+        <rect width="88" height="32" fill="#000"/>
+        <rect x="2" y="2" width="84" height="28" fill="none" stroke="#6f6" stroke-width="1"/>
+        <text x="44" y="13" fill="#6f6" font-family="monospace" font-size="7" text-anchor="middle">BEST VIEWED IN</text>
+        <text x="44" y="25" fill="#9cf" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">NETSCAPE 3.0</text>
+      </svg>
+    </div>
+
+    <p class="counter-label">You are visitor</p>
+    <div class="counter" aria-hidden="true">
+      <span>0</span><span>0</span><span>1</span><span>3</span><span>4</span><span>0</span><span>7</span>
+    </div>
+    <p class="updated">Last updated:<br>12 / 03 / 1997</p>
+  </nav>
+
+  <main class="content">
+    <article>
+      <h2 data-slot="page-title">Welcome to our little corner of the night sky!</h2>
+      <p data-slot="page-body">Pour yourself some coffee, dim the lights, and let your eyes adjust.
+      The Dark Sky Society is a club of amateur stargazers who meet on the first clear Friday
+      of every month out at Culver's Ridge, far from the streetlights. We drag out the Dobsonians,
+      swap eyepieces, argue about collimation, and point at faint smudges until dawn. No membership
+      fee &mdash; just bring a red flashlight and a thermos. This page is hand-coded by our webmaster
+      in Notepad, so mind the dust.</p>
+
+      <h3 class="whatsnew">&#9733; What's New on the Site &#9733;</h3>
+      <div class="cards">
+        <div class="card">
+          <h4 data-slot="card-title">Comet Hale-Bopp Photos Posted</h4>
+          <p data-slot="card-body">Marge finally scanned her slides from the March outing. Fifteen shots
+          of the tail, taken on a borrowed SLR &mdash; head to the Star Log to see them (warning: big files!).</p>
+        </div>
+        <div class="card">
+          <h4 data-slot="card-title">New Sky Chart: Spring Galaxies</h4>
+          <p data-slot="card-body">Printable finder chart for the Virgo Cluster now in Downloads.
+          Works great under a red lamp. GIF and PostScript versions available.</p>
+        </div>
+        <div class="card">
+          <h4 data-slot="card-title">Next Star Party: Dec 20th</h4>
+          <p data-slot="card-body">Winter solstice session at the Ridge. Geminids should still be going.
+          Dress warm &mdash; last year Ed's eyepieces frosted over by 2 AM.</p>
+        </div>
+        <div class="card">
+          <h4 data-slot="card-title">Guestbook Reopened</h4>
+          <p data-slot="card-body">We cleared out the spam and the robot entries. Drop us a line, tell us
+          what you've spotted, and sign the book before you warp out.</p>
+        </div>
+      </div>
+
+      <p class="rule">&middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot;</p>
+
+      <footer data-slot="footer">&copy; 1994&ndash;1997 The Dark Sky Society &middot; Maintained by the Webmaster &middot;
+      This site looks best at 800&times;600 &middot; Keep looking up!</footer>
+    </article>
+  </main>
+
+</div>
+<script src="../../edit.js" defer></script>
+</body>
+</html>
