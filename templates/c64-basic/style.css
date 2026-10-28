@@ -1,0 +1,75 @@
+/* c64-basic — Commodore 64 cold-boot screen. Authentic VIC-II palette:
+   light-blue border + text (#7b71c9), dark-blue screen (#40318d). One palette,
+   on purpose — the C64 look IS the theme, so no light/dark swap. */
+:root{
+  --border:#7b71c9;   /* light blue */
+  --screen:#40318d;   /* dark blue  */
+  --text:#8b82d6;     /* light blue text, nudged for contrast on screen */
+}
+*{box-sizing:border-box}
+html{background:var(--border)}
+body{
+  margin:0;background:var(--border);color:var(--text);
+  font:16px/1.35 "C64 Pro Mono","Courier New",Courier,ui-monospace,monospace;
+  -webkit-font-smoothing:none;font-smooth:never;
+  letter-spacing:.06em;text-transform:uppercase;
+  min-height:100vh;padding:clamp(12px,4vw,48px);
+}
+.border{max-width:760px;margin:0 auto}
+.screen{
+  background:var(--screen);
+  padding:clamp(16px,4vw,40px) clamp(14px,4vw,44px) clamp(24px,5vw,56px);
+  box-shadow:0 0 0 3px var(--border),0 10px 36px rgba(0,0,0,.45);
+}
+.line{margin:0 0 .35em}
+.boot{
+  margin:0 0 .6em;color:var(--text);line-height:1;
+  font-size:clamp(7px,2.1vw,11px);white-space:pre;overflow-x:auto;
+}
+.title{letter-spacing:.02em}
+.ready{margin-top:.8em}
+.cmd{color:#fff}                 /* typed commands run brighter, like a lit key */
+.cmd q{quotes:none;color:#fff}
+.big{
+  margin:.6em 0 .3em;font-size:clamp(20px,6vw,40px);font-weight:400;
+  line-height:1.1;letter-spacing:.03em;
+}
+.body{text-transform:none;letter-spacing:.02em;max-width:60ch;margin-bottom:.9em}
+
+/* LISTing as nav — each line is a clickable BASIC statement */
+.listing{display:block;margin:.4em 0 1em}
+.listing a{
+  display:block;color:var(--text);text-decoration:none;
+  padding:1px 0;width:max-content;max-width:100%;
+}
+.listing a:hover,.listing a:focus{
+  background:var(--text);color:var(--screen);outline:none;
+}
+.prgend{display:block;margin-top:.6em}
+
+/* DATA / REM blocks as content cards */
+.data{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,3vw,24px);
+  margin:1em 0 1.4em;
+}
+@media(max-width:560px){.data{grid-template-columns:1fr}}
+.rem{
+  border:2px solid var(--text);padding:clamp(10px,2.5vw,16px);
+  /* PETSCII-ish corner ticks */
+  background:
+    linear-gradient(var(--text),var(--text)) 0 0/10px 2px no-repeat,
+    linear-gradient(var(--text),var(--text)) 100% 100%/10px 2px no-repeat;
+}
+.rem h2{font-size:clamp(13px,3vw,16px);font-weight:400;margin:0 0 .5em}
+.rem .body{font-size:clamp(13px,3vw,15px);margin:0}
+
+.foot{text-transform:none;letter-spacing:.01em;font-size:clamp(11px,2.6vw,13px);margin-top:1em}
+.prompt{margin-top:1.2em;display:flex;align-items:center;gap:2px}
+
+/* Blinking block cursor */
+.cursor{
+  display:inline-block;width:.62em;height:1.05em;background:var(--text);
+  margin-left:.15em;animation:blink 1s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.cursor{animation:none}}

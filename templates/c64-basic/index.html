@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COMMODORE 64 BASIC V2</title>
+<!-- c64-basic — the C64 cold-boot screen. Light-blue border, dark-blue screen,
+     blocky light-blue text, PETSCII accents, a LISTed BASIC program as nav. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="border">
+    <main class="screen" aria-label="Commodore 64 boot screen">
+
+      <pre class="boot" aria-hidden="true">    &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9484;&#9488;
+    &#9500; &#9608;&#9608; &#9608;&#9608; &#9608;&#9608;&#9608;&#9608; &#9608;&#9608;&#9608;&#9608; &#9608;&#9608;&#9608;&#9608;&#9608;&#9608; &#9608;&#9608;&#9608;&#9608; &#9608;&#9608;&#9608;&#9608;&#9608;&#9608; &#9472; &#9474;
+    &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9492;&#9496;</pre>
+
+      <p class="line title">**** COMMODORE 64 BASIC V2 ****</p>
+      <p class="line">64K RAM SYSTEM  38911 BASIC BYTES FREE</p>
+      <p class="line ready">READY.</p>
+
+      <p class="line cmd">LOAD<q data-slot="site-name">"PIXELREEF BBS"</q>,8,1</p>
+      <p class="line">SEARCHING FOR <span data-slot="tagline">PIXELREEF — BITS BY THE SEA</span></p>
+      <p class="line">LOADING</p>
+      <p class="line ready">READY.</p>
+      <p class="line cmd">RUN</p>
+
+      <section class="prog" aria-label="program output">
+        <h1 class="line big" data-slot="hero-title">WELCOME TO PIXELREEF</h1>
+        <p class="line body" data-slot="hero-body">A 1200-baud outpost run off a breadbox in a beach shack.
+        No ads, no cookies, just warm phosphor and the hum of the datasette. Type a line number and hit RETURN.</p>
+      </section>
+
+      <p class="line ready">READY.</p>
+      <p class="line cmd">LIST</p>
+
+      <nav class="listing" aria-label="menu">
+        <a href="index.html" data-slot="nav-item">10 GOTO BOARDS</a>
+        <a href="index.html" data-slot="nav-item">20 GOTO FILES</a>
+        <a href="index.html" data-slot="nav-item">30 GOTO DEMOS</a>
+        <a href="index.html" data-slot="nav-item">40 GOTO SYSOP</a>
+        <span class="line prgend">READY.</span>
+      </nav>
+
+      <section class="data" aria-label="data statements">
+        <article class="rem">
+          <h2 class="line" data-slot="card-title">100 REM -- THE BOARDS</h2>
+          <p class="line body" data-slot="card-body">Message bases on demoscene gossip, SID tunes and where to find a working 1541. Flame wars kept to 40 columns.</p>
+        </article>
+        <article class="rem">
+          <h2 class="line" data-slot="card-title">200 REM -- THE FILES</h2>
+          <p class="line body" data-slot="card-body">D64 images, type-in listings and a creaking door game. Download at a blistering 120 bytes per second.</p>
+        </article>
+        <article class="rem">
+          <h2 class="line" data-slot="card-title">300 REM -- THE DEMOS</h2>
+          <p class="line body" data-slot="card-body">Raster bars, sprite multiplexers and a scroller that still won't shut up. Pure pixels, zero polygons.</p>
+        </article>
+        <article class="rem">
+          <h2 class="line" data-slot="card-title">400 REM -- THE SYSOP</h2>
+          <p class="line body" data-slot="card-body">One modem, one phone line, one tired human. Leave a note; replies arrive whenever the surf dies down.</p>
+        </article>
+      </section>
+
+      <p class="line ready">READY.</p>
+      <footer class="line foot" data-slot="footer">10 REM (C) 1982-2026 PIXELREEF &#9642; 38911 BYTES FREE &#9642; LOAD"$",8</footer>
+      <p class="line prompt">READY.<span class="cursor" aria-hidden="true">&#9608;</span></p>
+
+    </main>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
