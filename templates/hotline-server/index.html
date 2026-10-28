@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixel Harbor</title>
+<!-- Hotline Connect server — late-90s Mac OS 8 platinum tracker board. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Menu bar ===== -->
+  <div class="menubar" role="navigation">
+    <span class="apple" aria-hidden="true"></span>
+    <a href="#" class="appname" data-slot="site-name">Pixel Harbor</a>
+    <a href="#" data-slot="nav-item">Trackers</a>
+    <a href="#" data-slot="nav-item">News</a>
+    <a href="#" data-slot="nav-item">Chat</a>
+    <a href="#" data-slot="nav-item">Files</a>
+    <a href="#" data-slot="nav-item">Users</a>
+    <span class="clock" data-slot="nav-item">11:14 PM</span>
+  </div>
+
+  <!-- ===== Connection banner ===== -->
+  <div class="connbar">
+    <span class="led" aria-hidden="true"></span>
+    <strong data-slot="tagline">Connected to Pixel Harbor &mdash; a cozy harbor for old machines, est. 1998</strong>
+  </div>
+
+  <!-- ===== Desktop ===== -->
+  <main class="desk">
+
+    <!-- Tracker window (spans full width) -->
+    <section class="win tracker">
+      <div class="titlebar">
+        <span class="box close" aria-hidden="true"></span>
+        <span class="title" data-slot="hero-title">Hotline Tracker &mdash; Public Servers</span>
+        <span class="box zoom" aria-hidden="true"></span>
+      </div>
+      <div class="cols">
+        <span class="c-name">Name</span>
+        <span class="c-users">Users</span>
+        <span class="c-desc">Description</span>
+      </div>
+      <ul class="list servers">
+        <li class="sel">
+          <span class="c-name svr" data-slot="card-title">Pixel Harbor</span>
+          <span class="c-users" data-slot="card-meta">18</span>
+          <span class="c-desc" data-slot="card-body">Public-domain games, demos &amp; manuals. Everyone welcome, bring snacks.</span>
+        </li>
+        <li>
+          <span class="c-name svr" data-slot="card-title">The Floppy Attic</span>
+          <span class="c-users" data-slot="card-meta">7</span>
+          <span class="c-desc" data-slot="card-body">Disk images and scanned handbooks for tidy little 8-bit machines.</span>
+        </li>
+        <li>
+          <span class="c-name svr" data-slot="card-title">Dial-Up Diner</span>
+          <span class="c-users" data-slot="card-meta">12</span>
+          <span class="c-desc" data-slot="card-body">Trivia nights, modem nostalgia, and the world's slowest jukebox.</span>
+        </li>
+        <li>
+          <span class="c-name svr" data-slot="card-title">Cathode Cafe</span>
+          <span class="c-users" data-slot="card-meta">24</span>
+          <span class="c-desc" data-slot="card-body">CRT repair tips and pixel-art swaps. Mind the degauss button.</span>
+        </li>
+        <li>
+          <span class="c-name svr" data-slot="card-title">QuickDraw Club</span>
+          <span class="c-users" data-slot="card-meta">9</span>
+          <span class="c-desc" data-slot="card-body">MacPaint doodles, bitmap fonts, and gently haunted HyperCard stacks.</span>
+        </li>
+        <li>
+          <span class="c-name svr" data-slot="card-title">Sysop's Garden</span>
+          <span class="c-users" data-slot="card-meta">3</span>
+          <span class="c-desc" data-slot="card-body">A quiet reading room for vintage zines. Please whisper near the plants.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- News window -->
+    <section class="win news">
+      <div class="titlebar">
+        <span class="box close" aria-hidden="true"></span>
+        <span class="title" data-slot="page-title">Server News</span>
+        <span class="box zoom" aria-hidden="true"></span>
+      </div>
+      <div class="pane news-body">
+        <h2 data-slot="hero-body">Welcome aboard, friend.</h2>
+        <p data-slot="page-body">Pixel Harbor is a volunteer-run spot for folks who still love beige
+        boxes and clicky keyboards. Everything here is free to share, so be kind, credit the
+        maker when you know them, and keep the chat friendly enough for your grandmother.</p>
+
+        <div class="post">
+          <span class="post-head" data-slot="card-title">New stacks in the Harbor</span>
+          <p data-slot="card-body">Three fresh HyperCard stacks landed this week, including a tide
+          chart that still works and a recipe box from 1994. Grab them before the floppies cool.</p>
+        </div>
+        <div class="post">
+          <span class="post-head" data-slot="card-title">Trivia Tuesday returns</span>
+          <p data-slot="card-body">Meet in Public Chat at 8pm harbor time. This round: name that
+          startup chime. The winner gets bragging rights and a hand-drawn certificate.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chat window -->
+    <section class="win chat">
+      <div class="titlebar">
+        <span class="box close" aria-hidden="true"></span>
+        <span class="title" data-slot="nav-item">Public Chat</span>
+        <span class="box zoom" aria-hidden="true"></span>
+      </div>
+      <div class="chat-split">
+        <div class="pane log">
+          <p><b data-slot="nav-item">Marguerite:</b> <span data-slot="card-body">morning harbor! coffee's on in the diner</span></p>
+          <p><b data-slot="nav-item">Beto:</b> <span data-slot="card-body">anyone got a spare SCSI terminator? mine wandered off</span></p>
+          <p><b data-slot="nav-item">Pixelpete:</b> <span data-slot="card-body">check the attic, left it in a labeled folder yesterday</span></p>
+          <p><b data-slot="nav-item">Marguerite:</b> <span data-slot="card-body">uploaded my dithering tutorial to Files, be gentle :)</span></p>
+          <p><b data-slot="nav-item">Sysop:</b> <span data-slot="card-body">welcome aboard everyone, mind the agreement &amp; have fun</span></p>
+        </div>
+        <div class="pane users">
+          <span class="users-head" data-slot="card-title">Online &mdash; 18</span>
+          <ul class="list people">
+            <li class="usr" data-slot="nav-item">Sysop</li>
+            <li class="usr" data-slot="nav-item">Marguerite</li>
+            <li class="usr" data-slot="nav-item">Beto</li>
+            <li class="usr" data-slot="nav-item">Pixelpete</li>
+            <li class="usr" data-slot="nav-item">Dottie</li>
+            <li class="usr away" data-slot="nav-item">Quill (idle)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="chat-input">
+        <span data-slot="card-body">say hello</span><span class="caret" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <!-- Files window -->
+    <section class="win files">
+      <div class="titlebar">
+        <span class="box close" aria-hidden="true"></span>
+        <span class="title" data-slot="card-title">Files &mdash; /Public</span>
+        <span class="box zoom" aria-hidden="true"></span>
+      </div>
+      <ul class="list filelist">
+        <li class="fldr"><span class="c-name" data-slot="card-title">Games &amp; Demos</span><span class="sz" data-slot="card-meta">214 items</span></li>
+        <li class="fldr"><span class="c-name" data-slot="card-title">Manuals &amp; Scans</span><span class="sz" data-slot="card-meta">88 items</span></li>
+        <li class="fldr"><span class="c-name" data-slot="card-title">Pixel Art Swap</span><span class="sz" data-slot="card-meta">340 items</span></li>
+        <li class="fldr"><span class="c-name" data-slot="card-title">HyperCard Stacks</span><span class="sz" data-slot="card-meta">52 items</span></li>
+        <li class="fldr"><span class="c-name" data-slot="card-title">Fonts &amp; Icons</span><span class="sz" data-slot="card-meta">126 items</span></li>
+        <li class="fldr"><span class="c-name" data-slot="card-title">Zine Reading Room</span><span class="sz" data-slot="card-meta">41 items</span></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ===== Status bar ===== -->
+  <footer class="status" data-slot="footer">
+    Pixel Harbor &middot; 18 users online &middot; 861 files shared &middot; be kind, share freely &copy; 1998&ndash;2026
+  </footer>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
