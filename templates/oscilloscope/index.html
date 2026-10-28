@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oscilloscope</title>
+<!-- Oscilloscope — phosphor vector display. Dark CRT, green graticule, glowing
+     Lissajous traces (inline SVG), faked CSS knobs. Lab instrument, hypnotic. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="panel">
+    <div class="brand">
+      <span class="pwr" aria-hidden="true"></span>
+      <div>
+        <h1 data-slot="site-name">PHOSPHOR&nbsp;OS-7</h1>
+        <p class="tagline" data-slot="tagline">Dual-Trace Vector Display · 20 MHz</p>
+      </div>
+    </div>
+    <div class="readout" aria-hidden="true">
+      <span>PWR&nbsp;●</span><span>CAL&nbsp;●</span><span>TRIG&nbsp;●</span>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html" data-slot="nav-item" aria-current="page">Display</a>
+    <a href="#" data-slot="nav-item">Channels</a>
+    <a href="#" data-slot="nav-item">Timebase</a>
+    <a href="#" data-slot="nav-item">Trigger</a>
+    <a href="#" data-slot="nav-item">Logbook</a>
+  </nav>
+
+  <div class="wrap">
+    <section class="hero">
+      <!-- The screen: graticule + glowing vector traces -->
+      <div class="crt">
+        <svg class="scope" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="2.4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- graticule -->
+          <g class="grid">
+            <line x1="0" y1="30" x2="400" y2="30"/><line x1="0" y1="60" x2="400" y2="60"/>
+            <line x1="0" y1="90" x2="400" y2="90"/><line x1="0" y1="120" x2="400" y2="120"/>
+            <line x1="0" y1="150" x2="400" y2="150" class="axis"/><line x1="0" y1="180" x2="400" y2="180"/>
+            <line x1="0" y1="210" x2="400" y2="210"/><line x1="0" y1="240" x2="400" y2="240"/>
+            <line x1="0" y1="270" x2="400" y2="270"/>
+            <line x1="40" y1="0" x2="40" y2="300"/><line x1="80" y1="0" x2="80" y2="300"/>
+            <line x1="120" y1="0" x2="120" y2="300"/><line x1="160" y1="0" x2="160" y2="300"/>
+            <line x1="200" y1="0" x2="200" y2="300" class="axis"/><line x1="240" y1="0" x2="240" y2="300"/>
+            <line x1="280" y1="0" x2="280" y2="300"/><line x1="320" y1="0" x2="320" y2="300"/>
+            <line x1="360" y1="0" x2="360" y2="300"/>
+          </g>
+          <!-- CH1: sine trace -->
+          <path class="trace ch1" filter="url(#glow)" fill="none"
+            d="M0,150 C25,70 50,70 75,150 S125,230 150,150 S200,70 225,150 S275,230 300,150 S350,70 375,150 S425,230 450,150"/>
+          <!-- CH2: Lissajous figure -->
+          <path class="trace ch2" filter="url(#glow)" fill="none"
+            d="M200,55 C120,70 95,150 160,200 C215,240 290,220 300,150 C308,90 260,60 200,110 C150,150 150,210 220,235 C280,255 320,210 300,150"/>
+        </svg>
+        <div class="vignette" aria-hidden="true"></div>
+        <div class="corner-readout" aria-hidden="true">
+          <span>CH1&nbsp;.5V</span><span>CH2&nbsp;1V</span><span>50µs</span>
+        </div>
+      </div>
+
+      <h2 data-slot="hero-title">Everything is a waveform if you look long enough.</h2>
+      <p data-slot="hero-body">Patch a signal, dial the timebase, and watch it bloom green against
+      the graticule. We trace the honest shape of things — ripple, phase, drift and all — and let
+      the phosphor hold the ghost a half-second longer than it should.</p>
+    </section>
+
+    <!-- faked control knobs -->
+    <section class="controls" aria-hidden="true">
+      <div class="ctl"><span class="knob"></span><span class="lbl">VOLTS/DIV</span><span class="val">0.5 V</span></div>
+      <div class="ctl"><span class="knob k2"></span><span class="lbl">TIME/DIV</span><span class="val">50 µs</span></div>
+      <div class="ctl"><span class="knob k3"></span><span class="lbl">TRIGGER</span><span class="val">AUTO</span></div>
+      <div class="ctl"><span class="knob k4"></span><span class="lbl">FOCUS</span><span class="val">∞</span></div>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <span class="chip ch1">CH1</span>
+        <h3 data-slot="card-title">Channel One · Sine</h3>
+        <p data-slot="card-body">A clean reference tone, AC-coupled and centred on the zero line.
+        Steady amplitude, no clipping — the baseline we measure everything else against.</p>
+      </div>
+      <div class="card">
+        <span class="chip ch2">CH2</span>
+        <h3 data-slot="card-title">Channel Two · Lissajous</h3>
+        <p data-slot="card-body">Two tones crossed at a lazy ratio, looping into a standing figure.
+        Nudge the phase and the knot breathes open, then ties itself shut again.</p>
+      </div>
+      <div class="card">
+        <span class="chip tb">TB</span>
+        <h3 data-slot="card-title">Timebase &amp; Sweep</h3>
+        <p data-slot="card-body">From one second per division down to microseconds. Slow it to crawl
+        and read the drift; speed it up and the ripple sharpens into a wall.</p>
+      </div>
+      <div class="card">
+        <span class="chip tg">TG</span>
+        <h3 data-slot="card-title">Trigger &amp; Hold-off</h3>
+        <p data-slot="card-body">Lock the sweep to a rising edge and the chaos stands still.
+        Set the level, add a touch of hold-off, and a jittering mess snaps into one quiet line.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer data-slot="footer">PHOSPHOR OS-7 · Cal. 1983 · Signal held in green · Do not stare into the beam</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
