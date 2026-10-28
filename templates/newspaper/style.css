@@ -1,0 +1,88 @@
+/* newspaper — vintage broadsheet. Ink on newsprint, hairline rules, system serif. */
+:root{
+  --paper:#efe7d2; --paper-edge:#e4dabd; --ink:#2b2824;
+  --rule:#241f1a; --hair:#b9aa86; --dim:#5c5445;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#1a1816; --paper-edge:#221f1b; --ink:#e7ddc4;
+  --rule:#e7ddc4; --hair:#4a4238; --dim:#a69a80;
+}}
+:root[data-theme="dark"]{
+  --paper:#1a1816; --paper-edge:#221f1b; --ink:#e7ddc4;
+  --rule:#e7ddc4; --hair:#4a4238; --dim:#a69a80;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:20px 12px 40px;background:var(--paper-edge);color:var(--ink);
+  font:17px/1.52 "Times New Roman",Times,Georgia,serif}
+.sheet{max-width:860px;margin:0 auto;background:var(--paper);padding:26px 30px 34px;
+  border:1px solid var(--hair);box-shadow:0 1px 0 var(--hair)}
+
+/* ---- nameplate ---- */
+.nameplate{text-align:center;border-bottom:3px double var(--rule);padding-bottom:12px;position:relative}
+.ears{position:absolute;top:10px;font:11px/1.3 "Times New Roman",serif;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim);max-width:120px}
+.ears.left{left:0;text-align:left}
+.ears.right{right:0;text-align:right}
+.nameplate h1{margin:.1em 0 0;font-weight:700;letter-spacing:.01em;line-height:.98;
+  font-size:clamp(40px,10.5vw,86px);font-family:"Old English Text MT","Blackletter",Georgia,"Times New Roman",serif}
+.motto{margin:8px 0 0;font-style:italic;color:var(--dim);font-size:clamp(12px,2.4vw,15px);letter-spacing:.02em}
+
+/* ---- dateline rule bar ---- */
+.dateline{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;
+  border-bottom:1px solid var(--rule);padding:5px 0;
+  font:11px/1.4 "Times New Roman",serif;text-transform:uppercase;letter-spacing:.06em;color:var(--ink)}
+
+/* ---- section rail ---- */
+.rail{display:flex;flex-wrap:wrap;justify-content:center;gap:0;border-bottom:3px double var(--rule);
+  font:12px/1 "Times New Roman",serif;text-transform:uppercase;letter-spacing:.14em}
+.rail a{color:var(--ink);text-decoration:none;padding:8px 14px;border-right:1px solid var(--hair)}
+.rail a:first-child{border-left:1px solid var(--hair)}
+.rail a:hover{background:var(--ink);color:var(--paper)}
+.rail a[aria-current]{font-weight:700;text-decoration:underline}
+
+/* ---- story head ---- */
+main{padding-top:14px}
+.kicker{text-align:center;text-transform:uppercase;letter-spacing:.3em;font-size:11px;color:var(--dim);
+  padding-bottom:6px}
+.headline{margin:0;text-align:center;font-weight:700;text-transform:uppercase;line-height:.96;
+  letter-spacing:-.005em;font-size:clamp(28px,7vw,58px)}
+.deck{margin:10px auto 6px;max-width:44ch;text-align:center;font-weight:700;font-style:italic;
+  font-size:clamp(14px,2.8vw,19px);line-height:1.3}
+.byline{text-align:center;margin:0 0 14px;font-size:12px;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--dim);border-bottom:1px solid var(--rule);padding-bottom:14px}
+
+/* ---- multi-column body with hairline rules ---- */
+.columns{column-count:3;column-gap:26px;column-rule:1px solid var(--hair);
+  text-align:justify;hyphens:auto}
+.columns p{margin:0 0 .7em;text-indent:1.1em}
+.columns p.lead{text-indent:0}
+.columns h3,.columns figure,.columns .box{break-inside:avoid}
+@media(max-width:720px){.columns{column-count:2;column-gap:20px}}
+@media(max-width:480px){.columns{column-count:1}}
+
+.dropcap{float:left;font-weight:700;font-size:3.4em;line-height:.76;padding:.04em .08em 0 0;
+  font-family:Georgia,"Times New Roman",serif}
+
+.subhead{margin:.6em 0 .25em;text-align:center;text-transform:uppercase;font-size:14px;
+  letter-spacing:.08em;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:5px 0}
+
+/* ---- halftone cut ---- */
+.cut{margin:.3em 0 .8em;padding:0}
+.cut svg{display:block;width:100%;height:auto;border:1px solid var(--rule);filter:grayscale(1) contrast(1.1)}
+.cut figcaption{font-size:11px;font-style:italic;text-align:center;color:var(--dim);
+  padding:4px 2px 0;text-indent:0}
+
+/* ---- boxed WEATHER / INDEX ---- */
+.box{border:1px solid var(--rule);padding:8px 10px;margin:.4em 0 .9em;text-align:left}
+.box h4{margin:0 0 5px;text-align:center;text-transform:uppercase;letter-spacing:.22em;font-size:12px;
+  border-bottom:1px solid var(--rule);padding-bottom:4px}
+.box.weather p{margin:0;text-indent:0;font-size:14px;line-height:1.4}
+.box.index ul{margin:0;padding:0;list-style:none;font-size:13px}
+.box.index li{display:flex;justify-content:space-between;gap:6px;
+  border-bottom:1px dotted var(--hair);padding:2px 0}
+.box.index .pg{font-weight:700}
+.editor-note{font-style:italic}
+
+/* ---- colophon ---- */
+.colophon{margin-top:18px;border-top:3px double var(--rule);padding-top:10px;text-align:center;
+  font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);line-height:1.6}
