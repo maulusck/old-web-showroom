@@ -1,0 +1,113 @@
+/* win95-desktop — Windows 95. Teal desktop, grey beveled chrome, navy title bars.
+   One stylesheet themes the page. Bevels are the signature: raised = outset, sunken = inset. */
+:root{
+  --teal:#008080; --face:#c0c0c0; --face-lt:#dfdfdf;
+  --hi:#ffffff; --sh:#808080; --dk:#0a0a0a;
+  --nav1:#000080; --nav2:#1084d0; --sel:#000080; --txt:#000000;
+}
+/* The classic double bevel. */
+.raised{box-shadow:inset -1px -1px var(--dk),inset 1px 1px var(--hi),
+  inset -2px -2px var(--sh),inset 2px 2px var(--face-lt)}
+.sunken{box-shadow:inset 1px 1px var(--sh),inset -1px -1px var(--hi),
+  inset 2px 2px var(--dk),inset -2px -2px var(--face-lt)}
+
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:14px 14px 56px;background:var(--teal);color:var(--txt);
+  font:12px/1.4 "Segoe UI",Tahoma,"MS Sans Serif",Geneva,sans-serif;
+  -webkit-font-smoothing:none;image-rendering:pixelated}
+
+/* ---- desktop shortcuts ---- */
+.icons{position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:18px;width:76px}
+.icon{display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;color:#fff;text-align:center}
+.icon svg{width:36px;height:36px}
+.icon span{font-size:11px;padding:1px 3px;line-height:1.2;text-shadow:1px 1px 0 #000}
+.icon:focus span,.icon:hover span{background:var(--sel);outline:1px dotted #fff}
+
+/* ---- window ---- */
+.window{max-width:720px;margin:4px auto 0;margin-left:auto;background:var(--face);
+  box-shadow:inset -1px -1px var(--dk),inset 1px 1px var(--hi),
+    inset -2px -2px var(--sh),inset 2px 2px var(--face-lt);
+  padding:3px}
+@media(min-width:720px){.window{margin-left:110px}}
+
+.titlebar{display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(90deg,var(--nav1),var(--nav2));color:#fff;
+  padding:3px 3px 3px 4px;margin-bottom:2px}
+.titlebar-txt{display:flex;align-items:center;gap:5px;font-weight:bold;letter-spacing:.02em}
+.tb-ico{width:16px;height:16px;flex:0 0 16px}
+.tb-btns{display:flex;gap:2px}
+.tb-btn{width:17px;height:15px;background:var(--face);border:0;padding:0;cursor:pointer;
+  position:relative;color:#000;
+  box-shadow:inset -1px -1px var(--dk),inset 1px 1px var(--hi),
+    inset -2px -2px var(--sh),inset 2px 2px var(--face-lt)}
+.tb-btn:active{box-shadow:inset 1px 1px var(--sh),inset -1px -1px var(--hi),
+  inset 2px 2px var(--dk),inset -2px -2px var(--face-lt)}
+.tb-btn i{position:absolute;inset:0;margin:auto}
+.g-min{width:7px;height:2px;background:#000;bottom:3px;left:0;right:0}
+.g-max{width:9px;height:8px;border:1px solid #000;border-top-width:2px;top:3px;left:0;right:0}
+.g-close{width:9px;height:9px;top:0;bottom:0;left:0;right:0;
+  background:
+    linear-gradient(45deg,transparent 42%,#000 42%,#000 58%,transparent 58%),
+    linear-gradient(-45deg,transparent 42%,#000 42%,#000 58%,transparent 58%)}
+
+/* ---- menu bar ---- */
+.menubar{display:flex;gap:2px;padding:1px 2px 3px;border-bottom:1px solid var(--sh);margin-bottom:3px}
+.menubar span{padding:2px 7px;cursor:default}
+.menubar span:hover{background:var(--sel);color:#fff}
+
+/* ---- content ---- */
+.content{padding:8px}
+.hero{padding:16px;margin-bottom:12px;background:#fff}
+.hero h1{margin:0;font-size:20px;color:var(--nav1)}
+.tagline{margin:2px 0 10px;font-weight:bold;color:var(--sh)}
+.hero p{margin:0;max-width:60ch}
+.hero p:last-child{font-size:12px;line-height:1.5}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.card{background:var(--face);padding:12px;
+  box-shadow:inset -1px -1px var(--dk),inset 1px 1px var(--hi),
+    inset -2px -2px var(--sh),inset 2px 2px var(--face-lt)}
+.card-ico{width:28px;height:28px;display:block;margin-bottom:6px}
+.card h3{margin:0 0 5px;font-size:13px;color:var(--nav1)}
+.card p{margin:0;line-height:1.5}
+
+/* ---- status bar ---- */
+.statusbar{display:flex;gap:3px;padding:3px 2px 0}
+.status-cell{padding:3px 6px;background:var(--face);
+  box-shadow:inset 1px 1px var(--sh),inset -1px -1px var(--hi),
+    inset 2px 2px var(--dk),inset -2px -2px var(--face-lt)}
+.status-cell:first-child{flex:1}
+.grip{width:16px;flex:0 0 16px;box-shadow:none}
+.grip::after{content:"";position:relative;display:block;height:10px;margin-top:2px;
+  background:repeating-linear-gradient(135deg,var(--hi) 0 1px,transparent 1px 3px,var(--sh) 3px 4px,transparent 4px 6px)}
+
+/* ---- taskbar ---- */
+.taskbar{position:fixed;left:0;right:0;bottom:0;height:34px;display:flex;align-items:center;
+  gap:4px;padding:3px 4px;background:var(--face);
+  box-shadow:inset 0 1px var(--hi),inset 0 2px var(--face-lt)}
+.start{display:flex;align-items:center;gap:4px;height:26px;padding:0 8px 0 4px;cursor:pointer;
+  background:var(--face);border:0;font-weight:bold;font-size:12px;color:#000;
+  box-shadow:inset -1px -1px var(--dk),inset 1px 1px var(--hi),
+    inset -2px -2px var(--sh),inset 2px 2px var(--face-lt)}
+.start:active{box-shadow:inset 1px 1px var(--sh),inset -1px -1px var(--hi),
+  inset 2px 2px var(--dk),inset -2px -2px var(--face-lt)}
+.flag{width:18px;height:16px}
+.tasks{flex:1;display:flex;gap:4px;overflow:hidden}
+.task{display:flex;align-items:center;gap:5px;height:26px;max-width:200px;padding:0 8px;cursor:pointer;
+  background:var(--face);border:0;font-size:12px;color:#000;overflow:hidden;white-space:nowrap}
+.task span{overflow:hidden;text-overflow:ellipsis}
+.task.active{font-weight:bold;
+  background:
+    repeating-conic-gradient(var(--face-lt) 0 25%,var(--face) 0 50%) 0 0/2px 2px;
+  box-shadow:inset 1px 1px var(--sh),inset -1px -1px var(--hi),
+    inset 2px 2px var(--dk),inset -2px -2px var(--face-lt)}
+.task:not(.active){box-shadow:inset -1px -1px var(--dk),inset 1px 1px var(--hi),
+  inset -2px -2px var(--sh),inset 2px 2px var(--face-lt)}
+.tray{display:flex;align-items:center;gap:7px;height:26px;padding:0 8px;
+  box-shadow:inset 1px 1px var(--sh),inset -1px -1px var(--hi),
+    inset 2px 2px var(--dk),inset -2px -2px var(--face-lt)}
+.volume svg{width:16px;height:16px;display:block}
+#clock{font-size:12px;min-width:56px;text-align:right}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
