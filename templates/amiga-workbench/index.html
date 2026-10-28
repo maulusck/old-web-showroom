@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copperbar Workbench</title>
+<!-- amiga-workbench — Commodore Amiga Workbench 1.3/2.0 desktop. Grey/blue/orange/white,
+     Topaz-style monospace, beveled window chrome, floppy & drawer icons (inline SVG),
+     a screen menu bar and a RAM/disk gauge. No libs, no build, works offline on file://. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- screen title / menu bar -->
+  <div class="menubar">
+    <div class="menus">
+      <span class="screen-name" data-slot="site-name">Copperbar</span>
+      <a href="#" class="menu" data-slot="nav-item">Workbench</a>
+      <a href="#" class="menu" data-slot="nav-item">Window</a>
+      <a href="#" class="menu" data-slot="nav-item">Icons</a>
+      <a href="#" class="menu" data-slot="nav-item">Tools</a>
+    </div>
+    <div class="mem"><span class="led" aria-hidden="true"></span>Chip&nbsp;399,152&nbsp;&middot;&nbsp;Fast&nbsp;3,801,216&nbsp;free</div>
+  </div>
+
+  <main class="desktop">
+
+    <!-- MAIN WINDOW — hero -->
+    <section class="win win-hero" aria-label="Welcome window">
+      <div class="titlebar">
+        <span class="gadget g-close" aria-hidden="true"></span>
+        <span class="drag" data-slot="page-title">System2.0:Welcome</span>
+        <span class="gadget g-depth" aria-hidden="true"></span>
+        <span class="gadget g-zoom" aria-hidden="true"></span>
+      </div>
+      <div class="win-body">
+        <p class="tagline" data-slot="tagline">Four colours were always enough.</p>
+        <h1 data-slot="hero-title">Hand-built demos, boot-block by boot-block.</h1>
+        <p data-slot="hero-body">Copperbar is a two-desk softworks that still thinks in
+        copper lists and planar bitmaps. We raster the impossible, fit it under 512K, and
+        leave the fan silent. Double-click a drawer below to see what fits on one floppy.</p>
+      </div>
+    </section>
+
+    <!-- DRAWERS WINDOW — cards as drawer icons -->
+    <section class="win win-drawers" aria-label="Projects drawer">
+      <div class="titlebar">
+        <span class="gadget g-close" aria-hidden="true"></span>
+        <span class="drag" data-slot="card-title">Copperbar:Projects</span>
+        <span class="gadget g-depth" aria-hidden="true"></span>
+        <span class="gadget g-zoom" aria-hidden="true"></span>
+      </div>
+      <div class="win-body drawer-grid">
+
+        <figure class="icon">
+          <svg class="art" viewBox="0 0 48 48" aria-hidden="true"><use href="#drawer"/></svg>
+          <figcaption class="icon-label" data-slot="card-title">Demos.drawer</figcaption>
+          <p class="icon-note" data-slot="card-body">Single-file intros that fit under a boot block and still drop the jaw.</p>
+        </figure>
+
+        <figure class="icon">
+          <svg class="art" viewBox="0 0 48 48" aria-hidden="true"><use href="#disk"/></svg>
+          <figcaption class="icon-label" data-slot="card-title">Trackers.adf</figcaption>
+          <p class="icon-note" data-slot="card-body">Four-channel MOD scores, chip-tight, mixed on the metal itself.</p>
+        </figure>
+
+        <figure class="icon">
+          <svg class="art" viewBox="0 0 48 48" aria-hidden="true"><use href="#drawer"/></svg>
+          <figcaption class="icon-label" data-slot="card-title">Fonts.drawer</figcaption>
+          <p class="icon-note" data-slot="card-body">Hand-pixelled Topaz kin, 8&times;8 bitmaps built for a scanline world.</p>
+        </figure>
+
+        <figure class="icon">
+          <svg class="art" viewBox="0 0 48 48" aria-hidden="true"><use href="#disk"/></svg>
+          <figcaption class="icon-label" data-slot="card-title">Boot.adf</figcaption>
+          <p class="icon-note" data-slot="card-body">Our Kickstart scroller &mdash; the first thing every client sees at power-on.</p>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- RAM DISK / GAUGE WINDOW -->
+    <section class="win win-gauge" aria-label="RAM Disk gauge">
+      <div class="titlebar">
+        <span class="gadget g-close" aria-hidden="true"></span>
+        <span class="drag" data-slot="card-title">RAM Disk</span>
+        <span class="gadget g-depth" aria-hidden="true"></span>
+        <span class="gadget g-zoom" aria-hidden="true"></span>
+      </div>
+      <div class="win-body">
+        <p class="gauge-line"><span>Chip&nbsp;RAM</span><span data-slot="card-body">78% in use</span></p>
+        <div class="gauge"><i style="width:78%"></i></div>
+        <p class="gauge-line"><span>Fast&nbsp;RAM</span><span data-slot="card-body">44% in use</span></p>
+        <div class="gauge"><i style="width:44%"></i></div>
+        <p class="gauge-line"><span>Copperbar:</span><span data-slot="card-body">4 drawers &middot; 11 files</span></p>
+        <div class="gauge"><i style="width:61%"></i></div>
+      </div>
+    </section>
+
+    <!-- DESKTOP DISK ICONS (right rail) -->
+    <aside class="disktray" aria-label="Volumes">
+      <figure class="icon">
+        <svg class="art" viewBox="0 0 48 48" aria-hidden="true"><use href="#disk"/></svg>
+        <figcaption class="icon-label sel" data-slot="nav-item">Copperbar</figcaption>
+      </figure>
+      <figure class="icon">
+        <svg class="art" viewBox="0 0 48 48" aria-hidden="true"><use href="#disk"/></svg>
+        <figcaption class="icon-label" data-slot="nav-item">Workbench</figcaption>
+      </figure>
+      <figure class="icon">
+        <svg class="art" viewBox="0 0 48 48" aria-hidden="true"><use href="#ram"/></svg>
+        <figcaption class="icon-label" data-slot="nav-item">RAM:</figcaption>
+      </figure>
+      <figure class="icon">
+        <svg class="art" viewBox="0 0 48 48" aria-hidden="true"><use href="#trash"/></svg>
+        <figcaption class="icon-label" data-slot="nav-item">Trashcan</figcaption>
+      </figure>
+    </aside>
+
+  </main>
+
+  <footer class="statusbar" data-slot="footer">Volume Copperbar &mdash; 2 of 4 drawers open &mdash; &copy; 1987&ndash;2026, mixed on an A500 that still boots.</footer>
+
+  <!-- icon artwork, referenced via <use> above -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="disk" viewBox="0 0 48 48">
+        <rect x="6" y="6" width="36" height="36" fill="#000"/>
+        <rect x="7" y="7" width="34" height="34" fill="#6b84b4"/>
+        <rect x="14" y="7" width="20" height="13" fill="#000"/>
+        <rect x="15" y="8" width="18" height="11" fill="#d7d7d7"/>
+        <rect x="27" y="9" width="5" height="9" fill="#555"/>
+        <rect x="12" y="24" width="24" height="12" fill="#d7d7d7"/>
+        <rect x="14" y="27" width="20" height="2" fill="#6b84b4"/>
+        <rect x="14" y="31" width="14" height="2" fill="#6b84b4"/>
+      </symbol>
+      <symbol id="drawer" viewBox="0 0 48 48">
+        <rect x="5" y="14" width="38" height="26" fill="#000"/>
+        <rect x="6" y="15" width="36" height="24" fill="#c9a24a"/>
+        <rect x="6" y="15" width="36" height="6" fill="#e3c070"/>
+        <rect x="10" y="9" width="20" height="8" fill="#000"/>
+        <rect x="11" y="10" width="18" height="6" fill="#c9a24a"/>
+        <rect x="19" y="27" width="10" height="4" fill="#000"/>
+      </symbol>
+      <symbol id="ram" viewBox="0 0 48 48">
+        <rect x="8" y="10" width="32" height="28" fill="#000"/>
+        <rect x="9" y="11" width="30" height="26" fill="#6b84b4"/>
+        <rect x="13" y="15" width="22" height="7" fill="#d7d7d7"/>
+        <rect x="13" y="26" width="6" height="7" fill="#ff8a00"/>
+        <rect x="21" y="26" width="6" height="7" fill="#ff8a00"/>
+        <rect x="29" y="26" width="6" height="7" fill="#555"/>
+      </symbol>
+      <symbol id="trash" viewBox="0 0 48 48">
+        <rect x="13" y="14" width="22" height="26" fill="#000"/>
+        <rect x="14" y="15" width="20" height="24" fill="#9a9a9a"/>
+        <rect x="18" y="19" width="2" height="16" fill="#000"/>
+        <rect x="23" y="19" width="2" height="16" fill="#000"/>
+        <rect x="28" y="19" width="2" height="16" fill="#000"/>
+        <rect x="11" y="10" width="26" height="5" fill="#000"/>
+        <rect x="12" y="11" width="24" height="3" fill="#d7d7d7"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

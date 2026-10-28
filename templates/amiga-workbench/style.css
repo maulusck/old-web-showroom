@@ -1,0 +1,120 @@
+/* amiga-workbench — Commodore Amiga Workbench 1.3/2.0 desktop.
+   Grey chrome, blue title bars, orange accents, white window interiors.
+   Topaz-style = chunky system monospace. Bevels = inset box-shadows (light TL, dark BR). */
+:root{
+  --desk:#6b84b4;        /* classic blue workbench backdrop */
+  --grey:#9a9a9a;        /* WB2.0 chrome grey */
+  --grey-dk:#7c7c7c;
+  --white:#ffffff;
+  --black:#000000;
+  --blue:#6b84b4;        /* title bar */
+  --orange:#ff8a00;      /* highlight / selection / gauge fill */
+  --ink:#000000;
+  --title-ink:#ffffff;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --desk:#20222b; --grey:#3a3d47; --grey-dk:#2a2c34; --white:#1b1d24;
+  --black:#000000; --blue:#3f537e; --ink:#e3e3e3; --title-ink:#ffffff;
+}}
+:root[data-theme="dark"]{
+  --desk:#20222b; --grey:#3a3d47; --grey-dk:#2a2c34; --white:#1b1d24;
+  --black:#000000; --blue:#3f537e; --ink:#e3e3e3; --title-ink:#ffffff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);
+  font:14px/1.45 ui-monospace,"Lucida Console","Courier New",monospace;
+  font-weight:700;-webkit-font-smoothing:none;letter-spacing:.01em}
+
+/* ---- screen menu bar ---- */
+.menubar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;
+  align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--grey);color:var(--ink);padding:3px 8px;
+  box-shadow:inset 0 2px 0 var(--white),inset 0 -2px 0 var(--grey-dk);
+  border-bottom:2px solid var(--black)}
+.menus{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.screen-name{background:var(--black);color:var(--white);padding:2px 8px;margin-right:6px;
+  text-transform:uppercase;letter-spacing:.12em}
+.menu{color:var(--ink);text-decoration:none;padding:2px 8px;text-transform:uppercase;
+  font-size:12px;letter-spacing:.06em}
+.menu:hover,.menu:focus{background:var(--black);color:var(--white);outline:none}
+.mem{font-size:12px;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.led{width:9px;height:9px;background:var(--orange);display:inline-block;
+  border:1px solid var(--black);box-shadow:0 0 4px var(--orange)}
+
+/* ---- desktop ---- */
+.desktop{min-height:calc(100vh - 58px);padding:18px;
+  display:grid;gap:18px;align-content:start;
+  grid-template-columns:minmax(0,1fr) 150px;
+  grid-template-areas:"hero tray" "drawers tray" "gauge tray"}
+.win-hero{grid-area:hero}
+.win-drawers{grid-area:drawers}
+.win-gauge{grid-area:gauge;max-width:420px}
+.disktray{grid-area:tray}
+
+/* ---- window chrome (double border + bevel) ---- */
+.win{background:var(--white);border:2px solid var(--black);
+  box-shadow:inset 1px 1px 0 var(--white),inset -2px -2px 0 var(--grey-dk);}
+.titlebar{display:flex;align-items:center;background:var(--blue);color:var(--title-ink);
+  border-bottom:2px solid var(--black);
+  /* 1.3-style drag-bar texture: faint horizontal lines say "grab me" */
+  background-image:repeating-linear-gradient(to bottom,
+    transparent 0 3px,rgba(255,255,255,.14) 3px 4px)}
+.drag{flex:1;padding:4px 10px;cursor:move;text-transform:none;letter-spacing:.04em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gadget{width:20px;align-self:stretch;position:relative;background:var(--grey);
+  box-shadow:inset 1px 1px 0 var(--white),inset -2px -2px 0 var(--grey-dk)}
+.gadget::before{content:"";position:absolute;inset:4px;border:2px solid var(--black)}
+.g-close{border-right:2px solid var(--black)}
+.g-close::before{inset:5px;background:var(--black);border:0}
+.g-depth,.g-zoom{border-left:2px solid var(--black)}
+.g-zoom::before{inset:4px 7px 7px 4px}
+.g-depth::after{content:"";position:absolute;right:4px;bottom:4px;width:8px;height:8px;
+  background:var(--grey);border:2px solid var(--black)}
+.win-body{padding:16px 18px}
+
+/* ---- hero ---- */
+.tagline{margin:0 0 8px;color:var(--orange);text-transform:uppercase;
+  font-size:12px;letter-spacing:.18em}
+.win-hero h1{margin:0 0 10px;font-size:clamp(20px,4.2vw,30px);line-height:1.15;
+  text-transform:uppercase;letter-spacing:.02em}
+.win-hero p[data-slot=hero-body]{margin:0;max-width:60ch}
+
+/* ---- drawer grid (cards as icons) ---- */
+.drawer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.icon{margin:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.icon .art{width:48px;height:48px;image-rendering:pixelated}
+.icon-label{font-size:12px;padding:1px 6px;background:var(--grey);color:var(--ink);
+  border:1px solid var(--black);max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.icon-label.sel{background:var(--orange);color:var(--black)}
+.icon-note{margin:0;font-size:12px;font-weight:400;color:var(--ink);opacity:.85;max-width:22ch}
+
+/* ---- gauges ---- */
+.gauge-line{display:flex;justify-content:space-between;gap:12px;margin:12px 0 3px;font-size:12px}
+.gauge-line span:last-child{font-weight:400;opacity:.85}
+.gauge{height:16px;border:2px solid var(--black);background:var(--grey);
+  box-shadow:inset 1px 1px 0 var(--grey-dk)}
+.gauge i{display:block;height:100%;background:var(--orange);
+  background-image:repeating-linear-gradient(to right,
+    var(--orange) 0 6px,rgba(0,0,0,.22) 6px 7px)}
+
+/* ---- disk tray (desktop volume icons) ---- */
+.disktray{display:flex;flex-direction:column;gap:18px;align-items:center}
+
+/* ---- status bar ---- */
+.statusbar{background:var(--grey);color:var(--ink);font-size:12px;font-weight:400;
+  padding:5px 10px;border-top:2px solid var(--black);
+  box-shadow:inset 0 2px 0 var(--white);text-align:center}
+
+/* ---- phone: windows stack, tray goes horizontal ---- */
+@media (max-width:640px){
+  .desktop{grid-template-columns:1fr;
+    grid-template-areas:"tray" "hero" "drawers" "gauge";padding:12px;gap:14px}
+  .win-gauge{max-width:none}
+  .disktray{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:16px}
+}
+
+/* ---- motion: the power LED pulses unless you'd rather it didn't ---- */
+@media (prefers-reduced-motion:no-preference){
+  .led{animation:disk-io 1.6s steps(1,end) infinite}
+  @keyframes disk-io{0%,70%{opacity:1}71%,100%{opacity:.35}}
+}
