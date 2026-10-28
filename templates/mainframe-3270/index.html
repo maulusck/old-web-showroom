@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HARVEST-DACS LOGON</title>
+<!-- mainframe-3270 — IBM 3270 green-screen dumb terminal. Black screen,
+     bright green mono, cyan/white accents, 80-col field form, PF-key legend. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="crt">
+  <div class="screen" role="main">
+
+    <div class="statline">
+      <span class="sys" data-slot="site-name">HARVEST-DACS</span>
+      <span class="flush">SESSION A ─ LU0317 ─ ONLINE</span>
+    </div>
+
+    <div class="panelid">
+      PANEL <b data-slot="page-title">ISPF.LOGON.M01</b>
+      <span class="tagline" data-slot="tagline">DISTRICT ACCOUNTING &amp; CLEARING SYSTEM</span>
+    </div>
+
+    <h1 class="hdr" data-slot="hero-title">SIGN ON TO THE HARVEST REGION</h1>
+    <p class="intro" data-slot="hero-body">Enter your operator credentials in the fields below
+    and press ENTER. Authorized terminals only. This region processes live ledgers;
+    all keystrokes are journaled to the master console.</p>
+
+    <form class="form" onsubmit="return false" aria-label="logon">
+      <div class="fld"><label for="f1">USERID . . . . .</label><input id="f1" type="text" maxlength="8" value="OPR0317" autocomplete="off" spellcheck="false"></div>
+      <div class="fld"><label for="f2">PASSWORD . . . .</label><input id="f2" type="password" maxlength="8" value="XXXXXXXX" autocomplete="off"></div>
+      <div class="fld"><label for="f3">NEW PASSWORD . .</label><input id="f3" type="password" maxlength="8" autocomplete="off"></div>
+      <div class="fld"><label for="f4">APPLICATION  . .</label><input id="f4" type="text" maxlength="8" value="HARVEST" autocomplete="off" spellcheck="false"></div>
+      <div class="fld"><label for="f5">GROUP IDENT  . .</label><input id="f5" type="text" maxlength="8" value="DIST09" autocomplete="off" spellcheck="false"></div>
+      <div class="fld"><label for="f6">COMMAND  . . . .</label><input id="f6" type="text" maxlength="40" value="" autocomplete="off" spellcheck="false" class="wide"></div>
+    </form>
+
+    <nav class="menu" aria-label="primary option menu">
+      <span class="mcap">===&gt; SELECT AN OPTION AND PRESS ENTER</span>
+      <a href="index.html" aria-current="page"><b>0</b> <span data-slot="nav-item">LOGON</span></a>
+      <a href="#"><b>1</b> <span data-slot="nav-item">BROWSE</span></a>
+      <a href="#"><b>2</b> <span data-slot="nav-item">LEDGER</span></a>
+      <a href="#"><b>3</b> <span data-slot="nav-item">UTILITIES</span></a>
+      <a href="#"><b>X</b> <span data-slot="nav-item">EXIT</span></a>
+    </nav>
+
+    <div class="panels">
+      <section class="panel">
+        <h2 data-slot="card-title">REGION STATUS</h2>
+        <p data-slot="card-body">HARVEST is UP. 14 active LUs, 0 held. Batch window closes
+        17:00. Nightly posting ran clean — 2,431,106 records, no abends.</p>
+      </section>
+      <section class="panel">
+        <h2 data-slot="card-title">BROADCAST</h2>
+        <p data-slot="card-body">MVS maintenance this SUN 02:00–04:00. Save your work and
+        log off before the IPL. The clearing queue will drain beforehand.</p>
+      </section>
+      <section class="panel">
+        <h2 data-slot="card-title">HELP DESK</h2>
+        <p data-slot="card-body">Password locked? Call the console at x-2200 or submit a
+        RACF reset via option 3. Do not share operator IDs between shifts.</p>
+      </section>
+      <section class="panel">
+        <h2 data-slot="card-title">TN3270 NOTICE</h2>
+        <p data-slot="card-body">Green is protected text. Underscored fields accept input.
+        TAB between fields; ENTER transmits; CLEAR wipes the unprotected area.</p>
+      </section>
+    </div>
+
+    <p class="ready">READY<br>===&gt; <span class="cursor" aria-hidden="true">&#9608;</span></p>
+
+    <div class="pfkeys" data-slot="footer">PF1=HELP  PF3=EXIT  PF7=UP  PF8=DOWN  PF10=LEFT  PF12=CANCEL  &#169;1983 HARVEST-DACS</div>
+
+  </div>
+</div>
+<script src="../../edit.js" defer></script>
+</body>
+</html>

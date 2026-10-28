@@ -1,0 +1,74 @@
+/* mainframe-3270 — IBM 3270 green-screen terminal. Always black: a phosphor
+   tube has no light mode. Green = protected text, cyan = headings/keys,
+   white = emphasis, amber = status. 80-col field grid, block cursor. */
+:root{
+  --screen:#050805; --green:#2bd655; --green-dk:#17803a; --dim:#1aa544;
+  --cyan:#44d9d9; --white:#e6ffe6; --amber:#e0a93b; --glow:rgba(43,214,85,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:var(--green);
+  font:15px/1.5 "Courier New",Courier,monospace;letter-spacing:.03em;
+  display:flex;justify-content:center;min-height:100vh}
+
+/* the tube: bezel + faint scanlines + curvature vignette */
+.crt{width:100%;max-width:880px;padding:18px}
+.screen{background:var(--screen);padding:26px clamp(14px,4vw,40px) 20px;
+  border-radius:14px;box-shadow:0 0 0 10px #0c0c0c,0 0 0 13px #1c1c1c,0 0 60px rgba(0,0,0,.9) inset;
+  position:relative;overflow:hidden}
+.screen::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,0) 0 2px,rgba(0,0,0,.28) 2px 3px)}
+.screen::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:radial-gradient(120% 120% at 50% 50%,transparent 62%,rgba(0,0,0,.55))}
+.screen>*{position:relative;z-index:1;text-shadow:0 0 4px var(--glow)}
+
+/* top status line — reverse-video amber, like a 3270 OIA/title row */
+.statline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  background:var(--amber);color:#1a1400;padding:3px 10px;font-weight:700;
+  letter-spacing:.08em;text-shadow:none;font-size:13px;margin:-4px 0 14px}
+.statline .flush{opacity:.85}
+
+.panelid{color:var(--cyan);font-size:13px;margin:0 0 4px;
+  display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline}
+.panelid b{color:var(--white);font-weight:700}
+.panelid .tagline{color:var(--dim);letter-spacing:.12em}
+
+.hdr{color:var(--white);font-size:clamp(17px,3.4vw,22px);font-weight:700;
+  letter-spacing:.12em;margin:14px 0 6px;text-transform:uppercase}
+.intro{max-width:78ch;color:var(--green);margin:0 0 20px}
+
+/* field form — protected labels + underlined (open) input fields */
+.form{margin:0 0 22px;max-width:72ch}
+.fld{display:flex;align-items:baseline;gap:10px;margin:0 0 7px;flex-wrap:wrap}
+.fld label{color:var(--cyan);white-space:pre;letter-spacing:.06em}
+.fld input{flex:1;min-width:9ch;background:transparent;border:0;
+  border-bottom:1px solid var(--green-dk);color:var(--white);
+  font:inherit;letter-spacing:.14em;padding:1px 2px;caret-color:var(--green)}
+.fld input.wide{min-width:100%}
+.fld input:focus{outline:none;border-bottom-color:var(--green);
+  box-shadow:0 1px 0 var(--green);background:rgba(43,214,85,.06)}
+
+/* primary option menu */
+.menu{border-top:1px solid var(--green-dk);border-bottom:1px solid var(--green-dk);
+  padding:12px 0;margin:0 0 22px;display:flex;flex-wrap:wrap;gap:6px 26px;align-items:baseline}
+.menu .mcap{flex-basis:100%;color:var(--amber);letter-spacing:.06em;margin-bottom:4px;font-size:13px}
+.menu a{color:var(--green);text-decoration:none;letter-spacing:.08em}
+.menu a b{color:var(--white);margin-right:4px}
+.menu a:hover span,.menu a:focus span{text-decoration:underline}
+.menu a[aria-current] span{background:var(--green);color:#041205;text-shadow:none}
+
+/* terminal panels/screens */
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--green-dk);border:1px solid var(--green-dk);margin:0 0 22px}
+@media(max-width:560px){.panels{grid-template-columns:1fr}}
+.panel{background:var(--screen);padding:14px 16px}
+.panel h2{margin:0 0 6px;color:var(--cyan);font-size:14px;font-weight:700;letter-spacing:.1em}
+.panel p{margin:0;font-size:14px;color:var(--green)}
+
+.ready{color:var(--white);font-weight:700;letter-spacing:.1em;margin:0 0 18px;font-size:16px}
+.cursor{color:var(--green);animation:blink 1.06s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.cursor{animation:none}}
+
+/* PF-key legend — reverse video, pinned feel */
+.pfkeys{background:var(--cyan);color:#001414;text-shadow:none;letter-spacing:.04em;
+  font-size:12px;font-weight:700;padding:5px 10px;white-space:pre-wrap;word-spacing:.1em}
