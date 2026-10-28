@@ -1,0 +1,122 @@
+/* Aquaveil — Frutiger Aero. Sky-blue→fresh-green gradient world, glossy glass
+   panels, bevelled sheen buttons, water droplets, bubbles. All CSS + inline SVG,
+   works offline on file://. Humanist system sans only. */
+:root{
+  --sky:#bfeaff; --sky-dk:#4db4e8; --aqua:#1e8fd4;
+  --grass:#c6f08a; --grass-dk:#5bb94a;
+  --ink:#16384a; --dim:#3d6b82; --white:#ffffff;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --sky:#0d2838; --sky-dk:#13506e; --aqua:#2aa0e6;
+  --grass:#24402a; --grass-dk:#3d7a35;
+  --ink:#dff3ff; --dim:#9fc6da;
+}}
+:root[data-theme="dark"]{
+  --sky:#0d2838; --sky-dk:#13506e; --aqua:#2aa0e6;
+  --grass:#24402a; --grass-dk:#3d7a35;
+  --ink:#dff3ff; --dim:#9fc6da;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;color:var(--ink);
+  font:16px/1.6 "Segoe UI","Helvetica Neue",Frutiger,"Myriad Pro",Calibri,sans-serif;
+  background:linear-gradient(180deg,var(--sky) 0%,var(--sky-dk) 42%,var(--grass) 100%) fixed;
+  padding:18px;
+}
+
+/* floating bubbles */
+.bubbles{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.bubbles span{
+  position:absolute;bottom:-14vh;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.9),rgba(255,255,255,.1) 42%,rgba(90,185,232,.12) 70%);
+  border:1px solid rgba(255,255,255,.35);
+  animation:rise linear infinite;
+}
+.bubbles span:nth-child(1){left:8%;width:44px;height:44px;animation-duration:17s}
+.bubbles span:nth-child(2){left:22%;width:22px;height:22px;animation-duration:12s;animation-delay:3s}
+.bubbles span:nth-child(3){left:38%;width:64px;height:64px;animation-duration:22s;animation-delay:1s}
+.bubbles span:nth-child(4){left:52%;width:16px;height:16px;animation-duration:10s;animation-delay:5s}
+.bubbles span:nth-child(5){left:66%;width:38px;height:38px;animation-duration:19s;animation-delay:2s}
+.bubbles span:nth-child(6){left:78%;width:28px;height:28px;animation-duration:14s;animation-delay:6s}
+.bubbles span:nth-child(7){left:88%;width:54px;height:54px;animation-duration:24s}
+.bubbles span:nth-child(8){left:94%;width:18px;height:18px;animation-duration:11s;animation-delay:4s}
+@keyframes rise{to{transform:translateY(-124vh) translateX(18px)}}
+
+/* glass panels */
+.glass{
+  position:relative;z-index:1;
+  max-width:860px;margin:0 auto 18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.34));
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:18px;
+  box-shadow:0 8px 26px rgba(20,60,90,.28),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -14px 24px rgba(120,195,235,.22);
+  backdrop-filter:blur(3px);
+  overflow:hidden;
+}
+/* top sheen on every panel */
+.glass::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:44%;
+  background:linear-gradient(180deg,rgba(255,255,255,.65),rgba(255,255,255,0));
+  border-radius:18px 18px 50% 50%/18px 18px 22px 22px;pointer-events:none;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .glass{
+  background:linear-gradient(180deg,rgba(40,90,120,.5),rgba(20,50,70,.38))}}
+:root[data-theme="dark"] .glass{
+  background:linear-gradient(180deg,rgba(40,90,120,.5),rgba(20,50,70,.38))}
+
+/* header */
+.hero-head{padding:22px 26px;margin-top:4px}
+.brand{display:flex;align-items:center;gap:16px}
+.drop{width:46px;height:60px;flex:none;filter:drop-shadow(0 4px 6px rgba(20,60,90,.3))}
+h1{margin:0;font-size:clamp(30px,6vw,48px);font-weight:600;letter-spacing:-.01em;
+  color:var(--aqua);text-shadow:0 1px 0 rgba(255,255,255,.8)}
+.tagline{margin:2px 0 0;color:var(--dim);font-size:15px;font-weight:300;letter-spacing:.01em}
+
+/* nav — glossy pill buttons */
+nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:14px}
+.btn{
+  display:inline-block;text-decoration:none;color:#0a3850;font-weight:600;font-size:14px;
+  padding:9px 18px;border-radius:22px;
+  background:linear-gradient(180deg,#ffffff 0%,#dff4ff 48%,#9bd6f3 50%,#c3ecff 100%);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 3px 7px rgba(20,60,90,.28),inset 0 1px 0 rgba(255,255,255,1);
+  transition:transform .12s ease,box-shadow .12s ease,filter .12s ease;
+}
+.btn:hover{filter:brightness(1.07);box-shadow:0 5px 12px rgba(20,60,90,.34),inset 0 1px 0 #fff}
+.btn:active{transform:translateY(1px);filter:brightness(.96)}
+.btn[aria-current]{box-shadow:0 2px 6px rgba(20,60,90,.3),inset 0 1px 0 #fff,0 0 0 2px rgba(91,185,74,.55)}
+
+/* hero */
+.hero{padding:30px 30px 34px;text-align:center}
+.pill{display:inline-block;background:linear-gradient(180deg,#e4ffc2,#9fde6a);
+  color:#2c5212;font-size:11px;font-weight:700;letter-spacing:.16em;padding:4px 12px;
+  border-radius:20px;border:1px solid rgba(255,255,255,.8);box-shadow:inset 0 1px 0 #fff}
+.hero h2{margin:16px auto 10px;max-width:22ch;font-weight:600;font-size:clamp(22px,3.6vw,32px);
+  color:var(--ink);line-height:1.25;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.hero p{margin:0 auto 20px;max-width:52ch;color:var(--dim)}
+.btn.big{font-size:16px;padding:12px 26px;
+  background:linear-gradient(180deg,#eaffd0 0%,#c0ef8c 49%,#6fc23e 51%,#a4e46f 100%);color:#1f4710}
+
+/* cards */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:860px;margin:0 auto 18px}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+.card{margin:0;padding:24px}
+.card h3{margin:14px 0 8px;font-weight:600;font-size:19px;color:var(--aqua);
+  text-shadow:0 1px 0 rgba(255,255,255,.7)}
+.card p{margin:0;color:var(--dim);font-size:15px}
+/* glossy glass orb icons, pure CSS */
+.ico{width:52px;height:52px;border-radius:50%;
+  box-shadow:0 4px 10px rgba(20,60,90,.3),inset 0 2px 4px rgba(255,255,255,.9),inset 0 -8px 12px rgba(0,0,0,.08)}
+.ico-stream{background:radial-gradient(circle at 34% 28%,#eafcff,#5ec8ef 55%,#1877c4)}
+.ico-clarity{background:radial-gradient(circle at 34% 28%,#ffffff,#bfe9ff 55%,#7fb9dc)}
+.ico-live{background:radial-gradient(circle at 34% 28%,#f2ffd8,#aee46f 55%,#5bb94a)}
+.ico-sky{background:radial-gradient(circle at 34% 28%,#eafcff,#8fdcff 55%,#2aa0e6)}
+
+/* footer */
+footer{text-align:center;color:var(--dim);font-size:13px;padding:16px 20px;border-radius:14px}
+footer::before{border-radius:14px 14px 50% 50%/14px 14px 18px 18px}
+
+@media (prefers-reduced-motion: reduce){
+  .bubbles span{animation:none;display:none}
+  .btn{transition:none}
+}

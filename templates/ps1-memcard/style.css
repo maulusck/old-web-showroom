@@ -1,0 +1,67 @@
+/* PS1 Memory Card — PlayStation BIOS save manager.
+   Deep blue gradient, chunky system sans, blocky save icons, a selection cursor. */
+:root{
+  --bg1:#0a1240; --bg2:#1b2e86; --glow:#2a44c0;
+  --ink:#eef2ff; --dim:#9fb0e8; --line:#3f54b8;
+  --panel:#12205c; --panel-lt:#1c2f7a; --cursor:#ffd34d;
+}
+/* BIOS is always deep blue — a light mode would break the illusion. keep it. */
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);
+  font-family:"Segoe UI",Tahoma,Verdana,system-ui,sans-serif;
+  letter-spacing:.06em;line-height:1.5;
+  background:radial-gradient(130% 90% at 50% -10%,var(--glow),var(--bg2) 38%,var(--bg1) 100%);
+  background-attachment:fixed}
+.wrap{max-width:860px;margin:0 auto;padding:0 18px 56px}
+
+.bios{text-align:center;padding:40px 16px 20px}
+.bios h1{margin:0;font-size:clamp(26px,7vw,52px);font-weight:800;letter-spacing:.12em;
+  text-shadow:3px 3px 0 #06093a,0 0 18px var(--glow)}
+.sub{margin:12px 0 0;color:var(--dim);font-size:13px;text-transform:uppercase;letter-spacing:.22em}
+
+.modes{display:flex;gap:4px;justify-content:center;padding:14px 0 26px}
+.modes a{color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em;padding:9px 20px;
+  background:linear-gradient(var(--panel-lt),var(--panel));
+  border:2px solid var(--line);border-radius:3px}
+.modes a:hover,.modes a[aria-current]{background:var(--cursor);color:#1a1200;border-color:#fff2bf}
+
+.status{display:flex;align-items:center;gap:18px;max-width:860px;margin:0 auto 22px;
+  padding:16px 18px;background:rgba(10,18,64,.55);border:2px solid var(--line);border-radius:4px}
+.cardicon{flex:none;filter:drop-shadow(2px 2px 0 #06093a)}
+.meter{display:flex;flex-direction:column;gap:4px}
+.free{font-size:20px;font-weight:800;letter-spacing:.1em;color:var(--cursor)}
+.total{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.18em}
+
+.hero{margin:0 auto 30px;padding:22px 24px;border:2px solid var(--line);border-radius:4px;
+  background:linear-gradient(180deg,var(--panel-lt),var(--panel))}
+.tag{display:inline-block;background:var(--cursor);color:#1a1200;font-size:11px;font-weight:800;
+  letter-spacing:.18em;padding:3px 9px;border-radius:2px;margin-bottom:12px}
+.hero h2{margin:0 0 10px;font-size:clamp(18px,3.5vw,26px);font-weight:800;letter-spacing:.06em}
+.hero p{margin:0;color:var(--dim);max-width:60ch}
+
+.dirlabel{margin:0 0 14px;font-size:13px;letter-spacing:.24em;color:var(--dim);
+  text-transform:uppercase;border-bottom:2px solid var(--line);padding-bottom:8px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.block{position:relative;padding:14px;border:2px solid var(--line);border-radius:4px;
+  background:linear-gradient(180deg,var(--panel-lt),var(--panel));cursor:pointer;outline:none;
+  transition:border-color .12s,transform .12s}
+.block .pix{width:40px;height:40px;image-rendering:pixelated;display:block;margin-bottom:10px;
+  border:1px solid #06093a}
+.block h4{margin:0 0 5px;font-size:15px;font-weight:800;letter-spacing:.08em}
+.block p{margin:0;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.09em}
+.block.empty{opacity:.55;border-style:dashed}
+.block:hover,.block:focus,.block.sel{border-color:var(--cursor);transform:translateY(-2px)}
+
+/* selection cursor — the blinking chevron of the BIOS pointer */
+.block.sel::before,.block:focus::before{content:"\25B6";position:absolute;left:-22px;top:14px;
+  color:var(--cursor);font-size:16px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .block.sel::before,.block:focus::before{animation:none}
+  .block{transition:none}
+}
+
+footer{text-align:center;margin-top:40px;padding:22px 16px;font-size:11px;color:var(--dim);
+  text-transform:uppercase;letter-spacing:.2em;border-top:2px solid var(--line)}

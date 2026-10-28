@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Site Name</title>
+<!-- Second page. Same style.css, same nav markup, relative links. This is multipage. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 data-slot="site-name">Site Name</h1>
+    <p class="tagline" data-slot="tagline">Tagline goes here</p>
+  </header>
+
+  <nav>
+    <a href="index.html" data-slot="nav-item">Home</a>
+    <a href="about.html" data-slot="nav-item" aria-current="page">About</a>
+  </nav>
+
+  <div class="wrap">
+    <section class="prose">
+      <h2 data-slot="page-title">About</h2>
+      <p data-slot="page-body">A second page. Copy the header and nav, change the body,
+      link it in the nav. Add as many pages as the site needs — each its own file
+      sharing this folder's style.css.</p>
+    </section>
+
+    <footer data-slot="footer">&copy; 2026 Site Name</footer>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

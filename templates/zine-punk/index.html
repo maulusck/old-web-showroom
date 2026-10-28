@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SNOTRAG</title>
+<!-- zine-punk — 70s/80s photocopied fanzine. Ransom-note type, torn paper,
+     tape, xerox grain. All CSS + inline SVG + system fonts. Works on file://. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="masthead">
+    <div class="smudge smudge-a" aria-hidden="true"></div>
+    <!-- ransom-note masthead: per-letter spans styled by nth-child in CSS -->
+    <h1 class="ransom mast" data-slot="site-name"><span>S</span><span>N</span><span>O</span><span>T</span><span>R</span><span>A</span><span>G</span></h1>
+    <p class="stamp" data-slot="tagline">a photocopied riot · issue #7 · pay no cover</p>
+    <div class="pin" aria-hidden="true"></div>
+  </header>
+
+  <nav>
+    <a href="index.html" data-slot="nav-item" aria-current="page">SCENE</a>
+    <a href="index.html" data-slot="nav-item">NOISE</a>
+    <a href="index.html" data-slot="nav-item">GIGS</a>
+    <a href="index.html" data-slot="nav-item">RANTS</a>
+    <a href="index.html" data-slot="nav-item">MERCH</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="flyer">
+      <span class="tape tape-tl" aria-hidden="true"></span>
+      <span class="tape tape-br" aria-hidden="true"></span>
+      <span class="slash" data-slot="card-title">!! TONIGHT !!</span>
+      <h2 class="ransom" data-slot="hero-title"><span>THREE</span> <span>CHORDS</span> <span>&amp;</span> <span>A</span> <span>GRUDGE</span></h2>
+      <p data-slot="hero-body">Four bands. One busted PA. The back room of the laundromat on Ash St,
+      doors at 8, cops by 11. Bring your own earplugs and a buck for the photocopier fund.
+      No posers, no managers, no refunds. Xerox this flyer &amp; staple it everywhere.</p>
+      <div class="rip" aria-hidden="true"></div>
+    </section>
+
+    <section class="grid">
+      <article class="scrap">
+        <span class="staple" aria-hidden="true"></span>
+        <h3 class="marker" data-slot="card-title">THE DIAL TONES</h3>
+        <p data-slot="card-body">Headliners. Two minutes a song, forty seconds of feedback.
+        Last seen setting a snare drum on fire in a basement off Route 9.</p>
+      </article>
+      <article class="scrap">
+        <span class="staple" aria-hidden="true"></span>
+        <h3 class="marker" data-slot="card-title">WET CEMENT</h3>
+        <p data-slot="card-body">Faster than you can read this sentence. They owe everyone
+        money and that is somehow part of the charm. Merch is a Sharpie on your arm.</p>
+      </article>
+      <article class="scrap">
+        <span class="staple" aria-hidden="true"></span>
+        <h3 class="marker" data-slot="card-title">GUTTER MATH</h3>
+        <p data-slot="card-body">Three members, one working amp, zero chill. Their demo
+        is a cassette dubbed over somebody's aunt's wedding video. Play it loud.</p>
+      </article>
+      <article class="scrap">
+        <span class="staple" aria-hidden="true"></span>
+        <h3 class="marker" data-slot="card-title">GIRLS IN THE VENTS</h3>
+        <p data-slot="card-body">Opening at 8 sharp whether or not the mic works.
+        Half the set is a rant about the rent. The other half is better than most records.</p>
+      </article>
+    </section>
+
+    <section class="manifesto">
+      <span class="tape tape-top" aria-hidden="true"></span>
+      <h2 class="scream" data-slot="page-title">CUT · PASTE · PHOTOCOPY · REPEAT</h2>
+      <p data-slot="page-body">We make this zine on a stolen copier at 2am and we are not sorry.
+      If the ink is smudged it means a human touched it. Mail us your scene reports, your bad
+      poetry, your worse band — glue-stick and a grudge, that is the whole method. Stay loud.</p>
+    </section>
+  </main>
+
+  <footer data-slot="footer">SNOTRAG ZINE · est. in a xerox machine, 1981 · reprint it, don't sell it · this page self-destructs when you grow up</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

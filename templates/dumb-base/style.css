@@ -1,0 +1,113 @@
+/* DUMB Secret Base — CRT amber-on-olive underground console.
+   One stylesheet themes every page. Dark is the native mode; a light
+   "surface" variant is offered for the data-theme override. */
+:root{
+  --bg:#0c0f08; --panel:#171c10; --panel-2:#1f2615;
+  --drab:#3c4428; --line:#4a5530; --dim:#8a9568;
+  --amber:#ffb00a; --amber-dk:#c97f00; --phos:#6bdc5a; --phos-dk:#2f8a28;
+  --red:#ff4433; --ink:#d9e0b8;
+  --stencil:"Arial Narrow","Arial Black",Impact,system-ui,sans-serif;
+  --mono:"Courier New",Courier,monospace;
+}
+:root[data-theme="light"]{
+  --bg:#c9c7ac; --panel:#b9b89a; --panel-2:#aeac8c;
+  --drab:#8a8a66; --line:#6b6b4a; --dim:#4a4a33;
+  --amber:#7a4e00; --amber-dk:#5a3a00; --phos:#2f6a22; --phos-dk:#244d1a;
+  --red:#aa2211; --ink:#23230f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--mono);
+  /* faint scanlines — pure CSS, no assets */
+  background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);}
+
+/* top warning stripes */
+.stripes{height:12px;background:repeating-linear-gradient(135deg,
+  var(--amber) 0 18px,#0c0f08 18px 36px)}
+
+/* header */
+.banner{display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  background:var(--panel);border-bottom:2px solid var(--amber-dk);padding:18px 20px}
+.seal{color:var(--amber);flex:0 0 auto;filter:drop-shadow(0 0 4px rgba(255,176,10,.35))}
+.banner-txt{flex:1 1 240px;min-width:220px}
+.eyebrow{margin:0;color:var(--dim);font-size:10px;letter-spacing:.3em}
+.banner h1{margin:2px 0;font-family:var(--stencil);font-weight:900;
+  font-size:clamp(30px,8vw,62px);letter-spacing:.14em;color:var(--amber);
+  text-transform:uppercase;text-shadow:0 0 10px rgba(255,176,10,.4)}
+.tagline{margin:0;color:var(--phos);font-size:12px;letter-spacing:.14em;font-style:italic}
+.clearance{flex:0 0 auto;border:2px solid var(--red);padding:6px 12px;text-align:center;
+  background:rgba(255,68,51,.07)}
+.clr-label{display:block;color:var(--dim);font-size:9px;letter-spacing:.3em}
+.clr-level{display:block;color:var(--red);font-weight:900;font-size:13px;letter-spacing:.12em}
+
+/* status bar */
+.statusbar{display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;
+  background:var(--bg);color:var(--dim);border-bottom:1px solid var(--line);
+  padding:7px 20px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.clk{margin-left:auto;color:var(--amber-dk);letter-spacing:.08em}
+.light{width:9px;height:9px;border-radius:50%;display:inline-block;flex:0 0 auto}
+.light.g{background:var(--phos);box-shadow:0 0 7px var(--phos);animation:blink 1.6s steps(1) infinite}
+.light.a{background:var(--amber);box-shadow:0 0 7px var(--amber);animation:blink 2.3s steps(1) infinite}
+.light.r{background:var(--red);box-shadow:0 0 7px var(--red);animation:blink .9s steps(1) infinite}
+
+/* nav — sector tabs */
+nav{display:flex;flex-wrap:wrap;gap:4px;background:var(--drab);padding:6px 16px;
+  border-bottom:2px solid var(--line)}
+nav a{color:var(--ink);text-decoration:none;padding:7px 16px;font-size:12px;
+  letter-spacing:.14em;font-family:var(--stencil);font-weight:700;
+  background:var(--panel);border:1px solid var(--line)}
+nav a:hover,nav a:focus{background:var(--amber);color:#0c0f08;outline:none}
+nav a[aria-current]{background:var(--phos-dk);color:var(--ink);border-color:var(--phos)}
+
+/* layout + panels */
+.wrap{max-width:860px;margin:0 auto;padding:20px 16px 8px}
+.panel{background:var(--panel);border:1px solid var(--line);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.4);padding:18px 20px;margin:0 0 18px;position:relative}
+.panel-h{margin:0 0 12px;color:var(--amber);font-size:12px;letter-spacing:.2em;
+  border-bottom:1px dashed var(--line);padding-bottom:8px}
+
+/* hero */
+.hero h2{margin:8px 0 10px;font-family:var(--stencil);font-weight:900;
+  font-size:clamp(20px,4vw,30px);letter-spacing:.04em;color:var(--phos);line-height:1.2}
+.hero p{margin:0 0 10px;color:var(--ink);max-width:66ch}
+.stamp{display:inline-block;color:var(--red);border:2px solid var(--red);
+  padding:3px 10px;font-weight:900;font-size:11px;letter-spacing:.18em;transform:rotate(-2deg)}
+.redacted{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0}
+.redacted span{height:14px;background:var(--ink);opacity:.85;flex:1 1 60px;max-width:140px}
+
+/* sector map */
+.map .mapsvg{width:100%;height:auto;color:var(--phos);display:block;
+  background:rgba(0,0,0,.25);border:1px solid var(--line)}
+.map .mg text{letter-spacing:.08em}
+.ping{animation:ping 1.8s ease-out infinite}
+.map-note{margin:10px 0 0;color:var(--dim);font-size:11px;letter-spacing:.06em}
+
+/* project cards */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 18px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.card{margin:0;padding-top:20px}
+.card .light{position:absolute;top:16px;right:16px}
+.card h3{margin:0 0 8px;color:var(--amber);font-family:var(--stencil);font-weight:700;
+  font-size:15px;letter-spacing:.1em;padding-right:22px}
+.card p{margin:0 0 14px;font-size:13.5px;color:var(--ink)}
+.tag{display:inline-block;font-size:10px;letter-spacing:.14em;font-weight:900;
+  padding:3px 9px;border:1px solid currentColor}
+.tag.ok{color:var(--phos)}
+.tag.warn{color:var(--amber)}
+.tag.deny{color:var(--red);background:var(--red);color:#0c0f08}
+
+/* directive */
+.directive .page-title{margin:0 0 8px;color:var(--red);font-family:var(--stencil);
+  font-weight:900;letter-spacing:.08em;font-size:17px}
+.directive p+p{color:var(--ink);font-size:13.5px}
+
+/* footer */
+footer{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.14em;
+  padding:22px 16px 40px;border-top:2px solid var(--amber-dk);margin-top:8px;
+  background:var(--panel)}
+
+@keyframes blink{0%,60%{opacity:1}61%,100%{opacity:.18}}
+@keyframes ping{0%{r:4;opacity:1}100%{r:26;opacity:0}}
+@media(prefers-reduced-motion:reduce){
+  .light,.ping{animation:none}
+  .light{opacity:1}
+}

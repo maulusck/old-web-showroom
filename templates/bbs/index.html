@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Amber Room BBS</title>
+<!-- bbs — late-80s/early-90s dial-up board. Amber phosphor on black, box-drawing,
+     ANSI banner, fixed-width everything. Feels like a telnet session. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- carrier / login handshake -->
+  <pre class="connect" aria-hidden="true">ATDT 1-503-555-0199
+RINGING... RINGING...
+<span class="ok">CONNECT 14400/ARQ/V.32bis/LAPM-V</span>
+Press [ESC] twice for ANSI...  <span class="cur">_</span></pre>
+
+  <header class="banner">
+    <pre class="logo" aria-hidden="true">
+ ██  █   █ ███  ████ ███      ███  ███  ███
+█  █ ██ ██ █  █ █    █  █     █  █ █  █ █
+████ █ █ █ ███  ███  ███  ███ ███  ███  ███
+█  █ █   █ █  █ █    █ █      █  █ █  █    █
+█  █ █   █ ███  ████ █  █     ███  ███  ███ </pre>
+    <h1 data-slot="site-name">THE AMBER ROOM</h1>
+    <p class="tagline" data-slot="tagline">· A FidoNet Outpost · Node 1 of 1 · 300–14400 Baud · Est. 1988 ·</p>
+  </header>
+
+  <div class="prompt"><b>sysop</b>@amber:<span class="ok">online</span>$ run board.exe --ansi</div>
+
+  <nav aria-label="Main menu">
+    <a href="index.html" data-slot="nav-item" aria-current="page">[M] Message Areas</a>
+    <a href="index.html" data-slot="nav-item">[F] File Libraries</a>
+    <a href="index.html" data-slot="nav-item">[D] Door Games</a>
+    <a href="index.html" data-slot="nav-item">[W] Who's Online</a>
+    <a href="index.html" data-slot="nav-item">[G] Goodbye / Logoff</a>
+  </nav>
+
+  <div class="wrap">
+    <section class="hero">
+      <pre class="rule" aria-hidden="true">╔══════════════════════════════════════════════════╗</pre>
+      <span class="badge">** NEW USER? PRESS N AT THE PROMPT **</span>
+      <h2 data-slot="hero-title">Welcome, Caller. You are visitor #27,604.</h2>
+      <p data-slot="hero-body">Pour a cold one, dim the lights, and let the modem sing.
+      The Amber Room has been glowing since '88 — eight message bases, a stuffed
+      file library, and door games that'll eat your whole evening. Keep it clean,
+      keep it quick, and leave the line for the next caller. The SysOp is watching.</p>
+      <pre class="rule" aria-hidden="true">╚══════════════════════════════════════════════════╝</pre>
+    </section>
+
+    <h3 class="sec">┤ MAIN MENU ├────────────────────────────────────────</h3>
+    <div class="grid">
+      <div class="card">
+        <h3 data-slot="card-title">[M] Message Areas</h3>
+        <p data-slot="card-body">Eight public bases plus private netmail. Talk shop in
+        TechTalk, swap maps in DoorGamers, or lurk the General chatter. 40 msgs/day cap.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">[F] File Libraries</h3>
+        <p data-slot="card-body">Shareware, utils, mod music and ANSI packs. ZMODEM up
+        and down. Leech ratio 1:3 — upload something good and the gate swings open.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">[D] Door Games</h3>
+        <p data-slot="card-body">Legend of the Red Dragon, TradeWars 2002, and Barren
+        Realms Elite. One turn set per day, resets at midnight. No save-scumming, caller.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">[B] Bulletins</h3>
+        <p data-slot="card-body">Board news, the rules of the room, and the hall of fame.
+        Read before you post — the SysOp hates repeating himself on a 14.4 line.</p>
+      </div>
+    </div>
+
+    <h3 class="sec">┤ MESSAGE BASES ├────────────────────────────────────</h3>
+    <pre class="list" data-slot="page-body" tabindex="0">AREA  NAME              TOPIC                          MSGS  NEW
+────  ────────────────  ─────────────────────────────  ────  ───
+ 01   General           Anything goes, keep it civil    812   7
+ 02   TechTalk          Hardware, modems, overclocking  1340  22
+ 03   DoorGamers        LORD duels & TradeWars alliances 601   4
+ 04   ANSI/Art Scene    Trade your latest .ANS packs    289   1
+ 05   Buy/Sell/Trade     Floppies, SIMMs, loose cables   156   0
+ 06   Off-Topic Lounge  Movies, music, late-night talk  934   11
+ 07   SysOp Mailbox     Read-only; drop netmail to post  48   2
+ 08   New User Intros   Say hello, get your access flag  203   3</pre>
+
+    <h3 class="sec">┤ DOOR GAMES ├───────────────────────────────────────</h3>
+    <pre class="list" tabindex="0">[1] Legend of the Red Dragon .... slay the dragon, marry Violet
+[2] TradeWars 2002 ............... haul cargo, blow up rivals, repeat
+[3] Barren Realms Elite ......... build an empire, raze your neighbor
+[4] Usurper ..................... dungeon crawl for the bold
+[5] Pimp Wars ................... (SysOp discretion, flagged ADULT)</pre>
+
+    <h3 class="sec">┤ LAST 5 CALLERS ├───────────────────────────────────</h3>
+    <pre class="list" data-slot="card-body" tabindex="0">HANDLE            FROM            BAUD   WHEN        DL/UL
+────────────────  ──────────────  ─────  ──────────  ─────
+Static_Burn       Portland, OR    14400  21:47  Tue   3/1
+Modem_Molly       Eugene, OR       2400  20:12  Tue   0/2
+The_Archivist     Node 1 (local)  38400  19:30  Tue   9/9
+Null_Modem_Nick   Salem, OR        9600  18:05  Mon   1/0
+Phosphor_Kid      Bend, OR        14400  16:58  Mon   2/1</pre>
+
+    <section class="sysop">
+      <pre class="rule2" aria-hidden="true">┌─[ SYSOP BULLETIN ]──────────────────────────────────┐</pre>
+      <h3 data-slot="card-title">A Note From The SysOp</h3>
+      <p data-slot="card-body">Line's been flaky after that thunderstorm — if you drop
+      carrier, give it a minute before you redial. New TradeWars season starts Friday,
+      bring an alliance. Validation runs nightly; leave a real intro in Base 08 and you'll
+      be bumped to full access by morning. Thanks for calling. — The Archivist</p>
+      <pre class="rule2" aria-hidden="true">└─────────────────────────────────────────────────────┘</pre>
+    </section>
+  </div>
+
+  <footer data-slot="footer">NO CARRIER  ·  The Amber Room BBS © 1988–2026  ·  2 nodes · 1 line · 0 regrets  ·  &lt;G&gt;oodbye</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

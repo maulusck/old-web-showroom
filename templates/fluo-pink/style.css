@@ -1,0 +1,82 @@
+/* Fluo Pink Girly — mid-2000s tween profile. hot pink + lilac + fluo, glitter & twinkle. */
+:root{
+  --bg:#ffd6f2; --bg2:#e3c6ff; --card:#fff0fb; --ink:#5a1156;
+  --pink:#ff2ec4; --hot:#ff66d9; --lilac:#b14bd8; --fluo:#aaff00; --cream:#fff;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#2a0b33; --bg2:#1d0a3a; --card:#3a1052; --ink:#ffd6f2;
+  --pink:#ff3ecf; --hot:#ff79e0; --lilac:#c874f0; --fluo:#c6ff4a;
+}}
+:root[data-theme="dark"]{
+  --bg:#2a0b33; --bg2:#1d0a3a; --card:#3a1052; --ink:#ffd6f2;
+  --pink:#ff3ecf; --hot:#ff79e0; --lilac:#c874f0; --fluo:#c6ff4a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  font:16px/1.55 "Comic Sans MS","Chalkboard SE","Segoe Print",cursive,sans-serif;
+  /* fake glitter: layered dotty gradients over a pink↔lilac wash */
+  background:
+    radial-gradient(circle at 15% 20%,#fff9 1px,transparent 2px) 0 0/22px 22px,
+    radial-gradient(circle at 60% 70%,#fff7 1px,transparent 2px) 7px 11px/26px 26px,
+    linear-gradient(135deg,var(--bg),var(--bg2));
+}
+
+/* ---- topper ---- */
+.topper{position:relative;text-align:center;padding:30px 16px 22px;overflow:hidden;
+  background:repeating-linear-gradient(45deg,var(--hot) 0 14px,var(--lilac) 14px 28px);
+  border-bottom:5px dashed var(--cream);color:var(--cream)}
+.sparkle{position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle,#fff 0 2px,transparent 3px) 0 0/40px 40px,
+    radial-gradient(circle,#fff 0 1px,transparent 2px) 20px 20px/40px 40px;
+  opacity:.5;animation:twinkle 1.2s steps(2) infinite}
+@keyframes twinkle{to{opacity:.15}}
+.crest{width:72px;height:72px;filter:drop-shadow(0 0 6px #fff);position:relative}
+h1{margin:6px 0 4px;font-size:clamp(28px,8vw,52px);letter-spacing:.02em;
+  color:#fff;text-shadow:2px 2px 0 var(--pink),4px 4px 0 var(--lilac),0 0 10px #fff}
+.tagline{margin:0;font-size:14px;color:#fff;text-shadow:1px 1px 0 var(--lilac)}
+
+/* ---- nav: bubbly outset buttons ---- */
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:14px}
+nav a{background:linear-gradient(#fff,var(--hot));color:var(--ink);text-decoration:none;
+  padding:7px 14px;border:3px solid #fff;border-radius:16px;font-size:14px;font-weight:bold;
+  box-shadow:0 3px 0 var(--lilac)}
+nav a:hover,nav a[aria-current]{background:linear-gradient(var(--fluo),var(--hot));
+  transform:translateY(1px);box-shadow:0 2px 0 var(--lilac)}
+
+.wrap{max-width:720px;margin:0 auto;padding:4px 16px 48px}
+
+/* ---- hero ---- */
+.hero{background:var(--card);border:4px solid var(--pink);border-radius:20px;
+  padding:22px;margin:16px 0;text-align:center;box-shadow:0 0 0 4px #fff,0 6px 0 var(--lilac)}
+.hero h2{margin:6px 0 10px;color:var(--pink);font-size:clamp(20px,5vw,28px);text-shadow:1px 1px 0 #fff}
+.hero p{margin:0 auto;max-width:52ch}
+.blinkie{display:inline-block;background:var(--lilac);color:var(--fluo);font-size:12px;
+  font-weight:bold;letter-spacing:.1em;padding:3px 12px;border:2px dotted var(--fluo);
+  border-radius:4px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{background:var(--pink);color:#fff}}
+
+.marquee{overflow:hidden;white-space:nowrap;margin:16px 0 0;background:var(--lilac);
+  color:#fff;border-radius:999px;padding:5px 0;font-size:13px}
+.marquee span{display:inline-block;padding-left:100%;animation:slide 18s linear infinite}
+@keyframes slide{to{transform:translateX(-100%)}}
+
+/* ---- cards ---- */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:3px solid var(--lilac);border-radius:16px;padding:16px;
+  box-shadow:0 4px 0 var(--hot)}
+.card h3{margin:0 0 8px;color:var(--lilac);font-size:17px;text-shadow:1px 1px 0 #fff}
+.card p{margin:0;font-size:14px}
+
+.stamps{text-align:center;font-size:24px;margin:24px 0 0;letter-spacing:4px;line-height:1.8}
+
+footer{text-align:center;font-size:12px;color:#fff;padding:14px 16px 30px;
+  background:repeating-linear-gradient(45deg,var(--lilac) 0 14px,var(--hot) 14px 28px);
+  border-top:5px dashed var(--cream);text-shadow:1px 1px 0 var(--pink)}
+
+@media(prefers-reduced-motion:reduce){
+  .sparkle,.blinkie,.marquee span{animation:none}
+  .sparkle{opacity:.35}
+}

@@ -1,0 +1,127 @@
+/* Geocities Under-Construction — 1996. Clashing colors on a starfield, centered
+   everything, Comic Sans, rainbow rules. Dark-mode is deliberately ignored:
+   period-correct sites had exactly one look, bright and loud. */
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  color:#ffff00;
+  font-family:"Comic Sans MS","Comic Sans",cursive,"Times New Roman",serif;
+  text-align:center;
+  /* tiled starfield: scattered white/cyan stars on midnight blue */
+  background-color:#000033;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20px 30px,#fff,transparent),
+    radial-gradient(1.5px 1.5px at 70px 90px,#9ff,transparent),
+    radial-gradient(1px 1px at 130px 50px,#fff,transparent),
+    radial-gradient(1.5px 1.5px at 170px 120px,#ff9,transparent),
+    radial-gradient(1px 1px at 40px 150px,#fff,transparent),
+    radial-gradient(1.5px 1.5px at 110px 180px,#9ff,transparent);
+  background-size:200px 200px;
+}
+
+.page{
+  max-width:800px;           /* the sacred 800x600 width */
+  margin:0 auto;
+  padding:10px;
+}
+
+/* ---- header ---- */
+.header{padding:14px 10px 6px}
+h1{
+  margin:0;
+  font-family:"Times New Roman",Times,serif;
+  font-size:clamp(28px,7vw,46px);
+  font-weight:bold;
+  color:#ff00ff;
+  text-shadow:2px 2px 0 #00ffff,4px 4px 0 #000;
+  letter-spacing:.02em;
+}
+.tagline{margin:8px 0 4px;color:#00ff00;font-size:15px;font-style:italic}
+
+/* ---- fake rainbow hr ---- */
+.rainbow{
+  height:6px;margin:12px auto;max-width:620px;border:1px solid #000;
+  background:linear-gradient(90deg,#ff0000,#ff8800,#ffff00,#00cc00,#0088ff,#8800ff,#ff00ff);
+}
+
+/* ---- under construction ---- */
+.construction{
+  background:#ffcc00;color:#000;border:4px ridge #ff6600;
+  padding:12px;margin:0 auto;max-width:560px;
+  font-weight:bold;
+}
+.construction .blink{font-size:22px;letter-spacing:.08em;color:#cc0000;vertical-align:middle}
+.construction .spin{display:inline-block;font-size:28px;vertical-align:middle;margin:0 8px}
+.construction-note{margin:8px 0 0;font-size:13px;font-weight:normal}
+
+/* ---- hit counter ---- */
+.counter-box{color:#00ffff;font-size:15px;margin:14px auto}
+.counter{display:inline-block;background:#000;border:2px inset #888;padding:2px 3px;margin:0 4px;vertical-align:middle}
+.counter b{
+  display:inline-block;background:#111;color:#00ff00;
+  font-family:"Courier New",monospace;font-size:20px;width:16px;
+  border:1px solid #333;text-align:center;
+  text-shadow:0 0 4px #00ff00;
+}
+
+/* ---- nav ---- */
+.nav{color:#fff;font-size:16px;font-weight:bold;margin:10px auto;line-height:2}
+.nav a{color:#00ffff;text-decoration:underline}
+.nav a:hover{color:#ff00ff;background:#ffff00}
+
+/* ---- hero ---- */
+.hero{margin:6px auto;max-width:620px}
+.hero-title{color:#ffff00;font-size:clamp(20px,5vw,30px);text-shadow:2px 2px 0 #ff00ff;margin:6px 0}
+.hero p{color:#fff;font-size:15px;line-height:1.6;margin:10px auto;max-width:56ch}
+.new-flag{color:#00ff00!important;font-weight:bold}
+
+/* ---- content cards (beveled "window" panels) ---- */
+.card,.signme,.webring{
+  background:#000080;color:#fff;
+  border:3px outset #00ffff;
+  padding:14px 18px;margin:10px auto;max-width:620px;
+}
+.card-title,.webring-title{color:#ffff00;font-size:19px;margin:0 0 10px;text-shadow:1px 1px 0 #000}
+.card-body{font-size:15px;line-height:1.6;color:#fff}
+ul.card-body,.links{list-style:none;padding:0;margin:10px 0;text-align:left;display:inline-block}
+ul.card-body li,.links li{margin:6px 0}
+.links a{color:#00ffff;text-decoration:underline;font-weight:bold}
+.links a:hover{color:#ffff00}
+
+/* ---- guestbook / email ---- */
+.signme p{color:#fff;font-size:15px}
+.btn-row{margin:16px 0}
+.bigbtn{
+  display:inline-block;margin:5px;padding:8px 14px;
+  background:#ff00ff;color:#ffff00;font-weight:bold;font-size:15px;
+  text-decoration:none;border:3px outset #ff99ff;
+}
+.bigbtn:hover{background:#cc00cc;border-style:inset}
+.mailbox{margin:14px 0 4px}
+.mailbox a{color:#00ff00;font-size:20px;font-weight:bold;text-decoration:none}
+.mailbox a:hover{text-decoration:underline}
+.mailbox .wave{display:inline-block;font-size:24px;vertical-align:middle}
+.small{font-size:12px;color:#aaccff}
+
+/* ---- webring ---- */
+.webring{background:#330066;border-color:#ff00ff}
+.webring-nav{margin:12px 0}
+.webring-nav a{color:#00ffff;font-weight:bold;text-decoration:none;margin:0 6px;font-size:16px}
+.webring-nav a:hover{color:#ffff00}
+
+/* ---- footer ---- */
+.footer{padding:14px 10px 40px;color:#fff}
+.best-viewed{color:#00ff00;font-weight:bold;font-size:14px}
+
+/* ---- animations (blink / spin / wave), all opt-out for reduced motion ---- */
+@keyframes blink{50%{visibility:hidden}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes wave{25%{transform:rotate(-18deg)}75%{transform:rotate(18deg)}}
+.blink{animation:blink 1s steps(1) infinite}
+.spin{animation:spin 2.5s linear infinite}
+.wave{animation:wave 1.2s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){
+  .blink,.spin,.wave{animation:none}
+  .blink{visibility:visible}
+}

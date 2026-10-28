@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retro Template Vault</title>
+<style>
+  :root{--bg:#f3f1ea;--ink:#232019;--dim:#9b9385;--rule:#ddd8cc;--link:#3f5d4e}
+  @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#121310;--ink:#e7e3d8;--dim:#6f6b5f;--rule:#262720;--link:#9db9a8}}
+  :root[data-theme="dark"]{--bg:#121310;--ink:#e7e3d8;--dim:#6f6b5f;--rule:#262720;--link:#9db9a8}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.7 ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-weight:400}
+  .page{max-width:680px;margin:0 auto;padding:12vh 28px 16vh}
+  h1{margin:0;font-size:15px;font-weight:400;color:var(--dim)}
+  h1 b{color:var(--ink);font-weight:400}
+  .list{margin:9vh 0 0}
+  .row{display:flex;gap:1.5em;padding:.55em 0;text-decoration:none;color:inherit;border-top:1px solid var(--rule)}
+  .row:last-child{border-bottom:1px solid var(--rule)}
+  .nm{flex:0 0 11em;color:var(--ink)}
+  .ds{flex:1;color:var(--dim)}
+  a.row:hover .nm{color:var(--link)}
+  .soon{color:var(--dim)}
+  .foot{margin:9vh 0 0;color:var(--dim)}
+  @media(max-width:560px){.row{flex-direction:column;gap:.1em}.nm{flex:none}}
+</style>
+</head>
+<body>
+<div class="page">
+  <h1><b>Index of /templates</b> — retro template vault</h1>
+
+  <div class="list" id="list"></div>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>
+// single source of truth — flip done:true and add the file to templates/ as each ships.
+// slugs starting "_" are authoring utilities and stay out of the showroom.
+const T=[
+ {s:"_blank",        n:"Blank Skeleton",      d:"START HERE — empty skeleton, every slot, copy to begin a new one", done:true},
+ {s:"meridian",      n:"Meridian",            d:"90s Camel rally Dakar — sand & light blue, Unix clean", done:true},
+ {s:"funky-ad",      n:"Funky Ad-Ridden",     d:"Banner hell, blinking promos, pop-up energy", done:true},
+ {s:"deep-web",      n:"Deep Web Portal",     d:"Obscure index, onion-grade minimal, cryptic links", done:true},
+ {s:"hacker-neon",   n:"Hacker Neon Minimal", d:"Black void, mono green/cyan, terminal cool", done:true},
+ {s:"frutiger",      n:"Frutiger Nostalgia",  d:"Glossy aero, bubbles, soft gradients, animated", done:true},
+ {s:"fluo-pink",     n:"Fluo Pink Girly",     d:"Hot pink, glitter, sparkle cursors, 2000s tween", done:true},
+ {s:"dumb-base",     n:"DUMB Secret Base",    d:"Submarine military console, redacted, status lights", done:true},
+ {s:"bbs",           n:"BBS Dial-Up Board",   d:"ANSI art, amber phosphor, NO CARRIER", done:true},
+ {s:"dos-commander", n:"DOS Commander",       d:"Blue panels, F-key footer, file lists", done:true},
+ {s:"teletext",      n:"Teletext / Ceefax",   d:"Chunky color blocks, page numbers, broadcast grid", done:true},
+ {s:"geocities",     n:"Geocities",           d:"Tiled bg, spinning GIFs, under construction, webring", done:true},
+ {s:"brutalist",     n:"Brutalist Swiss",     d:"Raw Helvetica, hairline rules, exposed grid", done:true},
+ {s:"y2k-aqua",      n:"Y2K Chrome / Aqua",   d:"Glossy bevels, lens flare, liquid metal", done:true},
+ {s:"memphis",       n:"Memphis Postmodern",  d:"Squiggles, confetti triangles, pastel + black", done:true},
+ {s:"vaporwave",     n:"Vaporwave Mall",      d:"Marble busts, pink/teal, katakana, 退廃", done:true},
+ {s:"arcade-crt",    n:"Arcade CRT",          d:"Scanlines, high-score table, insert coin", done:true},
+ {s:"constructivist",n:"Soviet Constructivist",d:"Red/black diagonal, bold sans, poster angles", done:true},
+ {s:"grimoire",      n:"Occult Grimoire",     d:"Parchment, woodcut borders, sigils, dark academia", done:true},
+ {s:"winamp",        n:"Winamp Skin",         d:"EQ bars, spectrum visualizer, chrome chassis", done:true},
+ {s:"zine-punk",     n:"Zine Punk",           d:"Ransom-note type, photocopy texture, duct tape", done:true},
+ {s:"ps1-memcard",   n:"PS1 Memory Card",     d:"Console save-screen UI, blocky icons", done:true},
+ {s:"myspace",       n:"MySpace 2005",        d:"Glitter, top-8, autoplay profile vibe", done:true},
+];
+const shown=T.filter(t=>t.s[0]!=="_");
+document.getElementById("list").innerHTML=shown.map(t=>{
+  const body=`<span class="nm">${t.n}</span><span class="ds">${t.d}</span>`;
+  return t.done
+    ? `<a class="row" href="templates/${t.s}/index.html" target="_blank" rel="noopener">${body}</a>`
+    : `<div class="row soon">${body}</div>`;
+}).join("");
+const built=shown.filter(t=>t.done).length;
+document.getElementById("foot").textContent=built===shown.length?`${built} templates.`:`${built} of ${shown.length} built.`;
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+/* Vaporwave Mall — pink/teal/purple, chrome italic serif, 90s Windows chrome.
+   One stylesheet themes every page. Gradients + inline SVG only; system fonts. */
+:root{
+  --void:#120626; --void2:#1d0a3a;
+  --pink:#ff6ad5; --teal:#26f0f1; --mint:#05ffa1;
+  --purple:#8c52ff; --lilac:#d9d2e8; --sun:#fff38a;
+  --panel:#2a1050; --panel2:#3a1a68; --edge:#ff6ad5;
+}
+/* already a night-sky palette; dark mode just deepens it a touch */
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--void:#0a0318;--void2:#15062c;--panel:#210a40}}
+:root[data-theme="dark"]{--void:#0a0318;--void2:#15062c;--panel:#210a40}
+
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--lilac);
+  background:
+    radial-gradient(120% 70% at 50% 0%, #ff6ad5 0%, #8c52ff 30%, var(--void2) 62%, var(--void) 100%) fixed;
+  font:16px/1.6 "Trebuchet MS","Segoe UI",Verdana,sans-serif;
+  overflow-x:hidden;
+}
+
+/* ---- the surreal scene (sky + grid + bust) ---- */
+.scene{position:relative;height:clamp(220px,42vw,400px);overflow:hidden;
+  border-bottom:2px solid var(--teal)}
+.sky{position:absolute;inset:0;width:100%;height:100%;display:block}
+.bust{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);
+  width:clamp(90px,22vw,160px);height:auto;
+  filter:drop-shadow(0 0 14px rgba(255,106,213,.7)) drop-shadow(0 0 3px rgba(38,240,241,.6))}
+
+/* ---- header / Windows title bar ---- */
+.plaza{text-align:center;padding:0 16px 26px;position:relative}
+.titlebar{display:flex;align-items:center;gap:8px;max-width:820px;margin:0 auto;
+  background:linear-gradient(90deg,var(--purple),var(--pink));
+  color:#fff;font:bold 12px/1 "Courier New",monospace;letter-spacing:.1em;
+  padding:5px 8px;border:2px outset var(--lilac);margin-top:14px}
+.tb-dot{width:11px;height:11px;background:var(--teal);border:2px outset #fff;display:inline-block}
+.tb-txt{text-transform:uppercase}
+.tb-ctl{margin-left:auto;letter-spacing:.2em}
+h1{margin:22px 0 6px;font-family:Georgia,"Times New Roman",serif;font-style:italic;
+  font-weight:700;font-size:clamp(34px,9vw,76px);letter-spacing:.04em;line-height:1;
+  color:#fff;
+  background:linear-gradient(#fff 8%,#d9d2e8 38%,#8c52ff 55%,#fff 62%,#26f0f1 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:0 0 1px rgba(255,106,213,.5)}
+.kata{margin:0;color:var(--teal);font:13px/1.5 "Courier New",monospace;
+  letter-spacing:.14em;text-transform:uppercase;text-shadow:0 0 8px rgba(38,240,241,.6)}
+
+/* ---- nav as mall directory buttons ---- */
+nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:820px;
+  margin:0 auto 24px;padding:0 16px}
+nav a{background:linear-gradient(180deg,var(--panel2),var(--panel));color:var(--lilac);
+  text-decoration:none;padding:8px 16px;border:2px outset var(--pink);
+  font:bold 12px/1 "Trebuchet MS",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+nav a:hover,nav a:focus{background:linear-gradient(180deg,var(--pink),var(--purple));
+  color:#fff;outline:none}
+nav a[aria-current]{border-style:inset;color:var(--teal)}
+
+/* ---- layout ---- */
+.wrap{max-width:820px;margin:0 auto;padding:0 16px 10px}
+
+.hero{text-align:center;padding:30px 22px;margin-bottom:26px;
+  background:rgba(42,16,80,.55);border:3px double var(--teal);
+  box-shadow:0 0 24px rgba(140,82,255,.5),inset 0 0 40px rgba(255,106,213,.15)}
+.now{display:inline-block;color:var(--sun);font:bold 11px/1 "Courier New",monospace;
+  letter-spacing:.2em;margin-bottom:14px}
+.hero h2{margin:0 0 14px;font-family:Georgia,serif;font-style:italic;font-weight:700;
+  font-size:clamp(26px,6vw,46px);letter-spacing:.14em;color:#fff;
+  text-shadow:3px 3px 0 var(--pink),6px 6px 0 var(--teal)}
+.hero p{margin:0 auto;max-width:52ch;color:var(--lilac)}
+.tape{margin-top:18px;color:var(--teal);font:12px/1 "Courier New",monospace;
+  letter-spacing:.14em;opacity:.85}
+
+.dir-head{text-align:center;color:var(--teal);font:bold 14px/1 "Courier New",monospace;
+  letter-spacing:.25em;text-transform:uppercase;margin:0 0 16px;
+  text-shadow:0 0 8px rgba(38,240,241,.5)}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 28px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{position:relative;background:rgba(29,10,58,.7);padding:18px 18px 20px;
+  border:2px solid var(--pink);border-top:14px solid var(--pink);
+  box-shadow:4px 4px 0 var(--purple)}
+.unit{position:absolute;top:-13px;left:12px;color:#120626;
+  font:bold 10px/1 "Courier New",monospace;letter-spacing:.14em}
+.card h3{margin:6px 0 8px;font-family:Georgia,serif;font-style:italic;color:var(--teal);
+  font-size:19px;letter-spacing:.03em}
+.card p{margin:0;font-size:14px;color:var(--lilac)}
+
+.prose{background:rgba(42,16,80,.45);border:2px dashed var(--teal);padding:22px;
+  margin-bottom:30px}
+.prose h3{margin:0 0 10px;color:var(--pink);font:bold 13px/1 "Courier New",monospace;
+  letter-spacing:.22em;text-transform:uppercase}
+.prose p{margin:0;color:var(--lilac)}
+
+footer{text-align:center;color:var(--teal);font:11px/1.7 "Courier New",monospace;
+  letter-spacing:.12em;padding:20px 16px 44px;border-top:2px solid var(--pink)}
+
+/* ---- motion: a slow sunset drift + grid glow, killed for reduced-motion ---- */
+@media(prefers-reduced-motion:no-preference){
+  .sky{animation:hue 24s linear infinite}
+  .bust{animation:bob 9s ease-in-out infinite}
+}
+@keyframes hue{50%{filter:hue-rotate(28deg)}}
+@keyframes bob{50%{transform:translateX(-50%) translateY(-7px)}}

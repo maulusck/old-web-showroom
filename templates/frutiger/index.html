@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aquaveil</title>
+<!-- Aquaveil — Frutiger Aero, ~2007. Glossy aqua + fresh green, bubbles, glass. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- decorative glass bubbles floating up -->
+  <div class="bubbles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="glass hero-head">
+    <div class="brand">
+      <svg class="drop" viewBox="0 0 48 64" aria-hidden="true">
+        <defs>
+          <radialGradient id="d" cx="38%" cy="30%" r="75%">
+            <stop offset="0" stop-color="#eafcff"/>
+            <stop offset="45%" stop-color="#7fd8f0"/>
+            <stop offset="100%" stop-color="#1e8fd4"/>
+          </radialGradient>
+        </defs>
+        <path d="M24 2C24 2 4 30 4 44a20 20 0 0 0 40 0C44 30 24 2 24 2Z" fill="url(#d)"/>
+        <ellipse cx="18" cy="38" rx="6" ry="9" fill="#fff" opacity="0.6"/>
+      </svg>
+      <div>
+        <h1 data-slot="site-name">Aquaveil</h1>
+        <p class="tagline" data-slot="tagline">Breathe easy. Everything flows.</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="glass">
+    <a href="index.html" class="btn" data-slot="nav-item" aria-current="page">Home</a>
+    <a href="#stream" class="btn" data-slot="nav-item">The Stream</a>
+    <a href="#clarity" class="btn" data-slot="nav-item">Clarity Suite</a>
+    <a href="#live" class="btn" data-slot="nav-item">Go Live</a>
+    <a href="#sky" class="btn" data-slot="nav-item">SkyDrive</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="glass hero">
+      <span class="pill">NOW IN CRYSTAL CLEAR</span>
+      <h2 data-slot="hero-title">A cleaner, brighter place to keep your whole life.</h2>
+      <p data-slot="hero-body">Aquaveil floats your photos, notes, and tunes on a calm blue sky
+      and keeps them fresh as spring grass. Weightless, wireless, worry-free — the way the
+      future was always supposed to feel.</p>
+      <a href="#live" class="btn big">Get started free &rsaquo;</a>
+    </section>
+
+    <div class="grid">
+      <section class="glass card" id="stream">
+        <div class="ico ico-stream" aria-hidden="true"></div>
+        <h3 data-slot="card-title">The Stream</h3>
+        <p data-slot="card-body">Your day pours in as one gentle current — messages, moments,
+        and little drops of good news, all glinting in the light.</p>
+      </section>
+      <section class="glass card" id="clarity">
+        <div class="ico ico-clarity" aria-hidden="true"></div>
+        <h3 data-slot="card-title">Clarity Suite</h3>
+        <p data-slot="card-body">Write, plan, and sketch on glass. Every window is bevelled,
+        every button gleams, and nothing ever feels heavy on your hands.</p>
+      </section>
+      <section class="glass card" id="live">
+        <div class="ico ico-live" aria-hidden="true"></div>
+        <h3 data-slot="card-title">Go Live</h3>
+        <p data-slot="card-body">Share a bubble with anyone, anywhere. It drifts across the
+        sky and lands softly in their world — no cables, no clutter, no catch.</p>
+      </section>
+      <section class="glass card" id="sky">
+        <div class="ico ico-sky" aria-hidden="true"></div>
+        <h3 data-slot="card-title">SkyDrive</h3>
+        <p data-slot="card-body">Twenty whole gigabytes floating overhead, cool and clean.
+        Tuck it away today; reach up and pull it down tomorrow.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="glass" data-slot="footer">&copy; 2007&ndash;2026 Aquaveil Systems &middot; Designed for a clearer sky</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

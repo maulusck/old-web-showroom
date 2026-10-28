@@ -1,0 +1,89 @@
+/* DOS Commander — VGA 16-colour Norton Commander TUI. Fixed blue screen, cyan double borders. */
+:root{
+  --blue:#0000aa;        /* VGA screen background */
+  --cyan:#00aaaa;        /* bars, selected row, active title */
+  --cyan-br:#55ffff;     /* bright double-line borders */
+  --white:#ffffff;
+  --gray:#aaaaaa;        /* ordinary file names */
+  --yellow:#ffff55;      /* column heads, highlights */
+  --black:#000000;
+  --surround:#0a0a12;    /* "monitor" bezel around the screen */
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--surround);color:var(--gray);
+  font:15px/1.35 ui-monospace,"Cascadia Mono","Consolas","DejaVu Sans Mono","Courier New",monospace;
+  padding:min(3vmin,22px);display:flex}
+
+.screen{background:var(--blue);color:var(--gray);width:100%;max-width:920px;margin:auto;
+  padding:0 0 2px;display:flex;flex-direction:column;gap:2px;
+  box-shadow:0 0 0 3px #000,0 0 24px #0008}
+
+/* top menu bar — cyan, black text */
+.menubar{background:var(--cyan);color:var(--black);display:flex;flex-wrap:wrap;
+  justify-content:space-between;align-items:center;gap:6px 16px;padding:3px 10px}
+.menu{display:flex;flex-wrap:wrap;gap:0 18px}
+.menubar a{color:var(--black);text-decoration:none;letter-spacing:.03em}
+.menubar a:first-letter{color:var(--white);font-weight:700}
+.menubar a:hover,.menubar a:focus{background:var(--black);color:var(--cyan-br);outline:none}
+.prog{font-size:13px;letter-spacing:.06em}
+.prog b{color:var(--black)}
+.prog i{color:#004c4c;font-style:normal;margin-left:6px}
+
+/* twin panels */
+.panels{display:flex;gap:8px;padding:6px 8px 2px}
+.panel{flex:1 1 0;min-width:0;border:3px double var(--cyan-br);background:var(--blue);
+  display:flex;flex-direction:column;overflow:hidden}
+.panel-head{text-align:center;background:var(--cyan);color:var(--black);
+  margin:-3px -3px 0;padding:1px 6px;letter-spacing:.05em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.left .panel-head{background:var(--cyan)}
+.right .panel-head{background:var(--blue);color:var(--cyan-br)}
+
+.col-head{display:flex;justify-content:space-between;gap:12px;color:var(--yellow);
+  padding:2px 8px;border-bottom:1px solid var(--cyan-br)}
+.files{list-style:none;margin:0;padding:2px 0;flex:1}
+.file{display:flex;justify-content:space-between;gap:12px;padding:1px 8px;white-space:nowrap}
+.file .fname{overflow:hidden;text-overflow:ellipsis}
+.file .fmeta{color:var(--gray);flex:none}
+.file.dir .fname{color:var(--white);font-weight:700}
+.file.sel{background:var(--cyan)}
+.file.sel .fname,.file.sel .fmeta{color:var(--black)}
+.panel-foot{border-top:1px solid var(--cyan-br);padding:2px 8px;color:var(--yellow);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* right panel is a file viewer */
+.viewer{padding:8px 12px 12px;overflow:auto}
+.v-title{color:var(--yellow);margin:0 0 8px;font-size:16px;letter-spacing:.08em;font-weight:700}
+.v-body{color:var(--white);margin:0 0 12px;max-width:52ch}
+.v-rule{color:var(--cyan-br);margin:10px 0;letter-spacing:.1em;font-size:13px}
+.tips{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.tips .t-key{color:var(--yellow);display:block}
+.tips .t-txt{color:var(--gray);font-size:14px}
+
+/* command line */
+.cmdline{padding:3px 12px;color:var(--white);white-space:nowrap;overflow:hidden}
+.prompt{color:var(--cyan-br)}
+.typed{color:var(--white);margin-left:6px}
+.cursor{color:var(--white);animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.cursor{animation:none}}
+
+/* F1–F10 function-key bar */
+.fkeys{display:flex;gap:1px;padding:4px 8px 2px;background:var(--surround)}
+.fk{flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:center;
+  gap:1px;background:var(--cyan);color:var(--black);text-decoration:none;
+  padding:2px 1px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fk b{color:var(--white);background:var(--surround);padding:0 2px;font-weight:400}
+.fk:hover,.fk:focus{background:var(--white);outline:none}
+
+footer{text-align:center;color:var(--cyan-br);font-size:12px;padding:5px 10px 7px;
+  letter-spacing:.03em}
+
+/* phones: stack the panels, shrink the F-key bar */
+@media(max-width:620px){
+  .panels{flex-direction:column}
+  .fkeys{flex-wrap:wrap}
+  .fk{flex:1 1 18%}
+  .prog{display:none}
+}

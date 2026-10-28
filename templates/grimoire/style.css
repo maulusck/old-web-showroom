@@ -1,0 +1,124 @@
+/* Grimoire — occult spellbook. Aged parchment, ink-brown, oxblood, gold.
+   System serif/blackletter stacks only; no fetched fonts. Works on file://. */
+:root{
+  --parch:#e5d8b8; --parch-hi:#efe4c8; --parch-dk:#d6c69e;
+  --ink:#2b2016; --ink-soft:#4a3a28;
+  --blood:#6e2420; --blood-dk:#531a17;
+  --gold:#9c7a2a; --gold-hi:#c9a94b;
+  --edge:#b79e6e;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --parch:#1a140d; --parch-hi:#241b11; --parch-dk:#140f09;
+  --ink:#e6d7b4; --ink-soft:#c3b188;
+  --blood:#b04a3e; --blood-dk:#8a3328;
+  --gold:#c9a94b; --gold-hi:#e4cb7d;
+  --edge:#4a3a24;
+}}
+:root[data-theme="dark"]{
+  --parch:#1a140d; --parch-hi:#241b11; --parch-dk:#140f09;
+  --ink:#e6d7b4; --ink-soft:#c3b188;
+  --blood:#b04a3e; --blood-dk:#8a3328;
+  --gold:#c9a94b; --gold-hi:#e4cb7d;
+  --edge:#4a3a24;
+}
+
+/* blackletter display: degrades to an old serif where no gothic face exists */
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  font:18px/1.72 "Palatino Linotype",Palatino,"Book Antiqua","Iowan Old Style",Georgia,"Times New Roman",serif;
+  background:var(--parch);
+  /* aged-paper mottling + candlelit vignette, all in CSS */
+  background-image:
+    radial-gradient(130% 90% at 50% -10%, var(--parch-hi), transparent 55%),
+    radial-gradient(150% 120% at 50% 110%, rgba(40,20,0,.28), transparent 60%),
+    radial-gradient(1px 1px at 20% 30%, rgba(80,50,20,.25), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(80,50,20,.2), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(80,50,20,.22), transparent);
+  background-attachment:fixed;
+}
+.sigil-defs{position:absolute}
+
+/* candlelight glow that breathes (stilled for reduced-motion) */
+.candle{position:fixed;inset:0;pointer-events:none;z-index:0;mix-blend-mode:soft-light;
+  background:radial-gradient(60% 55% at 50% 18%, rgba(255,210,120,.5), transparent 70%);
+  animation:flicker 6s ease-in-out infinite}
+@keyframes flicker{0%,100%{opacity:.75}45%{opacity:1}70%{opacity:.82}}
+
+.frontis,.wrap,nav,footer{position:relative;z-index:1}
+
+/* --- frontispiece --- */
+.frontis{text-align:center;padding:52px 20px 10px;color:var(--ink)}
+.orn{display:block;width:120px;height:40px;margin:0 auto 14px;color:var(--gold)}
+.order{margin:0;color:var(--blood);font-variant:small-caps;letter-spacing:.22em;font-size:13px}
+h1[data-slot="site-name"]{
+  margin:.18em 0 .1em;font-weight:400;line-height:1.02;color:var(--ink);
+  font-size:clamp(42px,10vw,78px);letter-spacing:.01em;
+  font-family:"UnifrakturCook","Old English Text MT","Blackadder ITC",Luminari,"Palatino Linotype",Palatino,Georgia,serif;
+  text-shadow:0 1px 0 var(--parch-hi),0 2px 1px rgba(0,0,0,.18)}
+.tagline{margin:.2em auto 0;max-width:38ch;color:var(--ink-soft);font-style:italic;font-size:clamp(15px,2.4vw,19px)}
+.rule{display:block;width:min(400px,86%);height:14px;margin:22px auto;color:var(--gold)}
+
+/* --- nav --- */
+nav{display:flex;flex-wrap:wrap;gap:4px 0;justify-content:center;
+  border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);
+  background:linear-gradient(var(--parch-hi),var(--parch-dk));
+  padding:11px 10px;margin:0 auto;max-width:860px}
+nav a{color:var(--blood);text-decoration:none;padding:3px 20px;font-variant:small-caps;
+  letter-spacing:.14em;font-size:15px;position:relative}
+nav a+a::before{content:"";position:absolute;left:0;top:50%;width:1px;height:14px;
+  margin-top:-7px;background:var(--gold)}
+nav a:hover,nav a:focus-visible{color:var(--gold);text-decoration:underline;text-underline-offset:4px}
+nav a[aria-current]{color:var(--ink)}
+
+/* --- body column --- */
+.wrap{max-width:720px;margin:0 auto;padding:30px 24px 10px}
+
+.hero{text-align:center;padding:14px 0 6px}
+.hero h2{margin:0 0 .35em;font-weight:400;color:var(--ink);
+  font-size:clamp(26px,5vw,40px);letter-spacing:.01em;
+  font-family:"UnifrakturCook","Old English Text MT",Luminari,"Palatino Linotype",Palatino,Georgia,serif}
+.lead{margin:0 auto;max-width:56ch;text-align:left}
+/* illuminated drop cap */
+.lead::first-letter{
+  float:left;font-size:4.4em;line-height:.74;padding:.04em .12em 0 0;margin-top:.05em;
+  color:var(--blood);font-weight:400;
+  font-family:"UnifrakturCook","Old English Text MT","Blackadder ITC",Luminari,Georgia,serif;
+  text-shadow:1px 1px 0 var(--gold)}
+
+.sigil-row{display:flex;justify-content:center;gap:clamp(14px,5vw,38px);margin:26px 0 4px;color:var(--gold)}
+.sig{width:34px;height:34px;opacity:.9}
+.sig.sm{width:24px;height:24px}
+
+/* --- marginalia --- */
+.margin{display:flex;gap:12px;align-items:flex-start;
+  margin:14px 0 28px;padding:14px 16px;color:var(--ink-soft);
+  border-left:3px solid var(--blood);background:rgba(110,36,32,.06)}
+.margin .sig{flex:none;color:var(--blood);margin-top:2px}
+.margin p{margin:0;font-style:italic;font-size:15px;line-height:1.55}
+
+/* --- chapter cards --- */
+.chapters{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:6px 0 30px}
+@media(max-width:600px){.chapters{grid-template-columns:1fr}}
+.card{position:relative;padding:22px 20px 20px;background:var(--parch-hi);
+  border:1px solid var(--edge);
+  box-shadow:inset 0 0 0 4px var(--parch),inset 0 0 0 5px var(--gold)}
+.card-sig{width:30px;height:30px;color:var(--gold);margin-bottom:6px}
+.card h3{margin:0 0 .4em;font-weight:400;color:var(--blood);
+  font-size:21px;line-height:1.18;
+  font-family:"Old English Text MT",Luminari,"Palatino Linotype",Palatino,Georgia,serif}
+.card p{margin:0;font-size:15.5px;color:var(--ink-soft);line-height:1.6}
+
+/* --- folio / colophon prose --- */
+.folio{border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);padding:26px 0;margin:6px 0}
+.folio-title{margin:0 0 .4em;font-weight:400;color:var(--ink);font-size:clamp(22px,4vw,30px);
+  font-variant:small-caps;letter-spacing:.06em}
+.folio-body{margin:0;color:var(--ink-soft)}
+
+/* --- footer --- */
+footer{text-align:center;color:var(--ink-soft);font-variant:small-caps;letter-spacing:.14em;
+  font-size:13px;padding:26px 20px 50px;max-width:720px;margin:0 auto}
+
+@media (prefers-reduced-motion:reduce){
+  .candle{animation:none}
+}

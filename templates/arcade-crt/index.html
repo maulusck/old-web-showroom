@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arcade CRT</title>
+<!-- Arcade CRT — 1980s coin-op attract screen. Black tube, scanlines, neon. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- the glass tube: everything lives inside, scanlines + curvature on top -->
+  <div class="crt">
+  <div class="screen">
+
+    <div class="topbar">
+      <span class="oneup">1UP <b data-slot="score-1up">013370</b></span>
+      <span class="hi">HI-SCORE <b data-slot="score-hi">999999</b></span>
+      <span class="credits">CREDITS <b data-slot="credits">02</b></span>
+    </div>
+
+    <header class="marquee">
+      <h1 data-slot="site-name">NEON RAIDERS</h1>
+      <p class="tagline" data-slot="tagline">&#9733; DEFEND SECTOR 7 &#9733;</p>
+    </header>
+
+    <div class="sprites" aria-hidden="true">
+      <svg viewBox="0 0 11 8" class="sp sp-r" shape-rendering="crispEdges"><use href="#invader"/></svg>
+      <svg viewBox="0 0 11 8" class="sp sp-g" shape-rendering="crispEdges"><use href="#invader"/></svg>
+      <svg viewBox="0 0 11 8" class="sp sp-b" shape-rendering="crispEdges"><use href="#invader"/></svg>
+      <svg viewBox="0 0 11 8" class="sp sp-y" shape-rendering="crispEdges"><use href="#invader"/></svg>
+    </div>
+
+    <nav>
+      <a href="index.html" data-slot="nav-item" aria-current="page">ATTRACT</a>
+      <a href="index.html" data-slot="nav-item">HOW TO PLAY</a>
+      <a href="index.html" data-slot="nav-item">RANKINGS</a>
+      <a href="index.html" data-slot="nav-item">OPTIONS</a>
+    </nav>
+
+    <section class="hero">
+      <p class="player">PLAYER 1</p>
+      <h2 data-slot="hero-title">THE HIVE HAS BREACHED THE WALL</h2>
+      <p data-slot="hero-body">Three waves stand between you and the core. Pilot the last
+      interceptor, hoard your plasma, and do not let the swarm reach the floor. One quarter,
+      one chance, one legend.</p>
+      <p class="insert" data-slot="insert-coin">INSERT COIN</p>
+      <p class="start"><b data-slot="start">PRESS START</b></p>
+    </section>
+
+    <section class="scores">
+      <h3 class="scores-head" data-slot="scores-title">&#9654; HIGH SCORES &#9664;</h3>
+      <table>
+        <tbody>
+          <tr><td class="rk">1ST</td><td class="in" data-slot="hs-initials">ACE</td><td class="pt" data-slot="hs-score">871500</td></tr>
+          <tr><td class="rk">2ND</td><td class="in" data-slot="hs-initials">ZAP</td><td class="pt" data-slot="hs-score">640200</td></tr>
+          <tr><td class="rk">3RD</td><td class="in" data-slot="hs-initials">VIX</td><td class="pt" data-slot="hs-score">512750</td></tr>
+          <tr><td class="rk">4TH</td><td class="in" data-slot="hs-initials">RGB</td><td class="pt" data-slot="hs-score">333000</td></tr>
+          <tr><td class="rk">5TH</td><td class="in" data-slot="hs-initials">AAA</td><td class="pt" data-slot="hs-score">109990</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h3 data-slot="card-title">THE SWARM</h3>
+        <p data-slot="card-body">Chittering rows that drop and dive. Clear a wave and they come back meaner.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">POWER-UPS</h3>
+        <p data-slot="card-body">Grab the blinking cells: triple shot, mirror shield, and the rare BONUS 1UP.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">THE MOTHERSHIP</h3>
+        <p data-slot="card-body">Streaks across the top for mystery points. Nail it for a cool 10,000.</p>
+      </div>
+    </div>
+
+    <footer data-slot="footer">&copy; 1983 VOLTCADE SYSTEMS &#8226; FOR AMUSEMENT ONLY &#8226; NO CASH VALUE</footer>
+
+  </div>
+  </div>
+
+  <!-- one reusable pixel invader, re-tinted by CSS per sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <g id="invader">
+      <rect x="2" y="0" width="1" height="1"/><rect x="8" y="0" width="1" height="1"/>
+      <rect x="3" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/>
+      <rect x="2" y="2" width="7" height="1"/>
+      <rect x="1" y="3" width="2" height="1"/><rect x="4" y="3" width="3" height="1"/><rect x="8" y="3" width="2" height="1"/>
+      <rect x="0" y="4" width="11" height="1"/>
+      <rect x="0" y="5" width="1" height="1"/><rect x="2" y="5" width="7" height="1"/><rect x="10" y="5" width="1" height="1"/>
+      <rect x="0" y="6" width="1" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/>
+      <rect x="3" y="7" width="2" height="1"/><rect x="6" y="7" width="2" height="1"/>
+    </g>
+  </svg>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Umbral Codex</title>
+<!-- Grimoire — an occult spellbook / dark-academia manuscript.
+     Aged parchment, ink-brown + oxblood + gold, blackletter display,
+     woodcut ornaments, alchemical sigils. CSS + inline-SVG only; works on file://. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- reusable sigil defs: candle, sun, mercury, moon, salt, sulphur, eye, star -->
+  <svg class="sigil-defs" aria-hidden="true" focusable="false" width="0" height="0">
+    <defs>
+      <g id="g-sun"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="2.4" fill="currentColor"/></g>
+      <g id="g-moon"><path d="M22 6a12 12 0 1 0 0 20A14 14 0 0 1 22 6z" fill="currentColor"/></g>
+      <g id="g-mercury"><circle cx="16" cy="13" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 5a5 5 0 0 0 10 0M16 19v8M11 24h10" fill="none" stroke="currentColor" stroke-width="2"/></g>
+      <g id="g-salt"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 16h22" stroke="currentColor" stroke-width="2"/></g>
+      <g id="g-sulphur"><path d="M16 4l6 10H10z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 14v9M11 20h10" stroke="currentColor" stroke-width="2"/></g>
+      <g id="g-star"><path d="M16 3l3.5 8.9L29 13l-7 6.3L24 29l-8-4.8L8 29l2-9.7L3 13l9.5-1.1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></g>
+      <g id="g-eye"><path d="M3 16s5-8 13-8 13 8 13 8-5 8-13 8S3 16 3 16z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="3.6" fill="currentColor"/></g>
+    </defs>
+  </svg>
+
+  <div class="candle"></div>
+
+  <header class="frontis">
+    <svg class="orn" viewBox="0 0 120 40" aria-hidden="true"><path d="M60 6c-10 0-14 10-26 10M60 6c10 0 14 10 26 10M4 16h32M116 16H84" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="60" cy="6" r="3" fill="currentColor"/><path d="M60 10v20M52 22h16" stroke="currentColor" stroke-width="1.5"/></svg>
+    <p class="order" data-slot="eyebrow">Of the Hidden Order of the Veiled Lantern</p>
+    <h1 data-slot="site-name">The Umbral Codex</h1>
+    <p class="tagline" data-slot="tagline">A Manuscript of Lesser Mysteries, Transcribed by Candlelight</p>
+    <svg class="rule" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true"><path d="M0 7h150M250 7h150" stroke="currentColor" stroke-width="1"/><path d="M200 1l9 6-9 6-9-6z" fill="currentColor"/><path d="M170 7h12M218 7h12" stroke="currentColor" stroke-width="1"/></svg>
+  </header>
+
+  <nav aria-label="Chapters">
+    <a href="index.html" data-slot="nav-item" aria-current="page">Frontispiece</a>
+    <a href="index.html" data-slot="nav-item">The Rites</a>
+    <a href="index.html" data-slot="nav-item">Herbarium</a>
+    <a href="index.html" data-slot="nav-item">Bestiary</a>
+    <a href="index.html" data-slot="nav-item">Colophon</a>
+  </nav>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <h2 data-slot="hero-title">Upon the Reading of Shadows</h2>
+      <p class="lead" data-slot="hero-body">Herein lie the collected workings of our sisterhood and brotherhood of lamplighters, copied faithfully from the water-stained leaves of the elder folio. Read slowly, and never after the third bell. What is inked here was once whispered, and what is whispered is never wholly forgotten. Let the uninitiated close the cover; let the curious keep a candle near.</p>
+      <div class="sigil-row" aria-hidden="true">
+        <svg class="sig" viewBox="0 0 32 32"><use href="#g-sun"/></svg>
+        <svg class="sig" viewBox="0 0 32 32"><use href="#g-mercury"/></svg>
+        <svg class="sig" viewBox="0 0 32 32"><use href="#g-salt"/></svg>
+        <svg class="sig" viewBox="0 0 32 32"><use href="#g-sulphur"/></svg>
+        <svg class="sig" viewBox="0 0 32 32"><use href="#g-moon"/></svg>
+      </div>
+    </section>
+
+    <aside class="margin" aria-label="Marginalia">
+      <svg class="sig sm" viewBox="0 0 32 32" aria-hidden="true"><use href="#g-eye"/></svg>
+      <p data-slot="marginalia">Note, in a later hand: three pages were cut from this chapter with a clean blade. The librarian denies all knowledge of the matter.</p>
+    </aside>
+
+    <section class="chapters">
+      <article class="card">
+        <svg class="card-sig" viewBox="0 0 32 32" aria-hidden="true"><use href="#g-sun"/></svg>
+        <h3 data-slot="card-title">The Kindling of the Lesser Flame</h3>
+        <p data-slot="card-body">A working for the long dark of the year. Requires one honest candle, a pinch of salt kept dry since autumn, and a name you are willing to let go of.</p>
+      </article>
+      <article class="card">
+        <svg class="card-sig" viewBox="0 0 32 32" aria-hidden="true"><use href="#g-mercury"/></svg>
+        <h3 data-slot="card-title">On Letters That Arrive Unsent</h3>
+        <p data-slot="card-body">Should ink appear upon a page you did not write, do not answer before dawn. The Order has lost two scribes to premature correspondence.</p>
+      </article>
+      <article class="card">
+        <svg class="card-sig" viewBox="0 0 32 32" aria-hidden="true"><use href="#g-moon"/></svg>
+        <h3 data-slot="card-title">The Tincture of Quiet Waters</h3>
+        <p data-slot="card-body">Steep moonwort beneath a covered jar for nine nights. Drink but a thimble. It grants no visions — only the grace to forget one true thing.</p>
+      </article>
+      <article class="card">
+        <svg class="card-sig" viewBox="0 0 32 32" aria-hidden="true"><use href="#g-star"/></svg>
+        <h3 data-slot="card-title">To Read a Sky Gone Strange</h3>
+        <p data-slot="card-body">When an eighth star joins the seven of the Lantern, draw the shutters and keep counsel. It is not an omen. It is a visitor, and it is patient.</p>
+      </article>
+    </section>
+
+    <section class="folio">
+      <h2 class="folio-title" data-slot="page-title">A Word Before the Workings</h2>
+      <p class="folio-body" data-slot="page-body">Every rite copied into this codex has been tested by lamplight and lost sleep alike, and every one carries its toll. We do not sell certainty; we lend the shape of it. If a charm fails, suspect first your patience, second your salt, and last — only last — the charm. Keep this book flat, its spine unbent, and your doubts to yourself until morning. The Veiled Lantern keeps its own hours, and so, in time, shall you.</p>
+    </section>
+
+    <svg class="rule" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true"><path d="M0 7h150M250 7h150" stroke="currentColor" stroke-width="1"/><path d="M200 1l9 6-9 6-9-6z" fill="currentColor"/></svg>
+
+  </main>
+
+  <footer data-slot="footer">Transcribed in the Scriptorium of the Veiled Lantern &middot; Anno Umbrae MCMXCVII &middot; No leaf to leave this chamber</footer>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

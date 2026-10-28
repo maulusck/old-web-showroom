@@ -1,0 +1,132 @@
+/* ZIGZAG — Memphis postmodern. Bold primaries + pastels on black, everything
+   drawn with gradients + inline SVG. ponytail: single on-black look by design —
+   the theme IS "pastel on black", so no light/dark flip machinery. */
+:root{
+  --black:#111016; --ink:#15131c;
+  --pink:#ff3d9a; --cyan:#19d3e6; --yellow:#ffd23e; --coral:#ff5b4a;
+  --mint:#2fe3a0; --lilac:#b57bff; --paper:#fffdf5;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--paper);position:relative;overflow-x:hidden;
+  font-family:"Arial Black","Helvetica Neue",Impact,Arial,sans-serif;line-height:1.5;
+  background-color:var(--black);
+  /* dot grid + faint terrazzo speckle, all CSS gradients */
+  background-image:
+    radial-gradient(var(--cyan) 1.5px,transparent 1.6px),
+    radial-gradient(circle at 12% 18%,rgba(255,61,154,.10),transparent 9%),
+    radial-gradient(circle at 82% 30%,rgba(25,211,230,.10),transparent 9%),
+    radial-gradient(circle at 60% 78%,rgba(255,210,62,.10),transparent 9%),
+    radial-gradient(circle at 30% 90%,rgba(181,123,255,.10),transparent 9%);
+  background-size:26px 26px,100% 100%,100% 100%,100% 100%,100% 100%;
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 18px;position:relative;z-index:2}
+
+/* ---- scattered confetti shapes ---- */
+.confetti{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.shape{position:absolute;display:block}
+.c-pink{color:var(--pink);background:var(--pink)}
+.c-cyan{color:var(--cyan);background:var(--cyan)}
+.c-yellow{color:var(--yellow);background:var(--yellow)}
+.c-coral{color:var(--coral);background:var(--coral)}
+.c-mint{color:var(--mint);background:var(--mint)}
+.c-lilac{color:var(--lilac);background:var(--lilac)}
+.dot{width:26px;height:26px;border-radius:50%;background-color:currentColor}
+.ring{width:34px;height:34px;border-radius:50%;background:none;border:7px solid currentColor}
+.bar{width:60px;height:14px;background-color:currentColor;transform:rotate(-18deg)}
+.blob{width:40px;height:40px;background-color:currentColor;
+  border-radius:68% 32% 55% 45% / 45% 55% 45% 55%;transform:rotate(12deg)}
+.tri{width:0;height:0;background:none;
+  border-left:17px solid transparent;border-right:17px solid transparent;
+  border-bottom:30px solid currentColor}
+.confetti .shape:nth-child(1){top:90px;left:6%;transform:rotate(14deg)}
+.confetti .shape:nth-child(2){top:160px;right:8%}
+.confetti .shape:nth-child(3){top:420px;left:3%}
+.confetti .shape:nth-child(4){top:540px;right:5%;transform:rotate(-20deg)}
+.confetti .shape:nth-child(5){top:760px;left:7%}
+.confetti .shape:nth-child(6){top:880px;right:10%}
+.confetti .shape:nth-child(7){top:1080px;left:5%}
+.confetti .shape:nth-child(8){top:1220px;right:7%}
+
+/* ---- banner ---- */
+.banner{text-align:center;padding:40px 16px 26px;position:relative;z-index:2}
+.squiggle{display:block;width:min(420px,80%);height:22px;margin:0 auto 10px;color:var(--mint)}
+.banner h1{
+  margin:0;font-size:clamp(52px,16vw,120px);line-height:.86;letter-spacing:-.01em;
+  text-transform:uppercase;font-style:italic;transform:rotate(-3deg);
+  color:var(--yellow);
+  text-shadow:4px 4px 0 var(--pink),8px 8px 0 var(--cyan);
+}
+.tagline{margin:22px 0 0;display:inline-block;transform:rotate(1.5deg);
+  background:var(--pink);color:var(--black);padding:6px 14px;font-size:13px;
+  letter-spacing:.12em;text-transform:uppercase;border:3px solid var(--black);
+  box-shadow:4px 4px 0 var(--cyan)}
+
+/* ---- nav: chunky clashing pills ---- */
+nav{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
+  padding:18px;position:relative;z-index:2}
+nav a{color:var(--black);text-decoration:none;font-size:14px;text-transform:uppercase;
+  letter-spacing:.06em;padding:9px 16px;border:3px solid var(--black);
+  box-shadow:4px 4px 0 var(--black);transition:transform .1s}
+nav a:nth-child(1){background:var(--cyan);transform:rotate(-2deg)}
+nav a:nth-child(2){background:var(--yellow);transform:rotate(2deg)}
+nav a:nth-child(3){background:var(--coral);transform:rotate(-1.5deg)}
+nav a:nth-child(4){background:var(--mint);transform:rotate(1.5deg)}
+nav a:nth-child(5){background:var(--lilac);transform:rotate(-2.5deg)}
+nav a:hover,nav a:focus-visible{transform:translate(-2px,-2px) rotate(0deg);outline:none}
+nav a[aria-current]{box-shadow:4px 4px 0 var(--pink)}
+
+/* ---- hero ---- */
+.hero{margin:34px 0;padding:32px 26px;background:var(--ink);
+  border:4px solid var(--paper);box-shadow:10px 10px 0 var(--pink);position:relative}
+/* zigzag strip across the hero top, pure CSS */
+.hero::before{content:"";position:absolute;left:-4px;right:-4px;top:-20px;height:16px;
+  background:
+    linear-gradient(135deg,var(--cyan) 25%,transparent 25%) 0 0/16px 16px,
+    linear-gradient(225deg,var(--cyan) 25%,transparent 25%) 0 0/16px 16px}
+.badge{display:inline-block;background:var(--yellow);color:var(--black);
+  padding:5px 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  border:3px solid var(--black);transform:rotate(-2deg);margin-bottom:16px}
+.hero h2{margin:0 0 14px;font-size:clamp(28px,6vw,52px);line-height:1;
+  text-transform:uppercase;font-style:italic;color:var(--cyan);
+  text-shadow:3px 3px 0 var(--black)}
+.hero p{margin:0;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:bold;
+  font-size:16px;max-width:52ch;color:var(--paper)}
+.cta{display:inline-block;margin-top:22px;background:var(--pink);color:var(--black);
+  text-decoration:none;text-transform:uppercase;letter-spacing:.06em;font-size:15px;
+  padding:12px 22px;border:3px solid var(--black);box-shadow:5px 5px 0 var(--yellow);
+  transform:rotate(-1.5deg)}
+.cta:hover,.cta:focus-visible{transform:translate(-2px,-2px) rotate(-1.5deg);outline:none}
+
+/* ---- card grid ---- */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.card{padding:22px;border:4px solid var(--paper);color:var(--black);position:relative}
+.c-1{background:var(--yellow);transform:rotate(-1.5deg);box-shadow:7px 7px 0 var(--cyan)}
+.c-2{background:var(--cyan);transform:rotate(1.5deg);box-shadow:7px 7px 0 var(--coral)}
+.c-3{background:var(--mint);transform:rotate(1deg);box-shadow:7px 7px 0 var(--lilac)}
+.c-4{background:var(--coral);transform:rotate(-1deg);box-shadow:7px 7px 0 var(--yellow)}
+.card h3{margin:0 0 10px;font-size:20px;text-transform:uppercase;font-style:italic;
+  letter-spacing:.02em}
+.card p{margin:0;font-family:"Helvetica Neue",Arial,sans-serif;font-weight:bold;
+  font-size:14px;line-height:1.5}
+
+/* ---- loud band ---- */
+.band{margin:34px 0;padding:34px 26px;text-align:center;position:relative;
+  border:4px solid var(--paper);
+  /* diagonal candy stripes */
+  background:repeating-linear-gradient(45deg,var(--lilac) 0 22px,var(--pink) 22px 44px)}
+.band h2{margin:0 0 12px;font-size:clamp(26px,6vw,46px);text-transform:uppercase;
+  font-style:italic;color:var(--black);text-shadow:3px 3px 0 var(--yellow)}
+.band p{margin:0 auto;max-width:48ch;font-family:"Helvetica Neue",Arial,sans-serif;
+  font-weight:bold;font-size:16px;color:var(--black);
+  background:var(--paper);display:inline-block;padding:12px 16px;border:3px solid var(--black)}
+
+/* ---- footer ---- */
+footer{text-align:center;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  padding:26px 16px 56px;margin-top:18px;color:var(--yellow)}
+
+/* ---- reduced motion: no hover shifting ---- */
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}

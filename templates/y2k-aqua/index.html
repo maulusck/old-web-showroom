@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AQUANOVA</title>
+<!-- AQUANOVA — Y2K Chrome / Aqua. Mac OS X pinstripes, candy gloss, liquid-metal
+     wordmark, lens flare, starfield. 2001 tech-product brochure. Pure CSS + inline SVG. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- lens flare, top-right, inline SVG -->
+  <svg class="flare" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="core" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+        <stop offset="18%" stop-color="#d8f3ff" stop-opacity=".9"/>
+        <stop offset="45%" stop-color="#4fb8ff" stop-opacity=".35"/>
+        <stop offset="100%" stop-color="#4fb8ff" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle cx="200" cy="200" r="200" fill="url(#core)"/>
+    <circle cx="200" cy="200" r="150" fill="none" stroke="#eafaff" stroke-opacity=".5" stroke-width="1.5"/>
+    <circle cx="200" cy="200" r="96" fill="none" stroke="#bfeaff" stroke-opacity=".4" stroke-width="1"/>
+  </svg>
+
+  <header class="hdr">
+    <h1 class="chrome" data-slot="site-name">AQUANOVA</h1>
+    <p class="tagline" data-slot="tagline">The future, downloaded.</p>
+  </header>
+
+  <nav>
+    <a href="index.html" data-slot="nav-item" aria-current="page">Home</a>
+    <a href="index.html" data-slot="nav-item">Products</a>
+    <a href="index.html" data-slot="nav-item">iStream</a>
+    <a href="index.html" data-slot="nav-item">Download</a>
+    <a href="index.html" data-slot="nav-item">Support</a>
+  </nav>
+
+  <div class="wrap">
+    <section class="hero">
+      <span class="pill">NEW · VERSION 2.001</span>
+      <h2 data-slot="hero-title">Your whole world. Now in liquid chrome.</h2>
+      <p data-slot="hero-body">AQUANOVA pours your music, mail, and megabytes into one
+      shimmering, water-smooth desktop. Every pixel reflects. Every click goes
+      <em>bloop</em>. This is the operating system the twenty-first century was waiting for —
+      and it boots in under a minute.</p>
+      <div class="actions">
+        <a class="btn btn-aqua" href="index.html" data-slot="cta-primary">Download Now</a>
+        <a class="btn btn-steel" href="index.html" data-slot="cta-secondary">Take the Tour</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <span class="chip"></span>
+        <h3 data-slot="card-title">Aqua Desktop</h3>
+        <p data-slot="card-body">Glossy, translucent, alive. Windows that ripple when you
+        drag them and buttons that look good enough to lick. Pinstripes included.</p>
+      </div>
+      <div class="card">
+        <span class="chip"></span>
+        <h3 data-slot="card-title">iStream Jukebox</h3>
+        <p data-slot="card-body">Rip, mix, and beam 1,000 songs straight off the disc.
+        Burn a mix for the road — the little laser does the rest while you sip a cola.</p>
+      </div>
+      <div class="card">
+        <span class="chip"></span>
+        <h3 data-slot="card-title">ChromeSync</h3>
+        <p data-slot="card-body">Plug in the cradle and watch your whole life light up blue.
+        Contacts, calendars, and cash balances, mirrored in one satisfying chrome flash.</p>
+      </div>
+      <div class="card">
+        <span class="chip"></span>
+        <h3 data-slot="card-title">TurboNet Dialer</h3>
+        <p data-slot="card-body">Broadband-ready and Y2K-certified. Surf the information
+        superhighway at warp speed, then back it all up to a single shiny 650MB disc.</p>
+      </div>
+    </div>
+
+    <section class="strip">
+      <p class="strip-lead" data-slot="feature-kicker">POWERED BY NOVA-CORE™</p>
+      <p data-slot="feature-body">Forged in liquid metal and tuned for the new millennium.
+      Reflective. Optimistic. Unstoppable. Welcome to tomorrow — it's glossier than you imagined.</p>
+    </section>
+  </div>
+
+  <footer data-slot="footer">&copy; 2001–2026 AQUANOVA Systems · Insanely Shiny · Made for the New Millennium</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

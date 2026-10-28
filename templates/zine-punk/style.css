@@ -1,0 +1,133 @@
+/* zine-punk — black & white photocopied fanzine. One stylesheet themes the page.
+   Ransom type via per-word/letter spans + nth-child cycling; torn edges via
+   clip-path; tape as rotated boxes; xerox grain via an inline-SVG data URI. */
+:root{
+  --paper:#f3f1ea;      /* dirty photocopy white */
+  --ink:#121212;        /* toner black */
+  --ink-2:#2b2b2b;
+  --dim:#555;
+  --flash:#e7e4dc;      /* lighter scrap */
+  --tape:rgba(190,185,170,.55);
+  --tape-line:rgba(120,115,100,.5);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#15140f; --ink:#f0ede3; --ink-2:#d8d4c6; --dim:#9a968a;
+  --flash:#201e18; --tape:rgba(70,66,54,.55); --tape-line:rgba(150,145,128,.4);
+}}
+:root[data-theme="dark"]{
+  --paper:#15140f; --ink:#f0ede3; --ink-2:#d8d4c6; --dim:#9a968a;
+  --flash:#201e18; --tape:rgba(70,66,54,.55); --tape-line:rgba(150,145,128,.4);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16px/1.55 "Courier New",Courier,monospace;overflow-x:hidden}
+
+/* ---- xerox grain: tiled SVG noise, multiplied over everything ---- */
+.grain{position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.5;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .grain{mix-blend-mode:screen;opacity:.35}}
+:root[data-theme="dark"] .grain{mix-blend-mode:screen;opacity:.35}
+
+.wrap{max-width:860px;margin:0 auto;padding:0 18px 70px}
+
+/* ---- ransom note: cycle font / size / rotation / background per span ---- */
+.ransom{line-height:1.15}
+.ransom span{display:inline-block;background:var(--ink);color:var(--paper);
+  padding:0 .12em;margin:.04em .02em;line-height:1;
+  box-shadow:2px 2px 0 rgba(0,0,0,.25)}
+.ransom span:nth-child(5n+1){font-family:Impact,"Arial Black",sans-serif;transform:rotate(-5deg)}
+.ransom span:nth-child(5n+2){font-family:Georgia,"Times New Roman",serif;font-style:italic;
+  background:var(--paper);color:var(--ink);box-shadow:none;outline:2px solid var(--ink);transform:rotate(3deg)}
+.ransom span:nth-child(5n+3){font-family:"Comic Sans MS","Trebuchet MS",cursive;transform:rotate(-2deg) scale(1.1)}
+.ransom span:nth-child(5n+4){font-family:"Courier New",monospace;font-weight:700;transform:rotate(4deg);
+  background:var(--paper);color:var(--ink);box-shadow:none;outline:3px double var(--ink)}
+.ransom span:nth-child(5n+5){font-family:Verdana,Tahoma,sans-serif;font-weight:900;transform:rotate(-6deg)}
+
+/* ---- masthead ---- */
+.masthead{position:relative;text-align:center;padding:46px 16px 30px;
+  border-bottom:5px solid var(--ink)}
+.mast{margin:0;font-size:clamp(52px,16vw,120px)}
+.mast span{margin:.02em .04em}
+.mast span:nth-child(3){transform:rotate(8deg)}
+.mast span:nth-child(6){transform:rotate(-9deg) scale(1.15)}
+.stamp{display:inline-block;margin:18px 0 0;padding:4px 12px;
+  font:13px/1.3 "Courier New",monospace;letter-spacing:.12em;text-transform:uppercase;
+  border:2px solid var(--ink);transform:rotate(-1.5deg);background:var(--flash)}
+.smudge{position:absolute;border-radius:50%;filter:blur(7px);opacity:.14;
+  background:var(--ink);pointer-events:none}
+.smudge-a{width:160px;height:90px;top:18px;right:6%;transform:rotate(20deg)}
+.pin{position:absolute;left:50%;top:-6px;width:16px;height:16px;margin-left:-8px;
+  border:3px solid var(--ink);border-radius:50%;
+  box-shadow:0 10px 0 -5px var(--ink)} /* safety-pin head + stem */
+
+/* ---- nav: taped-on torn tabs ---- */
+nav{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;
+  padding:22px 12px;border-bottom:3px solid var(--ink)}
+nav a{position:relative;background:var(--ink);color:var(--paper);text-decoration:none;
+  font:700 15px/1 Impact,"Arial Black",sans-serif;letter-spacing:.08em;
+  padding:9px 16px;clip-path:polygon(2% 6%,98% 0,100% 92%,4% 100%)}
+nav a:nth-child(2){transform:rotate(-3deg)}
+nav a:nth-child(3){transform:rotate(2.5deg);background:var(--paper);color:var(--ink);outline:3px solid var(--ink)}
+nav a:nth-child(4){transform:rotate(-2deg)}
+nav a:nth-child(5){transform:rotate(3.5deg)}
+nav a:hover,nav a:focus-visible{outline:3px dashed var(--ink);outline-offset:2px}
+nav a[aria-current]{transform:rotate(-4deg) scale(1.05)}
+
+/* ---- torn-paper scrap blocks (flyer, cards, manifesto) ---- */
+.flyer,.scrap,.manifesto{position:relative;background:var(--flash);color:var(--ink);
+  border:2px solid var(--ink)}
+.flyer{margin:40px 0;padding:34px 26px 40px;transform:rotate(-.6deg);
+  clip-path:polygon(0 3%,6% 0,22% 2%,40% 0,61% 3%,80% 0,97% 2%,100% 5%,
+    99% 96%,88% 100%,67% 97%,44% 100%,24% 98%,8% 100%,0 96%)}
+.flyer .slash{display:inline-block;background:var(--ink);color:var(--paper);
+  font:900 18px/1 Impact,sans-serif;letter-spacing:.1em;padding:5px 12px;
+  transform:rotate(-2deg);margin-bottom:16px}
+.flyer h2{margin:0 0 16px;font-size:clamp(30px,8vw,62px)}
+.flyer p{margin:0;max-width:52ch;font-size:15px}
+.rip{height:14px;margin-top:22px;background:var(--ink);
+  clip-path:polygon(0 0,5% 70%,10% 10%,16% 80%,22% 20%,29% 90%,36% 15%,43% 75%,
+    50% 10%,57% 85%,64% 20%,71% 80%,78% 12%,85% 78%,92% 18%,100% 70%,100% 0)}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:36px 0}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.scrap{padding:24px 20px 22px}
+.scrap:nth-child(1){transform:rotate(1.2deg);clip-path:polygon(0 2%,97% 0,100% 94%,3% 100%)}
+.scrap:nth-child(2){transform:rotate(-1.4deg);clip-path:polygon(3% 0,100% 3%,98% 100%,0 95%)}
+.scrap:nth-child(3){transform:rotate(-1deg);clip-path:polygon(0 0,98% 2%,100% 97%,2% 100%)}
+.scrap:nth-child(4){transform:rotate(1.6deg);clip-path:polygon(2% 3%,100% 0,97% 98%,0 100%)}
+.scrap p{margin:0;font-size:14px;color:var(--ink-2)}
+
+/* marker-scrawl headings */
+.marker{margin:0 0 10px;font:900 22px/1.05 "Comic Sans MS","Trebuchet MS",cursive;
+  text-transform:uppercase;transform:rotate(-1.5deg);
+  text-decoration:underline wavy;text-underline-offset:4px}
+.scrap:nth-child(even) .marker{transform:rotate(1.5deg)}
+
+.manifesto{margin:40px 0 0;padding:40px 28px;text-align:center;transform:rotate(.5deg);
+  background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.scream{margin:0 0 14px;font:900 clamp(22px,6vw,42px)/1.1 Impact,"Arial Black",sans-serif;
+  letter-spacing:.04em;text-transform:uppercase}
+.manifesto p{margin:0 auto;max-width:56ch;font-size:15px;color:var(--paper)}
+
+/* ---- tape strips: translucent rotated boxes with a center seam ---- */
+.tape{position:absolute;width:92px;height:26px;background:var(--tape);z-index:3;
+  border-left:1px dashed var(--tape-line);border-right:1px dashed var(--tape-line)}
+.tape-tl{top:-12px;left:-16px;transform:rotate(-38deg)}
+.tape-br{bottom:-10px;right:-14px;transform:rotate(-40deg)}
+.tape-top{top:-13px;left:50%;margin-left:-46px;transform:rotate(2deg)}
+
+/* ---- staple mark on each scrap ---- */
+.staple{position:absolute;top:10px;right:14px;width:22px;height:9px;
+  border:2px solid var(--ink);border-bottom:none;transform:rotate(-6deg)}
+
+/* ---- footer: typewriter scrawl ---- */
+footer{text-align:center;margin-top:48px;padding:26px 18px;
+  border-top:5px double var(--ink);font-size:12px;letter-spacing:.06em;
+  color:var(--dim);transform:rotate(-.4deg)}
+
+/* subtle copier flicker — killed for reduced-motion */
+@media (prefers-reduced-motion:no-preference){
+  .grain{animation:flick 1.4s steps(3) infinite}
+  @keyframes flick{0%{opacity:.5}50%{opacity:.42}100%{opacity:.5}}
+}

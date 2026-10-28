@@ -1,0 +1,97 @@
+/* Teletext / Ceefax — black screen, seven saturated inks, fixed 40-col mono grid.
+   One look only: teletext has no light mode. All colour lives on pure black. */
+:root{
+  --blk:#000; --wht:#fff; --yel:#ff0; --cyn:#0ff;
+  --grn:#0f0; --mag:#f0f; --red:#f00; --blu:#2323ff;
+}
+*{box-sizing:border-box}
+html,body{background:var(--blk)}
+body{
+  margin:0;color:var(--wht);
+  font-family:"Courier New",Courier,"Lucida Console",monospace;
+  font-size:clamp(14px,2.7vw,19px);line-height:1.45;
+  padding:14px 10px 20px;
+  /* faint character-cell scanlines — CRT texture */
+  background:
+    repeating-linear-gradient(var(--blk) 0 2px, rgba(255,255,255,.025) 2px 4px);
+}
+/* the 40-column fixed-width page */
+.screen{max-width:42ch;margin:0 auto;border:2px solid #111}
+
+/* ---- header row: page · service · clock ---- */
+.hdr{display:flex;justify-content:space-between;gap:6px;
+  padding:4px 8px;white-space:nowrap;letter-spacing:.04em;font-size:.82em}
+.pg{color:var(--cyn);font-weight:bold}
+.svc{color:var(--wht)}
+.clk{color:var(--grn)}
+
+/* ---- blocky mosaic banner ---- */
+.banner{text-align:center;padding:6px 8px 0}
+.mosaic{height:16px;margin:0 auto 6px;
+  /* 2x3 teletext mosaic pattern in rotating inks */
+  background:
+    conic-gradient(from 0deg,var(--red) 0 25%,var(--grn) 0 50%,var(--yel) 0 75%,var(--cyn) 0) 0 0/16px 16px,
+    var(--blk);
+  image-rendering:pixelated}
+.logo{margin:2px 0;color:var(--yel);font-weight:900;
+  font-size:clamp(30px,10vw,52px);letter-spacing:.06em;line-height:1;
+  /* chunky stepped pixel shadow */
+  text-shadow:2px 2px 0 var(--red),4px 4px 0 var(--mag)}
+.tagline{margin:6px 0 8px;color:var(--cyn);font-size:.74em;letter-spacing:.14em}
+.colorbar{height:14px;
+  background:linear-gradient(90deg,
+    var(--red) 0 14.28%,var(--yel) 0 28.56%,var(--grn) 0 42.84%,
+    var(--cyn) 0 57.12%,var(--blu) 0 71.4%,var(--mag) 0 85.68%,var(--wht) 0)}
+
+/* ---- coloured full-width row headings (the teletext "ink bar") ---- */
+.rowhead{margin:12px 0 6px;padding:2px 8px;color:var(--blk);
+  font-size:.82em;font-weight:bold;letter-spacing:.08em;text-transform:uppercase}
+.hc{background:var(--cyn)}
+.hg{background:var(--grn)}
+.hm{background:var(--mag)}
+
+/* ---- lead story ---- */
+.lead{padding:0 8px}
+.big{margin:4px 0 6px;color:var(--wht);font-size:clamp(17px,4.2vw,24px);
+  font-weight:900;letter-spacing:.02em;line-height:1.15;text-transform:uppercase;
+  /* double-height teletext feel */
+  text-shadow:1px 1px 0 var(--blu)}
+.lead p{margin:0 0 8px;color:var(--cyn)}
+.lead p[data-slot="page-body"]{color:var(--yel)}
+
+/* ---- REVEAL (native details) ---- */
+.reveal{margin:4px 0 12px}
+.reveal summary{cursor:pointer;color:var(--blk);background:var(--yel);
+  display:inline-block;padding:2px 10px;font-weight:bold;letter-spacing:.1em;
+  font-size:.82em;list-style:none}
+.reveal summary::-webkit-details-marker{display:none}
+.reveal .ans{margin:8px 0 0;color:var(--grn);
+  border-left:4px solid var(--grn);padding-left:8px}
+
+/* ---- news in brief rows ---- */
+.brief{padding:0 8px}
+.row{display:grid;grid-template-columns:1fr;gap:2px;padding:6px 0;
+  border-bottom:1px dotted #333}
+.bt{color:var(--grn);font-weight:bold;letter-spacing:.06em;font-size:.84em}
+.bb{color:var(--wht)}
+
+/* ---- footer ---- */
+footer{margin:14px 8px 6px;color:var(--cyn);font-size:.68em;
+  letter-spacing:.06em;text-align:center;line-height:1.5}
+
+/* ---- fastext coloured button bar ---- */
+.fastext{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  background:var(--blk);padding:6px 4px 4px}
+.fx{color:var(--blk);text-decoration:none;text-align:center;
+  padding:6px 2px;font-size:.66em;font-weight:bold;letter-spacing:.02em;
+  border-top:4px solid}
+.fx.red{background:var(--red);border-color:#fff}
+.fx.grn{background:var(--grn)}
+.fx.yel{background:var(--yel)}
+.fx.blu{background:var(--blu);color:var(--wht)}
+.fx:hover,.fx:focus{outline:2px solid var(--wht);outline-offset:-2px}
+
+/* ---- flashing text (teletext flash control) ---- */
+@keyframes tx-flash{50%{opacity:0}}
+.flash{animation:tx-flash 1s steps(1,end) infinite}
+@media(prefers-reduced-motion:reduce){.flash{animation:none}}

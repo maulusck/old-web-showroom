@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEMORY CARD (PS)</title>
+<!-- PS1 Memory Card — the original PlayStation BIOS save manager. Deep blue
+     gradient, chunky system sans, blocky SVG save icons, selection cursor. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="bios">
+    <h1 data-slot="site-name">MEMORY CARD (PS)</h1>
+    <p class="sub" data-slot="tagline">Select a save block with the directional buttons</p>
+  </header>
+
+  <nav class="modes">
+    <a href="index.html" aria-current="page" data-slot="nav-item">MEMORY CARD</a>
+    <a href="index.html" data-slot="nav-item">CD PLAYER</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="status">
+      <!-- blocky SVG card -->
+      <svg class="cardicon" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true">
+        <rect x="6" y="4" width="36" height="40" fill="#cfd6ea"/>
+        <rect x="6" y="4" width="36" height="6" fill="#8e9ac4"/>
+        <rect x="12" y="16" width="24" height="4" fill="#5a6aa0"/>
+        <rect x="12" y="24" width="24" height="4" fill="#5a6aa0"/>
+        <rect x="12" y="32" width="16" height="4" fill="#5a6aa0"/>
+      </svg>
+      <div class="meter">
+        <span class="free" data-slot="block-count">7 FREE BLOCKS</span>
+        <span class="total" data-slot="block-total">8 OF 15 BLOCKS IN USE</span>
+      </div>
+    </section>
+
+    <section class="hero">
+      <span class="tag">NOW SELECTED</span>
+      <h2 data-slot="hero-title">CHRONO DRIFT — RACE DAY 07</h2>
+      <p data-slot="hero-body">Checkpoint reached: Neon Causeway, lap 3. 14 trophies collected,
+      3 shortcuts unlocked. Press the X button to load this save and keep drifting into the sunrise.</p>
+    </section>
+
+    <h3 class="dirlabel" data-slot="page-title">SAVE DIRECTORY</h3>
+    <div class="grid" role="list">
+
+      <article class="block sel" role="listitem" tabindex="0">
+        <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#1a2250"/><rect x="1" y="2" width="6" height="1" fill="#e04b5a"/><rect x="1" y="4" width="6" height="1" fill="#f0c14b"/><rect x="2" y="5" width="4" height="2" fill="#4bd0e0"/></svg>
+        <h4 data-slot="card-title">CHRONO DRIFT</h4>
+        <p data-slot="card-body">RACE DAY 07 · 1 BLOCK · saved 03:11</p>
+      </article>
+
+      <article class="block" role="listitem" tabindex="0">
+        <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#0d3a4a"/><rect x="1" y="1" width="6" height="2" fill="#2fc2a8"/><rect x="2" y="4" width="4" height="3" fill="#bfeef0"/><rect x="3" y="5" width="2" height="1" fill="#0d3a4a"/></svg>
+        <h4 data-slot="card-title">AQUA SENTINEL</h4>
+        <p data-slot="card-body">DEEP RUN · 2 BLOCKS · saved 21:48</p>
+      </article>
+
+      <article class="block" role="listitem" tabindex="0">
+        <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#2a0f3a"/><rect x="1" y="3" width="6" height="2" fill="#ff5fd0"/><rect x="2" y="1" width="1" height="6" fill="#8affef"/><rect x="5" y="1" width="1" height="6" fill="#8affef"/></svg>
+        <h4 data-slot="card-title">NEON GRID PRIX</h4>
+        <p data-slot="card-body">TIME ATTACK · 1 BLOCK · saved 18:02</p>
+      </article>
+
+      <article class="block" role="listitem" tabindex="0">
+        <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#3a1a0d"/><rect x="2" y="2" width="4" height="4" fill="#ff8a3c"/><rect x="3" y="3" width="2" height="2" fill="#ffe08a"/></svg>
+        <h4 data-slot="card-title">TOMB OF EMBERS</h4>
+        <p data-slot="card-body">CHAMBER IX · 2 BLOCKS · saved 00:57</p>
+      </article>
+
+      <article class="block" role="listitem" tabindex="0">
+        <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#0a1030"/><rect x="3" y="1" width="2" height="1" fill="#fff"/><rect x="1" y="3" width="6" height="1" fill="#9db4ff"/><rect x="2" y="5" width="4" height="2" fill="#4466cc"/></svg>
+        <h4 data-slot="card-title">STARLING SQUADRON</h4>
+        <p data-slot="card-body">WING 04 · 1 BLOCK · saved 12:30</p>
+      </article>
+
+      <article class="block" role="listitem" tabindex="0">
+        <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#10261f"/><rect x="1" y="5" width="6" height="2" fill="#6b8f6b"/><rect x="3" y="2" width="2" height="3" fill="#cfe0cf"/></svg>
+        <h4 data-slot="card-title">SILENT HARBOR</h4>
+        <p data-slot="card-body">CHAPTER II · 1 BLOCK · saved 06:14</p>
+      </article>
+
+      <article class="block empty" role="listitem" tabindex="0">
+        <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#141a38"/></svg>
+        <h4 data-slot="card-title">· FREE BLOCK ·</h4>
+        <p data-slot="card-body">no data — available for a new save</p>
+      </article>
+
+      <article class="block empty" role="listitem" tabindex="0">
+        <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#141a38"/></svg>
+        <h4 data-slot="card-title">· FREE BLOCK ·</h4>
+        <p data-slot="card-body">no data — available for a new save</p>
+      </article>
+
+    </div>
+  </main>
+
+  <footer data-slot="footer">MEMORY CARD (PS) · SLOT 1 · do not remove the card while saving</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

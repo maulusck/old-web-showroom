@@ -1,0 +1,119 @@
+/* AQUANOVA — Y2K Chrome / Aqua. All gloss faked with gradients, box-shadow, inline SVG. */
+:root{
+  --space:#dff2fb; --space2:#aed8f0; --ink:#0c2740; --dim:#315a7d;
+  --line:#8fc3e6; --aqua:#2aa8ff; --aqua-dk:#0a5fb0; --candy:#5fd0ff;
+  --glass:#ffffff; --panel:rgba(255,255,255,.72); --star:#ffffff;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --space:#040a18; --space2:#0a1c38; --ink:#dcefff; --dim:#8fb6d8;
+  --line:#24507e; --aqua:#49b6ff; --aqua-dk:#0a4b8c; --candy:#7fdcff;
+  --glass:#13365e; --panel:rgba(15,42,74,.66); --star:#cfeaff;
+}}
+:root[data-theme="dark"]{
+  --space:#040a18; --space2:#0a1c38; --ink:#dcefff; --dim:#8fb6d8;
+  --line:#24507e; --aqua:#49b6ff; --aqua-dk:#0a4b8c; --candy:#7fdcff;
+  --glass:#13365e; --panel:rgba(15,42,74,.66); --star:#cfeaff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  font:16px/1.55 "Lucida Grande","Lucida Sans Unicode","Segoe UI",Verdana,sans-serif;
+  /* starfield + sky gradient, all CSS */
+  background:
+    radial-gradient(1.4px 1.4px at 12% 18%,var(--star),transparent),
+    radial-gradient(1.4px 1.4px at 78% 9%,var(--star),transparent),
+    radial-gradient(1.2px 1.2px at 33% 61%,var(--star),transparent),
+    radial-gradient(1.6px 1.6px at 61% 42%,var(--star),transparent),
+    radial-gradient(1.2px 1.2px at 88% 73%,var(--star),transparent),
+    radial-gradient(1.3px 1.3px at 7% 84%,var(--star),transparent),
+    radial-gradient(1.5px 1.5px at 47% 90%,var(--star),transparent),
+    linear-gradient(180deg,var(--space2),var(--space) 55%,var(--space2));
+  background-attachment:fixed;
+  min-height:100vh;
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 18px 56px}
+
+/* lens flare */
+.flare{position:fixed;top:-120px;right:-120px;width:440px;height:440px;
+  pointer-events:none;z-index:0;opacity:.8;animation:pulse 6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.06)}}
+
+/* header + liquid-metal wordmark */
+.hdr{position:relative;z-index:1;text-align:center;padding:52px 16px 26px}
+h1.chrome{
+  margin:0;font-size:clamp(40px,11vw,96px);font-weight:800;letter-spacing:.04em;
+  background:linear-gradient(180deg,#f7fcff 0%,#cfe9fb 14%,#7fb4d8 38%,#20405c 50%,
+    #2c6f9e 54%,#9fd4f2 72%,#eafaff 88%,#bcdcf0 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 1px rgba(255,255,255,.6)) drop-shadow(0 4px 6px rgba(10,60,110,.45));
+}
+.tagline{margin:6px 0 0;color:var(--dim);font-size:13px;letter-spacing:.42em;
+  text-transform:uppercase}
+
+/* aqua nav — glossy capsule tabs */
+nav{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+  max-width:860px;margin:0 auto;padding:10px}
+nav a{text-decoration:none;color:#0a3a63;font-size:13px;font-weight:700;
+  padding:7px 18px;border-radius:999px;border:1px solid var(--line);
+  background:linear-gradient(180deg,#ffffff 0%,#eaf6ff 48%,#c9e6fa 52%,#e3f3ff 100%);
+  box-shadow:inset 0 1px 0 #fff,0 1px 3px rgba(10,60,110,.3)}
+nav a:hover,nav a[aria-current]{color:#fff;border-color:var(--aqua-dk);
+  background:linear-gradient(180deg,#7fd0ff 0%,#2aa8ff 48%,#0a73cf 52%,#3fb4ff 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 2px 6px rgba(10,95,176,.55)}
+
+/* glass panels */
+.hero,.card,.strip{position:relative;z-index:1;
+  background:var(--panel);backdrop-filter:blur(2px);
+  border:1px solid var(--line);border-radius:16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 8px 22px rgba(8,40,80,.22)}
+
+/* hero with aqua pinstripes */
+.hero{margin:26px 0;padding:30px 28px;overflow:hidden;text-align:center;
+  background-image:
+    repeating-linear-gradient(180deg,rgba(130,190,230,.14) 0 2px,transparent 2px 6px),
+    linear-gradient(180deg,rgba(255,255,255,.85),rgba(210,235,250,.7))}
+.pill{display:inline-block;margin-bottom:14px;padding:3px 12px;border-radius:999px;
+  font-size:11px;font-weight:700;letter-spacing:.16em;color:#fff;
+  background:linear-gradient(180deg,#ff9b3f,#e5580f);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 1px 3px rgba(150,50,0,.4)}
+.hero h2{margin:0 0 12px;font-size:clamp(22px,4.4vw,34px);font-weight:800;letter-spacing:-.01em;
+  text-shadow:0 1px 0 rgba(255,255,255,.7)}
+.hero p{margin:0 auto;max-width:54ch;color:var(--dim)}
+.hero em{color:var(--aqua-dk);font-style:italic}
+
+/* candy gloss buttons */
+.actions{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{text-decoration:none;font-weight:700;font-size:15px;color:#fff;
+  padding:11px 26px;border-radius:999px;border:1px solid rgba(0,0,0,.15);
+  position:relative;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 3px 9px rgba(8,50,95,.4)}
+.btn::after{content:"";position:absolute;inset:1px 1px 50% 1px;border-radius:999px 999px 40% 40%;
+  background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,0))}
+.btn-aqua{background:linear-gradient(180deg,#6fccff,#1794f0 52%,#0a62c0)}
+.btn-steel{color:#12324e;background:linear-gradient(180deg,#ffffff,#d4e6f4 52%,#9cbdd6)}
+.btn:hover{filter:brightness(1.08)}
+.btn:active{box-shadow:inset 0 2px 5px rgba(0,40,90,.5)}
+
+/* feature cards */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{padding:20px 20px 22px}
+.chip{display:block;width:40px;height:40px;margin-bottom:12px;border-radius:12px;
+  background:radial-gradient(circle at 32% 28%,#eafaff,#5fd0ff 40%,#0a73cf 85%);
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.8),inset 0 -3px 6px rgba(0,40,90,.4),
+    0 2px 5px rgba(8,50,95,.35)}
+.card h3{margin:0 0 7px;color:var(--aqua-dk);font-size:17px;font-weight:800}
+.card p{margin:0;color:var(--dim);font-size:14px}
+
+/* reflective strip */
+.strip{margin:22px 0 0;padding:24px 26px;text-align:center}
+.strip-lead{margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.22em;color:var(--aqua-dk)}
+.strip p:last-child{margin:0;color:var(--dim);max-width:60ch;margin-inline:auto}
+
+footer{position:relative;z-index:1;text-align:center;color:var(--dim);
+  font-size:12px;letter-spacing:.08em;padding:30px 16px 8px}
+
+@media (prefers-reduced-motion:reduce){
+  .flare{animation:none}
+}

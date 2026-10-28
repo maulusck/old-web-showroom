@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VERITEXT P100</title>
+<!-- Teletext / Ceefax — 1970s-90s broadcast text. Pure black, 7 inks, 40-col grid, fastext bar. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="screen">
+
+  <!-- teletext header row: page no · service · live clock -->
+  <div class="hdr">
+    <span class="pg">P100</span>
+    <span class="svc">VERITEXT 100</span>
+    <span class="clk"><span id="dt">Fri 16 Oct</span> <span id="clk">22·47·58</span></span>
+  </div>
+
+  <!-- big blocky mosaic banner -->
+  <div class="banner">
+    <div class="mosaic" aria-hidden="true"></div>
+    <h1 class="logo" data-slot="site-name">VERITEXT</h1>
+    <p class="tagline" data-slot="tagline">THE NATION'S PAGE · UPDATED EVERY MINUTE</p>
+    <div class="colorbar" aria-hidden="true"></div>
+  </div>
+
+  <!-- lead story -->
+  <section class="lead">
+    <h2 class="rowhead hc" data-slot="page-title">HEADLINES 101</h2>
+    <h3 class="big" data-slot="hero-title">SATELLITE 'KESTREL-4' REACHES ORBIT</h3>
+    <p data-slot="hero-body">The county's first broadcast satellite has settled into
+    geostationary orbit after a flawless overnight launch. Engineers say live test
+    pages will reach this service before midnight. Viewers are asked to retune
+    receivers to channel 8 and hold the page to read.</p>
+  </section>
+
+  <!-- press REVEAL (native details, no JS) -->
+  <section class="lead">
+    <h2 class="rowhead hg">TONIGHT'S TEASER 170</h2>
+    <p data-slot="page-body">Which colour is NOT one of the seven teletext inks lit on
+    this screen? Press REVEAL for the answer.</p>
+    <details class="reveal">
+      <summary><span class="flash">PRESS REVEAL ▶</span></summary>
+      <p class="ans">ANSWER: Orange. Teletext mixes only red, green, yellow, blue,
+      magenta, cyan and white — one bit per gun, eight combinations counting black.</p>
+    </details>
+  </section>
+
+  <!-- news in brief -->
+  <section class="brief">
+    <h2 class="rowhead hm">NEWS IN BRIEF</h2>
+    <div class="row">
+      <span class="bt" data-slot="card-title">WEATHER 400</span>
+      <span class="bb" data-slot="card-body">Fog clearing by dawn, highs of 14°. A bright, blustery afternoon follows along the coast.</span>
+    </div>
+    <div class="row">
+      <span class="bt" data-slot="card-title">SPORT 300</span>
+      <span class="bb" data-slot="card-body">County United hold on for a 2–1 win. Classified results and the pools check at 302.</span>
+    </div>
+    <div class="row">
+      <span class="bt" data-slot="card-title">FINANCE 200</span>
+      <span class="bb" data-slot="card-body">Markets steady at the bell. The pound firms against the dollar. Gold eases two points.</span>
+    </div>
+    <div class="row">
+      <span class="bt" data-slot="card-title">TRAVEL 430</span>
+      <span class="bb" data-slot="card-body">Delays northbound on the ringway after an earlier breakdown. Rail running to time.</span>
+    </div>
+  </section>
+
+  <footer data-slot="footer">VERITEXT · A PUBLIC INFORMATION SERVICE · HOLD PAGE TO READ · © 1974–2026</footer>
+
+  <!-- fastext coloured button bar -->
+  <nav class="fastext">
+    <a href="index.html" class="fx red" data-slot="nav-item" aria-current="page">NEWS 101</a>
+    <a href="index.html" class="fx grn" data-slot="nav-item">SPORT 300</a>
+    <a href="index.html" class="fx yel" data-slot="nav-item">WEATHER 400</a>
+    <a href="index.html" class="fx blu" data-slot="nav-item">INDEX 100</a>
+  </nav>
+
+</div>
+
+<script>
+/* ponytail: live header clock — the one thing teletext always ticked. ~6 lines, vanilla. */
+(function(){var p=function(n){return String(n).padStart(2,'0')},
+D=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+dt=document.getElementById('dt'),ck=document.getElementById('clk');
+function tick(){var n=new Date();if(dt)dt.textContent=D[n.getDay()]+' '+p(n.getDate())+' '+M[n.getMonth()];
+if(ck)ck.textContent=p(n.getHours())+'·'+p(n.getMinutes())+'·'+p(n.getSeconds());}
+tick();setInterval(tick,1000);})();
+</script>
+<script src="../../edit.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SlackJaw</title>
+<!-- Winamp Media Skin — late-90s player chassis: chrome bevels, LCD-green readout, EQ bars. A band page. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="desktop">
+
+    <!-- PLAYER WINDOW -->
+    <section class="win player">
+      <div class="titlebar">
+        <span class="dots"></span>
+        <h1 data-slot="site-name">SLACKJAW</h1>
+        <span class="winbtns"><i></i><i></i><i></i></span>
+      </div>
+
+      <div class="chassis">
+        <div class="lcd">
+          <div class="lcdrow">
+            <span class="time" data-slot="track-time">02:37</span>
+            <span class="rate">128 kbps &middot; 44 khz &middot; STEREO</span>
+          </div>
+          <div class="marquee"><span data-slot="hero-title">&raquo;&raquo; Gutter Satellite &mdash; SlackJaw &mdash; from the LP "Whips the Llama" &laquo;&laquo;</span></div>
+          <div class="eq" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+
+        <p class="tagline" data-slot="tagline">it really whips the llama's ass</p>
+
+        <div class="transport" role="group" aria-label="transport">
+          <button class="btn prev" aria-label="previous"></button>
+          <button class="btn play" aria-label="play"></button>
+          <button class="btn pause" aria-label="pause"></button>
+          <button class="btn stop" aria-label="stop"></button>
+          <button class="btn next" aria-label="next"></button>
+        </div>
+
+        <div class="sliders">
+          <label>SEEK<input type="range" class="seek" value="42" aria-label="seek"></label>
+          <label>VOL<input type="range" class="vol" value="78" aria-label="volume"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT WINDOW -->
+    <section class="win about">
+      <div class="titlebar"><h2 data-slot="page-title">LINER NOTES</h2></div>
+      <div class="pane">
+        <p data-slot="hero-body">Three dropouts, one blown subwoofer, and a modem that never
+        hung up. SlackJaw tracked the whole record straight to a beige tower in a basement in
+        Dayton, exported it at 128 kbps, and let it loose on the net one 3.5&Prime; floppy at a
+        time. Turn it up until the neighbors file a ticket.</p>
+      </div>
+    </section>
+
+    <!-- PLAYLIST WINDOW -->
+    <section class="win playlist">
+      <div class="titlebar"><h2>PLAYLIST EDITOR</h2></div>
+      <ol class="tracks">
+        <li class="now"><span class="no">1.</span><span data-slot="playlist-track">Gutter Satellite</span><span class="t" data-slot="track-time">4:12</span></li>
+        <li><span class="no">2.</span><span data-slot="playlist-track">Dial-Up Heartbreak</span><span class="t" data-slot="track-time">3:28</span></li>
+        <li><span class="no">3.</span><span data-slot="playlist-track">Beige Tower Blues</span><span class="t" data-slot="track-time">2:51</span></li>
+        <li><span class="no">4.</span><span data-slot="playlist-track">404 (Love Not Found)</span><span class="t" data-slot="track-time">5:03</span></li>
+        <li><span class="no">5.</span><span data-slot="playlist-track">Whips the Llama</span><span class="t" data-slot="track-time">3:37</span></li>
+        <li><span class="no">6.</span><span data-slot="playlist-track">Floppy Disk Sunset</span><span class="t" data-slot="track-time">6:19</span></li>
+      </ol>
+      <div class="plfoot"><span>6 tracks</span><span data-slot="track-time">25:30</span></div>
+    </section>
+
+    <!-- MINI CARDS -->
+    <section class="win cards">
+      <div class="titlebar"><h2>JUKEBOX</h2></div>
+      <nav>
+        <a href="#" data-slot="nav-item">Tour</a>
+        <a href="#" data-slot="nav-item">Merch</a>
+        <a href="#" data-slot="nav-item">Guestbook</a>
+      </nav>
+      <div class="grid">
+        <div class="card">
+          <h3 data-slot="card-title">Basement Tour '99</h3>
+          <p data-slot="card-body">Twelve cities, eleven PA systems, one that actually worked. BYO extension cord.</p>
+        </div>
+        <div class="card">
+          <h3 data-slot="card-title">The Merch Table</h3>
+          <p data-slot="card-body">Skin for your player, a tee two sizes wrong, and the CD-R we burned this morning.</p>
+        </div>
+        <div class="card">
+          <h3 data-slot="card-title">Sign the Guestbook</h3>
+          <p data-slot="card-body">Drop a shout, flame the drummer, leave an ASCII heart. All &lt;blink&gt; welcome.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer data-slot="footer">&copy; 1999&ndash;2026 SlackJaw &middot; Hand-coded in Notepad &middot; Best viewed at 800&times;600</footer>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

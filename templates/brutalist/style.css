@@ -1,0 +1,91 @@
+/* RASTER — Brutalist Swiss. One stylesheet, black on off-white, hairline grid. */
+:root{
+  --paper:#f2f0ea; --ink:#141414; --line:#141414; --dim:#5a5750; --acc:#e4341c;
+  --hair:1px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#111110; --ink:#f2f0ea; --line:#f2f0ea; --dim:#908d85; --acc:#ff4a30;
+}}
+:root[data-theme="dark"]{
+  --paper:#111110; --ink:#f2f0ea; --line:#f2f0ea; --dim:#908d85; --acc:#ff4a30;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16px/1.4 Helvetica,"Helvetica Neue",Arial,"Liberation Sans",sans-serif;
+  -webkit-font-smoothing:antialiased}
+
+/* masthead: exposed grid, hairline column rules */
+.mast{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  border-bottom:var(--hair) solid var(--line)}
+.mast-cell{padding:14px 18px;border-left:var(--hair) solid var(--line);
+  display:flex;flex-direction:column;justify-content:flex-end;min-height:88px}
+.mast-cell:first-child{border-left:0}
+.mast-name{justify-content:center}
+.mast h1{margin:0;font-size:clamp(30px,6vw,60px);font-weight:700;
+  letter-spacing:-.03em;line-height:.9;text-transform:uppercase}
+.lab{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--dim);
+  margin-bottom:6px}
+.mast-cell span:last-child{font-size:13px;letter-spacing:.01em}
+
+/* nav: uppercase, hairline separated */
+nav{display:flex;flex-wrap:wrap;border-bottom:var(--hair) solid var(--line)}
+nav a{padding:11px 18px;color:var(--ink);text-decoration:none;
+  font-size:11px;text-transform:uppercase;letter-spacing:.18em;
+  border-left:var(--hair) solid var(--line)}
+nav a:first-child{border-left:0}
+nav a[aria-current]{background:var(--ink);color:var(--paper)}
+nav a:hover:not([aria-current]){background:var(--acc);color:var(--paper)}
+
+/* hero: oversized, tight leading, left aligned */
+.hero{padding:clamp(28px,6vw,72px) 18px;border-bottom:var(--hair) solid var(--line)}
+.hero-kicker{margin:0 0 clamp(20px,4vw,40px);font-size:12px;text-transform:uppercase;
+  letter-spacing:.2em;color:var(--dim)}
+.hero h2{margin:0;font-weight:700;letter-spacing:-.04em;line-height:.92;
+  font-size:clamp(48px,14vw,150px);text-transform:uppercase}
+.hero-body{max-width:46ch;margin:clamp(24px,4vw,44px) 0 0;font-size:clamp(16px,2vw,19px);
+  line-height:1.45;color:var(--ink)}
+
+/* statement / manifest */
+.statement{display:grid;grid-template-columns:1fr 3fr;gap:0;
+  border-bottom:var(--hair) solid var(--line)}
+.sec-head{margin:0;padding:22px 18px;font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.16em;border-right:var(--hair) solid var(--line)}
+.statement-body{margin:0;padding:22px 18px;max-width:60ch;
+  font-size:clamp(18px,2.4vw,26px);line-height:1.35;letter-spacing:-.01em}
+
+/* index grid: hairline cells via 1px gap on inked background */
+.index .sec-head{border-right:0;border-bottom:var(--hair) solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--hair);
+  background:var(--line)}
+.card{background:var(--paper);padding:20px 18px 26px;min-height:240px;
+  display:flex;flex-direction:column}
+.num{font-size:12px;letter-spacing:.1em;color:var(--dim)}
+.card h4{margin:14px 0 auto;font-size:clamp(22px,3vw,34px);font-weight:700;
+  letter-spacing:-.02em;text-transform:uppercase}
+.card p{margin:16px 0 0;font-size:13px;line-height:1.45;color:var(--dim);max-width:30ch}
+
+/* footer */
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
+  padding:18px;border-top:var(--hair) solid var(--line);
+  font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--dim)}
+
+/* responsive collapse */
+@media(max-width:860px){
+  .mast{grid-template-columns:1fr 1fr}
+  .mast-name{grid-column:1/-1;border-left:0;border-bottom:var(--hair) solid var(--line);
+    min-height:0;padding:20px 18px}
+  .mast-cell:nth-child(2){border-left:0}
+  .grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .mast{grid-template-columns:1fr}
+  .mast-cell{border-left:0;border-bottom:var(--hair) solid var(--line);min-height:0}
+  .statement{grid-template-columns:1fr}
+  .sec-head{border-right:0;border-bottom:var(--hair) solid var(--line)}
+  .grid{grid-template-columns:1fr}
+  .card{min-height:0}
+}
+
+/* motion: subtle, and off when asked */
+nav a,.card{transition:background .12s,color .12s}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}

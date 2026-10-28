@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site Name</title>
+<!--
+  START HERE. Copy this folder to templates/<slug>/ and make it yours.
+  RULES (the only ones; everything else is your art):
+    1. entry point is index.html; styling lives in style.css (always external).
+    2. fillable text carries data-slot="…" so the editor and a backend can find it.
+    3. fill every slot with IN-WORLD copy for the theme — never lorem ipsum.
+    4. keep the edit.js line (last line of body). It 404s harmlessly once exported.
+    5. register the slug in the T array in /index.html.
+  Multipage: add about.html, work.html, … in this folder. They share this
+  style.css and link each other with plain relative hrefs. Repeat the header/nav
+  markup per page — fine at template scale; a backend lifts it to one partial later.
+  No framework, no build, no JS includes.
+-->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 data-slot="site-name">Site Name</h1>
+    <p class="tagline" data-slot="tagline">Tagline goes here</p>
+  </header>
+
+  <nav>
+    <a href="index.html" data-slot="nav-item" aria-current="page">Home</a>
+    <a href="about.html" data-slot="nav-item">About</a>
+  </nav>
+
+  <div class="wrap">
+    <section class="hero">
+      <h2 data-slot="hero-title">Hero headline</h2>
+      <p data-slot="hero-body">Hero paragraph — write it in the voice of the theme.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h3 data-slot="card-title">Card one</h3>
+        <p data-slot="card-body">Short description.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">Card two</h3>
+        <p data-slot="card-body">Short description.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">Card three</h3>
+        <p data-slot="card-body">Short description.</p>
+      </div>
+    </div>
+
+    <footer data-slot="footer">&copy; 2026 Site Name</footer>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

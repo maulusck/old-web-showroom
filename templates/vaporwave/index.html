@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaporwave Plaza</title>
+<!-- Vaporwave Mall — pink/teal/purple skies, slit sun, neon grid, marble bust, katakana.
+     80s mall directory x 90s Windows. CSS gradients + inline SVG only. No photos. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- the surreal sky: gradient + slit sun + grid floor + marble bust, all CSS/SVG -->
+  <div class="scene" aria-hidden="true">
+    <svg class="sky" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff38a"/>
+          <stop offset=".45" stop-color="#ff6ad5"/>
+          <stop offset="1" stop-color="#8c52ff"/>
+        </linearGradient>
+        <mask id="slits">
+          <rect x="0" y="0" width="400" height="300" fill="#fff"/>
+          <rect x="0" y="118" width="400" height="4" fill="#000"/>
+          <rect x="0" y="128" width="400" height="6" fill="#000"/>
+          <rect x="0" y="140" width="400" height="8" fill="#000"/>
+          <rect x="0" y="154" width="400" height="11" fill="#000"/>
+        </mask>
+        <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2a0a4a"/>
+          <stop offset="1" stop-color="#120626"/>
+        </linearGradient>
+      </defs>
+      <circle cx="200" cy="120" r="72" fill="url(#sun)" mask="url(#slits)"/>
+      <rect x="0" y="175" width="400" height="125" fill="url(#floor)"/>
+      <!-- neon grid floor: horizontals tightening toward horizon + perspective verticals -->
+      <g stroke="#26f0f1" stroke-width="1" opacity=".85">
+        <line x1="0" y1="178" x2="400" y2="178"/>
+        <line x1="0" y1="184" x2="400" y2="184"/>
+        <line x1="0" y1="192" x2="400" y2="192"/>
+        <line x1="0" y1="203" x2="400" y2="203"/>
+        <line x1="0" y1="218" x2="400" y2="218"/>
+        <line x1="0" y1="238" x2="400" y2="238"/>
+        <line x1="0" y1="264" x2="400" y2="264"/>
+        <line x1="-40" y1="300" x2="200" y2="176"/>
+        <line x1="40"  y1="300" x2="200" y2="176"/>
+        <line x1="120" y1="300" x2="200" y2="176"/>
+        <line x1="200" y1="300" x2="200" y2="176"/>
+        <line x1="280" y1="300" x2="200" y2="176"/>
+        <line x1="360" y1="300" x2="200" y2="176"/>
+        <line x1="440" y1="300" x2="200" y2="176"/>
+      </g>
+    </svg>
+    <!-- fake Greek marble bust silhouette -->
+    <svg class="bust" viewBox="0 0 120 150">
+      <defs>
+        <linearGradient id="marble" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ffffff"/>
+          <stop offset=".5" stop-color="#d9d2e8"/>
+          <stop offset="1" stop-color="#9f97c0"/>
+        </linearGradient>
+      </defs>
+      <g fill="url(#marble)">
+        <path d="M60 8c-16 0-26 13-26 31 0 10 3 17 7 23-4 3-7 8-8 16-1 7-6 10-12 14-7 5-10 12-10 22v28h98v-28c0-10-3-17-10-22-6-4-11-7-12-14-1-8-4-13-8-16 4-6 7-13 7-23 0-18-10-31-26-31z"/>
+      </g>
+      <g fill="#b7aed6" opacity=".55">
+        <path d="M48 40c3 4 9 6 12 6s9-2 12-6c-2 6-7 9-12 9s-10-3-12-9z"/>
+        <path d="M60 50c2 4 2 9 0 15-2-6-2-11 0-15z"/>
+      </g>
+    </svg>
+  </div>
+
+  <header class="plaza">
+    <div class="titlebar">
+      <span class="tb-dot"></span><span class="tb-txt">PLAZA.EXE</span>
+      <span class="tb-ctl">_ &#9633; &times;</span>
+    </div>
+    <h1 data-slot="site-name">V A P O R &middot; P L A Z A</h1>
+    <p class="kata" data-slot="tagline">ヴェイパーウェイブ &middot; open 24 hours &middot; dreams on level 3</p>
+  </header>
+
+  <nav aria-label="Mall directory">
+    <a href="index.html" data-slot="nav-item" aria-current="page">ホーム Home</a>
+    <a href="index.html" data-slot="nav-item">Directory</a>
+    <a href="index.html" data-slot="nav-item">Food Court</a>
+    <a href="index.html" data-slot="nav-item">Arcade</a>
+    <a href="index.html" data-slot="nav-item">Fountain</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero">
+      <span class="now">★ NOW PLAYING ON THE P.A. ★</span>
+      <h2 data-slot="hero-title">WELCOME TO THE PLAZA</h2>
+      <p data-slot="hero-body">The escalators run forever and the fountain never
+      closes. Step off the neon grid, past the marble gods, into a mall that only
+      exists between sunset and the next sunset. Everything is 50% off. Nothing is
+      for sale. 全ては永遠に。</p>
+      <div class="tape">▓▒░ VHS &middot; TRACKING &middot; PLEASE STAND BY ░▒▓</div>
+    </section>
+
+    <h3 class="dir-head" data-slot="page-title">STORE DIRECTORY — レベル 1</h3>
+    <div class="grid">
+      <div class="card">
+        <span class="unit">UNIT 01</span>
+        <h3 data-slot="card-title">Marble Garden Spa</h3>
+        <p data-slot="card-body">Statues weep chlorinated water. Soak until your edges
+        go soft and your memories turn pastel. 大理石。</p>
+      </div>
+      <div class="card">
+        <span class="unit">UNIT 02</span>
+        <h3 data-slot="card-title">Neon Palms Food Court</h3>
+        <p data-slot="card-body">Teriyaki from a kiosk that was here before the mall
+        and will be here after. Free refills on the sunset.</p>
+      </div>
+      <div class="card">
+        <span class="unit">UNIT 03</span>
+        <h3 data-slot="card-title">Sega Dreams Arcade</h3>
+        <p data-slot="card-body">High score belongs to a player who left in 1994. Her
+        initials still glow at the top of every machine. アーケード。</p>
+      </div>
+      <div class="card">
+        <span class="unit">UNIT 04</span>
+        <h3 data-slot="card-title">Fountain of Floppy Disks</h3>
+        <p data-slot="card-body">Toss in a diskette, make a wish, lose the file forever.
+        The water is teal and tastes like recess.</p>
+      </div>
+    </div>
+
+    <section class="prose">
+      <h3 data-slot="page-title">AFTER-HOURS NOTICE</h3>
+      <p data-slot="page-body">The Plaza dims its skylights at no particular hour. Should
+      you find the exit, it will return you to the parking lot of your choosing — childhood
+      summer, a dial-up afternoon, the long drive home. Please retrieve all nostalgia from
+      the lost &amp; found before you go. ありがとう。</p>
+    </section>
+  </main>
+
+  <footer data-slot="footer">&copy; 198X–20XX VAPOR PLAZA MGMT CO. &middot; ショッピングモール &middot; a e s t h e t i c since forever</footer>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

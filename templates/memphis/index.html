@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZIGZAG</title>
+<!-- ZIGZAG — 1980s Memphis Group / Saved-by-the-Bell postmodern. Confetti, squiggles,
+     terrazzo & chunky angled type on black. All shapes faked with CSS gradients + inline SVG. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- scattered decorative shapes (CSS-drawn, purely ornamental) -->
+  <div class="confetti" aria-hidden="true">
+    <span class="shape tri c-pink"></span>
+    <span class="shape dot c-cyan"></span>
+    <span class="shape blob c-yellow"></span>
+    <span class="shape tri c-mint"></span>
+    <span class="shape ring c-coral"></span>
+    <span class="shape dot c-lilac"></span>
+    <span class="shape bar c-yellow"></span>
+    <span class="shape ring c-cyan"></span>
+  </div>
+
+  <header class="banner">
+    <svg class="squiggle" viewBox="0 0 320 24" aria-hidden="true" preserveAspectRatio="none">
+      <path d="M0 12 Q20 0 40 12 T80 12 T120 12 T160 12 T200 12 T240 12 T280 12 T320 12"
+            fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+    <h1 data-slot="site-name">ZIGZAG</h1>
+    <p class="tagline" data-slot="tagline">A Totally Rad Design Party · Est. 1986</p>
+  </header>
+
+  <nav>
+    <a href="index.html" data-slot="nav-item" aria-current="page">Home</a>
+    <a href="index.html" data-slot="nav-item">Styles</a>
+    <a href="index.html" data-slot="nav-item">The Bash</a>
+    <a href="index.html" data-slot="nav-item">Shapes</a>
+    <a href="index.html" data-slot="nav-item">Mixtape</a>
+  </nav>
+
+  <div class="wrap">
+
+    <section class="hero">
+      <span class="badge" data-slot="page-title">NEW! GEOMETRY ON PURPOSE</span>
+      <h2 data-slot="hero-title">Shapes gone wild since nineteen&#8209;eighty&#8209;rad.</h2>
+      <p data-slot="hero-body">We are the loudest little design shop on the boulevard — triangles
+      where you least expect them, squiggles that will not sit still, and more hot pink than the
+      rules allow. Pull up a terrazzo chair. The confetti never settles here.</p>
+      <a class="cta" href="index.html" data-slot="nav-item">RSVP to the Bash &#9654;</a>
+    </section>
+
+    <div class="grid">
+      <div class="card c-1">
+        <h3 data-slot="card-title">Patterns, Plural</h3>
+        <p data-slot="card-body">Grids, dots, zigzags and terrazzo — stacked three deep until the
+        eye starts dancing. Clashing is a feature, never a bug.</p>
+      </div>
+      <div class="card c-2">
+        <h3 data-slot="card-title">Chunky Type Dept.</h3>
+        <p data-slot="card-body">Bold, blocky, and tilted on purpose. If the headline sits flat
+        and quiet, we send it back to the studio with a scolding.</p>
+      </div>
+      <div class="card c-3">
+        <h3 data-slot="card-title">The Shape Drawer</h3>
+        <p data-slot="card-body">A bottomless bin of triangles, blobs, rings and squiggles,
+        scattered across your brand like sprinkles on soft serve.</p>
+      </div>
+      <div class="card c-4">
+        <h3 data-slot="card-title">Neon Mixtape</h3>
+        <p data-slot="card-body">Cyan, coral, lemon and lilac — a pastel riot bolted onto pure
+        black. Bring sunglasses; the palette bites.</p>
+      </div>
+    </div>
+
+    <section class="band">
+      <h2 data-slot="page-body">Less beige. More boom.</h2>
+      <p data-slot="hero-body">Hand us a boring brand and we hand it back with jazz. No muted
+      tones, no polite margins — just the gloriously loud postmodern future they promised us
+      in 1986, delivered to your doorstep wrapped in squiggles.</p>
+    </section>
+
+    <footer data-slot="footer">&copy; 1986&#8211;2026 ZIGZAG Design Party · Mixed on magnetic tape, loud on arrival.</footer>
+  </div>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

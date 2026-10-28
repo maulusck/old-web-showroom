@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOS Commander</title>
+<!-- DOS Commander — early-90s Norton Commander TUI. VGA blue, cyan double borders, twin panels. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="screen">
+
+  <div class="menubar">
+    <span class="menu">
+      <a href="#" data-slot="nav-item">Left</a>
+      <a href="#" data-slot="nav-item">Files</a>
+      <a href="#" data-slot="nav-item">Disk</a>
+      <a href="#" data-slot="nav-item">Commands</a>
+      <a href="#" data-slot="nav-item">Options</a>
+      <a href="#" data-slot="nav-item">Right</a>
+    </span>
+    <span class="prog">
+      <b data-slot="site-name">DOS COMMANDER</b>
+      <i data-slot="tagline">v4.0 · (C) 1993</i>
+    </span>
+  </div>
+
+  <div class="panels">
+
+    <section class="panel left">
+      <div class="panel-head">C:\COMMANDER\*.*</div>
+      <div class="col-head"><span>Name</span><span>Size</span><span>Date</span></div>
+      <ul class="files">
+        <li class="file dir"><span class="fname">..</span><span class="fmeta" data-slot="file-info">&lt;UP-DIR&gt;  10-31-93</span></li>
+        <li class="file sel"><span class="fname" data-slot="file-name">README&nbsp;&nbsp;TXT</span><span class="fmeta" data-slot="file-info">6,144  11-03-93</span></li>
+        <li class="file"><span class="fname" data-slot="file-name">INSTALL&nbsp;&nbsp;EXE</span><span class="fmeta" data-slot="file-info">48,210  11-03-93</span></li>
+        <li class="file"><span class="fname" data-slot="file-name">ORDER&nbsp;&nbsp;&nbsp;&nbsp;FRM</span><span class="fmeta" data-slot="file-info">2,048  10-18-93</span></li>
+        <li class="file"><span class="fname" data-slot="file-name">SYSOP&nbsp;&nbsp;&nbsp;&nbsp;DOC</span><span class="fmeta" data-slot="file-info">4,096  09-27-93</span></li>
+        <li class="file dir"><span class="fname" data-slot="file-name">UTILS</span><span class="fmeta" data-slot="file-info">&lt;SUB-DIR&gt;  11-01-93</span></li>
+        <li class="file"><span class="fname" data-slot="file-name">GUEST&nbsp;&nbsp;&nbsp;&nbsp;LOG</span><span class="fmeta" data-slot="file-info">880  11-04-93</span></li>
+      </ul>
+      <div class="panel-foot" data-slot="file-info">6 files, 61,440 bytes free on C:</div>
+    </section>
+
+    <section class="panel right">
+      <div class="panel-head">README.TXT &mdash; [ VIEW ]</div>
+      <div class="viewer">
+        <h2 class="v-title" data-slot="hero-title">WELCOME TO DOS COMMANDER</h2>
+        <p class="v-body" data-slot="hero-body">Two panels, one glowing bar, and the whole
+        drive at your fingertips. No mouse required, no mercy given. Point the cursor, hit a
+        key, watch the bytes fly. This is file management the way the ancients meant it.</p>
+        <p class="v-rule">&#9472;&#9472; HOTKEY FIELD GUIDE &#9472;&#9472;</p>
+        <ul class="tips">
+          <li><b class="t-key" data-slot="card-title">F5 &mdash; COPY</b>
+              <span class="t-txt" data-slot="card-body">Blast files from the left panel to the right at 115,200 baud of pure confidence.</span></li>
+          <li><b class="t-key" data-slot="card-title">F3 &mdash; VIEW</b>
+              <span class="t-txt" data-slot="card-body">Peek inside any file without launching a thing. Flip to hex if you're feeling brave.</span></li>
+          <li><b class="t-key" data-slot="card-title">TAB &mdash; SWAP</b>
+              <span class="t-txt" data-slot="card-body">Throw the cursor bar across to the other drive and back. The panels never argue.</span></li>
+          <li><b class="t-key" data-slot="card-title">ALT-F1 &mdash; DRIVE</b>
+              <span class="t-txt" data-slot="card-body">Swap the floppy, scan the hard card, mount the CD-ROM caddy. Everything's a letter.</span></li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="cmdline"><span class="prompt">C:\COMMANDER&gt;</span><span class="typed">dir /w /p</span><span class="cursor">&#9608;</span></div>
+
+  <div class="fkeys">
+    <a href="#" class="fk" data-slot="nav-item"><b>1</b>Help</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>2</b>Menu</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>3</b>View</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>4</b>Edit</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>5</b>Copy</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>6</b>RenMov</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>7</b>Mkdir</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>8</b>Delete</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>9</b>PullDn</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>10</b>Quit</a>
+  </div>
+
+  <footer data-slot="footer">DOS COMMANDER (C) 1993 &mdash; Press F9 for the pull-down menus. 640K ought to be enough for anybody.</footer>
+
+</div>
+<script src="../../edit.js" defer></script>
+</body>
+</html>

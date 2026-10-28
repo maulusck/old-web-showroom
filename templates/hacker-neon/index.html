@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nullroot</title>
+<!-- hacker-neon — black void, monospace, single green glow. Terminal-cool, restrained. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="bar">
+    <span class="dot"></span>
+    <h1 data-slot="site-name">nullroot</h1>
+    <span class="status">// secure channel open</span>
+  </header>
+
+  <nav>
+    <a href="index.html" data-slot="nav-item" aria-current="page">~/home</a>
+    <a href="index.html#tools" data-slot="nav-item">~/tools</a>
+    <a href="index.html#writeups" data-slot="nav-item">~/writeups</a>
+    <a href="index.html#contact" data-slot="nav-item">~/contact</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="boot" aria-hidden="true">
+      <p>[ ok ] mounting /dev/null ... done</p>
+      <p>[ ok ] entropy pool seeded, 256 bits</p>
+      <p>[ ok ] dropping privileges to guest</p>
+    </section>
+
+    <section class="hero">
+      <p class="prompt">guest@nullroot:~$ <span data-slot="hero-title">whoami</span><span class="cur" aria-hidden="true"></span></p>
+      <p class="lede" data-slot="hero-body">Security researcher, CTF player, builder of small sharp tools.
+      I break things quietly, write up how, and leave the lights off behind me.</p>
+    </section>
+
+    <section id="tools" class="grid">
+      <article class="card">
+        <h3 data-slot="card-title">portwalker</h3>
+        <p data-slot="card-body">Async TCP sweep that fits in one file. No deps, no noise, just open ports and honest timing.</p>
+      </article>
+      <article class="card">
+        <h3 data-slot="card-title">grepcreds</h3>
+        <p data-slot="card-body">Greps a repo's history for keys that should never have been committed. Red output, no mercy.</p>
+      </article>
+      <article class="card">
+        <h3 data-slot="card-title">hexpeek</h3>
+        <p data-slot="card-body">A terminal hex viewer with sane defaults. Annotate offsets, diff two blobs, exit cleanly.</p>
+      </article>
+    </section>
+
+    <section id="writeups" class="log">
+      <h2 data-slot="page-title">// recent writeups</h2>
+      <p data-slot="page-body">Notes from the lab. Every box starts with recon and ends with root; the interesting
+      part is always the quiet step in between. Pull requests welcome, excuses are not.</p>
+    </section>
+  </main>
+
+  <footer id="contact" data-slot="footer">signed: 0xC4FE · pgp on request · &copy; 2026 nullroot — stay in the shadows</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

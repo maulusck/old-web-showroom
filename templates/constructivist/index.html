@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Red Lathe</title>
+<!-- Constructivist — 1920s Russian avant-garde (Rodchenko / El Lissitzky).
+     Red/black/cream, hard diagonals, heavy ALL-CAPS sans, SVG wedges & circles.
+     A fictional workers' art collective. Shapes faked with CSS transforms + inline SVG. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- diagonal red field driven behind everything -->
+  <svg class="field" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <polygon class="r" points="0,0 100,0 100,34 0,70"/>
+    <polygon class="k" points="0,70 100,34 100,42 0,78"/>
+  </svg>
+
+  <header class="masthead">
+    <svg class="mark" viewBox="0 0 120 120" aria-hidden="true">
+      <circle class="k" cx="60" cy="60" r="56"/>
+      <path class="r" d="M60 60 L116 60 A56 56 0 0 0 60 4 Z"/>
+      <path class="cr" d="M60 60 L60 116 A56 56 0 0 0 116 60 Z"/>
+      <rect class="r" x="2" y="56" width="116" height="8" transform="rotate(-24 60 60)"/>
+    </svg>
+    <div class="title-block">
+      <h1 data-slot="site-name">THE RED LATHE</h1>
+      <p class="tagline" data-slot="tagline">A COLLECTIVE WORKSHOP FOR FORM, LABOUR &amp; THE NEW DESIGN · EST. 1923</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html" data-slot="nav-item" aria-current="page">WORKSHOP</a>
+    <a href="index.html" data-slot="nav-item">MANIFESTO</a>
+    <a href="index.html" data-slot="nav-item">EXHIBITION</a>
+    <a href="index.html" data-slot="nav-item">PRESSES</a>
+    <a href="index.html" data-slot="nav-item">JOIN THE LINE</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">EXHIBITION NO. 5 — OPEN TO ALL WHO WORK</p>
+        <h2 data-slot="hero-title">FORM IS A TOOL. BUILD THE FUTURE OUT LOUD.</h2>
+        <p data-slot="hero-body">We do not decorate — we construct. The poster is a machine, the page is a
+        plan, the line is a worker. Red and black against honest cream: no ornament, no apology.
+        Every angle does labour; every circle turns the wheel. Bring your hands to the press.</p>
+        <a class="cta" href="index.html" data-slot="nav-item">ENTER THE WORKSHOP ▶</a>
+      </div>
+      <svg class="hero-art" viewBox="0 0 200 240" aria-hidden="true">
+        <polygon class="k" points="0,240 200,40 200,240"/>
+        <polygon class="r" points="0,240 120,120 0,120"/>
+        <circle class="ring" cx="150" cy="70" r="48"/>
+        <rect class="k" x="20" y="10" width="170" height="12" transform="rotate(18 20 10)"/>
+        <rect class="r" x="30" y="40" width="150" height="12" transform="rotate(18 30 40)"/>
+        <polygon class="cr" points="150,70 198,70 150,118"/>
+      </svg>
+    </section>
+
+    <div class="strut" aria-hidden="true">
+      <span>⬛ ПРОЛЕТАРИИ ФОРМЫ ⬛ WORKERS OF FORM ⬛ ПРОЛЕТАРИИ ФОРМЫ ⬛ WORKERS OF FORM ⬛</span>
+    </div>
+
+    <section class="grid">
+      <article class="card c1">
+        <span class="num">01</span>
+        <h3 data-slot="card-title">THE PRINT SHOP</h3>
+        <p data-slot="card-body">Hand-set type, heavy rule, and the diagonal as a working axis. We cut posters
+        the way the lathe cuts steel — straight, loud, and for use.</p>
+      </article>
+      <article class="card c2">
+        <span class="num">02</span>
+        <h3 data-slot="card-title">THE DRAWING FLOOR</h3>
+        <p data-slot="card-body">Compositions on the grid and against it. Circle, wedge, bar: the alphabet of
+        construction, drilled until the hand builds without thinking.</p>
+      </article>
+      <article class="card c3">
+        <span class="num">03</span>
+        <h3 data-slot="card-title">THE EXHIBITION HALL</h3>
+        <p data-slot="card-body">Walls given over to the collective. No signatures, no masters — only the work
+        and the worker who shaped it. Doors open each week at the whistle.</p>
+      </article>
+      <article class="card c4">
+        <span class="num">04</span>
+        <h3 data-slot="card-title">THE PRESSES</h3>
+        <p data-slot="card-body">Ink by the barrel, paper by the ream. Bring a design and leave with a thousand.
+        Production is the proof: a poster unseen is a tool unused.</p>
+      </article>
+    </section>
+
+    <section class="manifesto">
+      <h2 class="page-title" data-slot="page-title">FIVE LINES OF THE WORKSHOP</h2>
+      <p class="page-body" data-slot="page-body">We reject the decorative and the precious. Design is not a mirror held to the
+      ordering class — it is a lever in the hand of the maker. The right angle is a promise; the diagonal, a shove.
+      We print in red because red is the colour of the forge, and in black because black is the weight of the type.
+      What cannot be built should not be drawn. What is built belongs to all who built it. Sign nothing; stamp everything.</p>
+    </section>
+  </main>
+
+  <footer data-slot="footer">◆ THE RED LATHE COLLECTIVE · WORKSHOP NO. 5 · SET IN LEAD, PULLED BY HAND · 1923—2026 ◆</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
