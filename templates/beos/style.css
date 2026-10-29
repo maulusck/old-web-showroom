@@ -1,0 +1,131 @@
+/* beos — late-90s BeOS desktop. Yellow window tab + Deskbar + Tracker.
+   Teal/grey two-tone, humanist system sans. One stylesheet, both pages. */
+:root{
+  --desk:#4e8f8c;      /* the teal desktop */
+  --desk-dk:#3d7572;
+  --grey:#d6d4cc;      /* window panel */
+  --grey-lt:#e9e7df;
+  --grey-dk:#b8b6ad;
+  --ink:#1b1b1b;
+  --dim:#555;
+  --yellow:#f5cc26;    /* the signature tab */
+  --yellow-dk:#d8af16;
+  --teal:#2a6d6d;      /* accent ink */
+  --teal-lt:#55a0a0;
+  --edge:#5a5a52;      /* thin window border */
+  --edge-lt:#fff;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --desk:#1e3534; --desk-dk:#142423;
+  --grey:#2c2c2a; --grey-lt:#3a3a37; --grey-dk:#1f1f1d;
+  --ink:#ececdf; --dim:#aba99d;
+  --teal:#7cc0c0; --teal-lt:#55a0a0;
+  --edge:#000; --edge-lt:#4a4a46;
+}}
+:root[data-theme="dark"]{
+  --desk:#1e3534; --desk-dk:#142423;
+  --grey:#2c2c2a; --grey-lt:#3a3a37; --grey-dk:#1f1f1d;
+  --ink:#ececdf; --dim:#aba99d;
+  --teal:#7cc0c0; --teal-lt:#55a0a0;
+  --edge:#000; --edge-lt:#4a4a46;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);
+  background:var(--desk);
+  background-image:linear-gradient(var(--desk-dk) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--desk-dk) 1px,transparent 1px);
+  background-size:22px 22px;
+  font:15px/1.55 "Segoe UI","Trebuchet MS",Verdana,system-ui,sans-serif;
+  padding:44px 14px 14px;min-height:100vh}
+
+/* ---- Deskbar: pinned top-right ---- */
+.deskbar{position:fixed;top:0;right:0;z-index:20;display:flex;align-items:stretch;
+  background:var(--grey);border:1px solid var(--edge);border-top:none;border-right:none;
+  box-shadow:-1px 1px 0 rgba(0,0,0,.25);font-size:12px}
+.leaf{display:flex;align-items:center;justify-content:center;background:var(--yellow);
+  color:#1b1b1b;font-weight:700;font-style:italic;padding:0 10px;
+  border-right:1px solid var(--edge);letter-spacing:-.02em}
+.dbname{display:flex;align-items:center;padding:0 12px;font-weight:600;color:var(--teal)}
+.dbtime{display:flex;align-items:center;padding:0 12px;border-left:1px solid var(--grey-dk);color:var(--dim)}
+.dbitem{display:flex;align-items:center;padding:0 12px;border-left:1px solid var(--grey-dk);
+  color:var(--ink);text-decoration:none}
+.dbitem:hover{background:var(--yellow)}
+
+/* ---- Desktop / windows ---- */
+.desktop{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+.window{position:relative;margin-top:26px;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.28))}
+/* the yellow title tab: top-left, never full width */
+.tab{position:absolute;top:-25px;left:-1px;z-index:2;
+  background:var(--yellow);color:#1b1b1b;font-weight:700;font-size:13px;
+  padding:5px 18px 6px;max-width:72%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  border:1px solid var(--edge);border-bottom:none;
+  box-shadow:inset 1px 1px 0 rgba(255,255,255,.5)}
+.tab-sm{font-weight:600;font-size:12px;font-family:"Segoe UI",system-ui,sans-serif}
+.chrome{background:var(--grey);border:1px solid var(--edge);
+  box-shadow:inset 1px 1px 0 var(--edge-lt)}
+.content{padding:26px 28px}
+
+/* resize knob, bottom-right */
+.resize{position:absolute;right:2px;bottom:2px;width:14px;height:14px;z-index:2;
+  background:
+    linear-gradient(135deg,transparent 46%,var(--edge) 46%,var(--edge) 54%,transparent 54%),
+    linear-gradient(135deg,transparent 70%,var(--edge) 70%,var(--edge) 78%,transparent 78%);
+  background-color:var(--grey-lt);border:1px solid var(--edge)}
+
+/* ---- Hero window ---- */
+.win-hero .tagline{margin:0 0 6px;color:var(--teal);font-weight:600;font-size:12px;
+  text-transform:uppercase;letter-spacing:.14em}
+.win-hero h1{margin:0 0 14px;font-size:clamp(22px,4.6vw,34px);line-height:1.15;
+  font-weight:700;letter-spacing:-.01em}
+.body{margin:0;max-width:58ch;color:var(--dim);font-size:15px}
+
+/* ---- Yellow-tab nav bar ---- */
+.tabbar{display:flex;gap:4px;flex-wrap:wrap;padding:0 2px;
+  border-bottom:2px solid var(--edge);margin:4px 0 0}
+.navtab{background:var(--grey-dk);color:var(--ink);text-decoration:none;
+  padding:7px 18px 8px;font-size:13px;font-weight:600;position:relative;top:2px;
+  border:1px solid var(--edge);border-bottom:none}
+.navtab:hover{background:var(--yellow-dk)}
+.navtab[aria-current]{background:var(--yellow);box-shadow:inset 1px 1px 0 rgba(255,255,255,.5)}
+
+/* ---- Tracker window ---- */
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:7px 14px;background:var(--grey-lt);border-bottom:1px solid var(--grey-dk);
+  font-size:12px;color:var(--dim)}
+.toolbar .view{color:var(--teal);font-weight:600}
+.tracker{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:1px;background:var(--grey-dk);padding:1px}
+.file{background:var(--grey);padding:16px 16px 18px;text-align:center}
+.file:hover{background:var(--grey-lt)}
+.icon{display:block;margin:0 auto 10px;line-height:0}
+.file-name{margin:0 0 7px;font-size:14px;font-weight:700;color:var(--teal);
+  word-break:break-word}
+.file-note{margin:0;font-size:13px;line-height:1.45;color:var(--dim)}
+.statusbar{padding:6px 14px;background:var(--grey-lt);border-top:1px solid var(--grey-dk);
+  font-size:12px;color:var(--dim)}
+
+/* ---- About window ---- */
+.about-head{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.leaf.big{font-size:34px;padding:14px 16px;border:1px solid var(--edge);border-radius:2px}
+.win-about h1{margin:0;font-size:clamp(22px,5vw,32px);font-weight:700}
+.win-about .tagline{margin:4px 0 0;color:var(--teal);font-style:italic;font-size:14px}
+.specs{margin:22px 0 0;border-top:1px solid var(--grey-dk)}
+.specs div{display:flex;gap:14px;padding:9px 2px;border-bottom:1px solid var(--grey-dk)}
+.specs dt{flex:0 0 108px;font-weight:700;color:var(--teal);font-size:13px;
+  text-transform:uppercase;letter-spacing:.05em}
+.specs dd{margin:0;font-size:14px;color:var(--dim)}
+
+/* ---- Footer ---- */
+footer{max-width:860px;margin:30px auto 0;text-align:center;color:#dff0ef;
+  font-size:12px;letter-spacing:.03em;text-shadow:1px 1px 0 rgba(0,0,0,.3)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) footer{color:#8fb9b7}}
+:root[data-theme="dark"] footer{color:#8fb9b7}
+
+@media (max-width:560px){
+  .deskbar{position:static;width:100%;justify-content:flex-start;flex-wrap:wrap;
+    border-left:none;margin-bottom:18px}
+  body{padding-top:14px}
+  .content{padding:20px}
+  .tab{max-width:80%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

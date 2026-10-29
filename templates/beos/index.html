@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yellowtab Studio</title>
+<!-- beos — late-90s BeOS desktop: yellow window tab, teal/grey two-tone, Deskbar top-right, Tracker file window. The Media OS, on the web. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Deskbar: the signature BeOS launcher, pinned to the top-right corner -->
+  <div class="deskbar" aria-label="Deskbar">
+    <span class="leaf">Be</span>
+    <span class="dbname" data-slot="deskbar-name">Yellowtab Studio</span>
+    <span class="dbtime" data-slot="deskbar-time">4:04 PM</span>
+    <a class="dbitem" href="#" data-slot="menu-item">Applications</a>
+    <a class="dbitem" href="#" data-slot="menu-item">Recent</a>
+  </div>
+
+  <main class="desktop">
+
+    <!-- Welcome window -->
+    <section class="window win-hero">
+      <span class="tab" data-slot="site-name">Yellowtab Studio</span>
+      <div class="chrome">
+        <div class="content">
+          <p class="tagline" data-slot="tagline">Multimedia · multithreaded · since '97</p>
+          <h1 data-slot="hero-title">Everything running at once, and not one frame dropped.</h1>
+          <p class="body" data-slot="hero-body">We build media software the way the old desktop promised:
+          pervasively multithreaded, instantly responsive, friendly as a yellow tab. Forty-eight tracks of audio,
+          two streams of video, a live render, and the cursor never once stutters. Pull up a window and let's work.</p>
+        </div>
+      </div>
+      <span class="resize" aria-hidden="true"></span>
+    </section>
+
+    <!-- Yellow-tab navigation bar -->
+    <nav class="tabbar" aria-label="Primary">
+      <a class="navtab" href="index.html" aria-current="page" data-slot="nav-item">Workspace</a>
+      <a class="navtab" href="#tracker" data-slot="nav-item">Tracker</a>
+      <a class="navtab" href="about.html" data-slot="nav-item">About</a>
+      <a class="navtab" href="#" data-slot="nav-item">Queries</a>
+    </nav>
+
+    <!-- Tracker: the BeOS file manager window -->
+    <section class="window win-tracker" id="tracker">
+      <span class="tab tab-sm" data-slot="page-title">/boot/home/studio</span>
+      <div class="chrome">
+        <div class="toolbar">
+          <span class="path">/boot · home · studio</span>
+          <span class="view">icon view</span>
+        </div>
+        <div class="tracker">
+
+          <article class="file">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="40" height="40"><rect x="9" y="5" width="26" height="38" rx="1.5" fill="#e8e4dc" stroke="#555" stroke-width="1.5"/><path d="M28 5v8h7" fill="none" stroke="#555" stroke-width="1.5"/><rect x="14" y="20" width="16" height="2.5" fill="#f5cc26"/><rect x="14" y="26" width="16" height="2.5" fill="#55a0a0"/><rect x="14" y="32" width="10" height="2.5" fill="#55a0a0"/></svg>
+            </span>
+            <h2 class="file-name" data-slot="card-title">Render Farm.proj</h2>
+            <p class="file-note" data-slot="card-body">Scatter a scene across every idle thread. The progress bar fills before you've let go of the mouse.</p>
+          </article>
+
+          <article class="file">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="18" fill="#55a0a0" stroke="#2a6d6d" stroke-width="1.5"/><circle cx="24" cy="24" r="6" fill="#f5cc26" stroke="#2a6d6d" stroke-width="1.5"/><circle cx="24" cy="24" r="1.6" fill="#1a1a1a"/></svg>
+            </span>
+            <h2 class="file-name" data-slot="card-title">Audio Deck.proj</h2>
+            <p class="file-note" data-slot="card-body">Forty-eight live tracks, zero-latency monitoring. Turn the knob; the sound moves with your hand, not after it.</p>
+          </article>
+
+          <article class="file">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="40" height="40"><rect x="6" y="11" width="36" height="26" rx="2" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/><path d="M20 18l12 7-12 7z" fill="#f5cc26"/></svg>
+            </span>
+            <h2 class="file-name" data-slot="card-title">Video Suite.proj</h2>
+            <p class="file-note" data-slot="card-body">Two streams, scrubbed in real time while they encode. No proxy files, no beachball, no waiting.</p>
+          </article>
+
+          <article class="file">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="17" fill="none" stroke="#2a6d6d" stroke-width="1.5"/><path d="M24 7v34M7 24h34M13 13c7 6 15 6 22 0M13 35c7-6 15-6 22 0" fill="none" stroke="#55a0a0" stroke-width="1.3"/></svg>
+            </span>
+            <h2 class="file-name" data-slot="card-title">Net Share.proj</h2>
+            <p class="file-note" data-slot="card-body">Drop a folder on the globe and the whole studio sees it. Live queries, not stale copies.</p>
+          </article>
+
+        </div>
+        <div class="statusbar" data-slot="status">4 items · 1.2 GB free on /boot</div>
+      </div>
+      <span class="resize" aria-hidden="true"></span>
+    </section>
+
+  </main>
+
+  <footer data-slot="footer">&copy; 1998–2026 Yellowtab Studio · pervasively multithreaded · 64 virtual workspaces, all yours</footer>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

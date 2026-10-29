@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About This System — Yellowtab Studio</title>
+<!-- beos — About This System window. Shares style.css with index.html. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="deskbar" aria-label="Deskbar">
+    <span class="leaf">Be</span>
+    <span class="dbname" data-slot="deskbar-name">Yellowtab Studio</span>
+    <span class="dbtime" data-slot="deskbar-time">4:04 PM</span>
+    <a class="dbitem" href="#" data-slot="menu-item">Applications</a>
+    <a class="dbitem" href="#" data-slot="menu-item">Recent</a>
+  </div>
+
+  <main class="desktop">
+
+    <nav class="tabbar" aria-label="Primary">
+      <a class="navtab" href="index.html" data-slot="nav-item">Workspace</a>
+      <a class="navtab" href="index.html#tracker" data-slot="nav-item">Tracker</a>
+      <a class="navtab" href="about.html" aria-current="page" data-slot="nav-item">About</a>
+      <a class="navtab" href="#" data-slot="nav-item">Queries</a>
+    </nav>
+
+    <section class="window win-about">
+      <span class="tab" data-slot="page-title">About This System</span>
+      <div class="chrome">
+        <div class="content">
+          <div class="about-head">
+            <span class="leaf big" aria-hidden="true">Be</span>
+            <div>
+              <h1 data-slot="site-name">Yellowtab Studio</h1>
+              <p class="tagline" data-slot="tagline">The media desktop that never sleeps.</p>
+            </div>
+          </div>
+
+          <p class="body" data-slot="page-body">Born from the fastest, friendliest desktop of the late nineties
+          and rebuilt for the open web. No frameworks, no spinners, no loading screens — every window opens the
+          instant you ask for it. We make tools for people who record, cut, render and ship, and we make them feel
+          like the hardware is already warmed up and waiting. Pull up a tab. It's all threaded, all yours.</p>
+
+          <dl class="specs">
+            <div><dt>Kernel</dt><dd data-slot="spec">Preemptive · pervasively multithreaded</dd></div>
+            <div><dt>Filesystem</dt><dd data-slot="spec">Journaled, with live queries and typed attributes</dd></div>
+            <div><dt>Workspaces</dt><dd data-slot="spec">64 virtual desktops, a keystroke apart</dd></div>
+            <div><dt>Media</dt><dd data-slot="spec">Real-time audio and video, zero-latency monitoring</dd></div>
+            <div><dt>Interface</dt><dd data-slot="spec">Yellow tabs, teal desk, one Deskbar in the corner</dd></div>
+          </dl>
+        </div>
+      </div>
+      <span class="resize" aria-hidden="true"></span>
+    </section>
+
+  </main>
+
+  <footer data-slot="footer">&copy; 1998–2026 Yellowtab Studio · build R5.0.3 · still runs on a toaster and loves it</footer>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
