@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEONDIVE — enter</title>
+<!-- enter-splash — Flash-era ENTER SITE intro. ENTER / skip both go to home.html. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="frame">
+    <div class="stage">
+      <span class="tick tr"></span><span class="tick bl"></span>
+      <p class="rated">macromedia flash player 6 required</p>
+
+      <div class="logo">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <defs><radialGradient id="g" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ff2fb9"/><stop offset="60%" stop-color="#ff2fb9" stop-opacity="0"/>
+          </radialGradient></defs>
+          <circle cx="50" cy="50" r="48" fill="url(#g)"/>
+          <polygon points="40,32 72,50 40,68" fill="#22e6ff"/>
+        </svg>
+        <h1 data-slot="site-name">NEONDIVE</h1>
+      </div>
+      <p class="tagline" data-slot="tagline">the after-hours webzine</p>
+
+      <div class="loader">
+        <div class="lbl"><span data-slot="load-label">loading assets</span><span data-slot="load-pct">87%</span></div>
+        <div class="track"><div class="fill"></div></div>
+      </div>
+
+      <div class="gate">
+        <a class="enter" href="home.html" data-slot="nav-item">ENTER SITE</a>
+        <a class="skip" href="home.html" data-slot="nav-item">skip intro &raquo;</a>
+      </div>
+
+      <p class="notes">
+        <span class="spk" data-slot="splash-audio">&#9834; turn up your speakers &#9834;</span><br>
+        <span data-slot="splash-specs">best viewed at 1024&times;768 &middot; thousands of colors</span>
+      </p>
+    </div>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

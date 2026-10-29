@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEONDIVE</title>
+<!-- enter-splash — home.html: the site the splash enters. Shares style.css. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="in">
+      <h1 data-slot="site-name">NEONDIVE</h1>
+      <p class="tagline" data-slot="tagline">the after-hours webzine</p>
+    </div>
+    <nav>
+      <a href="home.html" data-slot="nav-item" aria-current="page">Lobby</a>
+      <a href="#" data-slot="nav-item">Mixes</a>
+      <a href="#" data-slot="nav-item">Gallery</a>
+      <a href="#" data-slot="nav-item">Guestbook</a>
+      <a href="#" data-slot="nav-item">Links</a>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <section class="hero">
+      <h2 data-slot="hero-title">You made it past the intro.</h2>
+      <p data-slot="hero-body">Welcome inside. Plug-in loaded, sound on, frame rate holding at a glorious
+      twelve a second. This is the part of the internet that only wakes up after midnight — dim, loud,
+      and held together with gradients. Pour something cold and click around.</p>
+      <p class="marquee" data-slot="page-body">&#9733; now playing: dial-tone &amp; distant thunder &#9733;</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h3 data-slot="card-title">The Mixes</h3>
+        <p data-slot="card-body">Hour-long sets ripped straight off the deck. Streaming at a brave 56k —
+        hit play, then go make coffee while the buffer fills.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">The Gallery</h3>
+        <p data-slot="card-body">Lens-flared wallpapers and hand-kerned logos, each one a single
+        afternoon too long in the making. Right-click, save, enjoy.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">The Guestbook</h3>
+        <p data-slot="card-body">Sign it. Shout out your crew, rate the splash page out of ten, and
+        leave an email we will absolutely never actually check.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">The Link Vault</h3>
+        <p data-slot="card-body">A wall of buttons to every sister site on the ring. Trade an
+        88&times;31 banner and you are family down here.</p>
+      </div>
+    </div>
+
+    <footer data-slot="footer">&copy; 2001&ndash;2026 NEONDIVE &middot; a Macromedia-free zone &middot; refresh if the music stops</footer>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

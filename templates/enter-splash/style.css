@@ -1,0 +1,99 @@
+/* enter-splash — Flash-era intro. Black stage, neon chrome, one glowing logo.
+   index.html is the splash; home.html is the site it enters. Shared theme. */
+:root{
+  --void:#05060a; --stage:#0b0d16; --panel:#10131f;
+  --ink:#e9ecff; --dim:#7b82a6; --line:#242a40;
+  --neon:#ff2fb9; --cyan:#22e6ff; --amber:#ffcf3f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--ink);
+  font-family:Verdana,Geneva,"DejaVu Sans",sans-serif;line-height:1.55}
+a{color:var(--cyan);text-decoration:none}
+
+/* ---- the Flash chrome: a boxed stage with corner ticks ---- */
+.frame{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.stage{position:relative;width:100%;max-width:760px;background:
+  radial-gradient(130% 90% at 50% 0%,#141833 0%,var(--stage) 55%,var(--void) 100%);
+  border:1px solid var(--line);padding:46px 28px 34px;text-align:center;overflow:hidden}
+.stage::before,.stage::after{content:"";position:absolute;width:18px;height:18px;
+  border:2px solid var(--cyan);opacity:.6}
+.stage::before{top:8px;left:8px;border-right:0;border-bottom:0}
+.stage::after{bottom:8px;right:8px;border-left:0;border-top:0}
+.tick{position:absolute;width:18px;height:18px;border:2px solid var(--neon);opacity:.6}
+.tick.tr{top:8px;right:8px;border-left:0;border-bottom:0}
+.tick.bl{bottom:8px;left:8px;border-right:0;border-top:0}
+.rated{position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  font:9px/1 "Courier New",monospace;letter-spacing:.34em;color:var(--dim);text-transform:uppercase}
+
+/* ---- glowing logo ---- */
+.logo{position:relative;margin:30px 0 4px;display:inline-block}
+.logo svg{position:absolute;inset:-46px 0 auto;left:50%;transform:translateX(-50%);
+  width:150px;height:150px;opacity:.5;z-index:0}
+.logo h1{position:relative;z-index:1;margin:0;font-size:clamp(38px,11vw,78px);
+  font-weight:900;letter-spacing:.04em;color:#fff;
+  text-shadow:0 0 6px var(--neon),0 0 18px var(--neon),0 0 42px #ff2fb988;
+  animation:pulse 2.6s ease-in-out infinite}
+.tagline{margin:14px 0 0;color:var(--cyan);font-size:12px;letter-spacing:.42em;
+  text-transform:uppercase;text-shadow:0 0 10px #22e6ff66}
+
+/* ---- loading bar ---- */
+.loader{max-width:320px;margin:34px auto 6px}
+.loader .lbl{display:flex;justify-content:space-between;font:10px/1 "Courier New",monospace;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+.track{height:10px;background:#000;border:1px solid var(--line);padding:1px}
+.fill{height:100%;width:87%;background:
+  linear-gradient(90deg,var(--neon),var(--amber),var(--cyan));
+  background-size:200% 100%;box-shadow:0 0 12px var(--neon);animation:slide 1.6s linear infinite}
+
+/* ---- enter / skip ---- */
+.gate{margin:38px 0 8px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.enter{display:inline-block;padding:15px 52px;font-size:19px;font-weight:900;
+  letter-spacing:.22em;text-transform:uppercase;color:#05060a;
+  background:linear-gradient(180deg,#5ff4ff,var(--cyan));
+  border:1px solid #bff8ff;box-shadow:0 0 22px #22e6ff99;animation:breathe 2.6s ease-in-out infinite}
+.enter:hover{background:linear-gradient(180deg,#ffffff,#9ff6ff);color:#000}
+.skip{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);
+  border-bottom:1px dashed var(--line)}
+.skip:hover{color:var(--neon);border-color:var(--neon)}
+.notes{margin:26px 0 2px;color:var(--dim);font:10px/1.9 "Courier New",monospace;
+  letter-spacing:.14em;text-transform:uppercase}
+.notes .spk{color:var(--amber)}
+
+/* ======================= home.html (the site) ======================= */
+.top{border-bottom:1px solid var(--line);background:
+  radial-gradient(120% 140% at 50% -40%,#1a1f3d,var(--void))}
+.top .in{max-width:860px;margin:0 auto;padding:30px 20px 0;text-align:center}
+.top h1{margin:0;font-size:clamp(28px,7vw,52px);font-weight:900;letter-spacing:.05em;color:#fff;
+  text-shadow:0 0 6px var(--neon),0 0 20px #ff2fb988}
+.top .tagline{margin-top:10px}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;max-width:860px;
+  margin:26px auto 0;padding:0 12px}
+nav a{padding:10px 18px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cyan);border:1px solid var(--line);border-bottom:0;background:var(--panel)}
+nav a:hover,nav a[aria-current]{color:#000;background:var(--cyan);box-shadow:0 0 16px #22e6ff88}
+
+.wrap{max-width:860px;margin:0 auto;padding:0 20px 70px}
+.hero{padding:46px 10px 36px;text-align:center;border-bottom:1px solid var(--line)}
+.hero h2{margin:0 auto 14px;max-width:20ch;font-size:clamp(22px,4.4vw,36px);font-weight:900;
+  letter-spacing:.02em;color:#fff;text-shadow:0 0 14px #22e6ff55}
+.hero p{margin:0 auto;max-width:54ch;color:var(--dim);font-size:15px}
+.marquee{margin:22px 0 0;color:var(--amber);font:11px/1 "Courier New",monospace;
+  letter-spacing:.26em;text-transform:uppercase}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:34px 0}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);padding:20px;position:relative}
+.card::before{content:"";position:absolute;top:0;left:0;width:34px;height:2px;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.card h3{margin:0 0 9px;color:var(--cyan);font-size:15px;letter-spacing:.08em;text-transform:uppercase}
+.card p{margin:0;color:var(--dim);font-size:14px}
+
+footer{text-align:center;color:var(--dim);font:11px/1.7 "Courier New",monospace;
+  letter-spacing:.12em;padding:26px 16px;border-top:1px solid var(--line)}
+
+@keyframes pulse{50%{text-shadow:0 0 10px var(--neon),0 0 30px var(--neon),0 0 60px #ff2fb9aa}}
+@keyframes slide{to{background-position:200% 0}}
+@keyframes breathe{50%{box-shadow:0 0 36px #22e6ffcc}}
+@media(prefers-reduced-motion:reduce){
+  .logo h1,.fill,.enter{animation:none}
+  .fill{background:var(--cyan)}
+}
