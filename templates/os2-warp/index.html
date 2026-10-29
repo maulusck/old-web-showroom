@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WarpStation</title>
+<!-- OS/2 Warp — mid-90s IBM Workplace Shell. Teal desktop, grey beveled object
+     windows, blue title bars, LaunchPad. No JS; pure markup + CSS + inline SVG. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- loose desktop objects -->
+  <div class="desktop">
+    <a class="dobj" href="#">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="9" width="34" height="30" fill="#d9c58c" stroke="#5a4a1e" stroke-width="2"/><rect x="7" y="9" width="34" height="7" fill="#c7a94d" stroke="#5a4a1e" stroke-width="2"/><rect x="12" y="20" width="24" height="3" fill="#8a7430"/><rect x="12" y="27" width="24" height="3" fill="#8a7430"/></svg>
+      <span data-slot="nav-item">OS/2 System</span>
+    </a>
+    <a class="dobj" href="#">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 9h18l6 6v24H12z" fill="#b9bdc2" stroke="#2c2e30" stroke-width="2"/><path d="M30 9v6h6" fill="none" stroke="#2c2e30" stroke-width="2"/><path d="M18 24l6 10 6-16" fill="none" stroke="#8a1f1a" stroke-width="2"/></svg>
+      <span data-slot="nav-item">Readme.1st</span>
+    </a>
+    <a class="dobj" href="#">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="10" width="24" height="22" rx="2" fill="#9aa0a6" stroke="#2c2e30" stroke-width="2"/><rect x="16" y="30" width="16" height="8" fill="#7c8188" stroke="#2c2e30" stroke-width="2"/><circle cx="24" cy="21" r="3" fill="#2c2e30"/></svg>
+      <span data-slot="nav-item">Shredder</span>
+    </a>
+  </div>
+
+  <div class="win raised">
+    <div class="tbar">
+      <span class="sysmenu raised" aria-hidden="true"></span>
+      <span class="ttext" data-slot="site-name">WarpStation</span>
+      <span class="tbtns">
+        <span class="tb raised" aria-hidden="true">_</span>
+        <span class="tb raised" aria-hidden="true">&#9633;</span>
+      </span>
+    </div>
+
+    <div class="menubar">
+      <a href="index.html" aria-current="page" data-slot="nav-item">Desktop</a>
+      <a href="system.html" data-slot="nav-item">Settings</a>
+      <a href="#" data-slot="nav-item">View</a>
+      <a href="#" data-slot="nav-item">Help</a>
+    </div>
+
+    <div class="status">
+      <span data-slot="tagline">The 32-bit desktop that does it all — presentation-manager smooth.</span>
+      <span>Objects: 6</span>
+    </div>
+
+    <div class="client">
+      <section class="hero sunken">
+        <h2 data-slot="hero-title">Drag it, drop it, Warp it.</h2>
+        <p data-slot="hero-body">Everything on this desktop is a live object. Open a folder, drag a
+        program onto the LaunchPad, drop a document on a printer — the Workplace Shell remembers where
+        you left it. Crash-protected multitasking, eight ways from Tuesday. Welcome back to work.</p>
+      </section>
+
+      <div class="folder sunken">
+        <div class="grid">
+          <a class="obj" href="#">
+            <span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="12" width="36" height="28" fill="#d9c58c" stroke="#5a4a1e" stroke-width="2"/><path d="M6 12l5-5h13l4 5" fill="#c7a94d" stroke="#5a4a1e" stroke-width="2"/></svg></span>
+            <h3 data-slot="card-title">Programs</h3>
+            <p data-slot="card-body">A folder of installed apps, each a tidy icon. Double-click to launch; right-click for its settings notebook.</p>
+          </a>
+          <a class="obj" href="#">
+            <span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="14" width="30" height="20" rx="3" fill="#9aa0a6" stroke="#2c2e30" stroke-width="2"/><circle cx="33" cy="24" r="2.4" fill="#4fae4f"/><rect x="13" y="20" width="10" height="3" fill="#2c2e30"/><rect x="13" y="26" width="14" height="3" fill="#2c2e30"/></svg></span>
+            <h3 data-slot="card-title">Drives</h3>
+            <p data-slot="card-body">Your HPFS and FAT volumes. Browse C:, format a diskette, or peek at the 1.2GB whopper you just installed.</p>
+          </a>
+          <a class="obj" href="#">
+            <span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="20" width="30" height="14" rx="2" fill="#b9bdc2" stroke="#2c2e30" stroke-width="2"/><rect x="15" y="11" width="18" height="10" fill="#cfd3d7" stroke="#2c2e30" stroke-width="2"/><rect x="15" y="30" width="18" height="9" fill="#fff" stroke="#2c2e30" stroke-width="2"/><circle cx="33" cy="26" r="1.6" fill="#4fae4f"/></svg></span>
+            <h3 data-slot="card-title">Printers</h3>
+            <p data-slot="card-body">Drop a document straight onto the printer object. Queue it, pause it, reorder the jobs — all by dragging.</p>
+          </a>
+          <a class="obj" href="#">
+            <span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15" fill="#7cb6d8" stroke="#2c2e30" stroke-width="2"/><ellipse cx="24" cy="24" rx="7" ry="15" fill="none" stroke="#2c2e30" stroke-width="1.6"/><path d="M9 20h30M9 28h30" stroke="#2c2e30" stroke-width="1.6"/></svg></span>
+            <h3 data-slot="card-title">Network</h3>
+            <p data-slot="card-body">Peer-to-peer shares and the wider wires beyond. Map a neighbor's drive, chat over NetBIOS, dial the world.</p>
+          </a>
+          <a class="obj" href="system.html">
+            <span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="8" fill="#b9bdc2" stroke="#2c2e30" stroke-width="2"/><circle cx="24" cy="24" r="3" fill="#2c2e30"/><g stroke="#2c2e30" stroke-width="3"><path d="M24 7v6M24 35v6M7 24h6M35 24h6M12 12l4 4M32 32l4 4M36 12l-4 4M16 32l-4 4"/></g></svg></span>
+            <h3 data-slot="card-title">System Setup</h3>
+            <p data-slot="card-body">Colors, fonts, mouse, sound schemes. Open the notebook, flip the tabs, and bend the desktop to your will.</p>
+          </a>
+          <a class="obj" href="#">
+            <span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 10h16a4 4 0 0 1 4 4v24a4 4 0 0 0-4-4H10z" fill="#e4e7ea" stroke="#2c2e30" stroke-width="2"/><path d="M38 10H22a4 4 0 0 0-4 4v24a4 4 0 0 1 4-4h16z" fill="#cfd3d7" stroke="#2c2e30" stroke-width="2"/></svg></span>
+            <h3 data-slot="card-title">Information</h3>
+            <p data-slot="card-body">The online Command Reference and tutorials. Everything the manual says, minus the three-ring binder.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="raised" data-slot="footer">WarpStation &copy; 1994&ndash;2026 &middot; Workplace Shell &middot; A-OK, no traps today.</footer>
+
+  <!-- LaunchPad -->
+  <div class="launchpad raised" role="navigation" aria-label="LaunchPad">
+    <span class="drawer">PAD</span>
+    <span class="lp sunken"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="12" width="34" height="28" fill="#d9c58c" stroke="#5a4a1e" stroke-width="2"/><path d="M7 12l5-5h13l4 5" fill="#c7a94d" stroke="#5a4a1e" stroke-width="2"/></svg></span>
+    <span class="lp sunken"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="14" width="28" height="20" rx="2" fill="#2c2e30" stroke="#2c2e30" stroke-width="2"/><rect x="13" y="17" width="22" height="14" fill="#1f8a8a"/><path d="M15 27l5-6 4 4 4-7 4 9z" fill="#9be8e8"/></svg></span>
+    <span class="lp sunken"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="12" width="30" height="24" rx="2" fill="#0a1e4a" stroke="#2c2e30" stroke-width="2"/><rect x="13" y="16" width="22" height="16" fill="#1ad11a"/><text x="24" y="28" font-size="10" fill="#0a1e4a" text-anchor="middle" font-family="monospace">C:\</text></svg></span>
+    <span class="lp sunken"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="14" fill="#f4f4f0" stroke="#2c2e30" stroke-width="2"/><path d="M24 24V14M24 24l7 4" stroke="#8a1f1a" stroke-width="2"/><circle cx="24" cy="24" r="2" fill="#2c2e30"/></svg></span>
+    <span class="lp sunken"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="10" width="24" height="22" rx="2" fill="#9aa0a6" stroke="#2c2e30" stroke-width="2"/><rect x="16" y="30" width="16" height="8" fill="#7c8188" stroke="#2c2e30" stroke-width="2"/><circle cx="24" cy="21" r="3" fill="#2c2e30"/></svg></span>
+  </div>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

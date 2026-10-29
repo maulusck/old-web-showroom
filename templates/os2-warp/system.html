@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>System Setup — Settings Notebook</title>
+<!-- OS/2 Warp settings notebook: tabbed pages down the right edge. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="win raised">
+    <div class="tbar">
+      <span class="sysmenu raised" aria-hidden="true"></span>
+      <span class="ttext" data-slot="site-name">System Setup — Settings Notebook</span>
+      <span class="tbtns">
+        <span class="tb raised" aria-hidden="true">_</span>
+        <span class="tb raised" aria-hidden="true">&#9633;</span>
+      </span>
+    </div>
+
+    <div class="menubar">
+      <a href="index.html" data-slot="nav-item">Desktop</a>
+      <a href="system.html" aria-current="page" data-slot="nav-item">Settings</a>
+      <a href="#" data-slot="nav-item">View</a>
+      <a href="#" data-slot="nav-item">Help</a>
+    </div>
+
+    <div class="status">
+      <span data-slot="tagline">Right-click any object, choose Settings, flip to the tab you need.</span>
+      <span>Page 1 of 4</span>
+    </div>
+
+    <div class="client">
+      <div class="notebook sunken">
+        <div class="page">
+          <h2 data-slot="page-title">Scheme Palette</h2>
+          <p data-slot="page-body">Point, shoot, and the whole desktop repaints. Drag a color from the
+          mixing well onto a title bar, a window background, a menu — anything you can see, you can dye.
+          The factory scheme below is "Warp Teal," and yes, it is doing a lot of heavy lifting.</p>
+          <dl>
+            <dt>Desktop</dt><dd data-slot="card-body">Teal, 45&deg; weave &mdash; the one true background.</dd>
+            <dt>Active title</dt><dd data-slot="card-body">Royal-to-sky blue gradient, bold white type.</dd>
+            <dt>Window body</dt><dd data-slot="card-body">Warm grey with a double bevel on every edge.</dd>
+            <dt>3D effects</dt><dd data-slot="card-body">On. Buttons push in, folders stand proud.</dd>
+          </dl>
+        </div>
+        <nav class="tabs" aria-label="Notebook tabs">
+          <a href="system.html" aria-current="page" data-slot="nav-item">Palette</a>
+          <a href="#" data-slot="nav-item">Fonts</a>
+          <a href="#" data-slot="nav-item">Mouse</a>
+          <a href="#" data-slot="nav-item">Sound</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <footer class="raised" data-slot="footer">WarpStation &copy; 1994&ndash;2026 &middot; Changes apply when you close the notebook.</footer>
+
+  <div class="launchpad raised" role="navigation" aria-label="LaunchPad">
+    <span class="drawer">PAD</span>
+    <span class="lp sunken"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="12" width="34" height="28" fill="#d9c58c" stroke="#5a4a1e" stroke-width="2"/><path d="M7 12l5-5h13l4 5" fill="#c7a94d" stroke="#5a4a1e" stroke-width="2"/></svg></span>
+    <span class="lp sunken"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="8" fill="#b9bdc2" stroke="#2c2e30" stroke-width="2"/><circle cx="24" cy="24" r="3" fill="#2c2e30"/><g stroke="#2c2e30" stroke-width="3"><path d="M24 7v6M24 35v6M7 24h6M35 24h6M12 12l4 4M32 32l4 4M36 12l-4 4M16 32l-4 4"/></g></svg></span>
+    <span class="lp sunken"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="14" fill="#f4f4f0" stroke="#2c2e30" stroke-width="2"/><path d="M24 24V14M24 24l7 4" stroke="#8a1f1a" stroke-width="2"/><circle cx="24" cy="24" r="2" fill="#2c2e30"/></svg></span>
+  </div>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

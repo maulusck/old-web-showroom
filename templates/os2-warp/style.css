@@ -1,0 +1,109 @@
+/* OS/2 Warp — Workplace Shell. Teal desktop, grey beveled object windows,
+   blue title bars, LaunchPad. One stylesheet themes every page. */
+:root{
+  --desk:#0a8a8a; --desk-dk:#076d6d;
+  --face:#c3c7cb; --face-lt:#dfe2e5;
+  --hi:#ffffff; --sh:#87898c; --dk:#55575a;
+  --title1:#102a8c; --title2:#2f6fd4; --title-ink:#ffffff;
+  --ink:#10151b; --dim:#4b4f55; --acc:#102a8c;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --desk:#063b3b; --desk-dk:#042a2a;
+  --face:#43474c; --face-lt:#565a60; --hi:#6e7278; --sh:#2a2c2f; --dk:#17181a;
+  --title1:#0c1f63; --title2:#255bb0;
+  --ink:#e7eaed; --dim:#aab0b6; --acc:#8fb3ef;
+}}
+:root[data-theme="dark"]{
+  --desk:#063b3b; --desk-dk:#042a2a;
+  --face:#43474c; --face-lt:#565a60; --hi:#6e7278; --sh:#2a2c2f; --dk:#17181a;
+  --title1:#0c1f63; --title2:#255bb0;
+  --ink:#e7eaed; --dim:#aab0b6; --acc:#8fb3ef;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);padding:14px 14px 92px;
+  background:var(--desk);
+  background-image:repeating-linear-gradient(45deg,transparent 0 7px,rgba(0,0,0,.05) 7px 8px);
+  font:14px/1.5 "Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif}
+
+/* ---- beveled surfaces: the whole language of the WPS ---- */
+.raised{border:2px solid;border-color:var(--hi) var(--dk) var(--dk) var(--hi);
+  box-shadow:inset 1px 1px 0 var(--face-lt),inset -1px -1px 0 var(--sh)}
+.sunken{border:2px solid;border-color:var(--dk) var(--hi) var(--hi) var(--dk);
+  box-shadow:inset 1px 1px 0 var(--sh),inset -1px -1px 0 var(--face-lt)}
+
+/* ---- loose desktop objects (top-right) ---- */
+.desktop{display:flex;flex-direction:column;gap:18px;align-items:center;
+  float:right;width:88px;margin:4px 2px 12px 16px;text-align:center}
+.dobj{color:var(--title-ink);text-decoration:none;display:block}
+.dobj svg{width:40px;height:40px;filter:drop-shadow(1px 1px 0 rgba(0,0,0,.4))}
+.dobj span{display:inline-block;margin-top:3px;font-size:12px;padding:1px 4px;
+  background:transparent}
+.dobj:hover span,.dobj:focus span{background:var(--title1);outline:1px dotted var(--title-ink)}
+
+/* ---- window ---- */
+.win{background:var(--face);max-width:760px;margin:0 auto}
+.tbar{display:flex;align-items:center;gap:6px;padding:3px 4px;
+  background:linear-gradient(90deg,var(--title1),var(--title2));color:var(--title-ink)}
+.sysmenu{width:20px;height:18px;flex:none;background:var(--face);cursor:default}
+.ttext{flex:1;font-weight:700;font-size:14px;letter-spacing:.02em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tbtns{display:flex;gap:3px}
+.tb{width:20px;height:18px;background:var(--face);display:grid;place-items:center;
+  font:12px/1 monospace;color:var(--ink);cursor:default}
+
+.menubar{display:flex;gap:2px;padding:3px 4px;background:var(--face);
+  border-top:1px solid var(--hi)}
+.menubar a{color:var(--ink);text-decoration:none;padding:2px 10px;font-size:13px}
+.menubar a:first-letter{text-decoration:underline}
+.menubar a:hover,.menubar a[aria-current]{background:var(--title1);color:var(--title-ink)}
+
+.status{padding:4px 10px;background:var(--face);color:var(--dim);font-size:12px;
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.client{padding:16px;background:var(--face)}
+
+/* ---- hero ---- */
+.hero{padding:16px 18px;background:var(--face-lt);margin-bottom:16px}
+.hero h2{margin:0 0 8px;font-size:clamp(19px,3.4vw,26px);color:var(--acc);letter-spacing:.01em}
+.hero p{margin:0;max-width:60ch;color:var(--ink)}
+
+/* ---- folder of objects ---- */
+.folder{background:var(--desk-dk);padding:12px;margin-bottom:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.obj{background:var(--face);padding:12px 12px 14px;text-decoration:none;color:var(--ink);
+  display:block}
+.obj:hover,.obj:focus{outline:2px dotted var(--acc);outline-offset:-2px}
+.obj .ic{display:flex;justify-content:center;margin-bottom:8px}
+.obj svg{width:44px;height:44px}
+.obj h3{margin:0 0 4px;font-size:14px;color:var(--acc);text-align:center}
+.obj p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.45}
+
+/* ---- notebook (settings page) ---- */
+.notebook{display:grid;grid-template-columns:1fr auto;gap:0;background:var(--face)}
+.page{padding:18px;background:var(--face-lt);min-height:260px}
+.page h2{margin:0 0 10px;color:var(--acc);font-size:18px}
+.page p{margin:0 0 12px;max-width:58ch}
+.page dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13px}
+.page dt{color:var(--dim)}
+.tabs{display:flex;flex-direction:column;gap:5px;padding:14px 0 0 2px}
+.tabs a{background:var(--face);padding:6px 12px 6px 10px;font-size:12.5px;
+  text-decoration:none;color:var(--ink);border-radius:0 5px 5px 0}
+.tabs a[aria-current]{background:var(--face-lt);font-weight:700;color:var(--acc);margin-left:-4px}
+.tabs a:hover{color:var(--acc)}
+
+footer{max-width:760px;margin:14px auto 0;padding:5px 10px;background:var(--face);
+  color:var(--dim);font-size:12px;text-align:center}
+
+/* ---- LaunchPad ---- */
+.launchpad{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);
+  display:flex;align-items:center;gap:4px;padding:5px;background:var(--face);z-index:9}
+.launchpad .drawer{writing-mode:vertical-rl;font-size:9px;letter-spacing:.1em;
+  color:var(--dim);padding:0 1px;align-self:stretch;display:grid;place-items:center}
+.lp{width:38px;height:38px;display:grid;place-items:center;background:var(--face);cursor:default}
+.lp svg{width:26px;height:26px}
+@media(max-width:560px){.lp{width:32px;height:32px}.lp svg{width:22px;height:22px}
+  .lp:nth-child(n+6){display:none}.desktop{float:none;flex-direction:row;width:auto;
+  flex-wrap:wrap;justify-content:center;margin:0 0 14px}}
+
+*:focus-visible{outline:2px dotted var(--acc);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
