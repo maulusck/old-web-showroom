@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeXTSTEP</title>
+<!-- NeXTSTEP — early-90s NeXT workstation UI. Slate panels, chiseled bevels,
+     left menu panel, right Dock column, Helvetica, one steel-teal highlight. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="screen">
+
+    <nav class="menu">
+      <div class="menu-title" data-slot="site-name">NeXTSTEP</div>
+      <div class="menu-sub" data-slot="tagline">Release 3.3 · Mach Workstation</div>
+      <a href="index.html" data-slot="nav-item" aria-current="page">Workspace</a>
+      <a href="about.html" data-slot="nav-item">Release Notes</a>
+      <a href="about.html#info" data-slot="nav-item">Info</a>
+      <a href="about.html#print" data-slot="nav-item">Print</a>
+      <a href="about.html#quit" data-slot="nav-item">Log Out</a>
+    </nav>
+
+    <main class="window">
+      <div class="col">
+        <div class="titlebar">
+          <span class="tb-title" data-slot="page-title">Workspace Manager</span>
+          <span class="tb-btns"><i class="tb-btn"></i><i class="tb-btn"></i></span>
+        </div>
+        <div class="content">
+          <span class="tag">Interface Builder</span>
+          <section class="hero">
+            <h2 data-slot="hero-title">The computer for the people who build the next one.</h2>
+            <p data-slot="hero-body">An object-oriented workstation on a Mach kernel: Display
+            PostScript on the glass, a Dock at your right hand, and every application a brick you
+            snap into place. Grey where it should be grey, sharp where it counts.</p>
+          </section>
+
+          <div class="rule"></div>
+
+          <div class="grid">
+            <div class="card">
+              <h3 data-slot="card-title">Workspace Manager</h3>
+              <p data-slot="card-body">Browse the file system in shelved columns. Drag a folder to the Dock and it stays put across every login.</p>
+            </div>
+            <div class="card">
+              <h3 data-slot="card-title">Terminal</h3>
+              <p data-slot="card-body">A real Unix shell under the glass. Compile, pipe, and ship — no translation layer, no apology.</p>
+            </div>
+            <div class="card">
+              <h3 data-slot="card-title">Mail</h3>
+              <p data-slot="card-body">Rich messages with sound and voice attachments, filed the moment they arrive. The inbox that shipped in 1990.</p>
+            </div>
+            <div class="card">
+              <h3 data-slot="card-title">Preview</h3>
+              <p data-slot="card-body">Every document is PostScript, so every document prints exactly as it looks. What you see is what the Laser Printer gets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroller" aria-hidden="true">
+        <span class="arrow up"></span>
+        <span class="knob"></span>
+        <span class="arrow down"></span>
+      </div>
+    </main>
+
+    <aside class="dock" aria-label="Dock">
+      <a class="tile" href="index.html" data-slot="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h7l2 2h7v10H4z"/><path d="M4 7V5h5l2 2"/></svg>
+        <span>Files</span>
+      </a>
+      <a class="tile" href="about.html#shell" data-slot="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16"/><path d="M6 9l4 3-4 3M13 15h5"/></svg>
+        <span>Shell</span>
+      </a>
+      <a class="tile" href="about.html#mail" data-slot="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></svg>
+        <span>Mail</span>
+      </a>
+      <a class="tile" href="about.html#edit" data-slot="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l3-1L19 7l-3-3L4 16z"/><path d="M14 6l3 3"/></svg>
+        <span>Edit</span>
+      </a>
+      <a class="tile" href="about.html#preview" data-slot="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></svg>
+        <span>Preview</span>
+      </a>
+    </aside>
+
+  </div>
+
+  <footer data-slot="footer">&copy; 1989–2026 NeXTSTEP · Built on Mach · Somewhere between the cube and the glass</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

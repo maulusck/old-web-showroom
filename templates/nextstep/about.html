@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeXTSTEP · Release Notes</title>
+<!-- NeXTSTEP — Release Notes page. Shares style.css with index.html. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="screen">
+
+    <nav class="menu">
+      <div class="menu-title" data-slot="site-name">NeXTSTEP</div>
+      <div class="menu-sub" data-slot="tagline">Release 3.3 · Mach Workstation</div>
+      <a href="index.html" data-slot="nav-item">Workspace</a>
+      <a href="about.html" data-slot="nav-item" aria-current="page">Release Notes</a>
+      <a href="#info" data-slot="nav-item">Info</a>
+      <a href="#print" data-slot="nav-item">Print</a>
+      <a href="#quit" data-slot="nav-item">Log Out</a>
+    </nav>
+
+    <main class="window">
+      <div class="col">
+        <div class="titlebar">
+          <span class="tb-title" data-slot="page-title">Release Notes</span>
+          <span class="tb-btns"><i class="tb-btn"></i><i class="tb-btn"></i></span>
+        </div>
+        <div class="content prose">
+          <span class="tag">Version 3.3</span>
+          <section class="hero">
+            <h2 data-slot="hero-title">What changed, and why it matters.</h2>
+            <p data-slot="hero-body">Read top to bottom. The system got faster, the Dock got
+            smarter, and the printer finally stopped arguing with the screen.</p>
+          </section>
+
+          <div class="rule"></div>
+
+          <h2 id="shell" data-slot="card-title">Kernel &amp; Shell</h2>
+          <p data-slot="card-body">The Mach micro-kernel now schedules threads with half the
+          overhead, so a full compile runs while Mail still answers on the first click. The shell
+          ships with the compiler toolchain wired in — no second install, no path surgery.</p>
+
+          <h2 id="mail" data-slot="card-title">Mail &amp; the Dock</h2>
+          <p data-slot="card-body">Drag any application to the Dock and it survives the next login.
+          Unread mail lifts a small flag on its tile; you never miss it from across the desk. Voice
+          attachments record straight from the microphone port.</p>
+
+          <h2 id="preview" data-slot="card-title">Display &amp; Print</h2>
+          <p data-slot="card-body">Display PostScript means the screen and the Laser Printer draw
+          from one language. Preview a letter, send it to the tray, and the paper matches the glass
+          to the pixel. What you see is, at last, what you get.</p>
+
+          <div class="rule"></div>
+
+          <p id="info" data-slot="page-body">Filed in the Workspace under /NextLibrary/Documentation.
+          Earlier notes are archived beside this one; the Dock keeps the latest within reach. When
+          you are done, choose Log Out from the menu — the session returns exactly as you left it.</p>
+        </div>
+      </div>
+      <div class="scroller" aria-hidden="true">
+        <span class="arrow up"></span>
+        <span class="knob"></span>
+        <span class="arrow down"></span>
+      </div>
+    </main>
+
+    <aside class="dock" aria-label="Dock">
+      <a class="tile" href="index.html" data-slot="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h7l2 2h7v10H4z"/><path d="M4 7V5h5l2 2"/></svg>
+        <span>Files</span>
+      </a>
+      <a class="tile" href="#shell" data-slot="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16"/><path d="M6 9l4 3-4 3M13 15h5"/></svg>
+        <span>Shell</span>
+      </a>
+      <a class="tile" href="#mail" data-slot="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></svg>
+        <span>Mail</span>
+      </a>
+      <a class="tile" href="#preview" data-slot="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l3-1L19 7l-3-3L4 16z"/><path d="M14 6l3 3"/></svg>
+        <span>Edit</span>
+      </a>
+      <a class="tile" href="#preview" data-slot="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></svg>
+        <span>Preview</span>
+      </a>
+    </aside>
+
+  </div>
+
+  <footer data-slot="footer">&copy; 1989–2026 NeXTSTEP · Built on Mach · Somewhere between the cube and the glass</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

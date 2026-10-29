@@ -1,0 +1,118 @@
+/* NeXTSTEP — early-90s NeXT workstation UI. Dark slate workspace, heavy
+   chiseled bevels, a vertical Dock down the right, a detached menu panel on
+   the left, Helvetica throughout, monochrome + one steel/teal highlight.
+   Light mode = the classic pale-grey NeXT panels (period-correct). */
+:root{
+  --desk:#23282d;        /* workspace background */
+  --panel:#3a4047;       /* panel face */
+  --panel-hi:#4a5159;    /* lighter face */
+  --lt:#5f6973;          /* bevel highlight (top-left) */
+  --dk:#161a1d;          /* bevel shadow (bottom-right) */
+  --ink:#e6e9ec;         /* primary text */
+  --dim:#9aa3ac;         /* secondary text */
+  --steel:#5fa9bd;       /* the single highlight: teal/steel */
+  --steel-dk:#2f6f80;
+  --title:#2d3338;       /* title bar */
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --desk:#6d737a; --panel:#aeb4ba; --panel-hi:#c2c7cc;
+  --lt:#e4e8eb; --dk:#555b61; --ink:#1a1d20; --dim:#4a4f54;
+  --steel:#2f6f80; --steel-dk:#1d4a56; --title:#8d939a;
+}}
+:root[data-theme="light"]{
+  --desk:#6d737a; --panel:#aeb4ba; --panel-hi:#c2c7cc;
+  --lt:#e4e8eb; --dk:#555b61; --ink:#1a1d20; --dim:#4a4f54;
+  --steel:#2f6f80; --steel-dk:#1d4a56; --title:#8d939a;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--desk);color:var(--ink);
+  font:14px/1.5 Helvetica,"Helvetica Neue",Arial,sans-serif;
+  /* faint pinstripe, the NeXT dithered desktop */
+  background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.06) 0 1px,transparent 1px 2px)}
+
+/* heavy chiseled bevel helpers */
+.raise{box-shadow:inset 2px 2px 0 var(--lt),inset -2px -2px 0 var(--dk)}
+.sink{box-shadow:inset -2px -2px 0 var(--lt),inset 2px 2px 0 var(--dk)}
+
+.screen{max-width:1040px;margin:0 auto;padding:22px 18px 10px;
+  display:grid;gap:18px;grid-template-columns:168px 1fr 92px;align-items:start}
+
+/* ── detached vertical menu panel ───────────────────────────── */
+.menu{background:var(--panel);box-shadow:inset 2px 2px 0 var(--lt),inset -2px -2px 0 var(--dk);
+  position:sticky;top:22px}
+.menu-title{background:var(--title);color:var(--ink);font-weight:700;letter-spacing:.02em;
+  padding:7px 10px;border-bottom:2px solid var(--dk);box-shadow:inset 0 1px 0 var(--lt)}
+.menu-sub{color:var(--dim);font-size:11px;padding:5px 10px 8px;border-bottom:2px solid var(--dk)}
+.menu a{display:flex;justify-content:space-between;align-items:center;
+  color:var(--ink);text-decoration:none;padding:8px 10px;
+  border-bottom:1px solid var(--dk);box-shadow:inset 0 1px 0 var(--lt)}
+.menu a::after{content:"\203A";color:var(--dim)}
+.menu a:hover,.menu a[aria-current]{background:var(--steel-dk);color:#fff}
+.menu a:hover::after,.menu a[aria-current]::after{color:#fff}
+
+/* ── the window (content) ───────────────────────────────────── */
+.window{background:var(--panel);box-shadow:inset 2px 2px 0 var(--lt),inset -2px -2px 0 var(--dk);
+  display:flex;min-width:0}
+.titlebar{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.window>.col{flex:1;min-width:0;display:flex;flex-direction:column}
+.titlebar{background:var(--title);padding:5px 7px;border-bottom:2px solid var(--dk);
+  box-shadow:inset 0 1px 0 var(--lt)}
+.tb-title{font-weight:700;letter-spacing:.03em;padding:0 4px}
+.tb-btn{width:17px;height:17px;background:var(--panel-hi);display:inline-block;
+  box-shadow:inset 1px 1px 0 var(--lt),inset -1px -1px 0 var(--dk)}
+.tb-btns{display:flex;gap:4px}
+.content{padding:20px 22px 26px;overflow:hidden}
+
+/* scroll knob rail — the NeXT scroller, decorative */
+.scroller{width:18px;background:var(--panel);border-left:2px solid var(--dk);
+  box-shadow:inset 1px 0 0 var(--lt);display:flex;flex-direction:column}
+.scroller .arrow,.scroller .knob{background:var(--panel-hi);
+  box-shadow:inset 1px 1px 0 var(--lt),inset -1px -1px 0 var(--dk);margin:2px}
+.scroller .arrow{height:16px;position:relative}
+.scroller .arrow::before{content:"";position:absolute;left:50%;top:50%;width:0;height:0;
+  transform:translate(-50%,-50%);border:4px solid transparent}
+.scroller .up::before{border-bottom-color:var(--ink);margin-top:-2px}
+.scroller .down::before{border-top-color:var(--ink);margin-top:2px}
+.scroller .knob{flex:1;margin:6px 2px}
+@media(max-width:720px){.scroller{display:none}}
+
+/* ── vertical dock column ───────────────────────────────────── */
+.dock{background:var(--panel);box-shadow:inset 2px 2px 0 var(--lt),inset -2px -2px 0 var(--dk);
+  padding:6px;display:flex;flex-direction:column;gap:6px;position:sticky;top:22px}
+.tile{display:flex;flex-direction:column;align-items:center;gap:3px;
+  background:var(--panel-hi);color:var(--ink);text-decoration:none;padding:9px 4px 6px;
+  box-shadow:inset 2px 2px 0 var(--lt),inset -2px -2px 0 var(--dk);transition:background .12s}
+.tile svg{width:30px;height:30px;display:block}
+.tile span{font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--dim)}
+.tile:hover{background:var(--steel-dk)}
+.tile:hover span{color:#fff}
+.tile:hover svg{color:#fff}
+.tile svg{color:var(--steel)}
+
+/* ── content pieces ─────────────────────────────────────────── */
+.hero h2{margin:0 0 10px;font-size:clamp(22px,3.4vw,32px);line-height:1.15;letter-spacing:-.01em}
+.hero p{margin:0;color:var(--dim);max-width:54ch}
+.tag{display:inline-block;background:var(--steel-dk);color:#fff;font-size:10px;font-weight:700;
+  letter-spacing:.18em;padding:3px 9px;margin-bottom:14px;text-transform:uppercase;
+  box-shadow:inset 1px 1px 0 rgba(255,255,255,.2)}
+.rule{height:2px;background:var(--dk);box-shadow:0 1px 0 var(--lt);margin:22px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel-hi);padding:14px 16px;
+  box-shadow:inset 2px 2px 0 var(--lt),inset -2px -2px 0 var(--dk)}
+.card h3{margin:0 0 6px;font-size:14px;color:var(--steel);letter-spacing:.02em}
+.card p{margin:0;font-size:13px;color:var(--dim)}
+.prose h2{font-size:18px;margin:0 0 10px;letter-spacing:.01em}
+.prose p{color:var(--dim);max-width:60ch}
+.prose p+p{margin-top:12px}
+
+footer{max-width:1040px;margin:4px auto 0;padding:14px 20px 30px;color:var(--dim);
+  font-size:11px;letter-spacing:.06em;text-align:center}
+
+@media(max-width:720px){
+  .screen{grid-template-columns:1fr}
+  .menu,.dock{position:static}
+  .dock{flex-direction:row;flex-wrap:wrap;justify-content:center}
+  .tile{flex:1;min-width:78px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
