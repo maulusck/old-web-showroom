@@ -1,0 +1,116 @@
+/* myspace-emo — 2006 scene/emo profile. Black canvas, neon everything. */
+:root{
+  --bg:#060608; --panel:#0e0d14; --panel2:#141222; --line:#2a2340;
+  --pink:#ff1e8e; --green:#9dff3c; --blue:#2ed0ff; --ink:#f2e9ff; --dim:#b9a7d9;
+}
+/* page is already dark; keep the forced-light override honest but still moody */
+:root[data-theme="light"]{--bg:#120a14;--panel:#1a0f1e;--panel2:#241530;--ink:#fff0fb;--dim:#d8b9e8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.55 Verdana,Geneva,Tahoma,sans-serif;
+  background-image:
+    repeating-linear-gradient(45deg,#0c0a12 0 14px,#080710 14px 28px);
+}
+
+/* glitter overlay — tiny neon specks via radial-gradient dots */
+.glitter{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+  background:
+    radial-gradient(1.5px 1.5px at 12% 20%,var(--pink) 60%,transparent),
+    radial-gradient(1.5px 1.5px at 72% 35%,var(--green) 60%,transparent),
+    radial-gradient(1.5px 1.5px at 38% 68%,var(--blue) 60%,transparent),
+    radial-gradient(1.5px 1.5px at 88% 82%,var(--pink) 60%,transparent),
+    radial-gradient(1.5px 1.5px at 26% 90%,var(--green) 60%,transparent),
+    radial-gradient(1.5px 1.5px at 60% 12%,var(--blue) 60%,transparent);
+  background-size:cover;animation:sparkle 1.1s steps(2) infinite}
+@keyframes sparkle{50%{opacity:.15;transform:translateY(2px)}}
+
+.banner{position:relative;z-index:2;text-align:center;padding:30px 16px 14px;
+  background:radial-gradient(120% 90% at 50% 0,#1a0820 0,transparent 70%)}
+.online{margin:0 0 6px;color:var(--green);font:11px/1 "Courier New",monospace;letter-spacing:.18em}
+.banner h1{margin:0;font-size:clamp(30px,8vw,62px);font-weight:900;font-style:italic;
+  letter-spacing:-.01em;color:var(--pink);
+  text-shadow:0 0 8px var(--pink),0 0 18px #ff1e8e88,3px 3px 0 #000}
+.blink{color:var(--green);text-shadow:0 0 8px var(--green);animation:blink .8s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.tagline{margin:10px 0 0;color:var(--blue);font-size:13px;letter-spacing:.06em;
+  text-shadow:0 0 6px #2ed0ff66}
+
+/* zebra divider */
+.zebra{height:10px;position:relative;z-index:2;
+  background:repeating-linear-gradient(90deg,var(--pink) 0 16px,#000 16px 32px);
+  border-top:2px solid var(--green);border-bottom:2px solid var(--green)}
+
+nav{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;
+  padding:12px 8px;background:#000}
+nav a{color:#000;background:var(--green);text-decoration:none;font-weight:bold;
+  font-size:12px;padding:5px 12px;border:2px solid var(--pink);letter-spacing:.03em;
+  text-transform:lowercase;box-shadow:2px 2px 0 var(--pink)}
+nav a:hover,nav a[aria-current]{background:var(--pink);color:#fff;border-color:var(--green);
+  box-shadow:2px 2px 0 var(--green)}
+
+.wrap{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:18px 14px 10px;
+  display:grid;grid-template-columns:230px 1fr;gap:16px;align-items:start}
+@media(max-width:640px){.wrap{grid-template-columns:1fr}}
+
+.panel{background:var(--panel);border:2px solid var(--pink);margin:0 0 16px;
+  box-shadow:0 0 0 2px #000,0 0 14px #ff1e8e33}
+.phead{margin:0;padding:7px 12px;font-size:13px;font-weight:bold;color:#000;
+  background:repeating-linear-gradient(90deg,var(--green) 0 10px,#7fd82f 10px 20px);
+  text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid #000}
+.phead small{font-weight:normal;text-transform:none;letter-spacing:0}
+.panel > :not(.phead){padding:12px}
+
+/* now playing */
+.nowplaying{border-color:var(--blue);box-shadow:0 0 0 2px #000,0 0 14px #2ed0ff44}
+.nowplaying .phead{background:repeating-linear-gradient(90deg,var(--blue) 0 10px,#17a6d6 10px 20px)}
+.player{display:flex;gap:10px;align-items:center}
+.player strong{display:block;color:var(--pink);font-size:13px}
+.player span{display:block;color:var(--dim);font-size:11px}
+.eq{display:flex;gap:3px;align-items:flex-end;height:30px}
+.eq i{width:4px;background:var(--green);box-shadow:0 0 5px var(--green);
+  animation:eq .7s ease-in-out infinite alternate}
+.eq i:nth-child(2){animation-delay:.1s}.eq i:nth-child(3){animation-delay:.25s}
+.eq i:nth-child(4){animation-delay:.15s}.eq i:nth-child(5){animation-delay:.3s}
+@keyframes eq{from{height:6px}to{height:28px}}
+.bar{margin-top:6px;height:6px;background:#000;border:1px solid var(--blue);overflow:hidden}
+.bar em{display:block;height:100%;width:40%;background:var(--blue);box-shadow:0 0 8px var(--blue);
+  animation:seek 9s linear infinite}
+@keyframes seek{from{margin-left:-40%}to{margin-left:100%}}
+
+.stats ul{margin:0;padding:0 0 0 2px;list-style:none;font-size:12px;color:var(--dim)}
+.stats li{padding:3px 0;border-bottom:1px dashed var(--line)}
+.stats b{color:var(--green)}
+
+.skulls{border-color:var(--green);text-align:center;font-size:20px;letter-spacing:.3em;
+  padding:10px;box-shadow:0 0 0 2px #000,0 0 14px #9dff3c33}
+
+.about .shout{margin:0 0 8px;color:var(--green);font-size:16px;font-style:italic;
+  text-shadow:0 0 6px #9dff3c55}
+.about p{margin:0;color:var(--ink);font-size:13px}
+
+/* top 8 */
+.friends{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--line)}
+@media(max-width:420px){.friends{grid-template-columns:1fr}}
+.friends li{background:var(--panel2);padding:9px;display:flex;flex-direction:column}
+.friends .av{font-size:22px;line-height:1;text-shadow:0 0 8px var(--pink)}
+.friends .fn{color:var(--blue);font-weight:bold;font-size:12px;margin:5px 0 2px;word-break:break-word}
+.friends .fb{color:var(--dim);font-size:11px}
+
+/* comments wall */
+.comments{margin:0;padding:0;list-style:none}
+.comments li{padding:9px 0;border-bottom:1px dashed var(--line);display:flex;flex-direction:column}
+.comments li:last-child{border-bottom:0}
+.comments li:nth-child(even){background:#120b1c;margin:0 -12px;padding:9px 12px}
+.comments .cn{color:var(--pink);font-weight:bold;font-size:12px;text-shadow:0 0 5px #ff1e8e55}
+.comments .ct{color:var(--ink);font-size:12px;margin-top:2px}
+
+footer{position:relative;z-index:2;text-align:center;color:var(--dim);
+  font:11px/1.6 "Courier New",monospace;letter-spacing:.04em;
+  padding:18px 16px 40px;border-top:2px solid var(--pink);margin-top:6px}
+
+@media(prefers-reduced-motion:reduce){
+  .glitter,.blink,.eq i,.bar em{animation:none}
+  .blink{opacity:1}
+  .bar em{width:100%}
+}
