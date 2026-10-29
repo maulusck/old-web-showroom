@@ -5,34 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Retro Template Vault</title>
 <style>
-  :root{--bg:#f3f1ea;--ink:#232019;--dim:#9b9385;--rule:#ddd8cc;--link:#3f5d4e}
+  :root{--floor:#f1efe9;--wall:#fbfaf6;--ink:#1b1a17;--dim:#9a968b;--line:#e4e0d5;--accent:#8a1f1a;--sel:#f3f0e7}
   @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
-    --bg:#121310;--ink:#e7e3d8;--dim:#6f6b5f;--rule:#262720;--link:#9db9a8}}
-  :root[data-theme="dark"]{--bg:#121310;--ink:#e7e3d8;--dim:#6f6b5f;--rule:#262720;--link:#9db9a8}
+    --floor:#131311;--wall:#1b1a17;--ink:#ece8dd;--dim:#77736a;--line:#2a2824;--accent:#cf6a4c;--sel:#221f1b}}
+  :root[data-theme="dark"]{--floor:#131311;--wall:#1b1a17;--ink:#ece8dd;--dim:#77736a;--line:#2a2824;--accent:#cf6a4c;--sel:#221f1b}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font:15px/1.7 ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-weight:400}
-  .page{max-width:680px;margin:0 auto;padding:12vh 28px 16vh}
-  h1{margin:0;font-size:15px;font-weight:400;color:var(--dim)}
-  h1 b{color:var(--ink);font-weight:400}
-  .list{margin:9vh 0 0}
-  .row{display:flex;gap:1.5em;padding:.55em 0;text-decoration:none;color:inherit;border-top:1px solid var(--rule)}
-  .row:last-child{border-bottom:1px solid var(--rule)}
-  .nm{flex:0 0 11em;color:var(--ink)}
-  .ds{flex:1;color:var(--dim)}
-  a.row:hover .nm{color:var(--link)}
-  .soon{color:var(--dim)}
-  .foot{margin:9vh 0 0;color:var(--dim)}
-  @media(max-width:560px){.row{flex-direction:column;gap:.1em}.nm{flex:none}}
+  body{margin:0;background:var(--floor);color:var(--ink);
+    font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+  .room{max-width:720px;margin:0 auto;padding:11vh 24px 15vh}
+
+  .plate{text-align:center;margin-bottom:7vh}
+  .plate .kick{margin:0;font:12px/1 ui-monospace,monospace;letter-spacing:.42em;text-transform:uppercase;color:var(--dim)}
+  .plate h1{margin:.7em 0 .5em;font-size:clamp(26px,5vw,42px);font-weight:600;letter-spacing:.01em}
+  .plate .count{margin:0;font:12px/1 ui-monospace,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
+  .plate .bar{height:1px;width:96px;background:var(--line);margin:24px auto 0}
+
+  .bay{display:grid;grid-template-columns:2.6ch 1fr auto;align-items:baseline;gap:20px;
+    padding:17px 18px;text-decoration:none;color:inherit;background:var(--wall);border-bottom:1px solid var(--line)}
+  .bay:first-child{border-top:1px solid var(--line)}
+  a.bay:hover{background:var(--sel)}
+  a.bay:hover .no{color:var(--accent)}
+  a.bay:hover .go{opacity:1}
+  .no{color:var(--dim);font-size:13px}
+  .nm{font-size:18px;font-weight:600;letter-spacing:.01em}
+  .sp{justify-self:end;text-align:right;max-width:40ch;color:var(--dim);font-size:13px}
+  .go{color:var(--accent);opacity:0;font-size:14px}
+  .soon{background:transparent}
+  .soon .nm{color:var(--dim)}
+  @media(max-width:560px){.bay{grid-template-columns:2.6ch 1fr;gap:12px}.sp{display:none}}
 </style>
 </head>
 <body>
-<div class="page">
-  <h1><b>Index of /templates</b> — retro template vault</h1>
-
-  <div class="list" id="list"></div>
-
-  <p class="foot" id="foot"></p>
+<div class="room">
+  <div class="plate">
+    <p class="kick">the showroom</p>
+    <h1>Retro Template Vault</h1>
+    <p class="count" id="count">models</p>
+    <div class="bar"></div>
+  </div>
+  <div id="floor"></div>
 </div>
 
 <script>
@@ -86,14 +99,15 @@ const T=[
  {s:"tamagotchi",    n:"Tamagotchi",          d:"90s LCD virtual pet — pixel creature, 3 buttons", done:true},
 ];
 const shown=T.filter(t=>t.s[0]!=="_");
-document.getElementById("list").innerHTML=shown.map(t=>{
-  const body=`<span class="nm">${t.n}</span><span class="ds">${t.d}</span>`;
+document.getElementById("floor").innerHTML=shown.map((t,i)=>{
+  const no=String(i+1).padStart(2,"0");
+  const inner=`<span class="no mono">${no}</span><span class="nm">${t.n}</span><span class="sp mono">${t.d}</span><span class="go">&#9654;</span>`;
   return t.done
-    ? `<a class="row" href="templates/${t.s}/index.html" target="_blank" rel="noopener">${body}</a>`
-    : `<div class="row soon">${body}</div>`;
+    ? `<a class="bay" href="templates/${t.s}/index.html" target="_blank" rel="noopener">${inner}</a>`
+    : `<div class="bay soon">${inner}</div>`;
 }).join("");
 const built=shown.filter(t=>t.done).length;
-document.getElementById("foot").textContent=built===shown.length?`${built} templates.`:`${built} of ${shown.length} built.`;
+document.getElementById("count").textContent=(built===shown.length?built:`${built} of ${shown.length}`)+" models";
 </script>
 </body>
 </html>
