@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Program Manager</title>
+<!-- win31-progman — Windows 3.1 Program Manager. VGA grey, bevels, inline-SVG icons. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- icon sprite: drawn once, reused by <use>. chunky 16-colour rects. -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ic-filemgr" viewBox="0 0 32 32">
+    <rect class="k" x="3" y="6" width="13" height="5"/><rect class="y" x="4" y="7" width="11" height="4"/>
+    <rect class="k" x="3" y="9" width="26" height="19"/><rect class="y" x="4" y="10" width="24" height="17"/>
+    <rect class="s" x="7" y="14" width="18" height="2"/><rect class="s" x="7" y="19" width="18" height="2"/>
+  </symbol>
+  <symbol id="ic-control" viewBox="0 0 32 32">
+    <rect class="k" x="4" y="6" width="24" height="20"/><rect class="g" x="5" y="7" width="22" height="18"/>
+    <rect class="k" x="8" y="11" width="16" height="2"/><rect class="b" x="11" y="8" width="5" height="8"/>
+    <rect class="k" x="8" y="19" width="16" height="2"/><rect class="r" x="17" y="16" width="5" height="8"/>
+  </symbol>
+  <symbol id="ic-dos" viewBox="0 0 32 32">
+    <rect class="k" x="4" y="5" width="24" height="19"/><rect class="g" x="5" y="6" width="22" height="17"/>
+    <rect class="k" x="7" y="8" width="18" height="13"/>
+    <rect class="gr" x="9" y="10" width="7" height="2"/><rect class="gr" x="9" y="13" width="3" height="2"/>
+    <rect class="w" x="13" y="13" width="2" height="2"/>
+    <rect class="g" x="12" y="24" width="8" height="2"/><rect class="k" x="10" y="26" width="12" height="2"/>
+  </symbol>
+  <symbol id="ic-print" viewBox="0 0 32 32">
+    <rect class="w" x="8" y="5" width="16" height="8"/><rect class="k" x="8" y="5" width="16" height="2"/>
+    <rect class="k" x="4" y="12" width="24" height="11"/><rect class="g" x="5" y="13" width="22" height="9"/>
+    <rect class="gr" x="22" y="15" width="3" height="2"/>
+    <rect class="w" x="8" y="20" width="16" height="7"/><rect class="s" x="10" y="22" width="12" height="1"/>
+    <rect class="s" x="10" y="24" width="12" height="1"/>
+  </symbol>
+  <symbol id="ic-notepad" viewBox="0 0 32 32">
+    <rect class="k" x="6" y="4" width="20" height="24"/><rect class="w" x="7" y="5" width="18" height="22"/>
+    <rect class="b" x="9" y="9" width="14" height="2"/><rect class="b" x="9" y="13" width="14" height="2"/>
+    <rect class="b" x="9" y="17" width="14" height="2"/><rect class="b" x="9" y="21" width="9" height="2"/>
+  </symbol>
+  <symbol id="ic-paint" viewBox="0 0 32 32">
+    <rect class="y" x="4" y="6" width="7" height="7"/><rect class="r" x="12" y="6" width="7" height="7"/>
+    <rect class="b" x="4" y="14" width="7" height="7"/><rect class="gr" x="12" y="14" width="7" height="7"/>
+    <rect class="k" x="22" y="7" width="3" height="15"/><rect class="r" x="20" y="21" width="7" height="6"/>
+    <rect class="w" x="22" y="7" width="3" height="3"/>
+  </symbol>
+  <symbol id="ic-calc" viewBox="0 0 32 32">
+    <rect class="k" x="6" y="4" width="20" height="24"/><rect class="g" x="7" y="5" width="18" height="22"/>
+    <rect class="gr" x="9" y="7" width="14" height="5"/>
+    <rect class="k" x="9" y="15" width="3" height="3"/><rect class="k" x="14" y="15" width="3" height="3"/>
+    <rect class="k" x="19" y="15" width="3" height="3"/><rect class="k" x="9" y="20" width="3" height="3"/>
+    <rect class="k" x="14" y="20" width="3" height="3"/><rect class="r" x="19" y="20" width="3" height="3"/>
+  </symbol>
+  <symbol id="ic-clock" viewBox="0 0 32 32">
+    <circle class="k" cx="16" cy="16" r="12"/><circle class="w" cx="16" cy="16" r="10"/>
+    <rect class="k" x="15" y="8" width="2" height="9"/><rect class="r" x="16" y="15" width="7" height="2"/>
+    <circle class="k" cx="16" cy="16" r="1.5"/>
+  </symbol>
+  <symbol id="ic-solitaire" viewBox="0 0 32 32">
+    <rect class="k" x="7" y="4" width="15" height="22"/><rect class="w" x="8" y="5" width="13" height="20"/>
+    <path class="r" d="M14.5 9 L18 13.5 L14.5 18 L11 13.5 Z"/>
+    <rect class="s" x="17" y="7" width="7" height="22"/><rect class="w" x="18" y="8" width="6" height="20"/>
+  </symbol>
+  <symbol id="ic-mine" viewBox="0 0 32 32">
+    <circle class="k" cx="15" cy="19" r="9"/><circle class="w" cx="12" cy="16" r="2"/>
+    <rect class="k" x="14" y="6" width="2" height="6" transform="rotate(20 15 9)"/>
+    <rect class="y" x="16" y="4" width="4" height="4"/><rect class="r" x="17" y="5" width="2" height="2"/>
+  </symbol>
+  <symbol id="ic-readme" viewBox="0 0 32 32">
+    <rect class="k" x="7" y="4" width="18" height="24"/><rect class="w" x="8" y="5" width="16" height="22"/>
+    <path class="g" d="M19 5 L24 10 L19 10 Z"/><rect class="k" x="19" y="5" width="1" height="5"/>
+    <rect class="b" x="10" y="12" width="12" height="2"/><rect class="b" x="10" y="16" width="12" height="2"/>
+    <rect class="b" x="10" y="20" width="8" height="2"/>
+  </symbol>
+  <symbol id="ic-pm" viewBox="0 0 32 32">
+    <rect class="k" x="4" y="6" width="24" height="20"/><rect class="g" x="5" y="7" width="22" height="18"/>
+    <rect class="b" x="5" y="7" width="22" height="4"/>
+    <rect class="w" x="8" y="14" width="4" height="4"/><rect class="w" x="14" y="14" width="4" height="4"/>
+    <rect class="w" x="20" y="14" width="4" height="4"/>
+  </symbol>
+</svg>
+
+<!-- ===== Program Manager window ===== -->
+<div class="window progman">
+  <div class="titlebar">
+    <span class="ctl box" aria-hidden="true"></span>
+    <span class="title-text" data-slot="site-name">Program Manager</span>
+    <span class="btns" aria-hidden="true"><span class="ctl">▼</span><span class="ctl">▲</span></span>
+  </div>
+
+  <nav class="menubar" aria-label="main menu">
+    <a href="#file" data-slot="nav-item"><u>F</u>ile</a>
+    <a href="#options" data-slot="nav-item"><u>O</u>ptions</a>
+    <a href="#window" data-slot="nav-item"><u>W</u>indow</a>
+    <a href="readme.html" data-slot="nav-item"><u>H</u>elp</a>
+  </nav>
+
+  <div class="desktop">
+
+    <!-- Welcome dialog — hero slots -->
+    <div class="window dialog">
+      <div class="titlebar">
+        <span class="ctl box" aria-hidden="true"></span>
+        <span class="title-text">Welcome</span>
+      </div>
+      <div class="body">
+        <div class="ico-row">
+          <svg aria-hidden="true"><use href="#ic-pm"/></svg>
+          <div>
+            <h2 data-slot="hero-title">Welcome back to the desktop.</h2>
+            <p data-slot="hero-body">Everything here is one double-click away. Pick a program
+            group below, open a tile, and let the sixteen colours do the rest. No Start button,
+            no taskbar — just you and a grey window that boots before your coffee does.</p>
+          </div>
+        </div>
+        <a class="ok raise" href="#main" role="button">OK</a>
+      </div>
+    </div>
+
+    <!-- Group: Main -->
+    <div class="window group" id="main">
+      <div class="titlebar inactive">
+        <span class="ctl box" aria-hidden="true"></span>
+        <span class="title-text" data-slot="card-title">Main</span>
+      </div>
+      <div class="client sink">
+        <a class="icon" href="#file"><svg aria-hidden="true"><use href="#ic-filemgr"/></svg><span class="lbl" data-slot="icon-label">File Manager</span></a>
+        <a class="icon" href="#options"><svg aria-hidden="true"><use href="#ic-control"/></svg><span class="lbl" data-slot="icon-label">Control Panel</span></a>
+        <a class="icon" href="#file"><svg aria-hidden="true"><use href="#ic-dos"/></svg><span class="lbl" data-slot="icon-label">MS-DOS Prompt</span></a>
+        <a class="icon" href="#file"><svg aria-hidden="true"><use href="#ic-print"/></svg><span class="lbl" data-slot="icon-label">Print Manager</span></a>
+      </div>
+    </div>
+
+    <!-- Group: Accessories -->
+    <div class="window group">
+      <div class="titlebar inactive">
+        <span class="ctl box" aria-hidden="true"></span>
+        <span class="title-text" data-slot="card-title">Accessories</span>
+      </div>
+      <div class="client sink">
+        <a class="icon" href="readme.html"><svg aria-hidden="true"><use href="#ic-notepad"/></svg><span class="lbl" data-slot="icon-label">Notepad</span></a>
+        <a class="icon" href="#options"><svg aria-hidden="true"><use href="#ic-paint"/></svg><span class="lbl" data-slot="icon-label">Paintbrush</span></a>
+        <a class="icon" href="#options"><svg aria-hidden="true"><use href="#ic-calc"/></svg><span class="lbl" data-slot="icon-label">Calculator</span></a>
+        <a class="icon" href="#options"><svg aria-hidden="true"><use href="#ic-clock"/></svg><span class="lbl" data-slot="icon-label">Clock</span></a>
+      </div>
+    </div>
+
+    <!-- Group: Games -->
+    <div class="window group">
+      <div class="titlebar inactive">
+        <span class="ctl box" aria-hidden="true"></span>
+        <span class="title-text" data-slot="card-title">Games &amp; Guides</span>
+      </div>
+      <div class="client sink">
+        <a class="icon" href="#window"><svg aria-hidden="true"><use href="#ic-solitaire"/></svg><span class="lbl" data-slot="icon-label">Solitaire</span></a>
+        <a class="icon" href="#window"><svg aria-hidden="true"><use href="#ic-mine"/></svg><span class="lbl" data-slot="icon-label">Minesweeper</span></a>
+        <a class="icon" href="readme.html"><svg aria-hidden="true"><use href="#ic-readme"/></svg><span class="lbl" data-slot="icon-label">Read Me First</span></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- minimized group row -->
+  <div class="tray sink">
+    <span class="min"><svg aria-hidden="true"><use href="#ic-pm"/></svg><span class="lbl" data-slot="icon-label">StartUp</span></span>
+    <span class="min"><svg aria-hidden="true"><use href="#ic-pm"/></svg><span class="lbl" data-slot="icon-label">Applications</span></span>
+    <span class="min"><svg aria-hidden="true"><use href="#ic-pm"/></svg><span class="lbl" data-slot="icon-label">Network</span></span>
+  </div>
+
+  <div class="status sink" data-slot="footer">C:\WINDOWS &gt; 437 KB free · 12 items · System resources: 83% free · 1993–2026</div>
+</div>
+
+<span class="hint" data-slot="tagline">Double-click a program group to begin · Press ALT to walk the menu</span>
+
+<script src="../../edit.js" defer></script>
+</body>
+</html>
