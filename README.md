@@ -92,9 +92,11 @@ markup, follow the five rules, add the slug to `T` in `index.html`.
 
 ## Checking templates
 
-`./check.sh` verifies every template against the structural rules (external
+`./check.py` verifies every template against the structural rules (external
 `style.css`, no inline `<style>`, `data-slot` present, the `edit.js` hook,
-no `lorem ipsum`, no remote/CDN assets, and showroom registration). POSIX sh,
-no dependencies. Styling is each template's own business — the script enforces
-structure, never taste. Exits non-zero on any failure, so it drops straight
-into CI or a pre-commit hook.
+no `lorem ipsum`, no remote/CDN assets, and two-way showroom registration).
+Python 3 stdlib only, no dependencies — it parses the HTML rather than
+grepping, so a URL or the words "lorem ipsum" in a comment never trip it.
+`./check.py --selftest` validates the checker itself; `--plain` drops the
+colour/banner (also auto-off when piped). Exits non-zero on any failure, so it
+drops straight into CI or a pre-commit hook.
