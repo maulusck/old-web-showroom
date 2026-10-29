@@ -1,0 +1,108 @@
+/* Werkform — Bauhaus / De Stijl. Primaries + black on off-white, geometry,
+   asymmetric grid, heavy geometric sans. One stylesheet themes the template. */
+:root{
+  --paper:#f2efe6; --ink:#111; --red:#e30613; --blue:#004e9e; --yellow:#f5c400;
+  --line:#111;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#15150f; --ink:#f2efe6; --line:#f2efe6;
+  --red:#ef3b3b; --blue:#3b7fd1; --yellow:#f5c400;
+}}
+:root[data-theme="dark"]{
+  --paper:#15150f; --ink:#f2efe6; --line:#f2efe6;
+  --red:#ef3b3b; --blue:#3b7fd1; --yellow:#f5c400;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:Futura,"Century Gothic","Twentieth Century","URW Gothic",
+    "Avant Garde",Questrial,"Trebuchet MS",system-ui,sans-serif;
+  line-height:1.4;-webkit-font-smoothing:antialiased}
+
+/* ---- Masthead: black block, geometric mark, heavy type ---- */
+.masthead{display:flex;align-items:stretch;gap:0;border-bottom:8px solid var(--line)}
+.mark{width:clamp(72px,16vw,120px);height:auto;flex:0 0 auto;display:block;
+  border-right:8px solid var(--line)}
+.masthead-type{padding:clamp(14px,4vw,30px) clamp(16px,4vw,34px);display:flex;
+  flex-direction:column;justify-content:center}
+h1{margin:0;font-size:clamp(34px,10vw,88px);font-weight:900;line-height:.9;
+  letter-spacing:.04em;text-transform:uppercase}
+.tagline{margin:.5em 0 0;font-size:clamp(11px,2.4vw,15px);font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+
+/* ---- Nav: taut band of blocks ---- */
+nav{display:flex;flex-wrap:wrap;background:var(--line)}
+nav a{flex:1 1 auto;text-align:center;padding:12px 18px;background:var(--paper);
+  color:var(--ink);text-decoration:none;font-weight:800;font-size:13px;
+  letter-spacing:.14em;text-transform:uppercase;border-right:4px solid var(--line)}
+nav a:last-child{border-right:0}
+nav a:hover,nav a:focus-visible{background:var(--yellow);color:var(--ink);outline:0}
+nav a[aria-current]{background:var(--blue);color:var(--paper)}
+
+/* ---- Poster body ---- */
+.poster{max-width:1040px;margin:0 auto;padding:clamp(20px,5vw,56px) clamp(16px,4vw,40px) 0}
+
+/* ---- Hero: asymmetric, shapes crash into the headline ---- */
+.hero{position:relative;padding:clamp(24px,6vw,60px) 0 clamp(28px,6vw,56px);
+  border-bottom:8px solid var(--line);overflow:hidden}
+.hero-shapes{position:absolute;inset:0;z-index:0;pointer-events:none}
+.sq-red{position:absolute;top:6%;right:4%;width:clamp(70px,16vw,150px);
+  height:clamp(70px,16vw,150px);background:var(--red)}
+.tri-blue{position:absolute;bottom:0;right:22%;width:0;height:0;
+  border-left:clamp(50px,11vw,110px) solid transparent;
+  border-right:clamp(50px,11vw,110px) solid transparent;
+  border-bottom:clamp(86px,19vw,190px) solid var(--blue)}
+.circ{position:absolute;bottom:-6%;left:-5%;width:clamp(90px,22vw,210px);height:auto;opacity:.92}
+.hero h2{position:relative;z-index:1;margin:0;max-width:17ch;
+  font-size:clamp(28px,6.2vw,62px);font-weight:900;line-height:1;letter-spacing:-.01em}
+.hero p{position:relative;z-index:1;margin:clamp(18px,3vw,28px) 0 0;max-width:46ch;
+  font-size:clamp(15px,2.4vw,19px);font-weight:500;line-height:1.5}
+
+/* ---- Card grid: four blocks, deliberately staggered ---- */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border-left:4px solid var(--line);border-top:4px solid var(--line);margin:0}
+.card{position:relative;padding:clamp(18px,2.6vw,30px);min-height:260px;
+  border-right:4px solid var(--line);border-bottom:4px solid var(--line);
+  display:flex;flex-direction:column;justify-content:flex-end}
+.card .num{position:absolute;top:14px;left:18px;font-size:clamp(26px,4vw,46px);
+  font-weight:900;line-height:1;opacity:.85}
+.card h3{margin:0 0 .5em;font-size:clamp(17px,2.2vw,22px);font-weight:800;
+  letter-spacing:.01em;text-transform:uppercase;line-height:1.05}
+.card p{margin:0;font-size:14px;font-weight:500;line-height:1.5}
+.card.c-red{background:var(--red);color:#fff}
+.card.c-red .num{color:#fff}
+.card.c-blue{background:var(--blue);color:#fff}
+.card.c-blue .num{color:#fff}
+.card.c-yellow{background:var(--yellow);color:var(--ink)}
+.card.c-black{background:var(--ink);color:var(--paper)}
+/* self-nudge the stagger so the grid reads De-Stijl, not tic-tac-toe */
+.card.c-blue{transform:translateY(clamp(0px,2vw,26px))}
+.card.c-yellow{transform:translateY(clamp(0px,-1vw,-14px))}
+
+/* ---- Manifest strip ---- */
+.manifest{display:grid;grid-template-columns:1fr 2fr;gap:clamp(18px,4vw,48px);
+  align-items:start;padding:clamp(36px,7vw,72px) 0 clamp(28px,6vw,56px)}
+.manifest-head{margin:0;font-size:clamp(24px,4.6vw,44px);font-weight:900;
+  line-height:1;color:var(--red);border-top:8px solid var(--line);padding-top:16px}
+.manifest p{margin:0;font-size:clamp(15px,2.3vw,19px);font-weight:500;line-height:1.6;
+  border-top:8px solid var(--blue);padding-top:16px}
+
+/* ---- Colophon ---- */
+.colophon{background:var(--ink);color:var(--paper);text-align:center;
+  padding:22px 16px;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase}
+
+/* ---- Responsive collapse ---- */
+@media(max-width:820px){
+  .grid{grid-template-columns:1fr 1fr}
+  .card{min-height:220px}
+  .card.c-blue,.card.c-yellow{transform:none}
+}
+@media(max-width:520px){
+  .masthead{flex-direction:column}
+  .mark{width:100%;height:84px;border-right:0;border-bottom:8px solid var(--line)}
+  .grid{grid-template-columns:1fr}
+  .card{min-height:180px}
+  .manifest{grid-template-columns:1fr;gap:20px}
+}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

@@ -1,0 +1,71 @@
+/* ipod-click — mid-2000s iPod. White/silver body, LCD menu, chrome click-wheel. System sans only. */
+:root{
+  --body:#f7f7f5; --body-edge:#d9d9d6; --metal:#eef0f2;
+  --lcd:#dfe6e2; --lcd-ink:#20302c; --lcd-dim:#5c6b66;
+  --tb-top:#8fb4d8; --tb-bot:#3f6fa6; --tb-ink:#ffffff;
+  --sel-top:#6fa0d6; --sel-bot:#2f63a3; --sel-ink:#ffffff;
+  --wheel:#f3f3f1; --wheel-edge:#cfcfcc; --wheel-ink:#8a8a86;
+  --center-top:#fcfcfc; --center-bot:#e4e4e1; --page:#c9ccce;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --page:#1a1c1f; --body:#2b2e33; --body-edge:#15171a; --metal:#33373d;
+}}
+:root[data-theme="dark"]{
+  --page:#1a1c1f; --body:#2b2e33; --body-edge:#15171a; --metal:#33373d;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:24px 16px;background:radial-gradient(circle at 50% 30%,var(--metal),var(--page));
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--lcd-ink)}
+
+.ipod{width:100%;max-width:300px;background:linear-gradient(180deg,var(--body),var(--body-edge));
+  border:1px solid var(--body-edge);border-radius:22px;padding:18px;
+  box-shadow:0 1px 0 #fff inset,0 18px 40px rgba(0,0,0,.28)}
+
+/* LCD */
+.screen{background:var(--lcd);border-radius:5px;padding:0 0 10px;overflow:hidden;
+  box-shadow:0 0 0 2px #b8bfbc,0 2px 6px rgba(0,0,0,.25) inset}
+.titlebar{display:flex;align-items:center;justify-content:space-between;padding:4px 8px;
+  color:var(--tb-ink);background:linear-gradient(180deg,var(--tb-top),var(--tb-bot));
+  font-size:12px;font-weight:600;text-shadow:0 1px 1px rgba(0,0,0,.3)}
+.batt{display:inline-block;width:20px;height:11px;border:1px solid var(--tb-ink);border-radius:2px;
+  position:relative;padding:1px}
+.batt::after{content:"";position:absolute;right:-3px;top:3px;width:2px;height:5px;background:var(--tb-ink)}
+.batt-fill{display:block;width:70%;height:100%;background:var(--tb-ink);border-radius:1px}
+.tagline{margin:0;padding:5px 8px;font-size:10px;color:var(--lcd-dim);text-align:center;
+  border-bottom:1px solid #c6cdc9}
+
+.menu{list-style:none;margin:0;padding:0}
+.row{display:flex;align-items:center;justify-content:space-between;padding:5px 8px;
+  font-size:13px;color:var(--lcd-ink)}
+.row .chev{color:var(--lcd-dim);font-size:14px}
+.row.sel{color:var(--sel-ink);text-shadow:0 1px 1px rgba(0,0,0,.3);
+  background:linear-gradient(180deg,var(--sel-top),var(--sel-bot))}
+.row.sel .chev{color:var(--sel-ink)}
+
+.nowplaying{padding:9px 10px 2px;border-top:1px solid #c6cdc9;margin-top:4px}
+.np-title{margin:0;font-size:14px;font-weight:600;line-height:1.25}
+.np-sub{margin:2px 0 8px;font-size:11px;color:var(--lcd-dim)}
+.bar{height:5px;background:#c3cac6;border-radius:3px;overflow:hidden}
+.bar-fill{display:block;width:44%;height:100%;background:var(--tb-bot)}
+.times{display:flex;justify-content:space-between;font-size:9px;color:var(--lcd-dim);margin-top:3px}
+
+/* click wheel */
+.wheel{position:relative;width:200px;max-width:72%;aspect-ratio:1;margin:26px auto 6px;border-radius:50%;
+  background:radial-gradient(circle,var(--wheel) 0 55%,var(--wheel-edge) 100%);
+  box-shadow:0 1px 0 #fff inset,0 2px 5px rgba(0,0,0,.2);color:var(--wheel-ink)}
+.label,.icon{position:absolute;pointer-events:none}
+.menu-lbl{top:9%;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;letter-spacing:.1em}
+.icon{width:26px;height:20px}
+.prev{left:9%;top:50%;transform:translateY(-50%)}
+.next{right:9%;top:50%;transform:translateY(-50%)}
+.play{bottom:8%;left:50%;transform:translateX(-50%);width:32px}
+.center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:38%;aspect-ratio:1;border-radius:50%;border:1px solid var(--wheel-edge);
+  background:radial-gradient(circle at 50% 35%,var(--center-top),var(--center-bot));
+  font:600 9px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.08em;
+  color:var(--wheel-ink);cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.center:hover{color:var(--lcd-ink)}
+.center:focus-visible{outline:2px solid var(--tb-bot);outline-offset:2px}
+
+.footer{text-align:center;font-size:9px;color:var(--wheel-ink);margin:10px 4px 0;line-height:1.4}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Werkform</title>
+<!-- Bauhaus / De Stijl — primary red/blue/yellow + black on off-white, pure
+     geometry, asymmetric grid, heavy geometric sans. Exhibition-poster feel. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="masthead">
+    <svg class="mark" viewBox="0 0 60 60" aria-hidden="true">
+      <rect width="60" height="60" fill="#111"/>
+      <circle cx="20" cy="20" r="14" fill="#e30613"/>
+      <path d="M8 52 L34 52 L34 26 Z" fill="#004e9e"/>
+      <rect x="38" y="6" width="16" height="16" fill="#f5c400"/>
+    </svg>
+    <div class="masthead-type">
+      <h1 data-slot="site-name">WERKFORM</h1>
+      <p class="tagline" data-slot="tagline">Schule für Form · Farbe · Fläche — Est. 1924</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html" data-slot="nav-item" aria-current="page">Werkstatt</a>
+    <a href="index.html" data-slot="nav-item">Kurse</a>
+    <a href="index.html" data-slot="nav-item">Ausstellung</a>
+    <a href="index.html" data-slot="nav-item">Manifest</a>
+    <a href="index.html" data-slot="nav-item">Kontakt</a>
+  </nav>
+
+  <main class="poster">
+    <section class="hero">
+      <div class="hero-shapes" aria-hidden="true">
+        <span class="sq-red"></span>
+        <span class="tri-blue"></span>
+        <svg class="circ" viewBox="0 0 120 120"><circle cx="60" cy="60" r="58" fill="#f5c400"/></svg>
+      </div>
+      <h2 data-slot="hero-title">Die Form folgt der Funktion — und beide folgen dem Kreis, dem Quadrat, dem Dreieck.</h2>
+      <p data-slot="hero-body">Keine Ornamente, keine Ausreden. Wir bauen mit den drei Grundfarben und den
+      drei Grundformen, bis aus der Fläche ein Gebäude wird. Komm in die Werkstatt, nimm das Lineal,
+      und lass das Gerade gerade und das Runde rund.</p>
+    </section>
+
+    <div class="grid">
+      <article class="card c-red">
+        <span class="num">01</span>
+        <h3 data-slot="card-title">Vorkurs: Material &amp; Fläche</h3>
+        <p data-slot="card-body">Sechs Wochen Papier, Draht und Holz. Erst die Hand begreift das Quadrat,
+        dann der Kopf. Bring nichts mit außer Neugier.</p>
+      </article>
+      <article class="card c-blue">
+        <span class="num">02</span>
+        <h3 data-slot="card-title">Werkstatt für Druck</h3>
+        <p data-slot="card-body">Plakate, die man quer durch den Saal liest. Rot schreit, Blau trägt,
+        Gelb ruft dazwischen — die Diagonale macht den Rest.</p>
+      </article>
+      <article class="card c-yellow">
+        <span class="num">03</span>
+        <h3 data-slot="card-title">Bühne &amp; Bewegung</h3>
+        <p data-slot="card-body">Der Mensch als Zahnrad, der Raum als Raster. Kostüme aus Zylinder und
+        Kegel, choreografiert auf dem Gitter.</p>
+      </article>
+      <article class="card c-black">
+        <span class="num">04</span>
+        <h3 data-slot="card-title">Architektur ohne Schnörkel</h3>
+        <p data-slot="card-body">Das Dach ist flach, das Fenster ist Band, die Wand ist weiß. Wir
+        zeichnen Häuser, in denen das Licht selbst wohnt.</p>
+      </article>
+    </div>
+
+    <section class="manifest">
+      <h2 class="manifest-head" data-slot="page-title">Drei Sätze, mehr braucht es nicht.</h2>
+      <p data-slot="page-body">Erstens: Die rechte Linie und die reine Farbe genügen. Zweitens: Der
+      Entwurf gehört allen, nicht dem Salon. Drittens: Was sich bauen lässt, soll sich bauen lassen —
+      billig, gerade und für die, die darin leben.</p>
+    </section>
+  </main>
+
+  <footer class="colophon" data-slot="footer">&copy; 1924–2026 WERKFORM · Gedruckt in Rot, Blau, Gelb &amp; Schwarz auf naturweißem Grund</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

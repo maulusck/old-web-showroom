@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pocket Rockit</title>
+<!-- ipod-click — mid-2000s iPod click-wheel. White/silver body, LCD menu, no JS. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ipod" role="img" aria-label="Classic iPod with click wheel">
+
+    <div class="screen">
+      <div class="titlebar">
+        <span class="tb-name" data-slot="site-name">Pocket Rockit</span>
+        <span class="batt" aria-hidden="true"><span class="batt-fill"></span></span>
+      </div>
+
+      <p class="tagline" data-slot="tagline">10,000 songs. One thumb.</p>
+
+      <ul class="menu">
+        <li class="row sel">
+          <span data-slot="nav-item">Now Playing</span>
+          <span class="chev" aria-hidden="true">&rsaquo;</span>
+        </li>
+        <li class="row">
+          <span data-slot="nav-item">Playlists</span>
+          <span class="chev" aria-hidden="true">&rsaquo;</span>
+        </li>
+        <li class="row">
+          <span data-slot="nav-item">Artists</span>
+          <span class="chev" aria-hidden="true">&rsaquo;</span>
+        </li>
+        <li class="row">
+          <span data-slot="nav-item">Shuffle Songs</span>
+          <span class="chev" aria-hidden="true">&rsaquo;</span>
+        </li>
+        <li class="row">
+          <span data-slot="nav-item">Settings</span>
+          <span class="chev" aria-hidden="true">&rsaquo;</span>
+        </li>
+      </ul>
+
+      <div class="nowplaying">
+        <h1 class="np-title" data-slot="hero-title">Static on the Boardwalk</h1>
+        <p class="np-sub" data-slot="hero-body">The Cassette Kids &mdash; Summer in Low Fidelity</p>
+        <div class="bar" aria-hidden="true"><span class="bar-fill"></span></div>
+        <div class="times" aria-hidden="true"><span>1:42</span><span>-2:11</span></div>
+      </div>
+    </div>
+
+    <div class="wheel">
+      <span class="label menu-lbl" data-slot="card-title">MENU</span>
+      <svg class="icon prev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M19 6l-8 6 8 6z" fill="currentColor"/></svg>
+      <svg class="icon next" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6v12M5 6l8 6-8 6z" fill="currentColor"/></svg>
+      <svg class="icon play" viewBox="0 0 34 24" aria-hidden="true"><path d="M3 5v14l9-7zM19 5h4v14h-4zM26 5h4v14h-4z" fill="currentColor"/></svg>
+      <button class="center" data-slot="card-body" type="button">SELECT</button>
+    </div>
+
+    <p class="footer" data-slot="footer">&copy; 2004&ndash;2026 Pocket Rockit &middot; Designed by hand, played by thumb</p>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
