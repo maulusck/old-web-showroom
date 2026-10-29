@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KUROSHIO//HUD</title>
+<!-- cyberpunk-hud — neon-noir net-runner terminal. Blade Runner / GitS.
+     Near-black + cyan/magenta, targeting brackets, scan reticle, inline-SVG city. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scan" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="frame">
+    <header class="hud-head">
+      <div class="tick tl" aria-hidden="true"></div>
+      <div class="tick tr" aria-hidden="true"></div>
+      <div class="idtag">
+        <span class="jp" aria-hidden="true">電脳街</span>
+        <span class="bytes" aria-hidden="true">0xFF·3A·D1·07</span>
+      </div>
+      <h1 class="glitch" data-slot="site-name" data-text="KUROSHIO">KUROSHIO</h1>
+      <p class="tagline" data-slot="tagline">ネットランナー端末 // black-ice broker · sector 7 nightfeed</p>
+      <div class="statusline" aria-hidden="true">
+        <span>LINK<b>ACTIVE</b></span><span>PING<b>014ms</b></span>
+        <span>TRACE<b>NONE</b></span><span>GRID<b>神戸//KOBE</b></span>
+      </div>
+    </header>
+
+    <nav>
+      <a href="index.html" aria-current="page" data-slot="nav-item">&gt; MAINFRAME</a>
+      <a href="index.html#decks" data-slot="nav-item">&gt; DECKS</a>
+      <a href="index.html#ice" data-slot="nav-item">&gt; ICE_BREAK</a>
+      <a href="index.html#market" data-slot="nav-item">&gt; NIGHTMARKET</a>
+      <a href="index.html#logs" data-slot="nav-item">&gt; LOGS</a>
+    </nav>
+
+    <section class="hero">
+      <div class="reticle" aria-hidden="true">
+        <svg viewBox="0 0 200 200" role="img">
+          <circle cx="100" cy="100" r="78" class="ring r1"/>
+          <circle cx="100" cy="100" r="54" class="ring r2"/>
+          <circle cx="100" cy="100" r="30" class="ring r3"/>
+          <line x1="100" y1="6" x2="100" y2="34" class="cross"/>
+          <line x1="100" y1="166" x2="100" y2="194" class="cross"/>
+          <line x1="6" y1="100" x2="34" y2="100" class="cross"/>
+          <line x1="166" y1="100" x2="194" y2="100" class="cross"/>
+          <circle cx="100" cy="100" r="3" class="dot"/>
+          <path d="M34 22 H22 V34" class="brk"/><path d="M166 22 H178 V34" class="brk"/>
+          <path d="M34 178 H22 V166" class="brk"/><path d="M166 178 H178 V166" class="brk"/>
+          <g class="sweep"><line x1="100" y1="100" x2="100" y2="22" class="beam"/></g>
+        </svg>
+      </div>
+      <div class="hero-txt">
+        <span class="kbracket" aria-hidden="true">[ 標的補足 · TARGET LOCKED ]</span>
+        <h2 data-slot="hero-title">Jack in before the megacity wakes.</h2>
+        <p data-slot="hero-body">We broker cold intrusion across the Kuroshio stack — quiet
+        decks, custom ICE-breakers, and an exit route out of every black vault below the rain
+        line. No handles, no trace. Pay in crypto, leave in silence.</p>
+        <div class="meters" aria-hidden="true">
+          <div class="meter"><span>HEAT</span><i style="--v:28%"></i></div>
+          <div class="meter"><span>CPU</span><i style="--v:61%"></i></div>
+          <div class="meter mag"><span>MEM</span><i style="--v:47%"></i></div>
+          <div class="meter mag"><span>SIG</span><i style="--v:83%"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="city" aria-label="megacity skyline wireframe">
+      <svg viewBox="0 0 900 220" preserveAspectRatio="xMidYMax slice" role="img" aria-hidden="true">
+        <defs><pattern id="g" width="36" height="36" patternUnits="userSpaceOnUse">
+          <path d="M36 0 H0 V36" class="gln"/></pattern></defs>
+        <rect width="900" height="220" fill="url(#g)"/>
+        <g class="sky">
+          <polyline points="0,220 0,150 50,150 50,96 92,96 92,150 150,150 150,60 198,60 198,150 250,150 250,118 300,118 300,150 360,150 360,40 410,40 410,150 470,150 470,88 520,88 520,150 590,150 590,70 640,70 640,150 700,150 700,110 752,110 752,150 820,150 820,52 868,52 868,150 900,150 900,220"/>
+          <line x1="150" y1="60" x2="150" y2="30" class="ant"/><circle cx="150" cy="28" r="3" class="beacon"/>
+          <line x1="360" y1="40" x2="360" y2="12" class="ant"/><circle cx="360" cy="10" r="3" class="beacon b2"/>
+          <line x1="820" y1="52" x2="820" y2="22" class="ant"/><circle cx="820" cy="20" r="3" class="beacon"/>
+        </g>
+        <text x="16" y="208" class="cityjp">黒潮区 · DISTRICT 07 · NIGHTFEED ONLINE</text>
+      </svg>
+    </section>
+
+    <div class="grid">
+      <article class="card">
+        <span class="cc" aria-hidden="true">侵</span>
+        <h3 data-slot="card-title">Cold Decks</h3>
+        <p data-slot="card-body">Pre-loaded intrusion rigs, scrubbed of prior owners. Boots
+        cold, forgets everything by dawn.</p>
+      </article>
+      <article class="card">
+        <span class="cc mag" aria-hidden="true">氷</span>
+        <h3 data-slot="card-title">ICE Breakers</h3>
+        <p data-slot="card-body">Hand-rolled daemons that peel corporate black-ice like wet
+        paper. Guaranteed past gen-four countermeasures.</p>
+      </article>
+      <article class="card">
+        <span class="cc" aria-hidden="true">市</span>
+        <h3 data-slot="card-title">Night Market</h3>
+        <p data-slot="card-body">Hot paydata, forged credentials, zero-days under the neon. If
+        it moves on the grid, we move it first.</p>
+      </article>
+      <article class="card">
+        <span class="cc mag" aria-hidden="true">逃</span>
+        <h3 data-slot="card-title">Ghost Exits</h3>
+        <p data-slot="card-body">Pre-cut escape routes through dead relays and dummy nodes.
+        You flatline on their logs and walk out clean.</p>
+      </article>
+    </div>
+
+    <footer class="hud-foot">
+      <div class="tick bl" aria-hidden="true"></div>
+      <div class="tick br" aria-hidden="true"></div>
+      <p data-slot="footer">© 2049 KUROSHIO BROKERAGE // 黒潮 · unlicensed net-runner terminal · all intrusions routed, none remembered</p>
+    </footer>
+  </div>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

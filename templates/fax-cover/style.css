@@ -1,0 +1,70 @@
+/* fax-cover — thermal fax cover sheet. Black-on-cream, deadpan office. */
+:root{
+  --paper:#f3efe4; --paper-edge:#e6e0cf; --ink:#1a1a17;
+  --dim:#5c594f; --line:#bcb6a3; --box:#2a2822;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#1b1a16; --paper-edge:#131210; --ink:#ddd7c6;
+  --dim:#8f8a79; --line:#403d34; --box:#ddd7c6;
+}}
+:root[data-theme="dark"]{
+  --paper:#1b1a16; --paper-edge:#131210; --ink:#ddd7c6;
+  --dim:#8f8a79; --line:#403d34; --box:#ddd7c6;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);
+  background:var(--paper-edge);
+  font:16px/1.55 "Courier New",Courier,monospace}
+
+/* grain layer sits over the page, barely there */
+.grain{position:fixed;inset:0;width:100%;height:100%;z-index:0;
+  opacity:.05;pointer-events:none;mix-blend-mode:multiply}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .grain{mix-blend-mode:screen;opacity:.06}}
+:root[data-theme="dark"] .grain{mix-blend-mode:screen;opacity:.06}
+
+.sheet{position:relative;z-index:1;max-width:760px;margin:24px auto;padding:0 clamp(16px,5vw,52px) 40px;
+  background:var(--paper);box-shadow:0 1px 0 var(--line),0 10px 30px rgba(0,0,0,.18)}
+
+/* the fax machine's own header line across the top */
+.strip{margin:0 -1px;padding:4px 8px;font-size:11px;letter-spacing:.02em;color:var(--dim);
+  border-bottom:1px solid var(--line);white-space:nowrap;overflow-x:auto;opacity:.75}
+
+.masthead{text-align:center;padding:30px 0 20px;border-bottom:3px solid var(--ink)}
+h1{margin:0;font:800 clamp(24px,6vw,42px)/1 Helvetica,Arial,sans-serif;
+  letter-spacing:.14em;text-transform:uppercase}
+.sub{margin:10px 0 0;font-size:12px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;
+  font-family:Helvetica,Arial,sans-serif}
+
+.fields{width:100%;border-collapse:collapse;margin:22px 0}
+.fields th,.fields td{text-align:left;vertical-align:bottom;padding:7px 10px 4px;
+  border-bottom:1px solid var(--line);font-weight:400}
+.fields th{width:5.5em;font:11px/1.4 Helvetica,Arial,sans-serif;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.fields td{color:var(--ink)}
+
+.boxes{display:flex;flex-wrap:wrap;gap:10px 26px;list-style:none;margin:20px 0;padding:14px 12px;
+  border:1px solid var(--line);font:12px/1 Helvetica,Arial,sans-serif;
+  letter-spacing:.08em;text-transform:uppercase}
+.boxes li{display:flex;align-items:center;gap:8px}
+.box{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;
+  border:2px solid var(--box);font-size:12px;line-height:1;color:var(--box)}
+
+.note{margin:26px 0}
+.note h2,.confidential h2{font:11px/1.4 Helvetica,Arial,sans-serif;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);margin:0 0 10px;
+  border-bottom:1px solid var(--line);padding-bottom:4px}
+.note p{margin:0;max-width:60ch}
+
+.confidential{margin:30px 0 10px}
+.confidential p{margin:0;font-size:12px;line-height:1.6;color:var(--dim);max-width:70ch}
+
+.footer{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+  margin-top:28px;padding-top:12px;border-top:3px double var(--line);
+  font:11px/1.5 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:var(--dim);text-transform:uppercase}
+.pageno{white-space:nowrap}
+
+@media (max-width:480px){
+  .fields th,.fields td{display:block;border:0;padding:2px 0}
+  .fields td{border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:6px}
+  .fields th{padding-top:8px}
+}

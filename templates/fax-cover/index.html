@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facsimile Transmission</title>
+<!-- fax-cover — late-80s/90s thermal fax cover sheet. Black-on-cream, typewriter + Helvetica, deadpan. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- faint thermal-paper grain overlay -->
+  <svg class="grain" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/></filter>
+    <rect width="100%" height="100%" filter="url(#g)"/>
+  </svg>
+
+  <div class="sheet">
+    <!-- fax machine header strip printed across the very top -->
+    <p class="strip" data-slot="tagline">OCT-14-1994  09:42  FROM: HALCYON MUTUAL 1-800-555-0162  TO: 15550113  P.01</p>
+
+    <header class="masthead">
+      <h1 data-slot="site-name">Facsimile Transmission</h1>
+      <p class="sub">Halcyon Mutual Assurance Co. &middot; Regional Office, Suite 1400</p>
+    </header>
+
+    <!-- TO / FROM / DATE / PAGES / RE : label=card-title, value=card-body -->
+    <table class="fields">
+      <tr><th data-slot="card-title">To</th>     <td data-slot="card-body">Mr. D. Prentice, Accounts Payable &mdash; Northgate Branch</td></tr>
+      <tr><th data-slot="card-title">From</th>   <td data-slot="card-body">R. Okonkwo, Claims &amp; Settlements, ext. 4471</td></tr>
+      <tr><th data-slot="card-title">Date</th>   <td data-slot="card-body">14 October 1994</td></tr>
+      <tr><th data-slot="card-title">Fax No.</th><td data-slot="card-body">(0171) 555&#8209;0113</td></tr>
+      <tr><th data-slot="card-title">Pages</th>  <td data-slot="card-body">3, including this cover sheet</td></tr>
+      <tr><th data-slot="card-title">Re</th>     <td data-slot="card-body">Policy HM&#8209;4471&#8209;B &mdash; revised settlement schedule</td></tr>
+    </table>
+
+    <!-- handling checkboxes : labels reuse nav-item -->
+    <ul class="boxes">
+      <li><span class="box" aria-hidden="true">&#10005;</span><span data-slot="nav-item">Urgent</span></li>
+      <li><span class="box" aria-hidden="true"></span><span data-slot="nav-item">For Review</span></li>
+      <li><span class="box" aria-hidden="true">&#10005;</span><span data-slot="nav-item">Please Comment</span></li>
+      <li><span class="box" aria-hidden="true"></span><span data-slot="nav-item">Please Reply</span></li>
+    </ul>
+
+    <section class="note">
+      <h2 data-slot="hero-title">Message</h2>
+      <p data-slot="hero-body">David &mdash; attached are the two corrected pages for policy HM&#8209;4471&#8209;B. The figure in column C was transposed in Tuesday's run; the settlement total now reads &pound;18,240.00, not &pound;18,420.00. Kindly shred the earlier copy. If the fax arrives faint, the machine on four is low on thermal roll again. Please confirm receipt by return.</p>
+    </section>
+
+    <!-- confidentiality notice -->
+    <section class="confidential">
+      <h2 data-slot="page-title">Confidentiality Notice</h2>
+      <p data-slot="page-body">This transmission is intended only for the addressee named above and may contain privileged or confidential material. If you are not the intended recipient, you are notified that any disclosure, copying, or distribution is strictly prohibited. Should you receive this in error, please telephone the sender at once and destroy all pages. Thank you for your cooperation.</p>
+    </section>
+
+    <footer class="footer">
+      <span data-slot="footer">Halcyon Mutual Assurance Co. &middot; If any page is missing or illegible, call ext. 4471</span>
+      <span class="pageno" data-slot="nav-item">pp. 1 of 3</span>
+    </footer>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
