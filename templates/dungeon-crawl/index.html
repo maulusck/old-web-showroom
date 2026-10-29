@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nethrack</title>
+<!-- Dungeon Crawl — ASCII roguelike (NetHack/Rogue). Amber/green/grey on black, fixed-width, text-mode. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="screen">
+
+    <header class="title">
+      <h1 data-slot="site-name">NETHRACK</h1>
+      <p data-slot="tagline">a dungeon crawl for the terminally brave &mdash; v3.6.7</p>
+    </header>
+
+    <div class="log" aria-label="message log">
+      <p data-slot="msg1">You enter a lamplit dungeon. It smells of wet stone and bad decisions.</p>
+      <p data-slot="msg2">The kobold hits you! You hit the kobold. The kobold is killed.</p>
+      <p data-slot="msg3">You see here 120 gold pieces. You pick it up. &quot;Rich, and still lost.&quot;</p>
+      <p class="prompt" data-slot="msg4">There is a staircase down here. Descend? <span class="cur">&#9612;</span></p>
+    </div>
+
+    <pre class="map" aria-label="dungeon map level 3">
+                      <span class="wall">------------</span>
+                      <span class="wall">|</span><span class="floor">..........</span><span class="wall">|</span>
+       <span class="wall">-----</span>          <span class="wall">|</span><span class="floor">....</span><span class="mob">d</span><span class="floor">.....</span><span class="door">+</span><span class="wall">----</span>
+       <span class="wall">|</span><span class="floor">...</span><span class="wall">|</span>          <span class="wall">|</span><span class="floor">..........</span><span class="wall">|</span>   <span class="wall">|</span>
+       <span class="wall">|</span><span class="floor">.</span><span class="gold">$</span><span class="floor">.</span><span class="door">+</span><span class="corr">########</span><span class="door">+</span><span class="wall">----.-----|</span>   <span class="wall">|</span>
+       <span class="wall">|</span><span class="floor">...</span><span class="wall">|</span>          <span class="corr">.</span>        <span class="corr">.</span> <span class="wall">|</span>   <span class="wall">|</span>
+       <span class="wall">-.---</span>          <span class="corr">.</span>  <span class="wall">----</span>  <span class="corr">.</span> <span class="door">+</span><span class="wall">---+----</span>
+        <span class="corr">.</span>              <span class="corr">####</span><span class="wall">|</span><span class="floor">..</span><span class="wall">|</span><span class="corr">###</span>    <span class="wall">|</span><span class="floor">..</span><span class="wall">|</span>
+     <span class="wall">---</span><span class="door">+</span><span class="wall">---</span>             <span class="wall">|</span><span class="floor">.</span><span class="mob">k</span><span class="wall">|</span>       <span class="wall">|</span><span class="mob">r</span><span class="floor">.</span><span class="wall">|</span>
+     <span class="wall">|</span><span class="floor">.....</span><span class="wall">|</span>             <span class="wall">----</span>       <span class="wall">----</span>
+     <span class="wall">|</span><span class="floor">..</span><span class="hero">@</span><span class="floor">..</span><span class="wall">|</span>  &lt; you are here
+     <span class="wall">|</span><span class="floor">.....</span><span class="wall">|</span>
+     <span class="wall">-------</span>
+    </pre>
+
+    <nav aria-label="commands">
+      <a href="#" data-slot="nav-item">[&gt;] Descend</a>
+      <a href="#" data-slot="nav-item">[i] Inventory</a>
+      <a href="#" data-slot="nav-item">[s] Spellbook</a>
+      <a href="#" data-slot="nav-item">[#] Pray</a>
+      <a href="#" data-slot="nav-item">[q] Quaff</a>
+      <a href="#" data-slot="nav-item">[S] Save</a>
+    </nav>
+
+    <section class="box hero">
+      <span class="tag">-- quest --</span>
+      <h2 data-slot="hero-title">Retrieve the Amulet of Yendor from Dlvl 26.</h2>
+      <p data-slot="hero-body">Twenty-six floors stand between your boots and the Amulet. Rats first,
+      then worse. The stairs only go one way until you're carrying the thing nobody has
+      carried back out alive. Rations are short, the gods are watching, and the corridors
+      remember the last fool who ran.</p>
+    </section>
+
+    <section class="box">
+      <h3 class="pt" data-slot="page-title">The Oracle, consulted (fee: 200 zm)</h3>
+      <p data-slot="page-body">&quot;Beware the floor that counts your steps. Eat the lichen, not the corpse four
+      days old. When the shopkeeper says &lsquo;pay before you leave,&rsquo; he means it, and he is
+      faster than you.&quot; The Oracle then falls silent. You feel you got your money's worth,
+      roughly.</p>
+    </section>
+
+    <div class="legend">
+      <span><b class="hero">@</b> you</span>
+      <span><b class="mob">d k r</b> dog / kobold / rat</span>
+      <span><b class="gold">$</b> gold</span>
+      <span><b class="wall">| - +</b> wall / door</span>
+      <span><b class="floor">.</b> floor</span>
+      <span><b class="corr">#</b> corridor</span>
+    </div>
+
+    <h3 class="pack">Pack &mdash; press the letter to use:</h3>
+    <div class="grid">
+      <div class="card">
+        <h3 data-slot="card-title">a) a +1 short sword (wielded)</h3>
+        <p data-slot="card-body">Chipped, honest, and already bloodied tonight. It will not win songs, but it has never jammed.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">b) 4 food rations</h3>
+        <p data-slot="card-body">Grey, dense, flavourless. Enough to reach Dlvl 9 if you stop gloating and keep moving.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">c) an unidentified scroll</h3>
+        <p data-slot="card-body">Labelled &quot;VELOX NEB&quot;. Could be teleport. Could be fire. Read it in a room with the door open.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">d) a blessed +0 ring mail</h3>
+        <p data-slot="card-body">Heavy enough to slow the rot, light enough to swim in. Smells faintly of the smith who wept over it.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">e) 2 potions (murky)</h3>
+        <p data-slot="card-body">One fizzes, one does not. Tradition holds you drink the fizzy one first and apologise later.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">f) a tin whistle</h3>
+        <p data-slot="card-body">Summons the dog, mostly. Occasionally summons attention you did not want. Worth the gamble.</p>
+      </div>
+    </div>
+
+    <div class="stats" data-slot="stats">Grimjaw the Digger  St:16 Dx:13 Co:15  HP:14(14)  Pw:3(3)  AC:6  Dlvl:3  $:120  T:482</div>
+
+    <footer data-slot="footer">&copy; 1987&ndash;2026 Nethrack &middot; you have not died yet &middot; the Amulet is still down there</footer>
+
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
