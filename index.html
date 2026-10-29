@@ -97,6 +97,13 @@ const T=[
  {s:"dungeon-crawl", n:"Dungeon Crawl",       d:"ASCII roguelike — @ hero, dungeon map, stat line", done:true},
  {s:"fax-cover",     n:"Fax Cover Sheet",     d:"Thermal-paper transmission — TO/FROM, typewriter", done:true},
  {s:"tamagotchi",    n:"Tamagotchi",          d:"90s LCD virtual pet — pixel creature, 3 buttons", done:true},
+ {s:"win31-progman", n:"Program Manager",     d:"Windows 3.1 — icon groups, 16-bit grey bevels", done:true},
+ {s:"macos-system7", n:"Mac System 7",        d:"1-bit Macintosh — pinstripe menubar, folders", done:true},
+ {s:"nextstep",      n:"NeXTSTEP",            d:"Slate workstation — vertical dock, chiseled bevels", done:true},
+ {s:"beos",          n:"BeOS",                d:"Yellow-tab windows, teal desktop, Deskbar", done:true},
+ {s:"os2-warp",      n:"OS/2 Warp",           d:"IBM Workplace Shell — teal desktop, LaunchPad", done:true},
+ {s:"enter-splash",  n:"Enter Site Splash",   d:"Flash-era intro — loading bar, ENTER / skip intro", done:true},
+ {s:"phpbb-forum",   n:"phpBB Forum",         d:"subSilver board — category tables, thread view", done:true},
 ];
 const shown=T.filter(t=>t.s[0]!=="_");
 document.getElementById("floor").innerHTML=shown.map((t,i)=>{
