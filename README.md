@@ -100,3 +100,17 @@ grepping, so a URL or the words "lorem ipsum" in a comment never trip it.
 `./check.py --selftest` validates the checker itself; `--plain` drops the
 colour/banner (also auto-off when piped). Exits non-zero on any failure, so it
 drops straight into CI or a pre-commit hook.
+
+## Design principles & backlog
+
+**Each template is unique.** No two should share the same era *and* form — a
+new idea that overlaps an existing one (another grey-bevel desktop OS, another
+dark mono terminal) must differ clearly in palette, content and layout, or it
+doesn't get built. `check.py` guarantees structure; uniqueness is a judgement
+call kept here on purpose.
+
+**Multitab / multipage retrofit candidates** (built single-page, would suit
+extra pages sharing their `style.css` — tracked for a later pass, not urgent):
+geocities (home/links/guestbook), newspaper (front → inside page),
+bbs (board → message area), winamp (player → playlist), myspace (profile →
+friends/comments), dos-commander (panel navigation).
