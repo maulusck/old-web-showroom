@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Foundry — Macintosh HD</title>
+<!-- macos-system7 — Classic Mac System 7 desktop. 1-bit monochrome, dithered
+     gray desktop, pinstriped windows, rainbow Apple. Chrome markup repeats per
+     page by design; the one style.css themes them all. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="menubar">
+    <a class="apple" href="about.html" aria-label="About This Macintosh">
+      <svg viewBox="0 0 100 122" aria-hidden="true">
+        <defs><clipPath id="apple"><path d="M73.8 64.5c-.1-11.9 9.7-17.6 10.2-17.9-5.6-8.2-14.3-9.3-17.3-9.4-7.4-.7-14.4 4.3-18.1 4.3-3.7 0-9.5-4.2-15.6-4.1-8 .1-15.4 4.6-19.5 11.8-8.3 14.5-2.1 35.9 6 47.7 3.9 5.8 8.6 12.3 14.7 12 5.9-.2 8.1-3.8 15.3-3.8s9.2 3.8 15.5 3.7c6.4-.1 10.4-5.9 14.3-11.7 4.5-6.7 6.4-13.2 6.5-13.5-.1-.1-12.5-4.8-12.6-19z"/></clipPath></defs>
+        <g clip-path="url(#apple)">
+          <rect x="0" y="34" width="100" height="16" fill="#61bb46"/>
+          <rect x="0" y="50" width="100" height="16" fill="#fdb827"/>
+          <rect x="0" y="66" width="100" height="16" fill="#f5821f"/>
+          <rect x="0" y="82" width="100" height="16" fill="#e03a3e"/>
+          <rect x="0" y="98" width="100" height="16" fill="#963d97"/>
+          <rect x="0" y="114" width="100" height="14" fill="#009ddc"/>
+        </g>
+        <path d="M61.9 35.5c3.3-4 5.5-9.5 4.9-15-4.7.2-10.5 3.1-13.9 7.1-3 3.5-5.7 9.2-5 14.5 5.3.4 10.7-2.7 14-6.6z" fill="#61bb46"/>
+      </svg>
+    </a>
+    <a href="index.html" data-slot="nav-item" aria-current="page">Desktop</a>
+    <a href="projects.html" data-slot="nav-item">The Studio</a>
+    <a href="about.html" data-slot="nav-item">About</a>
+    <span class="clock">Tue 3:14 PM</span>
+  </div>
+
+  <section class="window" aria-label="Macintosh HD window">
+    <div class="titlebar">
+      <span class="box close" aria-hidden="true"></span>
+      <span class="title"><span data-slot="site-name">The Foundry</span></span>
+      <span class="box zoom" aria-hidden="true"></span>
+    </div>
+    <div class="frame">
+      <div class="content">
+        <p class="tagline" data-slot="tagline">A two-person design shop running happily on System 7.</p>
+        <h2 data-slot="hero-title">Welcome to Macintosh.</h2>
+        <p data-slot="hero-body">We set posters, cut logotypes, and letter the occasional
+        record sleeve — all on a beige box the size of a bread bin. Double-click a folder
+        below to rummage through the drawers. Nothing here is faster than a 68030, and we
+        wouldn't have it any other way.</p>
+        <hr class="rule">
+        <p data-slot="hero-body">Please empty the Trash before you leave, and remember to
+        hold down the mouse button when choosing from a menu. The machine remembers
+        everything; the humans, less so.</p>
+      </div>
+      <div class="vscroll" aria-hidden="true">
+        <div class="arrow up"><svg viewBox="0 0 8 8"><path d="M4 1 7 6H1z"/></svg></div>
+        <div class="thumb"></div>
+        <div class="arrow down"><svg viewBox="0 0 8 8"><path d="M4 7 1 2h6z"/></svg></div>
+      </div>
+    </div>
+    <div class="hscroll" aria-hidden="true">
+      <div class="arrow up harrow"><svg viewBox="0 0 8 8"><path d="M4 1 7 6H1z"/></svg></div>
+      <div class="arrow down harrow"><svg viewBox="0 0 8 8"><path d="M4 7 1 2h6z"/></svg></div>
+    </div>
+  </section>
+
+  <ul class="icons" aria-label="Desktop folders">
+    <li>
+      <a href="projects.html">
+        <svg viewBox="0 0 48 42" aria-hidden="true"><path d="M2 9h15l4 5h25v25H2z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/><path d="M2 14h44" fill="none" stroke="var(--ink)" stroke-width="2"/></svg>
+        <span class="label"><span data-slot="card-title">Projects</span>
+        <small data-slot="card-body">Jobs in progress</small></span>
+      </a>
+    </li>
+    <li>
+      <a href="projects.html">
+        <svg viewBox="0 0 48 42" aria-hidden="true"><path d="M2 9h15l4 5h25v25H2z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/><path d="M2 14h44" fill="none" stroke="var(--ink)" stroke-width="2"/></svg>
+        <span class="label"><span data-slot="card-title">Type Specimens</span>
+        <small data-slot="card-body">Chicago & friends</small></span>
+      </a>
+    </li>
+    <li>
+      <a href="about.html">
+        <svg viewBox="0 0 48 42" aria-hidden="true"><path d="M8 1h20l6 6v34H8z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/><path d="M28 1v6h6" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M14 16h20M14 22h20M14 28h14" fill="none" stroke="var(--ink)" stroke-width="1.8"/></svg>
+        <span class="label"><span data-slot="card-title">Read Me First</span>
+        <small data-slot="card-body">Open before use</small></span>
+      </a>
+    </li>
+    <li>
+      <a href="about.html">
+        <svg viewBox="0 0 48 42" aria-hidden="true"><path d="M2 9h15l4 5h25v25H2z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/><path d="M2 14h44" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="24" cy="27" r="6" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M24 23v4l3 2" fill="none" stroke="var(--ink)" stroke-width="1.6"/></svg>
+        <span class="label"><span data-slot="card-title">System Folder</span>
+        <small data-slot="card-body">Do not touch</small></span>
+      </a>
+    </li>
+  </ul>
+
+  <a class="trash" href="about.html" aria-label="Trash">
+    <svg viewBox="0 0 46 52" aria-hidden="true"><rect x="8" y="12" width="30" height="34" rx="3" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/><path d="M5 10h36v4H5z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/><rect x="17" y="5" width="12" height="5" rx="2" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/><path d="M16 18v22M23 18v22M30 18v22" fill="none" stroke="var(--ink)" stroke-width="2"/></svg>
+    <span class="label"><span>Trash</span></span>
+  </a>
+
+  <footer class="statusbar" data-slot="footer">4 items · 31.4 MB in disk · 8.6 MB available</footer>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

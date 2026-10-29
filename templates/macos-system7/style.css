@@ -1,0 +1,165 @@
+/* macos-system7 — Classic Mac System 7. 1-bit monochrome: black ink on white
+   paper, dithered gray desktop, pinstriped title bars. The one spot of colour
+   is the rainbow Apple. One stylesheet themes every page. */
+
+:root{
+  --ink:#000;
+  --paper:#fff;
+  --sys:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+}
+/* System 7 was gloriously light-only; a dark tint keeps the 1-bit read legible
+   on dark OS chrome without pretending the Mac had a dark mode. */
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#111;--paper:#e9e9e9}}
+:root[data-theme="dark"]{--ink:#111;--paper:#e9e9e9}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+
+/* the dithered 50%-gray desktop: a 2px 1-bit checkerboard */
+body{
+  margin:0;color:var(--ink);
+  font:15px/1.45 var(--sys);
+  background-color:#9a9a9a;
+  background-image:conic-gradient(var(--ink) 90deg,transparent 0 180deg,var(--ink) 0 270deg,transparent 0);
+  background-size:2px 2px;
+  padding:0 0 120px;
+  min-height:100vh;
+}
+
+/* ---- menu bar -------------------------------------------------------------- */
+.menubar{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:stretch;gap:0;
+  background:var(--paper);color:var(--ink);
+  border-bottom:1px solid var(--ink);
+  height:22px;padding:0 6px;
+  font:bold 13px/22px var(--sys);
+}
+.menubar .apple{display:flex;align-items:center;padding:0 10px 0 2px}
+.menubar .apple svg{display:block;width:15px;height:17px}
+.menubar a{
+  color:var(--ink);text-decoration:none;padding:0 11px;display:flex;align-items:center;
+}
+.menubar a:hover,.menubar a[aria-current]{background:var(--ink);color:var(--paper)}
+.menubar .clock{margin-left:auto;padding:0 8px;display:flex;align-items:center;font-weight:bold}
+
+/* ---- windows --------------------------------------------------------------- */
+.window{
+  background:var(--paper);
+  border:1px solid var(--ink);
+  border-radius:7px 7px 2px 2px;
+  box-shadow:1px 1px 0 var(--ink),2px 2px 0 var(--ink);
+  max-width:720px;margin:26px auto;
+}
+.window.narrow{max-width:460px}
+
+/* pinstriped title bar with a white plaque for the name + close/zoom boxes */
+.titlebar{
+  display:flex;align-items:center;gap:8px;
+  height:20px;padding:0 6px;
+  border-bottom:1px solid var(--ink);
+  border-radius:6px 6px 0 0;
+  background:repeating-linear-gradient(var(--ink) 0 1px,var(--paper) 1px 3px);
+  background-clip:padding-box;
+}
+.box{width:11px;height:11px;flex:none;background:var(--paper);border:1px solid var(--ink)}
+.box.zoom{position:relative}
+.box.zoom::before{content:"";position:absolute;top:0;left:0;right:3px;bottom:3px;border:1px solid var(--ink)}
+.title{
+  flex:1;text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+  font:bold 13px/20px var(--sys);
+}
+.title span{background:var(--paper);padding:0 8px}
+
+/* window interior sits inside a frame that leaves room for the scroll bars */
+.frame{display:flex}
+.content{flex:1;padding:18px 20px;min-width:0}
+.content>:first-child{margin-top:0}
+.content>:last-child{margin-bottom:0}
+
+/* ---- scroll bars (decorative, period chrome) ------------------------------- */
+.vscroll{
+  width:16px;flex:none;border-left:1px solid var(--ink);
+  display:flex;flex-direction:column;
+  background-color:#fff;
+  background-image:conic-gradient(var(--ink) 90deg,transparent 0 180deg,var(--ink) 0 270deg,transparent 0);
+  background-size:2px 2px;
+}
+.arrow{height:16px;background:var(--paper);display:flex;align-items:center;justify-content:center}
+.arrow svg{width:8px;height:8px;display:block}
+.arrow.up{border-bottom:1px solid var(--ink)}
+.arrow.down{margin-top:auto;border-top:1px solid var(--ink)}
+.thumb{width:12px;height:46px;margin:4px auto 0;background:var(--paper);border:1px solid var(--ink)}
+.hscroll{
+  height:16px;border-top:1px solid var(--ink);margin-left:0;margin-right:16px;
+  display:flex;align-items:stretch;
+  background-color:#fff;
+  background-image:conic-gradient(var(--ink) 90deg,transparent 0 180deg,var(--ink) 0 270deg,transparent 0);
+  background-size:2px 2px;
+}
+.hscroll .arrow{width:16px;height:auto}
+.hscroll .arrow.up{border-bottom:0;border-right:1px solid var(--ink)}
+.hscroll .arrow.down{margin-top:0;margin-left:auto;border-top:0;border-left:1px solid var(--ink)}
+.hscroll .harrow svg{transform:rotate(-90deg)}
+
+/* ---- typography inside windows --------------------------------------------- */
+.content h2{font-size:22px;margin:0 0 10px;font-weight:bold;letter-spacing:-.01em}
+.content h3{font-size:15px;margin:0 0 4px;font-weight:bold}
+.content p{margin:0 0 12px}
+.tagline{font-weight:bold;margin:0 0 14px}
+.rule{height:0;border:0;border-top:1px solid var(--ink);margin:14px 0}
+
+/* readout block — the About window's version plaque */
+.readout{border:1px solid var(--ink);padding:12px 14px;margin:14px 0}
+.readout dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 16px}
+.readout dt{font-weight:bold}
+.readout dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+
+/* ---- folders: a grid of double-click icons --------------------------------- */
+.icons{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:6px 4px;margin:4px 0;list-style:none;padding:0;
+}
+.icons li{text-align:center}
+.icons a{
+  display:block;text-decoration:none;color:var(--ink);padding:8px 4px;border:1px solid transparent;
+}
+.icons a:hover,.icons a:focus{border:1px dotted var(--ink);outline:none}
+.icons a:hover .label span,.icons a:focus .label span{background:var(--ink);color:var(--paper)}
+.icons svg{width:48px;height:42px;display:block;margin:0 auto 5px}
+.label{font-weight:bold;font-size:13px}
+.label span{padding:1px 4px;display:inline-block;line-height:1.25;background:var(--paper)}
+.label small{display:block;font-weight:normal;color:#333;font-size:11px;margin-top:3px}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .label small{color:#444}}
+
+/* a file list (open-folder view) */
+.filelist{list-style:none;margin:0;padding:0}
+.filelist li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--ink)}
+.filelist li:first-child{border-top:0}
+.filelist svg{width:26px;height:26px;flex:none;margin-top:1px}
+.filelist h3{margin:0}
+.filelist p{margin:2px 0 0}
+.kb{margin-left:auto;font-variant-numeric:tabular-nums;white-space:nowrap;align-self:center;font-size:13px}
+
+/* ---- desktop trash --------------------------------------------------------- */
+.trash{position:fixed;right:14px;bottom:18px;z-index:40;text-align:center;text-decoration:none;color:var(--ink)}
+.trash svg{width:46px;height:52px;display:block;margin:0 auto 3px;
+  filter:drop-shadow(0 0 1px var(--paper))}
+.trash .label span{font-size:12px}
+
+/* ---- footer status line ---------------------------------------------------- */
+.statusbar{
+  max-width:720px;margin:26px auto 0;background:var(--paper);
+  border:1px solid var(--ink);box-shadow:1px 1px 0 var(--ink);
+  padding:4px 12px;font-size:12px;font-weight:bold;text-align:center;
+}
+
+/* ---- responsive ------------------------------------------------------------ */
+@media(max-width:540px){
+  .window,.statusbar{margin-left:10px;margin-right:10px}
+  .content{padding:14px}
+  .trash{right:8px;bottom:10px}
+  .trash svg{width:38px;height:44px}
+}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
