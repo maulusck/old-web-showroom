@@ -29,15 +29,12 @@ _ON = sys.stdout.isatty() and os.environ.get("NO_COLOR") is None and "--plain" n
 def c(s, code):
     return f"\033[{code}m{s}\033[0m" if _ON else s
 
-_BW = 52  # interior width; .center() keeps both borders aligned no matter the text
-def _bar(s):
-    return c("  ║" + s.center(_BW) + "║", "92")
+_BW = 44  # interior width; ljust keeps the right border aligned regardless of text
 def banner():
     return [
-        c("  ╔" + "═" * _BW + "╗", "92"),
-        _bar("▓▒░   RETRO TEMPLATE VAULT   ░▒▓"),
-        _bar("· template integrity scanner ·"),
-        c("  ╚" + "═" * _BW + "╝", "92"),
+        c("  ┌" + "─" * (_BW + 2) + "┐", "92"),
+        c("  │ " + "retro template vault · integrity".ljust(_BW) + " │", "92"),
+        c("  └" + "─" * (_BW + 2) + "┘", "92"),
     ]
 
 
@@ -116,48 +113,45 @@ def check_template(d):
 def validate(root, quiet=False):
     out = (lambda *a: None) if quiet else (lambda *a: print(*a))
     tdir, index = root / "templates", root / "index.html"
-    bad = 0
+    total = bad = 0
 
     def verdict(slug, fails):              # one grouped line per slug — never two verdicts
-        nonlocal bad
+        nonlocal total, bad
+        total += 1
         if fails:
             bad += 1
-            out(c("  [FAIL] ", "91") + c(slug, "1"))
+            out("  " + c("✗", "91") + " " + c(slug, "1"))
             for x in fails:
-                out(c("      ▸ ", "33") + c(x, "33"))
+                out("      " + c(x, "2"))
         else:
-            out(c("  [ OK ] ", "92") + slug)
+            out("  " + c("✓", "92") + " " + slug)
 
     if not quiet:
         for ln in banner():
             out(ln)
-        out(c("  guest@vault:~$ ", "36") + c("./check.py", "92") + c("   scanning templates/ ...", "2"))
         out("")
 
     if not index.is_file():
-        out(c("  [FAIL] no index.html at repo root", "91")); return 1
+        out("  " + c("✗", "91") + " no index.html at repo root"); return 1
     idx_text = index.read_text(encoding="utf-8")
     reg = set(re.findall(r'\bs\s*:\s*"([^"]+)"', idx_text))
     folders = {p.name for p in tdir.iterdir() if p.is_dir()}
 
     if "const T" not in idx_text:
         verdict("index.html", ["no T array / showroom list"])
-
     for d in sorted(p for p in tdir.iterdir() if p.is_dir()):
         fails = check_template(d)
         if not d.name.startswith("_") and d.name not in reg:
-            fails.append("not registered in index.html T array")
+            fails.append("not registered in index.html")
         verdict(d.name, fails)
-
     for slug in sorted(reg - folders):     # registered but missing — orphan showroom entry
         verdict(slug, ["registered in index.html but no template folder"])
 
-    shown = len([s for s in folders if not s.startswith("_")])
-    out(c("  " + "─" * 52, "2"))
+    out("  " + c("─" * (_BW + 2), "2"))
     if bad == 0:
-        out(c(f"  ▓▒░  ALL SYSTEMS GO — {shown} templates conform  ░▒▓", "92"))
+        out("  " + c(f"{total} templates · all clear", "92"))
     else:
-        out(c(f"  ✗  CARRIER DROPPED — {bad} problem(s) found", "91"))
+        out("  " + c(f"{total - bad} ok · {bad} failed", "91"))
     return 1 if bad else 0
 
 
