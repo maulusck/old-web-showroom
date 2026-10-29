@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PIXL-PAL</title>
+<!-- PIXL-PAL — 90s LCD virtual-pet toy. Pastel egg shell, grey-green dot-matrix screen,
+     chunky pixel creature, A/B/C buttons. Menu icons double as nav. CSS + inline SVG only. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="desk">
+
+  <main class="toy" aria-label="PIXL-PAL handheld">
+    <div class="brand">
+      <h1 data-slot="site-name">PIXL-PAL</h1>
+      <p class="tagline" data-slot="tagline">Keep it alive since '97</p>
+    </div>
+
+    <!-- menu icons ring the screen; they are the nav -->
+    <nav class="menu" aria-label="Pet menu">
+      <a href="#feed">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="8" cy="9" r="4.5"/><rect x="7" y="2" width="2" height="3"/><path d="M9 3 Q12 2 11 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        <span data-slot="nav-item">Feed</span>
+      </a>
+      <a href="#play">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="8" r="1.4"/><circle cx="8" cy="3.2" r="1"/><circle cx="8" cy="12.8" r="1"/></svg></span>
+        <span data-slot="nav-item">Play</span>
+      </a>
+      <a href="#clean">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 2 C5 6 4 8 4 10 a4 4 0 0 0 8 0 C12 8 11 6 8 2z"/></svg></span>
+        <span data-slot="nav-item">Clean</span>
+      </a>
+      <a href="#doctor">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16"><rect x="6.5" y="2" width="3" height="12"/><rect x="2" y="6.5" width="12" height="3"/></svg></span>
+        <span data-slot="nav-item">Doctor</span>
+      </a>
+      <a href="#log">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16"><rect x="3" y="2.5" width="10" height="11" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="5" y="5" width="6" height="1.4"/><rect x="5" y="8" width="6" height="1.4"/><rect x="5" y="11" width="4" height="1.4"/></svg></span>
+        <span data-slot="nav-item">Log</span>
+      </a>
+    </nav>
+
+    <div class="lcd">
+      <div class="screen">
+        <div class="statusbar">
+          <span class="clock" id="clock">12:34</span>
+          <span class="petname">BLOBBO</span>
+          <span class="meters">
+            <span class="met">HUNGER
+              <span class="pips" aria-label="hunger two of three">
+                <svg class="pip on" viewBox="0 0 10 10"><path d="M5 9 L1 4.5 Q1 1.5 3 2 Q5 2.5 5 4 Q5 2.5 7 2 Q9 1.5 9 4.5 Z"/></svg><svg class="pip on" viewBox="0 0 10 10"><path d="M5 9 L1 4.5 Q1 1.5 3 2 Q5 2.5 5 4 Q5 2.5 7 2 Q9 1.5 9 4.5 Z"/></svg><svg class="pip" viewBox="0 0 10 10"><path d="M5 9 L1 4.5 Q1 1.5 3 2 Q5 2.5 5 4 Q5 2.5 7 2 Q9 1.5 9 4.5 Z" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+              </span>
+            </span>
+            <span class="met">HAPPY
+              <span class="pips" aria-label="happiness three of three">
+                <svg class="pip on" viewBox="0 0 10 10"><path d="M5 9 L1 4.5 Q1 1.5 3 2 Q5 2.5 5 4 Q5 2.5 7 2 Q9 1.5 9 4.5 Z"/></svg><svg class="pip on" viewBox="0 0 10 10"><path d="M5 9 L1 4.5 Q1 1.5 3 2 Q5 2.5 5 4 Q5 2.5 7 2 Q9 1.5 9 4.5 Z"/></svg><svg class="pip on" viewBox="0 0 10 10"><path d="M5 9 L1 4.5 Q1 1.5 3 2 Q5 2.5 5 4 Q5 2.5 7 2 Q9 1.5 9 4.5 Z"/></svg>
+              </span>
+            </span>
+          </span>
+        </div>
+
+        <div class="pet">
+          <svg class="creature" viewBox="0 -8 96 80" aria-label="BLOBBO the pixel pet">
+            <!-- body -->
+            <rect class="px" x="32" y="0" width="32" height="8"/>
+            <rect class="px" x="16" y="8" width="64" height="8"/>
+            <rect class="px" x="8" y="16" width="80" height="40"/>
+            <rect class="px" x="16" y="56" width="64" height="8"/>
+            <rect class="px" x="24" y="64" width="8" height="8"/>
+            <rect class="px" x="64" y="64" width="8" height="8"/>
+            <!-- eyes (screen punched through) -->
+            <rect class="lit" x="24" y="24" width="16" height="16"/>
+            <rect class="lit" x="56" y="24" width="16" height="16"/>
+            <rect class="px" x="32" y="32" width="8" height="8"/>
+            <rect class="px" x="64" y="32" width="8" height="8"/>
+            <!-- smile -->
+            <rect class="lit" x="40" y="44" width="16" height="6"/>
+          </svg>
+        </div>
+
+        <p class="speech" data-slot="hero-title">Feed me, play with me, and I promise to beep only a little.</p>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" class="btn">A<small>select</small></button>
+      <button type="button" class="btn">B<small>enter</small></button>
+      <button type="button" class="btn">C<small>cancel</small></button>
+    </div>
+
+    <p class="instructions" data-slot="hero-body">Three buttons, one tiny soul. Press A to scroll
+    the menu icons, B to choose, C to say never-mind. Forget to check in and the little guy will
+    cheep until you do. Welcome to being responsible for a 30-gram plastic egg.</p>
+  </main>
+
+  <section class="rooms" aria-label="Pet rooms and stats">
+    <h2 class="rooms-head" data-slot="page-title">*beep* STATUS REPORT *beep*</h2>
+
+    <div class="grid">
+      <article class="card" id="feed">
+        <h3 data-slot="card-title">Feed Room</h3>
+        <p data-slot="card-body">On the menu: one (1) pixel-burger or a bowl of blocky candy. Belly is
+        2/3 full and climbing. Overfeed BLOBBO and the screen fills with a very judgmental frown.</p>
+      </article>
+      <article class="card" id="play">
+        <h3 data-slot="card-title">Play Room</h3>
+        <p data-slot="card-body">Left or right? Guess which way BLOBBO turns and win a happy heart.
+        Current streak: 3 wins, 1 sulk. The high score is kept in RAM and forgotten the moment the
+        battery hiccups, exactly like real life.</p>
+      </article>
+      <article class="card" id="clean">
+        <h3 data-slot="card-title">Clean Room</h3>
+        <p data-slot="card-body">Two flashing piles detected on the floor tiles. Hold B to sweep.
+        A tidy pet is a cheerful pet; a neglected one blinks a skull and makes you feel terrible.</p>
+      </article>
+      <article class="card" id="doctor">
+        <h3 data-slot="card-title">Doctor's Office</h3>
+        <p data-slot="card-body">Vitals nominal. No sniffles, no droopy pixels. Keep the syringe icon
+        handy anyway, press it twice if a sick-face appears and once if you just want reassurance.</p>
+      </article>
+      <article class="card" id="log">
+        <h3 data-slot="card-title">The Logbook</h3>
+        <p data-slot="card-body">Hatched 09:42, generation four. Weight: 42 blinks. Discipline: mostly.
+        Favourite game: the turning one. Last recorded mood: smug. Notes scrawled on the back of a battery.</p>
+      </article>
+    </div>
+  </section>
+
+  <footer data-slot="footer">&copy; 1997&ndash;2026 PIXL-PAL CORP &middot; Do not immerse in water &middot; Batteries (2&times; CR2032) not included</footer>
+</div>
+
+<script>
+// ponytail: the toy has a real clock — tick it. Static 12:34 shows if JS is off.
+(function(){var c=document.getElementById('clock');if(!c)return;
+function t(){var d=new Date();c.textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}
+t();setInterval(t,15000);})();
+</script>
+<script src="../../edit.js" defer></script>
+</body>
+</html>

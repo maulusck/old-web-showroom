@@ -1,0 +1,113 @@
+/* PIXL-PAL — 90s LCD virtual-pet toy. Pastel egg shell + grey-green dot-matrix screen. */
+:root{
+  --room:#ffe3ef;            /* desk / wallpaper behind the toy */
+  --shell:#f7a8ca;           /* pastel plastic egg */
+  --shell-hi:#ffc4de;        /* highlight sheen */
+  --shell-dk:#d96fa0;        /* rim / shadow */
+  --plastic:#ffe9f2;         /* button / label plastic */
+  --ink:#5a2440;             /* text on plastic */
+  --bezel:#c87aa0;           /* screen bezel */
+  --lcd-bg:#aebf9e;          /* grey-green LCD glass */
+  --lcd-dark:#2e3a2a;        /* lit dot-matrix pixels */
+  --lcd-dim:#7f9070;         /* faint segments */
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --room:#2a1b24; --shell:#b56c8f; --shell-hi:#c98aa9; --shell-dk:#7d3e5c;
+  --plastic:#e7cdd9; --ink:#3a1a2c; --bezel:#6e3e55; --lcd-bg:#9aad8b;
+}}
+:root[data-theme="dark"]{
+  --room:#2a1b24; --shell:#b56c8f; --shell-hi:#c98aa9; --shell-dk:#7d3e5c;
+  --plastic:#e7cdd9; --ink:#3a1a2c; --bezel:#6e3e55; --lcd-bg:#9aad8b;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--room);color:var(--ink);
+  font-family:"Trebuchet MS","Comic Sans MS",Verdana,sans-serif;line-height:1.5;
+  background-image:radial-gradient(var(--shell-hi) 1.5px,transparent 1.5px);
+  background-size:22px 22px}
+.desk{max-width:720px;margin:0 auto;padding:24px 16px 48px}
+
+/* ---- the egg-shaped toy ---- */
+.toy{
+  background:
+    radial-gradient(120% 80% at 32% 18%,var(--shell-hi),transparent 46%),
+    linear-gradient(160deg,var(--shell),var(--shell-dk));
+  border:6px solid var(--shell-dk);
+  border-radius:50% 50% 46% 46% / 42% 42% 58% 58%;
+  padding:34px clamp(20px,6vw,54px) 40px;
+  max-width:460px;margin:0 auto;
+  box-shadow:inset 0 6px 18px rgba(255,255,255,.4),inset 0 -14px 26px rgba(0,0,0,.18),0 12px 34px rgba(0,0,0,.25);
+  text-align:center}
+.brand h1{margin:0;font-size:clamp(26px,8vw,42px);color:var(--plastic);font-weight:800;
+  letter-spacing:.14em;text-shadow:1px 1px 0 var(--shell-dk),2px 2px 0 rgba(0,0,0,.2)}
+.tagline{margin:2px 0 0;color:var(--plastic);font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;opacity:.92}
+
+/* ---- menu icons = nav ---- */
+.menu{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:16px 0 14px}
+.menu a{display:flex;flex-direction:column;align-items:center;gap:3px;
+  text-decoration:none;color:var(--ink);background:var(--plastic);
+  border:2px solid var(--shell-dk);border-radius:10px;padding:5px 8px 4px;min-width:52px;
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.menu a:hover,.menu a:focus-visible{background:var(--lcd-bg);color:var(--lcd-dark);outline:none}
+.ico svg{width:20px;height:20px;display:block;fill:currentColor}
+
+/* ---- the LCD ---- */
+.lcd{background:var(--bezel);border-radius:14px;padding:10px;
+  box-shadow:inset 0 3px 8px rgba(0,0,0,.35)}
+.screen{background:var(--lcd-bg);border:3px solid #6f7d62;border-radius:4px;
+  padding:8px 10px 10px;color:var(--lcd-dark);
+  font-family:ui-monospace,"Courier New",monospace;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.12),inset 0 0 20px rgba(0,0,0,.15)}
+.statusbar{display:flex;align-items:center;justify-content:space-between;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:.05em;border-bottom:2px dotted var(--lcd-dim);
+  padding-bottom:5px;margin-bottom:6px}
+.petname{letter-spacing:.18em}
+.meters{display:flex;flex-direction:column;gap:2px;align-items:flex-end;font-size:8px}
+.met{display:flex;align-items:center;gap:4px}
+.pips{display:inline-flex;gap:1px}
+.pip{width:10px;height:10px;fill:var(--lcd-dark)}
+.pip:not(.on){fill:none;stroke:var(--lcd-dim)}
+.pip:not(.on) path{stroke:var(--lcd-dim)}
+
+.pet{padding:8px 0 4px}
+.creature{width:84px;height:auto}
+.creature .px{fill:var(--lcd-dark)}
+.creature .lit{fill:var(--lcd-bg)}
+.speech{margin:4px 0 0;font-size:11px;line-height:1.35;font-weight:700;
+  border-top:2px dotted var(--lcd-dim);padding-top:6px}
+
+/* classic 2-frame sprite bob */
+@media (prefers-reduced-motion:no-preference){
+  .creature{animation:bob 1s steps(2) infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+}
+
+/* ---- A / B / C buttons ---- */
+.buttons{display:flex;justify-content:center;gap:clamp(14px,8vw,40px);margin:20px 0 6px}
+.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  width:58px;height:58px;border-radius:50%;cursor:pointer;
+  background:radial-gradient(70% 70% at 35% 30%,var(--plastic),var(--shell-dk));
+  border:3px solid var(--shell-dk);color:var(--ink);font-weight:800;font-size:17px;
+  box-shadow:0 4px 0 var(--shell-dk),inset 0 2px 4px rgba(255,255,255,.5);
+  font-family:inherit}
+.btn small{font-size:7px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.8}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--shell-dk),inset 0 2px 4px rgba(0,0,0,.2)}
+.instructions{margin:14px auto 0;max-width:34ch;font-size:12px;color:var(--plastic);line-height:1.5}
+
+/* ---- rooms / stats ---- */
+.rooms{margin-top:36px}
+.rooms-head{text-align:center;color:var(--shell-dk);font-size:15px;letter-spacing:.14em;
+  font-family:ui-monospace,"Courier New",monospace;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.card{background:var(--lcd-bg);color:var(--lcd-dark);border:3px solid var(--bezel);
+  border-radius:8px;padding:14px 16px;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.12),inset 0 0 16px rgba(0,0,0,.12);
+  scroll-margin-top:16px;font-family:ui-monospace,"Courier New",monospace}
+.card:last-child{grid-column:1/-1}
+.card h3{margin:0 0 6px;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+.card p{margin:0;font-size:13px;line-height:1.5}
+.card:target{outline:3px dashed var(--shell-dk);outline-offset:3px}
+
+footer{text-align:center;margin-top:30px;font-size:10px;letter-spacing:.08em;
+  color:var(--shell-dk);text-transform:uppercase}
