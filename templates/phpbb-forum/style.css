@@ -1,0 +1,118 @@
+/* The Birdhouse — early-2000s phpBB subSilver tribute. One sheet, both pages.
+   Blue/grey bulletin board, Verdana system sans, beveled cells. */
+:root{
+  --page:#e5e5e5; --line:#98aab1; --content:#fff;
+  --blue:#006699; --blue-dk:#004f78; --blue-txt:#fff;
+  --row1:#ececec; --row2:#dee3e7; --row3:#d1d7dc;
+  --ink:#000; --dim:#444; --link:#006699; --linkv:#5c738b;
+  --quote:#fafafa; --quoteln:#bcbcbc; --new:#c7441e;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --page:#14171b; --line:#39434b; --content:#1c2126;
+  --blue:#0b4b6e; --blue-dk:#083247; --blue-txt:#cfe3ef;
+  --row1:#232a30; --row2:#2b343b; --row3:#323c44;
+  --ink:#d7dee3; --dim:#9aa6ad; --link:#6fb3d4; --linkv:#8ea6b5;
+  --quote:#232a30; --quoteln:#44515a; --new:#e2794f;
+}}
+:root[data-theme="dark"]{
+  --page:#14171b; --line:#39434b; --content:#1c2126;
+  --blue:#0b4b6e; --blue-dk:#083247; --blue-txt:#cfe3ef;
+  --row1:#232a30; --row2:#2b343b; --row3:#323c44;
+  --ink:#d7dee3; --dim:#9aa6ad; --link:#6fb3d4; --linkv:#8ea6b5;
+  --quote:#232a30; --quoteln:#44515a; --new:#e2794f;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:14px 0 40px;background:var(--page);color:var(--ink);
+  font:11px/1.5 Verdana,Geneva,Arial,Helvetica,sans-serif}
+a{color:var(--link);text-decoration:none}
+a:visited{color:var(--linkv)}
+a:hover{text-decoration:underline;color:var(--new)}
+.wrap{width:95%;max-width:860px;margin:0 auto}
+
+/* header / logo bar */
+.logo{display:flex;align-items:center;gap:14px;padding:12px 10px}
+.logo .glyph{flex:0 0 auto}
+.logo h1{margin:0;font:bold 30px/1 "Trebuchet MS",Verdana,Arial,sans-serif;
+  letter-spacing:.02em;color:var(--blue);text-shadow:1px 1px 0 var(--row2)}
+.logo .tagline{margin:3px 0 0;color:var(--dim);font-style:italic;font-size:11px}
+.navtop{background:linear-gradient(var(--blue),var(--blue-dk));color:var(--blue-txt);
+  padding:5px 10px;display:flex;flex-wrap:wrap;gap:4px 16px;border:1px solid var(--line)}
+.navtop a{color:var(--blue-txt)}
+.navtop a:visited{color:var(--blue-txt)}
+.navtop .util{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap}
+
+/* breadcrumb + action bars */
+.crumb{padding:7px 2px;font-size:11px}
+.crumb b{color:var(--ink)}
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;
+  background:var(--row2);border:1px solid var(--line);padding:5px 8px;margin:6px 0;font-size:10px}
+.bar a{font-weight:bold}
+
+/* tables */
+.scroll{overflow-x:auto;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:560px;background:var(--line)}
+td{background:var(--content);padding:7px 8px;vertical-align:middle;border:1px solid var(--content)}
+.cat td{background:linear-gradient(var(--blue),var(--blue-dk));color:var(--blue-txt);
+  font:bold 12px/1.4 Verdana,Arial,sans-serif;letter-spacing:.03em;border-color:var(--line)}
+.cat a{color:var(--blue-txt)}
+.th td{background:var(--row3);color:var(--dim);font-weight:bold;font-size:10px;text-align:center;border-color:var(--line)}
+.th .lft{text-align:left}
+tr:nth-child(odd) td.r{background:var(--row1)}
+tr:nth-child(even) td.r{background:var(--row2)}
+.ico{width:34px;text-align:center}
+.num{width:58px;text-align:center;color:var(--dim)}
+.num b{color:var(--ink);font-size:11px}
+.last{width:170px;font-size:10px;color:var(--dim);white-space:nowrap}
+.last a{font-weight:bold}
+.last .jump{color:var(--dim)}
+.forumlink{font:bold 12px/1.3 Verdana,Arial,sans-serif}
+.forumdesc{margin:3px 0 0;color:var(--dim)}
+.mods{margin:4px 0 0;font-size:10px;color:var(--dim)}
+
+/* folder icon svg */
+.folder{display:inline-block;vertical-align:middle}
+.folder svg{display:block}
+
+/* who-is-online / stats footer */
+.panel{background:var(--content);border:1px solid var(--line);padding:9px 10px;margin:6px 0}
+.panel h3{margin:0 0 6px;font-size:11px;color:var(--blue);border-bottom:1px solid var(--row2);padding-bottom:4px}
+.panel p{margin:4px 0}
+.legend{display:flex;flex-wrap:wrap;gap:14px;align-items:center;font-size:10px;color:var(--dim);
+  background:var(--row2);border:1px solid var(--line);padding:6px 10px;margin:6px 0}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.stats{display:flex;flex-wrap:wrap;gap:4px 24px}
+.avatar{border:1px solid var(--line);background:var(--content);vertical-align:middle}
+
+/* viewtopic — posts */
+.posttitle{font:bold 15px/1.3 "Trebuchet MS",Verdana,Arial,sans-serif;color:var(--blue);margin:8px 0 2px}
+.pagelinks{font-size:10px;color:var(--dim)}
+.pagelinks a{border:1px solid var(--line);padding:1px 5px;margin:0 1px;background:var(--content)}
+.post{border:1px solid var(--line);margin:6px 0;background:var(--line);
+  display:grid;grid-template-columns:150px 1fr}
+.poster{background:var(--content);padding:9px;text-align:center;border-right:1px solid var(--line)}
+.poster .name{font:bold 12px/1.3 Verdana,Arial,sans-serif;color:var(--blue)}
+.poster .rank{font-size:10px;color:var(--new);margin:1px 0 6px}
+.poster .av{margin:4px auto}
+.poster .meta{font-size:10px;color:var(--dim);margin-top:7px;text-align:left}
+.poster .meta div{margin:2px 0}
+.postwrap{background:var(--content)}
+.postbar{background:var(--row2);padding:5px 8px;font-size:10px;color:var(--dim);
+  display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line)}
+.postbar b{color:var(--ink)}
+.postbody{padding:11px 12px;font-size:11px;line-height:1.7}
+.postbody p{margin:0 0 10px}
+.quote{margin:4px 0 12px}
+.quote .qh{font-size:10px;color:var(--dim);font-weight:bold;margin-bottom:2px}
+.quote .qb{border:1px solid var(--quoteln);background:var(--quote);padding:8px 10px;color:var(--dim);font-style:italic}
+.code{border:1px solid var(--quoteln);background:var(--quote);padding:8px 10px;font-family:"Courier New",monospace;font-size:11px;white-space:pre-wrap;margin:4px 0 12px}
+.sig{border-top:1px solid var(--row2);margin-top:12px;padding-top:7px;font-size:10px;color:var(--dim);font-style:italic}
+.footerlinks{text-align:center;color:var(--dim);font-size:10px;padding:14px 0 0}
+
+@media (max-width:560px){
+  .logo h1{font-size:22px}
+  .navtop .util{margin-left:0;width:100%}
+  .post{grid-template-columns:1fr}
+  .poster{border-right:0;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;text-align:left}
+  .poster .meta{margin-top:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
