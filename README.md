@@ -89,3 +89,12 @@ sed -i '/edit\.js/d' ~/mysite/*.html   # optional tidy
 
 Copy `templates/_blank/` to `templates/<slug>/`, rewrite `style.css` and the
 markup, follow the five rules, add the slug to `T` in `index.html`.
+
+## Checking templates
+
+`./check.sh` verifies every template against the structural rules (external
+`style.css`, no inline `<style>`, `data-slot` present, the `edit.js` hook,
+no `lorem ipsum`, no remote/CDN assets, and showroom registration). POSIX sh,
+no dependencies. Styling is each template's own business — the script enforces
+structure, never taste. Exits non-zero on any failure, so it drops straight
+into CI or a pre-commit hook.
