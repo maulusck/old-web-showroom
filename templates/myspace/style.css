@@ -95,7 +95,22 @@ h1{margin:0;font-size:clamp(26px,7vw,46px);color:var(--lime);font-weight:900;
     linear-gradient(135deg,var(--c1),var(--c2))}
 .cname{margin:0;color:var(--hot);font-weight:900;font-size:12px}
 .cbody{margin:2px 0 0;color:#fff;font-size:12px}
-.postbox{margin:0;color:var(--gold);text-align:center;font-weight:bold;border-top:1px dashed var(--line)}
+.postbox{display:block;margin:0;color:var(--gold);text-align:center;font-weight:bold;text-decoration:none;border-top:1px dashed var(--line)}
+a.postbox:hover{background:var(--panel2);color:var(--cyan)}
+
+/* extra-page bits: comment dates + reply links + cross-page links */
+.ctext{min-width:0}
+.cdate{margin:0;color:var(--dim);font-size:10px}
+.creply{display:inline-block;margin:3px 0 0;color:var(--cyan);font-size:10px;font-weight:900;
+  text-decoration:none;text-shadow:0 0 4px var(--cyan)}
+.creply:hover{color:var(--gold);text-decoration:underline}
+.pagelink{display:block;padding:8px 10px;color:var(--gold);text-align:center;font-weight:900;
+  text-decoration:none;border-bottom:1px dashed var(--line)}
+.pagelink:last-child{border-bottom:0}
+.pagelink:hover{background:var(--panel2);color:var(--cyan)}
+.morelink{display:block;padding:6px 10px;color:var(--gold);text-align:center;font-weight:900;
+  text-decoration:none;border-top:1px dashed var(--line)}
+.morelink:hover{color:var(--cyan);text-decoration:underline}
 
 footer{position:relative;z-index:2;text-align:center;color:var(--pink);font-size:11px;
   padding:16px 12px 40px;border-top:2px solid var(--gold);margin-top:10px}
