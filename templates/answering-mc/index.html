@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VoxMatic AM-90</title>
+<!-- answering-mc — 90s beige cassette answering machine. Desk plastic, red 7-seg
+     message counter, glowing transport buttons, a cassette window and a blinking
+     NEW LED. The content is a stack of voicemail messages read off the machine. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="desk">
+
+  <!-- ─────────── the machine ─────────── -->
+  <div class="machine" role="group" aria-label="answering machine">
+    <div class="screws"><i></i><i></i><i></i><i></i></div>
+
+    <div class="panel">
+      <div class="brand">
+        <span class="logo" data-slot="site-name">VoxMatic</span>
+        <span class="model" data-slot="tagline">Model AM-90 · Dual-Cassette Telephone Answering System</span>
+      </div>
+
+      <!-- red 7-segment counter + NEW led -->
+      <div class="readout">
+        <div class="led-block">
+          <span class="led" aria-hidden="true"></span>
+          <span class="led-txt" data-slot="led-label">NEW</span>
+        </div>
+        <div class="screen" aria-label="message count: 3">
+          <svg class="digit" viewBox="0 0 64 112" aria-hidden="true">
+            <!-- a b c d e f g ; showing "3" = a b c d g -->
+            <polygon class="seg on" points="16,10 20,6 44,6 48,10 44,14 20,14"/>
+            <polygon class="seg on" points="50,12 54,16 54,50 50,54 46,50 46,16"/>
+            <polygon class="seg on" points="50,58 54,62 54,96 50,100 46,96 46,62"/>
+            <polygon class="seg on" points="16,102 20,98 44,98 48,102 44,106 20,106"/>
+            <polygon class="seg"    points="14,58 18,62 18,96 14,100 10,96 10,62"/>
+            <polygon class="seg"    points="14,12 18,16 18,50 14,54 10,50 10,16"/>
+            <polygon class="seg on" points="16,56 20,52 44,52 48,56 44,60 20,60"/>
+          </svg>
+          <span class="scount" data-slot="message-count">3</span>
+        </div>
+        <span class="readout-cap" data-slot="count-label">MESSAGES</span>
+      </div>
+
+      <!-- cassette window -->
+      <div class="deck">
+        <span class="deck-cap" data-slot="deck-label">OUTGOING / INCOMING</span>
+        <svg class="tape" viewBox="0 0 150 72" aria-hidden="true">
+          <rect class="tape-case" x="4" y="6" width="142" height="60" rx="5"/>
+          <rect class="tape-label" x="16" y="12" width="118" height="20" rx="2"/>
+          <circle class="reel" cx="48" cy="48" r="13"/>
+          <circle class="reel" cx="102" cy="48" r="13"/>
+          <circle class="hub" cx="48" cy="48" r="4"/>
+          <circle class="hub" cx="102" cy="48" r="4"/>
+          <rect class="web" x="48" y="46" width="54" height="4"/>
+        </svg>
+      </div>
+
+      <!-- speaker grille -->
+      <div class="grille" aria-hidden="true"></div>
+    </div>
+
+    <!-- transport buttons -->
+    <div class="controls" role="group" aria-label="transport">
+      <button class="btn play" type="button"><span class="ico">&#9654;</span><span data-slot="btn-play">PLAY</span></button>
+      <button class="btn stop" type="button"><span class="ico">&#9632;</span><span data-slot="btn-stop">STOP</span></button>
+      <button class="btn skip" type="button"><span class="ico">&#9197;</span><span data-slot="btn-skip">SKIP</span></button>
+      <button class="btn del"  type="button"><span class="ico">&#10005;</span><span data-slot="btn-delete">DELETE</span></button>
+      <button class="btn memo" type="button"><span class="ico">&#9679;</span><span data-slot="btn-memo">MEMO</span></button>
+    </div>
+  </div>
+
+  <!-- ─────────── the readout log ─────────── -->
+  <section class="log">
+    <header class="log-head">
+      <h1 data-slot="hero-title">You have three new messages.</h1>
+      <p data-slot="hero-body">Press PLAY to hear them in order. The machine answers after four rings
+      when you're out, holds up to thirty messages on side B, and beeps once when the tape is full.
+      Tuesday's are saved; everything before Sunday rewound itself.</p>
+    </header>
+
+    <ol class="msgs">
+      <li class="msg new">
+        <div class="stub">
+          <span class="num">01</span>
+          <span class="flag" data-slot="msg-flag-1">NEW</span>
+        </div>
+        <div class="body">
+          <h2 class="from" data-slot="card-title">Mom</h2>
+          <p class="meta"><span data-slot="msg-time-1">TUE 6:42 PM</span> · <span data-slot="msg-dur-1">0:48</span> · <span data-slot="msg-line-1">555-0147</span></p>
+          <p class="script" data-slot="card-body">"Honey, it's your mother. Did you eat something yet? I left a casserole on the step, don't let the Hendersons' dog get it. Call me back, I'll be up until the ten o'clock news. Love you. ...Is this thing recording? Hello?"</p>
+        </div>
+      </li>
+
+      <li class="msg new">
+        <div class="stub">
+          <span class="num">02</span>
+          <span class="flag" data-slot="msg-flag-2">NEW</span>
+        </div>
+        <div class="body">
+          <h2 class="from" data-slot="card-title">Dr. Feldman's Office</h2>
+          <p class="meta"><span data-slot="msg-time-2">TUE 9:15 AM</span> · <span data-slot="msg-dur-2">0:22</span> · <span data-slot="msg-line-2">555-0199</span></p>
+          <p class="script" data-slot="card-body">"Hi, this is Carol calling to confirm your cleaning on Thursday at ten-fifteen. Please remember your insurance card, and no coffee beforehand this time. Have a great day, bye-bye."</p>
+        </div>
+      </li>
+
+      <li class="msg new">
+        <div class="stub">
+          <span class="num">03</span>
+          <span class="flag" data-slot="msg-flag-3">NEW</span>
+        </div>
+        <div class="body">
+          <h2 class="from" data-slot="card-title">Dave — Thursday League</h2>
+          <p class="meta"><span data-slot="msg-time-3">TUE 8:03 PM</span> · <span data-slot="msg-dur-3">1:11</span> · <span data-slot="msg-line-3">555-0162</span></p>
+          <p class="script" data-slot="card-body">"Hey, it's Dave. So we're down a guy for Thursday — Gary threw his back out hauling mulch again — so if you can swing by Sunset Lanes by seven we'd owe you one. Bring your own shoes this time. Beers after on me."</p>
+        </div>
+      </li>
+
+      <li class="msg old">
+        <div class="stub">
+          <span class="num">04</span>
+          <span class="flag" data-slot="msg-flag-4">SAVED</span>
+        </div>
+        <div class="body">
+          <h2 class="from" data-slot="card-title">Valley Fresh Carpet Care</h2>
+          <p class="meta"><span data-slot="msg-time-4">MON 1:30 PM</span> · <span data-slot="msg-dur-4">0:09</span> · <span data-slot="msg-line-4">UNKNOWN</span></p>
+          <p class="script" data-slot="card-body">"...congratulations, you've been selected for three rooms of steam cleaning at no cost to—" [DELETED]</p>
+        </div>
+      </li>
+
+      <li class="msg old">
+        <div class="stub">
+          <span class="num">05</span>
+          <span class="flag" data-slot="msg-flag-5">SAVED</span>
+        </div>
+        <div class="body">
+          <h2 class="from" data-slot="card-title">(Caller Hung Up)</h2>
+          <p class="meta"><span data-slot="msg-time-5">SUN 11:58 PM</span> · <span data-slot="msg-dur-5">0:03</span> · <span data-slot="msg-line-5">PRIVATE</span></p>
+          <p class="script" data-slot="card-body">[a long pause] ...a TV laughing somewhere in the background... [click] — END OF MESSAGES. To play again, press PLAY.</p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="tag" data-slot="footer">VoxMatic AM-90 · Rewind before you leave the house · &copy; 1994 Suburban Telecom</p>
+  </section>
+
+</main>
+<script src="../../edit.js" defer></script>
+</body>
+</html>
