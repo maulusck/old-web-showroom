@@ -1,0 +1,128 @@
+/* cassette-jcard — a 90s mixtape J-card. Kraft paper, ballpoint marker,
+   chrome-tape blue. One stylesheet themes the whole insert. */
+:root{
+  --felt:#2b2f3a;            /* desk felt backdrop */
+  --paper:#f3ead3;           /* kraft insert */
+  --paper-2:#e9dcbd;
+  --ink:#232026;             /* print ink */
+  --marker:#1b3a8f;          /* blue ballpoint */
+  --red:#b4332a;             /* side-A red stamp */
+  --fold:#b9a877;            /* dashed fold crease */
+  --chrome:#cfd6dd;          /* tape shell silver */
+  --chrome-dk:#9aa4ae;
+  --case:#3a3f47; --label:#edece7; --tape:#2a2420; --hub:#d8d2c4;
+  --rule:#c7c2b4; --window:#1c1814; --screw:#7f8893;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --felt:#0f1013; --paper:#2a2621; --paper-2:#231f1b; --ink:#ece1c7;
+  --marker:#89b4ff; --red:#e0776b; --fold:#5a5038; --chrome:#565d66;
+  --chrome-dk:#3a4049; --case:#20242a; --label:#2e2a24; --tape:#121416;
+  --hub:#4a4640; --rule:#4a453c; --window:#0a0b0c; --screw:#565d66;
+}}
+:root[data-theme="dark"]{
+  --felt:#0f1013; --paper:#2a2621; --paper-2:#231f1b; --ink:#ece1c7;
+  --marker:#89b4ff; --red:#e0776b; --fold:#5a5038; --chrome:#565d66;
+  --chrome-dk:#3a4049; --case:#20242a; --label:#2e2a24; --tape:#121416;
+  --hub:#4a4640; --rule:#4a453c; --window:#0a0b0c; --screw:#565d66;
+}
+
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);
+  background:var(--felt);
+  background-image:
+    radial-gradient(circle at 20% 10%,rgba(255,255,255,.04),transparent 40%),
+    radial-gradient(circle at 80% 90%,rgba(0,0,0,.25),transparent 45%);
+  font:15px/1.5 "Courier New",Courier,monospace;
+  display:flex;justify-content:center;padding:28px 16px 48px;min-height:100vh}
+.scene{width:100%;max-width:760px}
+
+/* ── cassette shell ── */
+.shell{margin:0 0 26px}
+.shell svg{display:block;width:100%;height:auto;max-width:460px;margin:0 auto;
+  filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}
+.case{fill:var(--chrome);stroke:var(--chrome-dk);stroke-width:2}
+.label{fill:var(--label);stroke:var(--chrome-dk);stroke-width:1}
+.rule{stroke:var(--rule);stroke-width:1}
+.window{fill:var(--window)}
+.wound{fill:var(--tape);stroke:var(--chrome-dk);stroke-width:1}
+.hub{fill:var(--hub)} .tooth{fill:var(--hub)} .screw{fill:var(--screw)}
+.reel{animation:spin 9s linear infinite}
+.reel:last-child{animation-duration:11s}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── the J-card: spine · front · tracklist laid flat ── */
+.jcard{display:grid;grid-template-columns:46px 1.05fr 1.15fr;
+  background:var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0 23px,rgba(0,0,0,.03) 23px 24px),
+    linear-gradient(135deg,var(--paper) 0%,var(--paper-2) 100%);
+  border:1px solid var(--chrome-dk);
+  box-shadow:0 14px 30px rgba(0,0,0,.45);
+  transform:rotate(-.5deg)}
+
+.spine,.front,.tracks{padding:16px 18px}
+.spine{border-right:2px dashed var(--fold)}
+.front{border-right:2px dashed var(--fold)}
+
+/* spine — title runs vertically */
+.spine{display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+  background:var(--marker);color:var(--paper);padding:14px 4px}
+.spine-title{writing-mode:vertical-rl;transform:rotate(180deg);
+  font:700 19px/1 "Comic Sans MS","Segoe Print","Bradley Hand","Marker Felt",cursive;
+  letter-spacing:.02em}
+.spine-side{writing-mode:vertical-rl;transform:rotate(180deg);
+  font-size:9px;letter-spacing:.3em}
+
+/* front panel */
+.brand{margin:0 0 10px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--paper);background:var(--ink);display:inline-block;padding:3px 9px;
+  border-radius:1px}
+.marker{font-family:"Comic Sans MS","Segoe Print","Bradley Hand","Marker Felt",cursive;
+  color:var(--marker)}
+h1.marker{margin:4px 0 2px;font-size:clamp(28px,8vw,42px);font-weight:700;
+  line-height:1.05;transform:rotate(-1.5deg)}
+.sub{margin:8px 0 0;font-size:15px;transform:rotate(-.5deg)}
+.dedication{margin:14px 0 18px;font-size:14px;color:var(--red);line-height:1.45;
+  transform:rotate(.5deg)}
+
+.spec{border-top:1px solid var(--fold);padding-top:12px;
+  display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between}
+.types{list-style:none;margin:0;padding:0;font-size:10px;letter-spacing:.08em}
+.types li{text-transform:uppercase;opacity:.75;margin:2px 0}
+.types li.on{opacity:1;color:var(--red);font-weight:700}
+.dolby{display:flex;flex-direction:column;align-items:center;gap:1px}
+.dolby svg{width:40px;height:22px}
+.dolby .dd{fill:var(--ink)}
+.dolby small{font-size:9px;letter-spacing:.3em}
+
+/* tracklist */
+.tracks{display:flex;flex-direction:column;gap:14px}
+.side h2{margin:0 0 6px;font-size:13px;letter-spacing:.06em;color:var(--red);
+  text-transform:uppercase;border-bottom:1.5px solid var(--ink);padding-bottom:3px}
+.side h2 em{color:var(--ink);font-style:normal;opacity:.6;font-size:11px;letter-spacing:.14em}
+.side ol{margin:0;padding:0;list-style:none;counter-reset:trk}
+.side li{counter-increment:trk;display:flex;gap:8px;align-items:baseline;
+  font-size:12px;padding:1.5px 0}
+.side li::before{content:counter(trk,decimal-leading-zero);color:var(--marker);
+  font-weight:700;width:1.6em;flex:none}
+.side li .t{flex:1;overflow:hidden;text-overflow:ellipsis}
+.side li .tm{color:var(--ink);opacity:.6;font-variant-numeric:tabular-nums;white-space:nowrap}
+.side li.star .t{color:var(--red);font-weight:700}
+.side li.blank{opacity:.55;font-style:italic}
+
+footer{margin:22px 2px 0;text-align:center;font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--chrome);opacity:.85}
+
+/* responsive — fold the card open into a stack */
+@media (max-width:620px){
+  .jcard{grid-template-columns:1fr;transform:none}
+  .spine{flex-direction:row;justify-content:space-between;border-right:0;
+    border-bottom:2px dashed var(--fold);padding:8px 14px}
+  .spine-title,.spine-side{writing-mode:horizontal-tb;transform:none}
+  .spine-title{font-size:17px}
+  .front{border-right:0;border-bottom:2px dashed var(--fold)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .reel{animation:none}
+}
