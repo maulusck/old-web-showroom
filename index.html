@@ -5,37 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Old Web Showroom</title>
 <style>
-  :root{--floor:#f1efe9;--wall:#fbfaf6;--ink:#1b1a17;--dim:#9a968b;--line:#e4e0d5;--accent:#8a1f1a;--sel:#f3f0e7}
+  :root{--floor:#ece9e1;--wall:#fcfbf7;--ink:#1a1915;--dim:#938f84;--line:#e3dfd4;--accent:#8a1f1a;--sel:#fffdf6;--sheen:rgba(255,255,255,.75)}
   @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
-    --floor:#131311;--wall:#1b1a17;--ink:#ece8dd;--dim:#77736a;--line:#2a2824;--accent:#cf6a4c;--sel:#221f1b}}
-  :root[data-theme="dark"]{--floor:#131311;--wall:#1b1a17;--ink:#ece8dd;--dim:#77736a;--line:#2a2824;--accent:#cf6a4c;--sel:#221f1b}
+    --floor:#121210;--wall:#1c1b17;--ink:#ece8dd;--dim:#787469;--line:#2b2925;--accent:#d2704f;--sel:#232019;--sheen:rgba(255,238,214,.05)}}
+  :root[data-theme="dark"]{--floor:#121210;--wall:#1c1b17;--ink:#ece8dd;--dim:#787469;--line:#2b2925;--accent:#d2704f;--sel:#232019;--sheen:rgba(255,238,214,.05)}
   *{box-sizing:border-box}
   body{margin:0;background:var(--floor);color:var(--ink);
     font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(120% 55% at 50% -8%, var(--sheen), transparent 62%)}
   .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
-  .room{max-width:720px;margin:0 auto;padding:11vh 24px 15vh}
+  .room{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:12vh 24px 16vh}
 
-  .plate{text-align:center;margin-bottom:7vh}
-  .plate .kick{margin:0;font:12px/1 ui-monospace,monospace;letter-spacing:.42em;text-transform:uppercase;color:var(--dim)}
-  .plate h1{margin:.7em 0 .5em;font-size:clamp(26px,5vw,42px);font-weight:600;letter-spacing:.01em}
-  .plate .count{margin:0;font:12px/1 ui-monospace,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
-  .plate .motto{margin:14px auto 0;max-width:36ch;font-size:14px;line-height:1.55;color:var(--dim)}
-  .plate .bar{height:1px;width:96px;background:var(--line);margin:24px auto 0}
+  .plate{text-align:center;margin-bottom:6vh}
+  .plate .kick{margin:0;font:12px/1 ui-monospace,monospace;letter-spacing:.46em;text-transform:uppercase;color:var(--dim)}
+  .plate h1{margin:.8em 0 .55em;font-size:clamp(28px,5.4vw,46px);font-weight:600;letter-spacing:.005em}
+  .plate .count{margin:0;font:12px/1 ui-monospace,monospace;letter-spacing:.26em;text-transform:uppercase;color:var(--accent)}
+  .plate .motto{margin:16px auto 0;max-width:38ch;font-size:14px;line-height:1.55;color:var(--dim)}
+  .plate .bar{height:1px;width:72px;background:var(--line);margin:26px auto 0}
 
-  .bay{display:grid;grid-template-columns:2.6ch 1fr auto;align-items:baseline;gap:20px;
-    padding:17px 18px;text-decoration:none;color:inherit;background:var(--wall);border-bottom:1px solid var(--line)}
-  .bay:first-child{border-top:1px solid var(--line)}
-  a.bay:hover{background:var(--sel)}
-  a.bay:hover .no{color:var(--accent)}
-  a.bay:hover .go{opacity:1}
-  .no{color:var(--dim);font-size:13px}
-  .nm{font-size:18px;font-weight:600;letter-spacing:.01em}
+  /* the stage — a lit panel the bays sit on */
+  .floor{border:1px solid var(--line);background:var(--wall);
+    box-shadow:0 1px 0 rgba(255,255,255,.55) inset, 0 24px 60px -34px rgba(0,0,0,.3)}
+
+  .bay{position:relative;display:grid;grid-template-columns:3.6ch 1fr auto;align-items:baseline;gap:20px;
+    padding:16px 20px;text-decoration:none;color:inherit;border-bottom:1px solid var(--line);
+    transition:background .13s ease}
+  .bay:last-child{border-bottom:0}
+  .bay .no{color:var(--dim);font-size:12px;padding-right:16px;border-right:1px solid var(--line)}
+  .nm{font-size:18px;font-weight:600;letter-spacing:.005em;transition:color .13s ease}
   .sp{justify-self:end;text-align:right;max-width:40ch;color:var(--dim);font-size:13px}
-  .go{color:var(--accent);opacity:0;font-size:14px}
-  .soon{background:transparent}
+  .go{color:var(--accent);opacity:0;font-size:14px;transform:translateX(-5px);transition:opacity .13s ease,transform .13s ease}
+  /* GT selection cursor */
+  .bay::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);
+    transform:scaleX(0);transform-origin:left;transition:transform .13s ease}
+  a.bay:hover,a.bay:focus-visible{background:var(--sel);outline:0}
+  a.bay:hover::before,a.bay:focus-visible::before{transform:scaleX(1)}
+  a.bay:hover .nm,a.bay:focus-visible .nm{color:var(--accent)}
+  a.bay:hover .no,a.bay:focus-visible .no{color:var(--accent);border-right-color:var(--accent)}
+  a.bay:hover .go,a.bay:focus-visible .go{opacity:1;transform:none}
+  .soon{opacity:.6}
   .soon .nm{color:var(--dim)}
-  @media(max-width:560px){.bay{grid-template-columns:2.6ch 1fr;gap:12px}.sp{display:none}}
+
+  @media(max-width:560px){.bay{grid-template-columns:3.4ch 1fr;gap:14px}.sp{display:none}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}.bay::before{display:none}.go{transform:none}}
 </style>
 </head>
 <body>
@@ -47,7 +61,7 @@
     <p class="motto">The old web, on display — a showroom for those who may be interested.</p>
     <div class="bar"></div>
   </div>
-  <div id="floor"></div>
+  <div id="floor" class="floor"></div>
 </div>
 
 <script>
