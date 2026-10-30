@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QUOTRONIX 8800 &middot; NVLX</title>
+<!-- stock-ticker — single-symbol detail screen (NVLX). Shares style.css with the quote board. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="crt">
+
+    <!-- scrolling ticker crawl -->
+    <div class="crawl" role="marquee" aria-label="market ticker">
+      <div class="crawl-track">
+        <span class="tk up">NVLX <span class="ar">&#9650;</span> 214.70</span>
+        <span class="tk dn">ORBCO <span class="ar">&#9660;</span> 88.15</span>
+        <span class="tk up">HELIOS <span class="ar">&#9650;</span> 341.25</span>
+        <span class="tk dn">MERDYN <span class="ar">&#9660;</span> 12.40</span>
+        <span class="tk up">ZENPAC <span class="ar">&#9650;</span> 56.80</span>
+        <span class="tk up">ATLGEN <span class="ar">&#9650;</span> 177.05</span>
+        <span class="tk dn">CRESTA <span class="ar">&#9660;</span> 29.95</span>
+        <span class="tk up">KESTRL <span class="ar">&#9650;</span> 402.10</span>
+        <span class="tk dn">VANTEX <span class="ar">&#9660;</span> 61.33</span>
+        <span class="tk up">DELCOR <span class="ar">&#9650;</span> 95.40</span>
+        <!-- duplicate for seamless loop -->
+        <span class="tk up" aria-hidden="true">NVLX <span class="ar">&#9650;</span> 214.70</span>
+        <span class="tk dn" aria-hidden="true">ORBCO <span class="ar">&#9660;</span> 88.15</span>
+        <span class="tk up" aria-hidden="true">HELIOS <span class="ar">&#9650;</span> 341.25</span>
+        <span class="tk dn" aria-hidden="true">MERDYN <span class="ar">&#9660;</span> 12.40</span>
+        <span class="tk up" aria-hidden="true">ZENPAC <span class="ar">&#9650;</span> 56.80</span>
+        <span class="tk up" aria-hidden="true">ATLGEN <span class="ar">&#9650;</span> 177.05</span>
+        <span class="tk dn" aria-hidden="true">CRESTA <span class="ar">&#9660;</span> 29.95</span>
+        <span class="tk up" aria-hidden="true">KESTRL <span class="ar">&#9650;</span> 402.10</span>
+        <span class="tk dn" aria-hidden="true">VANTEX <span class="ar">&#9660;</span> 61.33</span>
+        <span class="tk up" aria-hidden="true">DELCOR <span class="ar">&#9650;</span> 95.40</span>
+      </div>
+    </div>
+
+    <!-- masthead -->
+    <header class="head">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 24 24" aria-hidden="true" width="26" height="26">
+          <rect x="1" y="1" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M4 16 L9 9 L13 13 L20 5" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="20" cy="5" r="1.6" fill="currentColor"/>
+        </svg>
+        <h1 data-slot="site-name">QUOTRONIX 8800</h1>
+      </div>
+      <p class="sub" data-slot="tagline">MARKET DATA SERVICE &middot; DESK 14 &middot; PORT A-7</p>
+      <div class="status">
+        <span class="blink" data-slot="nav-item">&#9679; MKT OPEN</span>
+        <span class="clk" data-slot="nav-item">10:46:22 EST</span>
+        <span data-slot="nav-item">30-OCT-86</span>
+      </div>
+    </header>
+
+    <!-- back control -->
+    <div class="backbar">
+      <a class="back" href="index.html" data-slot="nav-item"><b>F2</b> &#9664; BACK TO BOARD</a>
+    </div>
+
+    <!-- symbol header -->
+    <div class="qmeta">
+      <span class="tkr" data-slot="card-title">NVLX</span>
+      <span class="co" data-slot="company">NOVALUX PHOTONICS CORP &middot; NYSE &middot; SECTOR: OPTICS/INSTR</span>
+    </div>
+
+    <main class="detail" aria-label="symbol detail">
+
+      <!-- big last price + change -->
+      <div class="bigq up">
+        <span class="price" data-slot="hero-title">214.70</span>
+        <span class="move" data-slot="hero-body">&#9650; +4.55 (+2.16%)</span>
+        <span class="asof" data-slot="nav-item">LAST SALE 10:46:05 &middot; 300 SH</span>
+      </div>
+
+      <!-- key statistics -->
+      <div class="stats" aria-label="session statistics">
+        <div class="stat"><span class="k">OPEN</span><span class="v" data-slot="stat-open">210.40</span></div>
+        <div class="stat"><span class="k">HIGH</span><span class="v" data-slot="stat-high">216.25</span></div>
+        <div class="stat"><span class="k">LOW</span><span class="v" data-slot="stat-low">209.80</span></div>
+        <div class="stat"><span class="k">VOL</span><span class="v" data-slot="stat-vol">2.41M</span></div>
+        <div class="stat"><span class="k">52WK HIGH</span><span class="v" data-slot="stat-52h">227.90</span></div>
+        <div class="stat"><span class="k">52WK LOW</span><span class="v" data-slot="stat-52l">118.22</span></div>
+      </div>
+
+      <!-- intraday chart: amber line on phosphor grid -->
+      <h2 class="secttl" data-slot="nav-item">INTRADAY &middot; 09:30&ndash;10:46 EST</h2>
+      <svg class="chart" viewBox="0 0 600 220" role="img"
+           aria-label="NVLX intraday price, rising from 210.40 at the open to 214.70">
+        <!-- horizontal grid -->
+        <g stroke="#1a2420" stroke-width="1">
+          <line x1="0" y1="20"  x2="600" y2="20"/>
+          <line x1="0" y1="60"  x2="600" y2="60"/>
+          <line x1="0" y1="100" x2="600" y2="100"/>
+          <line x1="0" y1="140" x2="600" y2="140"/>
+          <line x1="0" y1="180" x2="600" y2="180"/>
+          <line x1="0" y1="20"  x2="0"   y2="200"/>
+          <line x1="150" y1="20" x2="150" y2="200"/>
+          <line x1="300" y1="20" x2="300" y2="200"/>
+          <line x1="450" y1="20" x2="450" y2="200"/>
+          <line x1="600" y1="20" x2="600" y2="200"/>
+        </g>
+        <!-- prior-close reference -->
+        <line x1="0" y1="150" x2="600" y2="150" stroke="#5a6b60" stroke-width="1" stroke-dasharray="4 4"/>
+        <!-- price trace -->
+        <polyline fill="none" stroke="#ffb000" stroke-width="2"
+          stroke-linejoin="round" stroke-linecap="round"
+          points="0,150 25,146 50,152 75,138 100,142 125,128 150,132 175,118
+                  200,124 225,110 250,116 275,104 300,112 325,96 350,102 375,88
+                  400,94 425,80 450,86 475,72 500,78 525,64 550,60 575,52 600,46"/>
+        <!-- grid axis labels -->
+        <g fill="#b37700" font-family="Courier New,monospace" font-size="11">
+          <text x="4" y="30">216</text>
+          <text x="4" y="104">213</text>
+          <text x="4" y="178">210</text>
+        </g>
+        <text x="596" y="44" fill="#ffb000" font-family="Courier New,monospace"
+              font-size="11" text-anchor="end">214.70</text>
+      </svg>
+
+      <!-- headlines / news tape -->
+      <h2 class="secttl" data-slot="nav-item">NEWS &middot; NVLX</h2>
+      <ul class="news">
+        <li><span class="tm">10:31 EST</span><span class="hl" data-slot="card-body">NOVALUX LANDS 14M DEFENSE OPTICS ORDER; SHIPMENTS Q1 &rsquo;87</span></li>
+        <li><span class="tm">09:58 EST</span><span class="hl" data-slot="card-body">BROKER RAISES NVLX TO BUY, TARGET 240 ON FIBER DEMAND</span></li>
+        <li><span class="tm">09:42 EST</span><span class="hl" data-slot="card-body">Q3 EARNINGS 1.18/SH TOP 1.02 ESTIMATE; MARGINS WIDEN</span></li>
+        <li><span class="tm">08:15 EST</span><span class="hl" data-slot="card-body">NOVALUX NAMES PLANT NO.4 SITE IN ALBANY; HIRING 400</span></li>
+      </ul>
+
+    </main>
+
+    <!-- function-key legend -->
+    <footer class="fkeys">
+      <span class="fk" data-slot="nav-item"><b>F1</b> QUOTE</span>
+      <a class="fk" href="index.html" data-slot="nav-item"><b>F2</b> BOARD</a>
+      <span class="fk" data-slot="nav-item"><b>F3</b> NEWS</span>
+      <span class="fk" data-slot="nav-item"><b>F4</b> CHART</span>
+      <span class="fk" data-slot="nav-item"><b>F5</b> OPTNS</span>
+      <span class="fk" data-slot="nav-item"><b>F6</b> PORT</span>
+      <span class="fk" data-slot="nav-item"><b>F7</b> HALT</span>
+      <span class="fk" data-slot="nav-item"><b>F8</b> EXIT</span>
+    </footer>
+
+    <p class="sig" data-slot="footer">QUOTRONIX DATA NETWORK &middot; (C) 1986 &middot; QUOTES DELAYED 15 MIN &middot; FEED NODE CHI-3</p>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
