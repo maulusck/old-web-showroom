@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkyLink 900</title>
+<!-- pager-lcd — mid-90s clip-on numeric/alphanumeric pager. Grey plastic body,
+     low-contrast grey-green segmented LCD, timestamped message queue. On-call
+     nostalgia. CSS body + inline-SVG icons. No JS, no build. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="pager" role="img" aria-label="A 1990s clip-on pager showing a message queue on a green-grey LCD">
+
+    <!-- top shell: clip hinge, speaker grille, reset pin -->
+    <div class="shell-top">
+      <span class="clip" aria-hidden="true"></span>
+      <span class="grille" aria-hidden="true"></span>
+      <span class="model" data-slot="site-name">SkyLink 900</span>
+      <span class="pin" aria-hidden="true"></span>
+    </div>
+
+    <!-- the LCD -->
+    <div class="lcd">
+      <div class="lcd-dot" aria-hidden="true"></div>
+
+      <!-- status row: envelope · signal · battery · counter -->
+      <div class="status">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 20 14" width="20" height="14"><rect x="1" y="1" width="18" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 1.8 10 8 18.5 1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </span>
+        <span class="unread" data-slot="tagline">NEW MSG</span>
+
+        <span class="spacer"></span>
+
+        <span class="ico sig" aria-hidden="true" title="signal">
+          <svg viewBox="0 0 22 14" width="22" height="14"><rect x="0" y="10" width="3" height="4" fill="currentColor"/><rect x="5" y="7" width="3" height="7" fill="currentColor"/><rect x="10" y="4" width="3" height="10" fill="currentColor"/><rect x="15" y="1" width="3" height="13" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+        </span>
+        <span class="ico batt" aria-hidden="true" title="battery">
+          <svg viewBox="0 0 24 14" width="24" height="14"><rect x="1" y="2" width="19" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="21" y="5" width="2.5" height="4" fill="currentColor"/><rect x="3" y="4" width="4.5" height="6" fill="currentColor"/><rect x="8.5" y="4" width="4.5" height="6" fill="currentColor"/></svg>
+        </span>
+        <span class="count"><b data-slot="card-title">03</b>/<span data-slot="tagline">14</span></span>
+      </div>
+
+      <!-- message queue -->
+      <ul class="queue">
+        <li class="msg new">
+          <div class="meta"><span class="stamp">10:42p</span><span class="tag" data-slot="card-title">DISPATCH</span></div>
+          <p class="line" data-slot="card-body">UNIT 7 ROLL CODE BLUE WAREHOUSE 4 CALL BASE 911</p>
+        </li>
+        <li class="msg">
+          <div class="meta"><span class="stamp">10:11p</span><span class="tag" data-slot="card-title">555-0147</span></div>
+          <p class="line num" data-slot="card-body">555 0147 *07* 555 0147 *07*</p>
+        </li>
+        <li class="msg">
+          <div class="meta"><span class="stamp">09:58p</span><span class="tag" data-slot="card-title">HOME</span></div>
+          <p class="line" data-slot="card-body">DINNER COLD AGAIN. CALL WHEN FREE. -M</p>
+        </li>
+        <li class="msg">
+          <div class="meta"><span class="stamp">09:30p</span><span class="tag" data-slot="card-title">NOC</span></div>
+          <p class="line" data-slot="card-body">RING1 LINK DOWN SITE 12 AUTOPAGE RETRY 3</p>
+        </li>
+        <li class="msg">
+          <div class="meta"><span class="stamp">08:15p</span><span class="tag" data-slot="card-title">555-0190</span></div>
+          <p class="line num" data-slot="card-body">555 0190 911 911</p>
+        </li>
+        <li class="msg read">
+          <div class="meta"><span class="stamp">07:02p</span><span class="tag" data-slot="card-title">PIZZA KING</span></div>
+          <p class="line" data-slot="card-body">ORDER UP TABLE FOR 1 THX FOR PAGING</p>
+        </li>
+      </ul>
+
+      <div class="ticker" aria-hidden="true"><span data-slot="hero-body">PRESS READ TO SCROLL &middot; FUNC + READ TO LOCK &middot; MEMORY 92% &middot; SKYLINK PAGING NET</span></div>
+    </div>
+
+    <!-- hidden headline for the queue, kept off-screen but slot-fillable -->
+    <h1 class="sr" data-slot="hero-title">Message Queue</h1>
+
+    <!-- bottom shell: two side buttons + branding -->
+    <div class="shell-bot">
+      <button class="btn" type="button" aria-label="Read button" data-slot="nav-item">READ</button>
+      <button class="btn" type="button" aria-label="Function button" data-slot="nav-item">FUNC</button>
+      <span class="brand" data-slot="footer">SkyLink Paging &middot; FLEX 1600bps &middot; Bellwether County On-Call Net &middot; 1994&ndash;2026</span>
+    </div>
+
+  </main>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
