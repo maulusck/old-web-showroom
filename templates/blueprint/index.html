@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northlight — Drawing Set</title>
+<!-- Blueprint — architectural drafting sheet. Cyan line-work on blueprint-blue
+     paper (whiteprint when the OS asks for light). All strokes are thin inline
+     SVG + CSS: grid, dimension lines, section markers, a legend, a title block. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="titleband">
+    <div class="firm">
+      <h1 data-slot="site-name">NORTHLIGHT</h1>
+      <p data-slot="tagline">Architecture · Drafting · Survey — est. MCMLXXIV</p>
+    </div>
+    <div class="northmark" aria-hidden="true">
+      <svg viewBox="0 0 60 60">
+        <circle cx="30" cy="30" r="26"/>
+        <path d="M30 6 L37 30 L30 24 L23 30 Z" class="fill"/>
+        <path d="M30 54 L30 30"/>
+        <text x="30" y="20">N</text>
+      </svg>
+    </div>
+  </header>
+
+  <!-- overall dimension line across the sheet -->
+  <div class="dim" role="presentation">
+    <svg class="cap" viewBox="0 0 12 12" aria-hidden="true"><path d="M11 1 L1 6 L11 11"/></svg>
+    <span class="rule"><em data-slot="hero-body">42'-6" OVERALL</em></span>
+    <svg class="cap flip" viewBox="0 0 12 12" aria-hidden="true"><path d="M11 1 L1 6 L11 11"/></svg>
+  </div>
+
+  <nav aria-label="Sheet index">
+    <a href="index.html" data-slot="nav-item" aria-current="page">A-00 · COVER</a>
+    <a href="index.html" data-slot="nav-item">A-01 · PLANS</a>
+    <a href="index.html" data-slot="nav-item">A-02 · ELEVATIONS</a>
+    <a href="index.html" data-slot="nav-item">A-03 · SECTIONS</a>
+    <a href="index.html" data-slot="nav-item">A-04 · DETAILS</a>
+  </nav>
+
+  <section class="hero">
+    <svg class="marker" viewBox="0 0 52 66" aria-hidden="true">
+      <line x1="26" y1="40" x2="26" y2="66"/>
+      <circle cx="26" cy="20" r="18"/>
+      <line x1="8" y1="20" x2="44" y2="20"/>
+      <text x="26" y="16">1</text><text x="26" y="34">A-00</text>
+    </svg>
+    <h2 data-slot="hero-title">THE VELLUM HOUSE</h2>
+    <p data-slot="card-body">A single-storey dwelling drawn to the inch: load-bearing calm,
+      daylight from the north, and nothing on the sheet that isn't holding something up.
+      This set describes it in full — plans, elevations, sections, and the small details
+      that decide whether a door swings true.</p>
+  </section>
+
+  <section class="legend" aria-label="Legend">
+    <h3 data-slot="page-title">LEGEND &amp; CONVENTIONS</h3>
+    <ul>
+      <li><svg viewBox="0 0 40 16" aria-hidden="true"><line x1="2" y1="8" x2="38" y2="8"/></svg><span>Existing wall / datum line</span></li>
+      <li><svg viewBox="0 0 40 16" aria-hidden="true"><line x1="2" y1="8" x2="38" y2="8" stroke-dasharray="6 4"/></svg><span>Hidden edge below</span></li>
+      <li><svg viewBox="0 0 40 16" aria-hidden="true"><line x1="2" y1="8" x2="38" y2="8" stroke-dasharray="9 3 2 3"/></svg><span>Centre line of structure</span></li>
+      <li><svg viewBox="0 0 40 16" aria-hidden="true"><circle cx="20" cy="8" r="6"/><line x1="20" y1="2" x2="20" y2="14"/></svg><span>Section / detail callout</span></li>
+    </ul>
+  </section>
+
+  <h3 class="sheet-label" data-slot="page-title">DRAWING SCHEDULE</h3>
+  <div class="grid">
+    <article class="card">
+      <span class="tag" aria-hidden="true">A-01</span>
+      <h3 data-slot="card-title">Floor Plans</h3>
+      <p data-slot="card-body">Room by room at 1:50 — swing of every door, run of every pipe,
+        tiled to the nearest 100mm. The house, lying flat and honest.</p>
+    </article>
+    <article class="card">
+      <span class="tag" aria-hidden="true">A-02</span>
+      <h3 data-slot="card-title">Elevations</h3>
+      <p data-slot="card-body">Four faces, all cardinal. Cladding coursed, cill heights ticked,
+        the north glass drawn wide to drink the flat grey light.</p>
+    </article>
+    <article class="card">
+      <span class="tag" aria-hidden="true">A-03</span>
+      <h3 data-slot="card-title">Sections</h3>
+      <p data-slot="card-body">Cut clean through the ridge. Here the roof pitch argues with the
+        headroom and, for once, both win. Insulation hatched, not hidden.</p>
+    </article>
+    <article class="card">
+      <span class="tag" aria-hidden="true">A-04</span>
+      <h3 data-slot="card-title">Details</h3>
+      <p data-slot="card-body">The eaves at 1:5, where felt meets fascia. Small drawings,
+        large consequences — the margin between a dry wall and a damp one.</p>
+    </article>
+    <article class="card">
+      <span class="tag" aria-hidden="true">S-01</span>
+      <h3 data-slot="card-title">Site Plan</h3>
+      <p data-slot="card-body">Boundary pegged, levels taken, the old oak surveyed and kept.
+        North points up the page, as it always should.</p>
+    </article>
+    <article class="card">
+      <span class="tag" aria-hidden="true">D-01</span>
+      <h3 data-slot="card-title">Door Schedule</h3>
+      <p data-slot="card-body">Twelve openings, numbered and tabled: width, handing,
+        hardware set, and the one that must be fire-rated or the lot gets redrawn.</p>
+    </article>
+  </div>
+
+  <!-- vertical-ish dimension echoed horizontally beneath the schedule -->
+  <div class="dim" role="presentation">
+    <svg class="cap" viewBox="0 0 12 12" aria-hidden="true"><path d="M11 1 L1 6 L11 11"/></svg>
+    <span class="rule"><em>6 SHEETS · 1 REVISION PENDING</em></span>
+    <svg class="cap flip" viewBox="0 0 12 12" aria-hidden="true"><path d="M11 1 L1 6 L11 11"/></svg>
+  </div>
+
+  <div class="blockrow">
+    <div class="revtable" aria-label="Revisions">
+      <div class="rt-head"><span>REV</span><span>DESCRIPTION</span><span>DATE</span></div>
+      <div class="rt-row"><span>A</span><span>Issued for comment</span><span>04 SEP 26</span></div>
+      <div class="rt-row"><span>B</span><span>Window sizes amended</span><span>01 OCT 26</span></div>
+      <div class="rt-row"><span>C</span><span>Issued for construction</span><span>30 OCT 26</span></div>
+    </div>
+
+    <div class="titleblock" aria-label="Title block">
+      <div class="tb-firm" data-slot="site-name">NORTHLIGHT</div>
+      <div class="tb-proj">
+        <span class="k">PROJECT</span>
+        <span class="v" data-slot="hero-title">THE VELLUM HOUSE</span>
+      </div>
+      <div class="tb-grid">
+        <div><span class="k">DRAWN BY</span><span class="v" data-slot="drawn-by">J. ARÉVALO</span></div>
+        <div><span class="k">CHECKED</span><span class="v" data-slot="checked-by">R. OKONKWO</span></div>
+        <div><span class="k">SCALE</span><span class="v" data-slot="scale">1:50 @ A1</span></div>
+        <div><span class="k">DATE</span><span class="v" data-slot="rev-date">30 OCT 2026</span></div>
+        <div class="dwg"><span class="k">DRAWING No.</span><span class="v" data-slot="drawing-no">A-00</span></div>
+        <div class="rev"><span class="k">REV</span><span class="v" data-slot="revision">C</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer data-slot="footer">© MCMLXXIV–2026 NORTHLIGHT · Do not scale off this drawing · Figured dimensions to govern</footer>
+
+</div>
+<script src="../../edit.js" defer></script>
+</body>
+</html>

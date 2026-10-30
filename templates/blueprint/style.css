@@ -1,0 +1,137 @@
+/* Blueprint — cyan line-work on blueprint-blue paper. Default is the classic
+   diazo blueprint (dark blue); a light OS flips it to a pale "whiteprint".
+   data-theme overrides let the editor force either. */
+:root{
+  --paper:#0f3d6e; --paper2:#12467d;
+  --line:#cfe3f6; --ink:#ffffff; --dim:#8fb6dd;
+  --grid:rgba(207,227,246,.10); --grid-bold:rgba(207,227,246,.20);
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --paper:#eef3f8; --paper2:#e4ecf4;
+  --line:#2e5f94; --ink:#153c66; --dim:#5a7fa6;
+  --grid:rgba(46,95,148,.12); --grid-bold:rgba(46,95,148,.24);
+}}
+:root[data-theme="light"]{
+  --paper:#eef3f8; --paper2:#e4ecf4;
+  --line:#2e5f94; --ink:#153c66; --dim:#5a7fa6;
+  --grid:rgba(46,95,148,.12); --grid-bold:rgba(46,95,148,.24);
+}
+:root[data-theme="dark"]{
+  --paper:#0f3d6e; --paper2:#12467d;
+  --line:#cfe3f6; --ink:#ffffff; --dim:#8fb6dd;
+  --grid:rgba(207,227,246,.10); --grid-bold:rgba(207,227,246,.20);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  font:14px/1.55 "Courier New",Courier,ui-monospace,monospace;
+  letter-spacing:.03em;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px),
+    linear-gradient(var(--grid-bold) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-bold) 1px,transparent 1px);
+  background-size:22px 22px,22px 22px,110px 110px,110px 110px;
+}
+svg{display:block}
+h1,h2,h3{font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0}
+
+/* the drawing sheet: a double-ruled frame on the gridded paper */
+.sheet{
+  max-width:1000px;margin:18px auto;padding:clamp(18px,4vw,40px);
+  border:1px solid var(--line);outline:1px solid var(--line);outline-offset:4px;
+}
+
+/* title band ------------------------------------------------------------ */
+.titleband{display:flex;justify-content:space-between;align-items:flex-start;
+  gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.firm h1{font-size:clamp(30px,8vw,64px);letter-spacing:.18em;line-height:.95}
+.firm p{margin:8px 0 0;color:var(--dim);font-size:11px;letter-spacing:.22em}
+.northmark svg{width:60px;height:60px;stroke:var(--line);stroke-width:1.1;fill:none}
+.northmark .fill{fill:var(--line)}
+.northmark text{fill:var(--paper);stroke:none;font:700 13px "Courier New",monospace;
+  text-anchor:middle;letter-spacing:0}
+
+/* dimension line: SVG arrow caps + a CSS rule carrying the measurement ---- */
+.dim{display:flex;align-items:center;margin:22px 0}
+.dim .cap{width:12px;height:12px;flex:none;stroke:var(--line);stroke-width:1.3;fill:none}
+.dim .cap.flip{transform:scaleX(-1)}
+.dim .rule{flex:1;position:relative;height:1px;background:var(--line);margin:0 -1px}
+.dim .rule em{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  background-color:var(--paper);padding:0 10px;font-style:normal;
+  font-size:11px;letter-spacing:.14em;color:var(--line);white-space:nowrap}
+
+/* sheet index tabs ------------------------------------------------------- */
+nav{display:flex;flex-wrap:wrap;gap:0;margin:18px 0 6px;border:1px solid var(--line)}
+nav a{flex:1 1 auto;text-align:center;color:var(--line);text-decoration:none;
+  padding:9px 12px;font-size:12px;letter-spacing:.1em;white-space:nowrap;
+  border-right:1px solid var(--line)}
+nav a:last-child{border-right:0}
+nav a:hover,nav a[aria-current]{background:var(--line);color:var(--paper)}
+
+/* hero drawing ----------------------------------------------------------- */
+.hero{position:relative;border:1px solid var(--line);padding:30px 28px;margin:16px 0;
+  background:var(--paper2)}
+.hero .marker{position:absolute;top:-8px;right:18px;width:48px;height:60px;
+  stroke:var(--line);stroke-width:1.1;fill:none}
+.hero .marker text{fill:var(--line);stroke:none;text-anchor:middle;
+  font:700 12px "Courier New",monospace}
+.hero h2{font-size:clamp(22px,5vw,40px);letter-spacing:.14em}
+.hero p{margin:14px 0 0;max-width:60ch;color:var(--line)}
+
+/* legend ----------------------------------------------------------------- */
+.legend{border:1px solid var(--line);padding:16px 20px;margin:16px 0}
+.legend h3{font-size:13px;margin-bottom:12px;color:var(--line)}
+.legend ul{list-style:none;margin:0;padding:0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 20px}
+.legend li{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--dim)}
+.legend svg{width:40px;height:16px;flex:none;stroke:var(--line);stroke-width:1.2;fill:none}
+
+/* drawing schedule ------------------------------------------------------- */
+.sheet-label{font-size:13px;color:var(--line);margin:26px 0 10px;
+  padding-bottom:6px;border-bottom:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:0;border:1px solid var(--line)}
+.card{position:relative;border:1px solid var(--line);margin:-1px 0 0 -1px;
+  padding:18px 18px 20px;background:var(--paper)}
+.card .tag{position:absolute;top:10px;right:12px;font-size:10px;letter-spacing:.14em;
+  color:var(--dim);border:1px solid var(--line);padding:1px 6px}
+.card h3{font-size:15px;letter-spacing:.1em;padding-right:52px}
+.card p{margin:10px 0 0;font-size:12.5px;color:var(--dim)}
+
+/* revisions + title block ------------------------------------------------ */
+.blockrow{display:flex;flex-wrap:wrap;gap:0;margin:24px 0 8px;
+  justify-content:flex-end;align-items:stretch}
+.revtable{flex:1 1 300px;border:1px solid var(--line);font-size:11px;align-self:stretch}
+.rt-head,.rt-row{display:grid;grid-template-columns:48px 1fr 92px}
+.rt-head span,.rt-row span{padding:6px 10px;border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line)}
+.rt-head span:last-child,.rt-row span:last-child{border-right:0}
+.rt-row:last-child span{border-bottom:0}
+.rt-head{color:var(--line);letter-spacing:.1em}
+.rt-row span{color:var(--dim)}
+
+.titleblock{flex:0 0 320px;border:1px solid var(--line);border-left:0;font-size:11px}
+@media(max-width:620px){.titleblock{flex:1 1 100%;border-left:1px solid var(--line);
+  border-top:0}.revtable{flex:1 1 100%}}
+.tb-firm{padding:10px 12px;font-weight:700;letter-spacing:.22em;font-size:16px;
+  color:var(--paper);background:var(--line);text-transform:uppercase}
+.tb-proj{display:flex;flex-direction:column;padding:9px 12px;
+  border-bottom:1px solid var(--line)}
+.tb-grid{display:grid;grid-template-columns:1fr 1fr}
+.tb-grid>div{display:flex;flex-direction:column;padding:8px 12px;
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tb-grid>div:nth-child(2n){border-right:0}
+.tb-grid .dwg,.tb-grid .rev{border-bottom:0}
+.tb-grid .dwg .v{font-size:22px;letter-spacing:.14em}
+.tb-grid .rev .v{font-size:22px;letter-spacing:.14em}
+.k{color:var(--dim);font-size:9px;letter-spacing:.16em;margin-bottom:3px}
+.v{color:var(--ink);font-weight:700;letter-spacing:.08em}
+
+footer{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);
+  text-align:center;color:var(--dim);font-size:11px;letter-spacing:.12em}
+
+/* drafting-table calm: hover shifts only, and only if motion is welcome */
+a,.card{transition:background-color .15s linear,color .15s linear}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
