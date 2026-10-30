@@ -1,71 +1,74 @@
 # The Old Web Showroom
 
-The old web, on display — a showroom for those who may be interested. A
-repository of standalone old-school website templates. Each template is its
-own folder — its own layout, theme, pages, and personality, built as a piece of
-art in its period. No build, no framework, no dependencies. The repo shares
-exactly two things across every template: the **editing workflow** and the
-**project index** (`index.html`). Nothing else links them.
+*The old web, on display — a showroom for those who may be interested.*
 
-## Layout
+A collection of standalone old-school website templates. Each one is its own
+folder — its own era, layout, theme and personality, hand-built as a period
+piece. No build, no framework, no dependencies; every template runs offline by
+double-clicking its file. The repo shares exactly two things across all of
+them: the **editing workflow** and the **showroom index**. Nothing else links
+them, and no two look alike.
+
+## Browse
+
+Open `index.html` — the showroom floor. It lists every template; each opens in
+a new tab. That's the whole front door.
 
 ```
-index.html              the showroom: gallery + build checklist
-edit.js                 the shared opt-in content editor
-README.md               this file — the rulebook
+index.html     the showroom (gallery + the T array that lists every template)
+edit.js        shared opt-in content editor
+check.py       the validator (also a pre-commit gate)
+README.md      this file
 templates/
-  _blank/               copy this folder to start a new template
-    index.html  about.html  style.css
-  meridian/
-    index.html  style.css
-  <slug>/ …
+  _blank/      copy this to start a new one
+  <slug>/      index.html · style.css · (extra pages optional)
 ```
 
-The `T` array at the bottom of `index.html` is the single source of truth for
-what exists. Open `index.html` to browse; each built template opens in a new tab.
+---
 
-## Rules for a template
+## The contract — building a template
 
-Everything not listed here — layout, colour, type, pages, tabs, period-correct
-effects — is the template's own art. No house style, no shared CSS.
+This section is the single source of truth. A template obeys these rules and
+nothing more; **everything else — layout, colour, type, motion, page count — is
+the template's own art.** No house style, no shared CSS, no copying another
+template's look.
 
-1. Lives at `templates/<slug>/`; entry point `index.html`; styling in its own
-   external `style.css`.
-2. Every fillable piece of text carries `data-slot="…"` — that's how `edit.js`
-   and any back-end find content. Common names, reused so one back-end fills any
-   template: `site-name`, `tagline`, `hero-title`, `hero-body`, `page-title`,
-   `page-body`, `footer`, `nav-item`, `card-title`, `card-body`. Use the subset
-   the design needs.
-3. **Fill every slot with in-world copy invented for the theme — never lorem
-   ipsum.** A BBS has sysop banners, a grimoire has incantations. The text is
-   part of the design.
-4. Keep the `edit.js` line at the end of `<body>`. It is the repo's authoring
-   aid; once exported it 404s harmlessly.
-5. Register the slug in the `T` array in `/index.html`.
+1. **Place** — lives at `templates/<slug>/`, entry `index.html`, styling in its
+   own external `style.css` (never an inline `<style>` block).
+2. **Slots** — every fillable piece of text carries `data-slot="…"` so the
+   editor and any back-end can find it. Reuse these common names where they fit
+   (use only the subset the design needs): `site-name`, `tagline`,
+   `hero-title`, `hero-body`, `page-title`, `page-body`, `footer`, `nav-item`,
+   `card-title`, `card-body`. Extra names are fine for anything else.
+3. **In-world copy** — fill every slot with text invented for the theme. Never
+   lorem ipsum. A BBS has sysop banners, a grimoire has incantations; the words
+   are part of the art.
+4. **Offline only** — no network. No CDN, no remote fonts, no external images.
+   CSS + inline SVG + system fonts, so it works on `file://`. JS only if the era
+   truly needs it, and then a few vanilla lines.
+5. **Unique** — no two templates share the same era *and* form. A new idea that
+   echoes an existing one must differ clearly in palette, content and layout, or
+   it isn't built.
+6. **Editor hook** — the last line of every page's `<body>` is exactly:
+   `<script src="../../edit.js" defer></script>`
+7. **Register** — add the slug to the `T` array in `/index.html` (same commit).
 
-## Multipage
+**Multipage** is encouraged where the concept wants it (a forum → thread, a
+splash → home). Add more `.html` files in the folder; they share the one
+`style.css` and link each other with plain relative hrefs. Repeat the header/nav
+markup per page — that's how sites worked before bundlers, and every page still
+obeys rules 1–6.
 
-Add `about.html`, `work.html`, … in the folder. Pages share the one `style.css`
-and link each other with plain relative hrefs (`href="about.html"`). The
-header/nav markup is repeated per page — fine at template scale, and the clean
-markup means a back-end can later lift it into a single partial. No includes, no
-JS: the way sites were built before bundlers, and it works the same on `file://`,
-on a server, and after export.
-
-> Perfect "edit the nav once" with no back-end on `file://` doesn't exist — every
-> include (SSI, PHP, `fetch`, a build step) breaks either `file://` or the
-> no-tooling rule. So styling is deduped (`style.css`); chrome markup repeats
-> until a back-end owns it.
+**Start from `templates/_blank/`** — copy the folder, rename it, rewrite the
+markup and `style.css`, keep the contract.
 
 ## Editing
 
-- **By hand** — slots are plain elements. Edit the text, save.
-- **In the browser** — open any page with `?edit`
-  (`templates/meridian/index.html?edit`). Slots become editable; **Save HTML**
+- **By hand** — slots are plain elements; edit the text, save.
+- **In the browser** — open any page with `?edit` (e.g.
+  `templates/meridian/index.html?edit`). Slots become editable; **Save HTML**
   downloads the page to replace the file. Text only; edit each page in turn.
-- **With a back-end** — slots are injection points; loop `[data-slot]` and set
-  text. The `.html` file *is* the template:
-
+- **With a back-end** — the `.html` *is* the template; fill the slots:
   ```php
   $doc = new DOMDocument(); $doc->loadHTMLFile('templates/meridian/index.html');
   $xp = new DOMXPath($doc);
@@ -76,49 +79,37 @@ on a server, and after export.
 
 ## Deploy & export
 
-The repo is the immutable source and showroom; you never serve it directly. To
-use a template, copy its folder to your web root — it's a complete site (relative
-links, own CSS). Optionally drop the one `edit.js` line (it 404s otherwise, which
-is invisible to visitors):
+The repo is the source and showroom; you don't serve it directly. To use a
+template, copy its folder to your web root — it's a complete site (relative
+links, own CSS). Optionally strip the one `edit.js` line (it 404s harmlessly
+otherwise):
 
 ```sh
 cp -r templates/meridian ~/mysite
 sed -i '/edit\.js/d' ~/mysite/*.html   # optional tidy
 ```
 
-## New template
+Or push the whole repo to GitHub Pages / any static host as-is.
 
-Copy `templates/_blank/` to `templates/<slug>/`, rewrite `style.css` and the
-markup, follow the five rules, add the slug to `T` in `index.html`.
+## Validate — and the gate
 
-## Checking templates
+`./check.py` checks every template against the contract (external `style.css`,
+no inline `<style>`, a `data-slot`, the `edit.js` hook, in-world copy, offline
+only, two-way registration). Python 3 stdlib only; it parses the HTML, so a URL
+or "lorem ipsum" inside a comment never trips it. `--selftest` validates the
+checker itself; `--plain` drops colour/banner (auto-off when piped). Non-zero
+exit on any failure.
 
-`./check.py` verifies every template against the structural rules (external
-`style.css`, no inline `<style>`, `data-slot` present, the `edit.js` hook,
-no `lorem ipsum`, no remote/CDN assets, and two-way showroom registration).
-Python 3 stdlib only, no dependencies — it parses the HTML rather than
-grepping, so a URL or the words "lorem ipsum" in a comment never trip it.
-`./check.py --selftest` validates the checker itself; `--plain` drops the
-colour/banner (also auto-off when piped). Exits non-zero on any failure, so it
-drops straight into CI or a pre-commit hook.
+A tracked **pre-commit hook** (`hooks/pre-commit`) runs it on every commit and
+blocks failures. It ships with the repo; enable it once after cloning:
 
-## Design principles & backlog
+```sh
+git config core.hooksPath hooks
+```
 
-**Each template is unique.** No two should share the same era *and* form — a
-new idea that overlaps an existing one (another grey-bevel desktop OS, another
-dark mono terminal) must differ clearly in palette, content and layout, or it
-doesn't get built. `check.py` guarantees structure; uniqueness is a judgement
-call kept here on purpose.
+Override a single commit with `git commit --no-verify`.
 
-**Multitab / multipage retrofit candidates** (built single-page, would suit
-extra pages sharing their `style.css` — tracked for a later pass, not urgent):
-geocities (home/links/guestbook), newspaper (front → inside page),
-bbs (board → message area), winamp (player → playlist), myspace (profile →
-friends/comments), dos-commander (panel navigation).
+## Backlog note
 
-### Seamless gate
-
-A tracked pre-commit hook runs `check.py` on every commit and blocks anything
-that fails. It's active in this repo; after a fresh clone, re-enable with one
-line: `git config core.hooksPath hooks`. Override a single commit with
-`git commit --no-verify`.
+Single-page templates that would suit a later multipage pass (not urgent):
+geocities, newspaper, bbs, winamp, myspace, dos-commander.
