@@ -1,0 +1,114 @@
+/* vhs-osd — VCR on-screen display, early 90s. Dark video screen, chunky blue
+   SET-UP box, blocky letter-spaced system sans faked into OSD characters. */
+:root{
+  --screen:#0a0e14; --screen2:#121820;
+  --osd:#f2f4ef; --osd-dim:#9fb0a6;
+  --blue:#1726b4; --blue-lt:#3a4ad8; --blue-edge:#0b1270;
+  --amber:#ffcf4a; --red:#ff3a2e; --green:#49e07a;
+  --bleed-r:#ff2d7a; --bleed-c:#2de3ff;
+}
+/* OSD screens read the same day or night; keep the dark tube in both. */
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:#05070a;color:var(--osd);
+  font-family:Arial,Helvetica,"Liberation Sans",sans-serif;
+  font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  display:flex;min-height:100%}
+
+/* the tube */
+.screen{position:relative;flex:1;min-height:100vh;overflow:hidden;
+  padding:clamp(16px,4vw,54px);
+  background:
+    radial-gradient(130% 120% at 50% 42%,var(--screen2) 0%,var(--screen) 55%,#04060a 100%);
+  display:grid;align-content:start;gap:clamp(14px,2.4vw,26px);
+  grid-template-columns:1fr 1fr;
+  grid-template-areas:
+    "status clock"
+    "box    box"
+    "ptitle ptitle"
+    "progs  progs"
+    "rec    rec";}
+
+/* scanlines + a soft chroma vignette, non-interactive */
+.scan{position:absolute;inset:0;pointer-events:none;z-index:5;
+  background:
+    repeating-linear-gradient(0deg,rgba(0,0,0,.26) 0 1px,rgba(0,0,0,0) 1px 3px),
+    linear-gradient(90deg,rgba(45,227,255,.05),rgba(255,45,122,.05));
+  mix-blend-mode:screen;
+  animation:roll 9s linear infinite}
+.scan::after{content:"";position:absolute;inset:0;
+  box-shadow:inset 0 0 120px 24px rgba(0,0,0,.65);
+  background:radial-gradient(120% 120% at 50% 50%,transparent 60%,rgba(0,0,0,.5))}
+@keyframes roll{from{background-position:0 0,0 0}to{background-position:0 6px,0 0}}
+
+/* shared OSD text — chroma-bleed ghosting on every glyph */
+.osd,.box,.progs{position:relative;z-index:6}
+.osd{display:flex;align-items:center;gap:.6em;font-size:clamp(14px,2.2vw,20px);
+  text-shadow:-1px 0 var(--bleed-r),1px 0 var(--bleed-c),0 0 10px rgba(242,244,239,.3)}
+
+.status{grid-area:status}
+.status .tri{color:var(--green)}
+.status .count{color:var(--osd-dim);letter-spacing:.2em}
+.clock{grid-area:clock;justify-self:end;font-size:clamp(20px,5vw,40px);
+  color:var(--amber);letter-spacing:.22em;
+  text-shadow:-1px 0 var(--bleed-r),1px 0 var(--bleed-c),0 0 14px rgba(255,207,74,.5);
+  animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* the big blue SET-UP / MENU box */
+.box{grid-area:box;justify-self:center;width:min(620px,100%);
+  background:linear-gradient(180deg,var(--blue-lt),var(--blue) 18%,var(--blue-edge));
+  border:3px solid #cdd6ff;outline:3px solid var(--blue-edge);
+  box-shadow:0 0 0 2px #04060a,0 10px 34px rgba(11,18,112,.7),0 0 26px rgba(58,74,216,.45);
+  padding:clamp(14px,2.5vw,22px)}
+.box-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding-bottom:12px;margin-bottom:12px;border-bottom:2px solid rgba(205,214,255,.55);flex-wrap:wrap}
+.box .site{font-size:clamp(17px,3.2vw,26px);letter-spacing:.2em}
+.box .chan{font-size:clamp(11px,2vw,14px);color:#cdd6ff;letter-spacing:.18em}
+.menu{list-style:none;margin:0;padding:0;font-size:clamp(13px,2.2vw,17px)}
+.menu li{display:flex;justify-content:space-between;gap:12px;padding:7px 10px}
+.menu .v{color:#cdd6ff;letter-spacing:.16em}
+.menu li.on{background:var(--amber);color:var(--blue-edge);text-shadow:none}
+.menu li.on .v{color:var(--blue-edge)}
+
+.track{display:flex;align-items:center;gap:12px;margin-top:14px;
+  padding-top:12px;border-top:2px solid rgba(205,214,255,.55);
+  font-size:clamp(11px,2vw,14px);letter-spacing:.16em}
+.track .bars{display:flex;gap:3px;align-items:flex-end;height:16px;flex:1}
+.track .bars i{flex:1;background:#cdd6ff;height:100%;transform-origin:bottom;
+  animation:jitter 1.4s ease-in-out infinite}
+.track .bars i:nth-child(2n){animation-duration:1.1s}
+.track .bars i:nth-child(3n){animation-duration:1.7s}
+@keyframes jitter{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+
+/* program timer rows */
+.prog-title{grid-area:ptitle;color:var(--osd-dim);font-size:clamp(12px,2vw,16px);letter-spacing:.2em}
+.progs{grid-area:progs;list-style:none;margin:0;padding:0;
+  display:grid;gap:2px}
+.progs li{position:relative;z-index:6;display:grid;gap:4px 14px;
+  grid-template-columns:auto 1fr;align-items:baseline;
+  padding:10px 12px;background:rgba(18,24,32,.72);
+  border-left:4px solid var(--green)}
+.progs li.empty{border-left-color:#3a4654;opacity:.6}
+.progs .num{grid-row:1/3;align-self:center;color:var(--amber);font-size:clamp(12px,2vw,15px);
+  letter-spacing:.14em;min-width:5.2em}
+.progs .show{font-size:clamp(13px,2.2vw,17px);letter-spacing:.1em;
+  text-shadow:-1px 0 var(--bleed-r),1px 0 var(--bleed-c)}
+.progs .info{color:var(--osd-dim);font-size:clamp(10px,1.8vw,13px);letter-spacing:.14em}
+
+/* record armed */
+.rec{grid-area:rec;font-size:clamp(11px,2vw,15px);flex-wrap:wrap}
+.rec .dot{color:var(--red);font-size:1.3em;animation:blink 1s steps(1) infinite}
+.rec .slash{color:var(--osd-dim)}
+.rec [data-slot="footer"]{color:var(--osd-dim);letter-spacing:.12em}
+
+@media (max-width:560px){
+  .screen{grid-template-columns:1fr;grid-template-areas:"status" "clock" "box" "ptitle" "progs" "rec"}
+  .clock{justify-self:start}
+  body{letter-spacing:.1em}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .scan,.clock,.rec .dot,.track .bars i{animation:none}
+  .clock,.rec .dot{opacity:1}
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StarGazer</title>
+<!-- HyperCard — 1-bit Mac authoring stack (1987). Home card. Buttons link cards; style.css shared with card2.html. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="menubar"><span class="apple">&#63743;</span><span>File</span><span>Edit</span><span>Go</span><span>Tools</span><span>Objects</span></div>
+
+  <div class="stack">
+    <div class="card">
+      <div class="titlebar"><span class="box"></span><h1 data-slot="site-name">StarGazer</h1></div>
+      <div class="body">
+        <span class="eyebrow" data-slot="tagline">A HyperCard&trade; Stack &middot; v2.1</span>
+        <h2 data-slot="hero-title">Welcome to the Stack</h2>
+        <p class="lead" data-slot="hero-body">Point your telescope, flip a card. This home-brew stack keeps every clear night in one place &mdash; charts, folklore, and the log you fill in by hand. Click a button to turn the page.</p>
+
+        <div class="buttons">
+          <a class="btn" href="card2.html" data-slot="nav-item"><svg viewBox="0 0 16 16"><path d="M8 1 1 7h2v8h4v-5h2v5h4V7h2z"/></svg>Constellations</a>
+          <a class="btn" href="card2.html#log" data-slot="nav-item">Observing Log</a>
+          <a class="btn" href="card2.html#about" data-slot="nav-item">About This Stack</a>
+        </div>
+
+        <div class="field">
+          <h3 data-slot="card-title">Tonight&rsquo;s Sky</h3>
+          <p data-slot="card-body">Waxing gibbous, 71% lit, setting at 2:14 AM. Jupiter rides high in the south &mdash; four moons visible in any backyard glass.</p>
+        </div>
+        <div class="field">
+          <h3 data-slot="card-title">Click, Don&rsquo;t Scroll</h3>
+          <p data-slot="card-body">Every card is one screen wide. Follow the buttons like a trail: Home takes you here, the arrows walk you through the deck.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer data-slot="footer">StarGazer Stack &middot; built with HyperCard 1.2 &middot; freeware, pass it along</footer>
+
+  <nav class="navbar">
+    <a class="btn" href="index.html" aria-current="page" data-slot="nav-item"><svg viewBox="0 0 16 16"><path d="M8 1 1 7h2v8h4v-5h2v5h4V7h2z"/></svg>Home</a>
+    <a class="btn" href="index.html" data-slot="nav-item"><svg viewBox="0 0 16 16"><path d="M11 1 4 8l7 7z"/></svg>Prev</a>
+    <a class="btn" href="card2.html" data-slot="nav-item">Next<svg viewBox="0 0 16 16"><path d="M5 1l7 7-7 7z"/></svg></a>
+  </nav>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

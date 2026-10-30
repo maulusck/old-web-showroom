@@ -117,6 +117,12 @@ const T=[
  {s:"answering-mc",  n:"Answering Machine",   d:"Beige desk unit — 7-seg counter, voicemail stubs", done:true},
  {s:"cinema-marquee",n:"Cinema Marquee",      d:"Movie-palace sign — chasing bulbs, now showing", done:true},
  {s:"psychedelic-60s",n:"Psychedelic Poster", d:"60s Fillmore — warped type, vibrating swirls", done:true},
+ {s:"weather-channel",n:"Weather Channel",    d:"Local on the 8s — forecast rows, WeatherSTAR calm", done:true},
+ {s:"stock-ticker",  n:"Stock Ticker",        d:"80s trading terminal — amber quotes, green/red crawl", done:true},
+ {s:"vhs-osd",       n:"VHS OSD",             d:"VCR on-screen display — blue menu, PLAY, 12:00 blink", done:true},
+ {s:"hypercard",     n:"HyperCard",           d:"1-bit Mac stack — cards, link buttons, Home/Prev/Next", done:true},
+ {s:"jukebox",       n:"Jukebox",             d:"Wurlitzer selector — title strips, chrome, chasing bulbs", done:true},
+ {s:"comic-book",    n:"Comic Book",          d:"Bronze-age page — panels, balloons, halftone, KRAKOW!", done:true},
 ];
 const shown=T.filter(t=>t.s[0]!=="_");
 document.getElementById("floor").innerHTML=shown.map((t,i)=>{

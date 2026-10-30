@@ -1,0 +1,149 @@
+/* comic-book — Silver/Bronze-age comic page. Newsprint, primary inks,
+   Ben-Day halftone, hand-lettered SFX. CSS + inline-SVG, no libraries. */
+:root{
+  --paper:#f3e9c8; --news:#ece1bd; --ink:#17140f;
+  --red:#d81f26; --blue:#1f4fa3; --yellow:#ffd21e; --pink:#f3a7b4;
+  --dot:rgba(216,31,38,.22); --dot-blue:rgba(31,79,163,.20);
+  --balloon:#fbf8ef;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#15131a; --news:#1d1b24; --ink:#f3e9c8;
+  --red:#ff5a5f; --blue:#5b8dff; --yellow:#ffdf5a; --pink:#c06a7a;
+  --dot:rgba(255,90,95,.20); --dot-blue:rgba(91,141,255,.18);
+  --balloon:#262430;
+}}
+:root[data-theme="dark"]{
+  --paper:#15131a; --news:#1d1b24; --ink:#f3e9c8;
+  --red:#ff5a5f; --blue:#5b8dff; --yellow:#ffdf5a; --pink:#c06a7a;
+  --dot:rgba(255,90,95,.20); --dot-blue:rgba(91,141,255,.18);
+  --balloon:#262430;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--news);color:var(--ink);
+  font-family:"Comic Sans MS","Chalkboard SE","Segoe Print",ui-rounded,"Trebuchet MS",sans-serif;
+  line-height:1.4}
+.page{max-width:960px;margin:0 auto;padding:14px}
+
+/* ---- shared halftone overlay ---- */
+.dots{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(var(--dot) 42%,transparent 44%);
+  background-size:7px 7px;opacity:.9}
+.dots-blue{background-image:radial-gradient(var(--dot-blue) 42%,transparent 44%)}
+.dots-dense{background-size:5px 5px}
+
+/* ---- cover masthead ---- */
+.cover{position:relative;overflow:hidden;background:var(--paper);
+  border:5px solid var(--ink);padding:16px 18px 20px;text-align:center}
+.banner{position:relative;z-index:1;display:flex;align-items:flex-start;
+  justify-content:space-between;gap:10px;min-height:66px}
+.corner{background:var(--yellow);color:var(--ink);border:3px solid var(--ink);
+  padding:6px 10px;font-weight:700;font-size:15px;letter-spacing:.02em;
+  transform:rotate(-4deg);white-space:nowrap}
+.seal{width:66px;height:66px;color:var(--ink);flex:none;transform:rotate(6deg)}
+.sealtxt{font:700 11px/1 "Arial Narrow",Arial,sans-serif;letter-spacing:.04em;
+  fill:var(--ink);text-transform:uppercase}
+.sealstar{font-size:26px;fill:var(--red)}
+.cover h1{position:relative;z-index:1;margin:.1em 0 0;
+  font-family:"Impact","Haettenschweiler","Arial Black",sans-serif;
+  font-weight:900;line-height:.92;letter-spacing:.01em;text-transform:uppercase;
+  font-size:clamp(42px,12vw,112px);color:var(--yellow);
+  -webkit-text-stroke:2px var(--ink);
+  text-shadow:4px 4px 0 var(--red),6px 6px 0 var(--ink)}
+.tagline{position:relative;z-index:1;margin:10px auto 0;max-width:34ch;
+  font-weight:700;font-style:italic;font-size:clamp(15px,3.6vw,22px);color:var(--red)}
+.coverline{position:relative;z-index:1;display:inline-block;margin:14px 0 0;
+  background:var(--blue);color:#fff;border:3px solid var(--ink);
+  padding:6px 14px;font-weight:700;letter-spacing:.02em;transform:rotate(-1.5deg);
+  font-size:clamp(13px,3vw,17px)}
+
+/* ---- issue nav ---- */
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:12px 0}
+nav a{background:var(--paper);color:var(--ink);border:3px solid var(--ink);
+  text-decoration:none;padding:5px 12px;font-weight:700;font-size:13px;
+  text-transform:uppercase;letter-spacing:.03em;box-shadow:3px 3px 0 var(--ink)}
+nav a:hover,nav a:focus{background:var(--yellow);transform:translate(1px,1px);
+  box-shadow:2px 2px 0 var(--ink);outline:none}
+
+/* ---- the panel grid ---- */
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:12px}
+.panel{position:relative;overflow:hidden;background:var(--paper);
+  border:4px solid var(--ink);padding:16px;min-height:200px;grid-column:span 3;
+  box-shadow:5px 5px 0 rgba(0,0,0,.25)}
+.strip .panel:nth-child(1){grid-column:span 6}
+.strip .panel:nth-child(4){grid-column:span 2}
+.strip .panel:nth-child(5){grid-column:span 4}
+.strip .panel:nth-child(6){grid-column:span 6}
+.p-dark{background:var(--ink)}
+
+/* ---- caption boxes ---- */
+.caption{position:relative;z-index:1;display:inline-block;background:var(--balloon);
+  color:var(--ink);border:3px solid var(--ink);padding:5px 10px;margin:0 0 12px;
+  font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.02em;line-height:1.25}
+.cap-yellow{background:var(--yellow)}
+.cap-red{background:var(--red);color:#fff}
+
+/* ---- narration ---- */
+.narr{position:relative;z-index:1;margin:0;max-width:40ch;font-size:16px;font-weight:600}
+.narr-light{color:var(--paper)}
+.contd{position:relative;z-index:1;margin:12px 0 0;font-weight:900;color:var(--red);
+  font-size:15px;text-transform:uppercase;letter-spacing:.01em}
+
+/* ---- speech balloons ---- */
+.balloon{position:absolute;z-index:2;max-width:56%;background:var(--balloon);
+  color:var(--ink);border:3px solid var(--ink);border-radius:50%/42%;
+  padding:12px 16px;font-size:14px;font-weight:700;line-height:1.25}
+.balloon .tail{position:absolute;width:30px;height:30px;overflow:visible}
+.balloon .tail polygon{fill:var(--balloon);stroke:var(--ink);stroke-width:3;
+  stroke-linejoin:round}
+.b-tl{top:12px;left:12px}.b-tr{top:12px;right:12px}
+.b-bl{bottom:14px;left:12px}.b-br{bottom:14px;right:12px}
+.tail-bl{bottom:-18px;left:22px}.tail-br{bottom:-18px;right:22px}
+.tail-tl{top:-18px;left:22px}
+.balloon.think{border-radius:48%;border-style:solid}
+.balloon.think::before,.balloon.think::after{content:"";position:absolute;
+  background:var(--balloon);border:3px solid var(--ink);border-radius:50%}
+.balloon.think::before{width:16px;height:16px;bottom:-14px;right:30px}
+.balloon.think::after{width:9px;height:9px;bottom:-26px;right:24px}
+.balloon.think .tail{display:none}
+.balloon.shout{background:var(--balloon);border-radius:0;
+  clip-path:polygon(0 12%,8% 0,18% 10%,30% 2%,42% 11%,56% 0,68% 10%,80% 2%,92% 12%,100% 24%,
+    94% 40%,100% 56%,92% 72%,100% 88%,86% 96%,72% 90%,58% 100%,44% 92%,30% 100%,16% 92%,
+    4% 98%,2% 80%,0 64%,6% 48%,0 32%);padding:18px 20px;color:var(--red)}
+.balloon.shout .tail{display:none}
+
+/* ---- sound effects ---- */
+.sfx{position:absolute;z-index:3;pointer-events:none}
+.sfx-big{top:44%;left:50%;transform:translate(-50%,-50%) rotate(-8deg)}
+.sfx-big .burst{position:absolute;top:50%;left:50%;width:210px;height:210px;
+  transform:translate(-50%,-50%);animation:pop 2.4s ease-in-out infinite}
+.sfx-big .burst polygon{fill:var(--yellow);stroke:var(--ink);stroke-width:5;stroke-linejoin:round}
+.sfx-big span{position:relative;display:block;
+  font-family:"Impact","Arial Black",sans-serif;font-weight:900;
+  font-size:clamp(34px,8vw,58px);color:var(--red);-webkit-text-stroke:2px var(--ink);
+  text-shadow:3px 3px 0 var(--ink);text-transform:uppercase}
+.sfx-small{top:16px;right:14px;transform:rotate(9deg)}
+.sfx-small span{font-family:"Impact","Arial Black",sans-serif;font-weight:900;
+  font-size:clamp(22px,5vw,34px);color:var(--yellow);-webkit-text-stroke:1.5px var(--ink);
+  text-shadow:2px 2px 0 var(--ink);text-transform:uppercase}
+
+/* ---- indicia / letters page ---- */
+.indicia{margin:16px 0 8px;border:3px dashed var(--ink);background:var(--paper);
+  padding:14px 16px}
+.indicia p{margin:0;font-size:12px;font-weight:600;line-height:1.5}
+.indicia .letters{margin-top:8px;font-style:italic;color:var(--red)}
+
+@keyframes pop{0%,100%{transform:translate(-50%,-50%) scale(1)}
+  50%{transform:translate(-50%,-50%) scale(1.06)}}
+
+@media (max-width:620px){
+  .strip{grid-template-columns:1fr;gap:14px}
+  .strip .panel,
+  .strip .panel:nth-child(1),.strip .panel:nth-child(4),
+  .strip .panel:nth-child(5),.strip .panel:nth-child(6){grid-column:1}
+  .balloon{max-width:70%}
+  .banner{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){
+  .sfx-big .burst{animation:none}
+  nav a:hover,nav a:focus{transform:none}
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Goldtone</title>
+<!-- Jukebox — Wurlitzer-style tabletop selector. Chrome, warm bulbs, paper
+     title strips. CSS gradients + inline SVG only; system fonts; offline. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="floor">
+    <div class="jukebox">
+
+      <!-- illuminated arched top: chrome arch + chasing warm bulbs -->
+      <div class="dome">
+        <svg class="arch" viewBox="0 0 400 190" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+          <defs>
+            <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffe6a8"/>
+              <stop offset="0.45" stop-color="#ffb648"/>
+              <stop offset="1" stop-color="#d1661d"/>
+            </linearGradient>
+            <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fbfbfd"/>
+              <stop offset="0.5" stop-color="#9aa0aa"/>
+              <stop offset="0.5" stop-color="#5a5f68"/>
+              <stop offset="1" stop-color="#cfd3da"/>
+            </linearGradient>
+          </defs>
+          <path class="rim" d="M8 190 L8 104 Q8 14 200 14 Q392 14 392 104 L392 190 Z" fill="url(#rim)"/>
+          <path d="M30 190 L30 108 Q30 40 200 40 Q370 40 370 108 L370 190 Z" fill="url(#glass)"/>
+          <path class="sheen" d="M48 190 L48 110 Q48 58 200 58 Q300 58 340 86 Q260 70 150 96 Q80 112 72 190 Z" fill="#fff" opacity="0.22"/>
+          <g class="bulbs" fill="#ffd678">
+            <circle class="bulb" style="--i:0"  cx="30"  cy="150" r="7"/>
+            <circle class="bulb" style="--i:1"  cx="30"  cy="104" r="7"/>
+            <circle class="bulb" style="--i:2"  cx="42"  cy="66"  r="7"/>
+            <circle class="bulb" style="--i:3"  cx="74"  cy="40"  r="7"/>
+            <circle class="bulb" style="--i:4"  cx="118" cy="24"  r="7"/>
+            <circle class="bulb" style="--i:5"  cx="160" cy="17"  r="7"/>
+            <circle class="bulb" style="--i:6"  cx="200" cy="15"  r="7"/>
+            <circle class="bulb" style="--i:7"  cx="240" cy="17"  r="7"/>
+            <circle class="bulb" style="--i:8"  cx="282" cy="24"  r="7"/>
+            <circle class="bulb" style="--i:9"  cx="326" cy="40"  r="7"/>
+            <circle class="bulb" style="--i:10" cx="358" cy="66"  r="7"/>
+            <circle class="bulb" style="--i:11" cx="370" cy="104" r="7"/>
+            <circle class="bulb" style="--i:12" cx="370" cy="150" r="7"/>
+          </g>
+        </svg>
+        <div class="brand">
+          <h1 data-slot="site-name">The Goldtone</h1>
+          <p class="tagline" data-slot="tagline">Model 1015 · Deluxe Reissue</p>
+        </div>
+      </div>
+
+      <!-- marquee + coin invitation -->
+      <div class="marquee">
+        <span class="marq-text" data-slot="hero-title">Make a Selection</span>
+        <p class="marq-sub" data-slot="hero-body">Five cents a play, three for a dime. Press a letter, press a number, and let the arm do the rest.</p>
+      </div>
+
+      <!-- the title strips are the content: each paper strip is one track -->
+      <div class="rack">
+        <div class="strip">
+          <span class="code">A1</span>
+          <span class="meta">
+            <span class="song" data-slot="card-title">Chrome Heartbreak</span>
+            <span class="artist" data-slot="card-body">Dottie Vane &amp; the Vanguards</span>
+          </span>
+        </div>
+        <div class="strip">
+          <span class="code">A7</span>
+          <span class="meta">
+            <span class="song" data-slot="card-title">Milkshake Moon</span>
+            <span class="artist" data-slot="card-body">Sonny Castellano</span>
+          </span>
+        </div>
+        <div class="strip">
+          <span class="code">B2</span>
+          <span class="meta">
+            <span class="song" data-slot="card-title">Jukebox Sweetheart</span>
+            <span class="artist" data-slot="card-body">The Rhinestone Rockets</span>
+          </span>
+        </div>
+        <div class="strip">
+          <span class="code">B9</span>
+          <span class="meta">
+            <span class="song" data-slot="card-title">Diner at Dawn</span>
+            <span class="artist" data-slot="card-body">Lorraine Beaumont</span>
+          </span>
+        </div>
+        <div class="strip">
+          <span class="code">C4</span>
+          <span class="meta">
+            <span class="song" data-slot="card-title">Cherry Cola Twist</span>
+            <span class="artist" data-slot="card-body">The Buddy Fontaine Trio</span>
+          </span>
+        </div>
+        <div class="strip">
+          <span class="code">C8</span>
+          <span class="meta">
+            <span class="song" data-slot="card-title">Last Dime Boogie</span>
+            <span class="artist" data-slot="card-body">The Nickelodeons</span>
+          </span>
+        </div>
+        <div class="strip">
+          <span class="code">D3</span>
+          <span class="meta">
+            <span class="song" data-slot="card-title">Taillight Serenade</span>
+            <span class="artist" data-slot="card-body">Vera Sparks</span>
+          </span>
+        </div>
+        <div class="strip">
+          <span class="code">E6</span>
+          <span class="meta">
+            <span class="song" data-slot="card-title">Teenage Comet</span>
+            <span class="artist" data-slot="card-body">Ricky Marlowe &amp; the Hi-Fis</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- selector console: chrome buttons + coin slot -->
+      <div class="console">
+        <div class="keys">
+          <span class="key letter">A</span>
+          <span class="key letter">B</span>
+          <span class="key letter">C</span>
+          <span class="key letter">D</span>
+          <span class="key letter">E</span>
+          <span class="key num">1</span>
+          <span class="key num">2</span>
+          <span class="key num">3</span>
+          <span class="key num">4</span>
+          <span class="key num">5</span>
+          <span class="key num">6</span>
+          <span class="key num">7</span>
+          <span class="key num">8</span>
+          <span class="key num">9</span>
+        </div>
+        <div class="coin">
+          <span class="slot" aria-hidden="true"></span>
+          <span class="coin-text" data-slot="nav-item">Drop a Nickel</span>
+        </div>
+      </div>
+
+      <footer data-slot="footer">&copy; 1952–2026 The Goldtone Phonograph Co. · Minneapolis · Still spinning</footer>
+
+    </div>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

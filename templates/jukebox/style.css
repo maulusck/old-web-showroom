@@ -1,0 +1,98 @@
+/* The Goldtone — Wurlitzer-style tabletop jukebox. Chrome, warm bulbs, paper
+   title strips. One sheet themes the page. System fonts; CSS + inline SVG. */
+:root{
+  --red:#c1272d; --red-dk:#7e1518; --amber:#ffb648; --amber-lt:#ffe6a8;
+  --cream:#f6efe0; --ink:#2a2420;
+  --chrome-hi:#fbfbfd; --chrome:#c3c8d0; --chrome-md:#8d929b; --chrome-dk:#4a4e55;
+  --cabinet:#201a17; --felt:#3a0d0d;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--felt:#160808;--cabinet:#161210}}
+:root[data-theme="dark"]{--felt:#160808;--cabinet:#161210}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);
+  font:16px/1.5 "Helvetica Neue",Arial,sans-serif;
+  background:
+    radial-gradient(120% 80% at 50% 0%,#5a1414 0%,var(--felt) 55%,#120404 100%);
+  min-height:100vh}
+.floor{padding:28px 14px 48px}
+
+/* cabinet: brushed-chrome frame around a dark body */
+.jukebox{max-width:720px;margin:0 auto;padding:14px;border-radius:26px 26px 14px 14px;
+  background:linear-gradient(100deg,var(--chrome-dk),var(--chrome) 20%,var(--chrome-hi) 48%,var(--chrome-md) 70%,var(--chrome-dk));
+  box-shadow:0 2px 0 #fff6 inset,0 24px 60px #0009,0 0 0 1px #0006}
+
+/* ---- illuminated arched top ---- */
+.dome{position:relative;background:var(--cabinet);border-radius:18px 18px 6px 6px;
+  padding:6px 6px 0;overflow:hidden;box-shadow:0 0 0 2px #0008 inset}
+.arch{display:block;width:100%;height:auto}
+.sheen{pointer-events:none}
+.bulb{animation:chase 2s linear infinite;animation-delay:calc(var(--i) * -0.15s);
+  filter:drop-shadow(0 0 5px var(--amber))}
+@keyframes chase{
+  0%,100%{opacity:.35}
+  10%{opacity:1}
+  25%{opacity:.35}
+}
+.brand{position:absolute;inset:auto 0 0;text-align:center;padding-bottom:16px}
+.brand h1{margin:0;font-size:clamp(30px,8vw,58px);font-weight:800;font-style:italic;
+  letter-spacing:.01em;color:var(--cream);
+  text-shadow:0 0 10px #ffcf6e,0 2px 0 #7e1518,0 3px 6px #000}
+.tagline{margin:4px 0 0;font-size:11px;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--amber-lt);text-shadow:0 1px 2px #000}
+
+/* ---- marquee ---- */
+.marquee{text-align:center;padding:20px 16px 14px;
+  background:linear-gradient(var(--red),var(--red-dk));
+  border-left:3px solid var(--chrome-md);border-right:3px solid var(--chrome-md)}
+.marq-text{display:inline-block;font-weight:800;text-transform:uppercase;
+  font-size:clamp(22px,5.5vw,38px);letter-spacing:.08em;color:var(--amber-lt);
+  text-shadow:0 0 8px var(--amber),0 0 18px #ff7a1a;animation:flicker 2.4s ease-in-out infinite}
+@keyframes flicker{0%,100%{opacity:1}50%{opacity:.78}}
+.marq-sub{max-width:46ch;margin:10px auto 0;font-size:13px;line-height:1.55;
+  color:#ffdfc0;font-style:italic}
+
+/* ---- title-strip rack ---- */
+.rack{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:16px;
+  background:
+    repeating-linear-gradient(90deg,#1a1512 0 6px,#231c18 6px 12px);
+  border-left:3px solid var(--chrome-md);border-right:3px solid var(--chrome-md)}
+@media(max-width:560px){.rack{grid-template-columns:1fr}}
+.strip{display:flex;align-items:stretch;gap:0;background:var(--cream);
+  border-radius:3px;box-shadow:0 1px 0 #fff8 inset,0 2px 5px #0008;overflow:hidden}
+.code{flex:0 0 42px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(var(--red),var(--red-dk));color:var(--amber-lt);
+  font:700 16px/1 "Courier New",monospace;letter-spacing:.04em;
+  border-right:2px solid #0003;text-shadow:0 1px 1px #000}
+.meta{display:flex;flex-direction:column;justify-content:center;gap:2px;
+  padding:9px 12px;min-width:0}
+.song{font:italic 700 17px/1.15 Georgia,"Times New Roman",serif;color:var(--ink);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.artist{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8a5a2b;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---- selector console ---- */
+.console{padding:20px 16px 18px;background:var(--cabinet);
+  border-radius:0 0 12px 12px;box-shadow:0 0 0 2px #0008 inset;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px}
+.keys{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.key{width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;font-weight:700;font-size:15px;color:#20242a;cursor:default;
+  background:radial-gradient(circle at 35% 28%,var(--chrome-hi),var(--chrome) 55%,var(--chrome-dk));
+  box-shadow:0 2px 3px #000a,0 1px 0 #fff9 inset}
+.key.letter{color:var(--red-dk)}
+.key.num{color:#1a3a5a}
+.coin{display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;
+  background:linear-gradient(var(--chrome-md),var(--chrome-dk));
+  box-shadow:0 1px 0 #fff6 inset,0 2px 6px #000a}
+.slot{width:8px;height:30px;border-radius:4px;background:#0a0a0a;
+  box-shadow:0 0 0 2px #e6e8ec,0 0 0 3px #555 inset}
+.coin-text{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#fff;
+  text-shadow:0 1px 1px #000}
+
+footer{text-align:center;font-size:11px;letter-spacing:.14em;color:#e9c79a;
+  padding:22px 16px 6px}
+
+@media(prefers-reduced-motion:reduce){
+  .bulb,.marq-text{animation:none}
+  .bulb{opacity:.9}
+}

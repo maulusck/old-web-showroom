@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Crimson Comet</title>
+<!-- comic-book — Silver/Bronze-age comic page. Panels, balloons, Ben-Day dots, SFX. CSS + inline-SVG only. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+
+    <header class="cover">
+      <div class="dots" aria-hidden="true"></div>
+      <div class="banner">
+        <span class="corner" data-slot="issue-info">No. 42 · 60&cent;</span>
+        <svg class="seal" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path id="sealtop" d="M 20 50 A 30 30 0 0 1 80 50" fill="none"/>
+          <path id="sealbot" d="M 18 52 A 32 32 0 0 0 82 52" fill="none"/>
+          <text class="sealtxt"><textPath href="#sealtop" startOffset="50%" text-anchor="middle" data-slot="seal-top">APPROVED BY THE</textPath></text>
+          <text class="sealtxt"><textPath href="#sealbot" startOffset="50%" text-anchor="middle" data-slot="seal-bottom">COMICS COUNCIL</textPath></text>
+          <text class="sealstar" x="50" y="58" text-anchor="middle">&#9733;</text>
+        </svg>
+      </div>
+      <h1 data-slot="site-name">The Crimson Comet</h1>
+      <p class="tagline" data-slot="tagline">He burns brightest when the city goes dark!</p>
+      <p class="coverline" data-slot="hero-title">THIS ISSUE: &ldquo;MELTDOWN OVER MERIDIAN CITY!&rdquo;</p>
+    </header>
+
+    <nav aria-label="This issue">
+      <a href="#p1" data-slot="nav-item">The Call</a>
+      <a href="#p3" data-slot="nav-item">The Menace</a>
+      <a href="#p4" data-slot="nav-item">The Clash</a>
+      <a href="#p6" data-slot="nav-item">Next Issue</a>
+    </nav>
+
+    <main class="strip">
+
+      <section class="panel p-wide" id="p1">
+        <div class="dots" aria-hidden="true"></div>
+        <div class="caption" data-slot="card-title">MEANWHILE, HIGH ABOVE MERIDIAN CITY&hellip;</div>
+        <p class="narr" data-slot="card-body">The sirens had been screaming for an hour. Down below, nine million souls held their breath &mdash; and one streak of red fire answered the call.</p>
+        <div class="balloon b-tl">
+          <span data-slot="balloon-1">Dispatch to Comet &mdash; the reactor's gone critical! You're our last hope!</span>
+          <svg class="tail tail-bl" viewBox="0 0 40 40" aria-hidden="true"><polygon points="0,40 34,6 34,26"/></svg>
+        </div>
+      </section>
+
+      <section class="panel" id="p2">
+        <div class="dots dots-blue" aria-hidden="true"></div>
+        <div class="caption" data-slot="card-title">THE ROOFTOP</div>
+        <p class="narr" data-slot="card-body">Clark &mdash; mild-mannered no longer &mdash; tears open his collar. The badge beneath catches the moonlight.</p>
+        <div class="balloon think b-tr">
+          <span data-slot="balloon-2">If I'm one second late&hellip; this whole city is a crater.</span>
+          <svg class="tail tail-br" viewBox="0 0 40 40" aria-hidden="true"><polygon points="40,40 6,6 6,26"/></svg>
+        </div>
+      </section>
+
+      <section class="panel p-dark" id="p3">
+        <div class="dots dots-dense" aria-hidden="true"></div>
+        <div class="caption cap-yellow" data-slot="card-title">DEEP IN THE REACTOR CORE&hellip;</div>
+        <p class="narr narr-light" data-slot="card-body">And there he waits &mdash; DOCTOR FALLOUT, his reactor-suit drinking the light, grinning behind a visor of cracked lead glass.</p>
+        <div class="balloon shout b-bl">
+          <span data-slot="balloon-3">TOO LATE, COMET! By midnight this city glows &mdash; and I'll be the only shadow left!</span>
+          <svg class="tail tail-tl" viewBox="0 0 40 40" aria-hidden="true"><polygon points="0,0 34,14 34,34"/></svg>
+        </div>
+      </section>
+
+      <section class="panel p-tall" id="p4">
+        <div class="dots" aria-hidden="true"></div>
+        <div class="sfx sfx-big" aria-hidden="true">
+          <svg class="burst" viewBox="0 0 200 200"><polygon points="100,2 122,66 190,64 136,106 158,172 100,130 42,172 64,106 10,64 78,66"/></svg>
+          <span data-slot="sfx-1">KRAKOW!</span>
+        </div>
+        <div class="caption" data-slot="card-title">THE CLASH</div>
+        <p class="narr" data-slot="card-body">Fist meets lead. The core-room buckles. For one blinding instant, the whole sky over Meridian turns to daylight.</p>
+      </section>
+
+      <section class="panel" id="p5">
+        <div class="dots dots-blue" aria-hidden="true"></div>
+        <div class="sfx sfx-small" aria-hidden="true">
+          <span data-slot="sfx-2">ZZRAKK!</span>
+        </div>
+        <div class="caption" data-slot="card-title">THE COOLDOWN</div>
+        <p class="narr" data-slot="card-body">He slams the control rods home with his bare hands. The gauge falls. The hum dies. The city &mdash; still here &mdash; exhales.</p>
+        <div class="balloon b-br">
+          <span data-slot="balloon-4">Reactor's cold, Doctor. Looks like the shadows lose tonight.</span>
+          <svg class="tail tail-br" viewBox="0 0 40 40" aria-hidden="true"><polygon points="40,40 6,6 6,26"/></svg>
+        </div>
+      </section>
+
+      <section class="panel p-wide" id="p6">
+        <div class="dots" aria-hidden="true"></div>
+        <div class="caption cap-red" data-slot="card-title">&hellip;AND SO, ANOTHER DAWN!</div>
+        <p class="narr" data-slot="card-body">He is gone before the first reporter arrives &mdash; a red streak against a pink sky, already listening for the next cry for help.</p>
+        <p class="contd" data-slot="card-body-2">BUT DOCTOR FALLOUT'S VISOR STILL GLOWS IN THE RUBBLE&hellip; CONTINUED NEXT ISSUE!</p>
+      </section>
+
+    </main>
+
+    <footer class="indicia">
+      <p data-slot="footer">THE CRIMSON COMET is published monthly by Meridian Comics Group, 42 Press Row. &copy; 1972&ndash;2026. Printed on newsprint, the way the good ones were.</p>
+      <p class="letters" data-slot="footer-2">Letters to the editor: drop a line to the Crimson Mailbag &mdash; the best gets printed, the loudest gets a No-Prize!</p>
+    </footer>
+
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

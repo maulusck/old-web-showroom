@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VHS On-Screen Display</title>
+<!-- vhs-osd — early-90s VCR on-screen display over a dark video screen. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="screen">
+    <div class="scan" aria-hidden="true"></div>
+
+    <!-- transport status, top-left -->
+    <div class="osd status">
+      <span class="tri">&#9654;</span>
+      <span class="word" data-slot="nav-item">PLAY</span>
+      <span class="count" data-slot="tagline">0:00:00</span>
+    </div>
+
+    <!-- flashing unset clock, top-right -->
+    <div class="osd clock" data-slot="hero-title">12:00</div>
+
+    <!-- the big blue menu box = the page -->
+    <div class="box">
+      <div class="box-head">
+        <span class="site" data-slot="site-name">SET-UP / MENU</span>
+        <span class="chan" data-slot="hero-body">CH 03 &middot; SP MODE</span>
+      </div>
+
+      <ul class="menu">
+        <li><span class="k" data-slot="nav-item">1  TUNER PRESET</span><span class="v">AUTO</span></li>
+        <li class="on"><span class="k" data-slot="nav-item">2  CLOCK / TIMER SET</span><span class="v">&#9654; SET</span></li>
+        <li><span class="k" data-slot="nav-item">3  TAPE SPEED</span><span class="v">SP</span></li>
+        <li><span class="k" data-slot="nav-item">4  AUTO TRACKING</span><span class="v">ON</span></li>
+        <li><span class="k" data-slot="nav-item">5  OSD LANGUAGE</span><span class="v">ENG</span></li>
+        <li><span class="k" data-slot="nav-item">6  COUNTER RESET</span><span class="v">0:00</span></li>
+      </ul>
+
+      <div class="track">
+        <span data-slot="card-title">AUTO TRACKING</span>
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+    </div>
+
+    <!-- program timer: the content rows -->
+    <div class="osd prog-title" data-slot="card-title">PROGRAM TIMER &mdash; 6 EVENTS</div>
+    <ol class="progs">
+      <li>
+        <span class="num">PROG 1</span>
+        <span class="show" data-slot="card-title">Late Movie: "Chrome Highway"</span>
+        <span class="info" data-slot="card-body">CH 09 &middot; FRI &middot; 23:40&ndash;01:25 &middot; SP &middot; ARMED</span>
+      </li>
+      <li>
+        <span class="num">PROG 2</span>
+        <span class="show" data-slot="card-title">Saturday Cartoon Block</span>
+        <span class="info" data-slot="card-body">CH 04 &middot; SAT &middot; 07:00&ndash;09:30 &middot; EP &middot; ARMED</span>
+      </li>
+      <li>
+        <span class="num">PROG 3</span>
+        <span class="show" data-slot="card-title">Quiz Hour &amp; the News at Six</span>
+        <span class="info" data-slot="card-body">CH 02 &middot; DLY &middot; 18:00&ndash;19:00 &middot; SP &middot; ARMED</span>
+      </li>
+      <li class="empty">
+        <span class="num">PROG 4</span>
+        <span class="show" data-slot="card-title">&mdash; &mdash; empty &mdash; &mdash;</span>
+        <span class="info" data-slot="card-body">PRESS TIMER-SET TO PROGRAM</span>
+      </li>
+      <li>
+        <span class="num">PROG 5</span>
+        <span class="show" data-slot="card-title">Soccer: United vs. Rovers</span>
+        <span class="info" data-slot="card-body">CH 11 &middot; SUN &middot; 15:00&ndash;17:00 &middot; SP &middot; ARMED</span>
+      </li>
+      <li>
+        <span class="num">PROG 6</span>
+        <span class="show" data-slot="card-title">Grandma's Birthday (do NOT tape over)</span>
+        <span class="info" data-slot="card-body">CH&mdash; &middot; ONCE &middot; LOCK &middot; PROTECTED</span>
+      </li>
+    </ol>
+
+    <!-- record armed, bottom-right -->
+    <div class="osd rec">
+      <span class="dot" aria-hidden="true">&#9679;</span>
+      <span data-slot="nav-item">REC</span>
+      <span class="slash">/</span>
+      <span data-slot="footer">0:12 LEFT ON T-120 &middot; EJECT WHEN DONE</span>
+    </div>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
