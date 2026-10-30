@@ -1,0 +1,5 @@
+#!/bin/sh
+# Vault gate: no commit lands unless every template passes check.py.
+# Bypass once with: git commit --no-verify
+python3 "$(git rev-parse --show-toplevel)/check.py" --plain || {
+  echo; echo "commit blocked — fix the ✗ above (or --no-verify to override)"; exit 1; }
