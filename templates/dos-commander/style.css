@@ -45,6 +45,8 @@ body{margin:0;background:var(--surround);color:var(--gray);
 .files{list-style:none;margin:0;padding:2px 0;flex:1}
 .file{display:flex;justify-content:space-between;gap:12px;padding:1px 8px;white-space:nowrap}
 .file .fname{overflow:hidden;text-overflow:ellipsis}
+.file a.fname{color:inherit;text-decoration:none}
+.file a.fname:hover,.file a.fname:focus{background:var(--cyan-br);color:var(--black);outline:none}
 .file .fmeta{color:var(--gray);flex:none}
 .file.dir .fname{color:var(--white);font-weight:700}
 .file.sel{background:var(--cyan)}
@@ -76,6 +78,8 @@ body{margin:0;background:var(--surround);color:var(--gray);
   padding:2px 1px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fk b{color:var(--white);background:var(--surround);padding:0 2px;font-weight:400}
 .fk:hover,.fk:focus{background:var(--white);outline:none}
+.fk.active{background:var(--white)}
+.fk.active b{color:var(--black);background:var(--yellow)}
 
 footer{text-align:center;color:var(--cyan-br);font-size:12px;padding:5px 10px 7px;
   letter-spacing:.03em}

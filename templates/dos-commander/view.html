@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOS Commander — View</title>
+<!-- DOS Commander — F3 full-screen file viewer. Same VGA blue TUI chrome as index.html. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="screen">
+
+  <div class="menubar">
+    <span class="menu">
+      <a href="index.html" data-slot="nav-item">Left</a>
+      <a href="#" data-slot="nav-item">Files</a>
+      <a href="#" data-slot="nav-item">Disk</a>
+      <a href="#" data-slot="nav-item">Commands</a>
+      <a href="#" data-slot="nav-item">Options</a>
+      <a href="index.html" data-slot="nav-item">Right</a>
+    </span>
+    <span class="prog">
+      <b data-slot="site-name">DOS COMMANDER</b>
+      <i data-slot="tagline">VIEW · (C) 1993</i>
+    </span>
+  </div>
+
+  <div class="panels">
+
+    <section class="panel left">
+      <div class="panel-head">VIEW &mdash; C:\COMMANDER\README.TXT</div>
+      <div class="col-head"><span data-slot="file-name">README.TXT</span><span data-slot="file-info">6,144 bytes &middot; 100%</span></div>
+      <div class="viewer">
+        <h2 class="v-title" data-slot="hero-title">README.TXT &mdash; DOS COMMANDER v4.0</h2>
+        <p class="v-body" data-slot="hero-body">Thank you for registering DOS COMMANDER. This is the
+        file you are reading right now, rendered inside the F3 viewer &mdash; no editor launched, no
+        memory wasted. Press the arrow keys to scroll, hit Esc when you have seen enough, and the twin
+        panels snap back into place exactly where you left them.</p>
+        <p class="v-rule">&#9472;&#9472; WHAT'S IN THE BOX &#9472;&#9472;</p>
+        <ul class="tips">
+          <li><b class="t-key" data-slot="card-title">COMMANDER.EXE</b>
+              <span class="t-txt" data-slot="card-body">The main program. Loads in under 110K and leaves the rest of your 640K for real work.</span></li>
+          <li><b class="t-key" data-slot="card-title">INSTALL.EXE</b>
+              <span class="t-txt" data-slot="card-body">Copies the lot to C:\COMMANDER and patches your AUTOEXEC.BAT if you let it. You can say no.</span></li>
+          <li><b class="t-key" data-slot="card-title">UTILS\</b>
+              <span class="t-txt" data-slot="card-body">Compare, split, and un-ARC tools. Small, sharp, and documented in SYSOP.DOC next door.</span></li>
+          <li><b class="t-key" data-slot="card-title">ORDER.FRM</b>
+              <span class="t-txt" data-slot="card-body">Print it, fill it, mail it. Registration is $39 and buys you the 3.5" disk and a clear conscience.</span></li>
+        </ul>
+        <p class="v-rule">&#9472;&#9472; LEGAL &#9472;&#9472;</p>
+        <p class="v-body" data-slot="hero-body">Shareware. Copy it, share it, upload it to every BBS
+        you can dial &mdash; just keep this file attached and don't sell it. No warranty, express or
+        implied, and absolutely none if you point it at a RAM disk full of someone else's taxes.</p>
+      </div>
+      <div class="panel-foot" data-slot="file-info">EOF &mdash; Esc or F10 returns to the panels</div>
+    </section>
+
+  </div>
+
+  <div class="cmdline"><span class="prompt">C:\COMMANDER&gt;</span><span class="typed">view README.TXT</span><span class="cursor">&#9608;</span></div>
+
+  <div class="fkeys">
+    <a href="#" class="fk" data-slot="nav-item"><b>1</b>Help</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>2</b>Wrap</a>
+    <a href="index.html" class="fk active" data-slot="nav-item"><b>3</b>View</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>4</b>Hex</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>5</b>Goto</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>6</b>Screen</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>7</b>Search</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>8</b>Charset</a>
+    <a href="#" class="fk" data-slot="nav-item"><b>9</b>PullDn</a>
+    <a href="index.html" class="fk" data-slot="nav-item"><b>10</b>Quit</a>
+  </div>
+
+  <footer data-slot="footer">Viewing README.TXT &mdash; Press Esc or F10 to close the viewer and return to C:\COMMANDER.</footer>
+
+</div>
+<script src="../../edit.js" defer></script>
+</body>
+</html>
