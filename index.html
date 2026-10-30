@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Retro Template Vault</title>
+<title>The Old Web Showroom</title>
 <style>
   :root{--floor:#f1efe9;--wall:#fbfaf6;--ink:#1b1a17;--dim:#9a968b;--line:#e4e0d5;--accent:#8a1f1a;--sel:#f3f0e7}
   @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -20,6 +20,7 @@
   .plate .kick{margin:0;font:12px/1 ui-monospace,monospace;letter-spacing:.42em;text-transform:uppercase;color:var(--dim)}
   .plate h1{margin:.7em 0 .5em;font-size:clamp(26px,5vw,42px);font-weight:600;letter-spacing:.01em}
   .plate .count{margin:0;font:12px/1 ui-monospace,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
+  .plate .motto{margin:14px auto 0;max-width:36ch;font-size:14px;line-height:1.55;color:var(--dim)}
   .plate .bar{height:1px;width:96px;background:var(--line);margin:24px auto 0}
 
   .bay{display:grid;grid-template-columns:2.6ch 1fr auto;align-items:baseline;gap:20px;
@@ -40,9 +41,10 @@
 <body>
 <div class="room">
   <div class="plate">
-    <p class="kick">the showroom</p>
-    <h1>Retro Template Vault</h1>
-    <p class="count" id="count">models</p>
+    <p class="kick">the old web · on display</p>
+    <h1>The Old Web Showroom</h1>
+    <p class="count" id="count">exhibits</p>
+    <p class="motto">The old web, on display — a showroom for those who may be interested.</p>
     <div class="bar"></div>
   </div>
   <div id="floor"></div>
@@ -141,7 +143,7 @@ document.getElementById("floor").innerHTML=shown.map((t,i)=>{
     : `<div class="bay soon">${inner}</div>`;
 }).join("");
 const built=shown.filter(t=>t.done).length;
-document.getElementById("count").textContent=(built===shown.length?built:`${built} of ${shown.length}`)+" models";
+document.getElementById("count").textContent=(built===shown.length?built:`${built} of ${shown.length}`)+" exhibits";
 </script>
 </body>
 </html>

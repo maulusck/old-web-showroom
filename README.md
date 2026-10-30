@@ -1,6 +1,7 @@
-# Retro Template Vault
+# The Old Web Showroom
 
-A repository of standalone old-school website templates. Each template is its
+The old web, on display — a showroom for those who may be interested. A
+repository of standalone old-school website templates. Each template is its
 own folder — its own layout, theme, pages, and personality, built as a piece of
 art in its period. No build, no framework, no dependencies. The repo shares
 exactly two things across every template: the **editing workflow** and the

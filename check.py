@@ -33,7 +33,7 @@ _BW = 44  # interior width; ljust keeps the right border aligned regardless of t
 def banner():
     return [
         c("  ┌" + "─" * (_BW + 2) + "┐", "92"),
-        c("  │ " + "retro template vault · integrity".ljust(_BW) + " │", "92"),
+        c("  │ " + "the old web showroom · integrity".ljust(_BW) + " │", "92"),
         c("  └" + "─" * (_BW + 2) + "┘", "92"),
     ]
 
