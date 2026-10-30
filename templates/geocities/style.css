@@ -110,6 +110,15 @@ ul.card-body li,.links li{margin:6px 0}
 .webring-nav a{color:#00ffff;font-weight:bold;text-decoration:none;margin:0 6px;font-size:16px}
 .webring-nav a:hover{color:#ffff00}
 
+/* ---- award badges (88x31-style banners) ---- */
+.badges{list-style:none;padding:0;margin:14px auto;text-align:center}
+.badges li{display:inline-block;margin:6px}
+.badge{
+  display:inline-block;padding:6px 10px;font-size:12px;font-weight:bold;
+  border:3px outset #00ffff;background:#000080;color:#ffff00;
+  text-shadow:1px 1px 0 #000;
+}
+
 /* ---- footer ---- */
 .footer{padding:14px 10px 40px;color:#fff}
 .best-viewed{color:#00ff00;font-weight:bold;font-size:14px}

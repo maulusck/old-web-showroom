@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ziggy's Guestbook</title>
+<!-- Geocities Guestbook page — a few existing signed entries, static showcase
+     (no working form). Shares the one style.css. CSS+emoji+SVG only. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <h1 data-slot="site-name">~ Ziggy's Cyber Clubhouse ~</h1>
+    <p class="tagline" data-slot="tagline">A little corner of the World Wide Web, made with love and &lt;BLINK&gt;</p>
+  </header>
+
+  <div class="rainbow" role="presentation"></div>
+
+  <nav class="nav">
+    <a href="index.html" data-slot="nav-item">Home</a> |
+    <a href="index.html#about" data-slot="nav-item">About Me</a> |
+    <a href="index.html#hobbies" data-slot="nav-item">My Hobbies</a> |
+    <a href="links.html" data-slot="nav-item">Cool Links</a> |
+    <a href="guestbook.html" data-slot="nav-item">Guestbook</a>
+  </nav>
+
+  <section class="hero">
+    <h2 class="hero-title" data-slot="hero-title">&#9997; SIGN MY GUESTBOOK!! &#9997;</h2>
+    <p data-slot="hero-body">Thanks for stopping by! Scroll down to read what folks have said, then add your own name to the book. It honestly makes my whole week when someone signs. No flames please &mdash; my mom reads this page.</p>
+    <p class="new-flag"><span class="blink">&#10024; NEW!</span> We just passed 40 signatures. Group hug!</p>
+  </section>
+
+  <div class="rainbow" role="presentation"></div>
+
+  <section class="signme">
+    <h3 class="card-title" data-slot="page-title">&#128221; Add Your Signature</h3>
+    <p data-slot="page-body">To sign, just drop me an e-mail with your name, your homepage, and a little note. I hand-add every entry myself (usually on Sundays), so give me a few days and watch this space!</p>
+    <p class="btn-row">
+      <a href="mailto:ziggy@geocities.example?subject=Sign%20your%20guestbook" class="bigbtn" data-slot="nav-item">&#128231; E-MAIL ME TO SIGN</a>
+    </p>
+    <p class="mailbox">
+      <span class="wave" aria-hidden="true">&#128231;</span>
+      <span class="small">ziggy@geocities.example</span>
+    </p>
+  </section>
+
+  <div class="rainbow" role="presentation"></div>
+
+  <section class="card">
+    <h3 class="card-title" data-slot="card-title">&#128214; Who's Signed So Far (40 and counting!)</h3>
+
+    <div class="card-body" data-slot="card-body">
+      <p><b>#40 &mdash; Starla_93</b> <span class="small">(Oct 2, 1996)</span><br>
+      Your page is the BOMB, Ziggy! Love the starfield background, totally stole the idea for mine (gave you credit!). Sign mine back? &mdash; <a href="#" data-slot="nav-item">Starla's Pad</a> &#11088;</p>
+
+      <p><b>#39 &mdash; RetroDave</b> <span class="small">(Sep 28, 1996)</span><br>
+      Found you through the Weird &amp; Wonderful Webring. The hit counter cracked me up &mdash; 1337, nice one. Keep hand-coding, brother. &mdash; <a href="#" data-slot="nav-item">Dave's ASCII Dungeon</a></p>
+
+      <p><b>#38 &mdash; nacho_queen</b> <span class="small">(Sep 25, 1996)</span><br>
+      ANOTHER nachos person on the web?! We are clearly meant to be webmaster friends. Tell Modem the cat I said hi. &#128049;</p>
+
+      <p><b>#37 &mdash; Mr_Winsock</b> <span class="small">(Sep 19, 1996)</span><br>
+      Loaded fine on my 14.4 modem, which is more than I can say for most pages these days. Respect the lightweight GIFs. A+ would surf again.</p>
+
+      <p><b>#36 &mdash; TrollDollTami</b> <span class="small">(Sep 14, 1996)</span><br>
+      A FELLOW TROLL DOLL COLLECTOR. I have 212. We need to trade the holographic ones. E-mailing you right now!! &#128126;</p>
+    </div>
+  </section>
+
+  <div class="rainbow" role="presentation"></div>
+
+  <section class="card">
+    <h3 class="card-title" data-slot="card-title">&#128220; The Rules (don't be a jerk)</h3>
+    <ul class="card-body" data-slot="card-body">
+      <li>&#9989; Be nice, or at least be funny</li>
+      <li>&#9989; Trading cool links = always welcome</li>
+      <li>&#10060; No ads, no chain letters, no "make money fast"</li>
+      <li>&#10060; No flames &mdash; I'll just delete 'em anyway</li>
+    </ul>
+  </section>
+
+  <div class="rainbow" role="presentation"></div>
+
+  <footer class="footer">
+    <p class="best-viewed" data-slot="footer">Best viewed in Netscape Navigator 3.0 at 800&times;600 &#128187;</p>
+    <p class="small">&copy; 1996 Ziggy. Guestbook entries added by hand, every Sunday-ish.</p>
+    <p><a href="index.html" class="bigbtn" data-slot="nav-item">&#8592; Back to my homepage</a></p>
+  </footer>
+
+</div>
+<script src="../../edit.js" defer></script>
+</body>
+</html>
