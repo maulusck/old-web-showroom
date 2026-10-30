@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teleguide P601</title>
+<!-- tv-guide — 90s teletext TV listings grid. The half-hour grid is the content. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="tbar">
+    <span class="pg" data-slot="nav-item">P601</span>
+    <span class="svc"><b data-slot="site-name">TELEGUIDE</b><span data-slot="tagline">your whole evening on one page</span></span>
+    <span class="clk" data-slot="nav-item">THU 30 OCT · 20:47:12</span>
+  </header>
+
+  <div class="wrap">
+    <div class="strip">
+      <h1 data-slot="hero-title">Tonight's Television · 6pm–Midnight</h1>
+      <p data-slot="hero-body">Eight channels, one grid. Scroll across for the small hours, tap any programme for the full billing. Now showing is ringed in colour.</p>
+    </div>
+
+    <div class="panels">
+      <section class="box">
+        <h2 data-slot="card-title">Now &amp; Next · 20:47</h2>
+        <div class="nn">
+          <span class="lab">NOW</span><span class="ch" data-slot="card-body">CNX</span><b data-slot="card-title">Velvet Alibi (1994)</b>
+          <span class="lab nx">NEXT</span><span class="ch" data-slot="card-body">CNX 22:00</span><b data-slot="card-title">Midnight Freeway</b>
+          <span class="lab">NOW</span><span class="ch" data-slot="card-body">KEM1</span><b data-slot="card-title">Desert Convoy</b>
+          <span class="lab nx">NEXT</span><span class="ch" data-slot="card-body">KEM1 22:00</span><b data-slot="card-title">News at Ten</b>
+        </div>
+      </section>
+      <section class="box">
+        <h2 data-slot="card-title">Tonight's Picks</h2>
+        <div class="pick"><time>20:00</time><b data-slot="card-title">Neon Horizon</b><small data-slot="card-body">ORB · film of the week</small></div>
+        <div class="pick"><time>20:00</time><b data-slot="card-title">Inspector Vane: The Quiet Room</b><small data-slot="card-body">RWD · feature-length</small></div>
+        <div class="pick"><time>19:30</time><b data-slot="card-title">TITANS: Grand Final</b><small data-slot="card-body">VLT · live</small></div>
+        <div class="pick"><time>22:30</time><b data-slot="card-title">Parkway Tonight</b><small data-slot="card-body">KEM1 · chat &amp; a band</small></div>
+      </section>
+    </div>
+
+    <div class="legend">
+      <span class="film"><i class="dot"></i><span data-slot="card-body">Film</span></span>
+      <span class="drama"><i class="dot"></i><span data-slot="card-body">Drama</span></span>
+      <span class="comedy"><i class="dot"></i><span data-slot="card-body">Entertainment</span></span>
+      <span class="sport"><i class="dot"></i><span data-slot="card-body">Sport</span></span>
+      <span class="news"><i class="dot"></i><span data-slot="card-body">News</span></span>
+      <span class="factual"><i class="dot"></i><span data-slot="card-body">Factual</span></span>
+    </div>
+
+    <div class="scroll">
+    <div class="guide">
+      <div class="thead">
+        <div class="corner"><b data-slot="card-title">CH</b> · 6pm→12</div>
+        <div class="time">18:00</div><div class="time">18:30</div>
+        <div class="time">19:00</div><div class="time">19:30</div>
+        <div class="time">20:00</div><div class="time">20:30</div>
+        <div class="time">21:00</div><div class="time">21:30</div>
+        <div class="time">22:00</div><div class="time">22:30</div>
+        <div class="time">23:00</div><div class="time">23:30</div>
+      </div>
+
+      <div class="row">
+        <div class="chan news"><span class="badge" data-slot="card-title">KEM1</span><small data-slot="card-body">Kempton One</small></div>
+        <a class="prog news s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Early Evening News</b><small data-slot="card-body">News · 18:00</small></a>
+        <a class="prog comedy s1" href="listing.html"><i class="dot"></i><b data-slot="card-title">Quid Each Way</b><small data-slot="card-body">Quiz · 19:00</small></a>
+        <a class="prog drama s1" href="listing.html"><i class="dot"></i><b data-slot="card-title">Bramble Row</b><small data-slot="card-body">Soap · 19:30</small></a>
+        <a class="prog film s4 now" href="listing.html"><i class="dot"></i><b data-slot="card-title">The Nine O'Clock Film: Desert Convoy</b><small data-slot="card-body">Film · 20:00 · NOW</small></a>
+        <a class="prog news s1 next" href="listing.html"><i class="dot"></i><b data-slot="card-title">News at Ten</b><small data-slot="card-body">News · 22:00 · NEXT</small></a>
+        <a class="prog comedy s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Parkway Tonight</b><small data-slot="card-body">Chat · 22:30</small></a>
+        <a class="prog factual s1" href="listing.html"><i class="dot"></i><b data-slot="card-title">Closedown &amp; Weather</b><small data-slot="card-body">Factual · 23:30</small></a>
+      </div>
+
+      <div class="row">
+        <div class="chan sport"><span class="badge" data-slot="card-title">BX2</span><small data-slot="card-body">Beamax Two</small></div>
+        <a class="prog factual s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Nature Hour: Tidelands</b><small data-slot="card-body">Factual · 18:00</small></a>
+        <a class="prog factual s1" href="listing.html"><i class="dot"></i><b data-slot="card-title">The Gardener's Plot</b><small data-slot="card-body">Factual · 19:00</small></a>
+        <a class="prog factual s1" href="listing.html"><i class="dot"></i><b data-slot="card-title">Attic to Auction</b><small data-slot="card-body">Factual · 19:30</small></a>
+        <a class="prog sport s4 now" href="listing.html"><i class="dot"></i><b data-slot="card-title">Snooker: Crucible Classics</b><small data-slot="card-body">Sport · 20:00 · NOW</small></a>
+        <a class="prog news s2 next" href="listing.html"><i class="dot"></i><b data-slot="card-title">Second Thoughts</b><small data-slot="card-body">News · 22:00 · NEXT</small></a>
+        <a class="prog factual s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Jazz Club Encore</b><small data-slot="card-body">Music · 23:00</small></a>
+      </div>
+
+      <div class="row">
+        <div class="chan comedy"><span class="badge" data-slot="card-title">VLT</span><small data-slot="card-body">Volt</small></div>
+        <a class="prog comedy s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Teatime Toons</b><small data-slot="card-body">Kids · 18:00</small></a>
+        <a class="prog comedy s1" href="listing.html"><i class="dot"></i><b data-slot="card-title">Pot Luck</b><small data-slot="card-body">Game show · 19:00</small></a>
+        <a class="prog sport s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">TITANS: Grand Final</b><small data-slot="card-body">Sport · 19:30</small></a>
+        <a class="prog comedy s2 now" href="listing.html"><i class="dot"></i><b data-slot="card-title">Love Lines</b><small data-slot="card-body">Dating · 20:30 · NOW</small></a>
+        <a class="prog film s2 next" href="listing.html"><i class="dot"></i><b data-slot="card-title">Film: Kickboxer Academy</b><small data-slot="card-body">Film · 21:30 · NEXT</small></a>
+        <a class="prog comedy s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">The Late Laugh</b><small data-slot="card-body">Comedy · 22:30</small></a>
+        <a class="prog comedy s1" href="listing.html"><i class="dot"></i><b data-slot="card-title">Quizcall Live</b><small data-slot="card-body">Interactive · 23:30</small></a>
+      </div>
+
+      <div class="row">
+        <div class="chan film"><span class="badge" data-slot="card-title">ORB</span><small data-slot="card-body">Orbit</small></div>
+        <a class="prog drama s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Star Patrol</b><small data-slot="card-body">Sci-fi · 18:00</small></a>
+        <a class="prog drama s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Open Cases</b><small data-slot="card-body">Mystery · 19:00</small></a>
+        <a class="prog film s4 now" href="listing.html"><i class="dot"></i><b data-slot="card-title">Neon Horizon</b><small data-slot="card-body">Film · 20:00 · NOW</small></a>
+        <a class="prog film s4 next" href="listing.html"><i class="dot"></i><b data-slot="card-title">Cult Cinema: Vault 13</b><small data-slot="card-body">Film · 22:00 · NEXT</small></a>
+      </div>
+
+      <div class="row">
+        <div class="chan drama"><span class="badge" data-slot="card-title">RWD</span><small data-slot="card-body">Rewind</small></div>
+        <a class="prog drama s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Classic Serial: Pemberton Hall</b><small data-slot="card-body">Drama · 18:00</small></a>
+        <a class="prog drama s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">The Long Season</b><small data-slot="card-body">Period · 19:00</small></a>
+        <a class="prog drama s4 now" href="listing.html"><i class="dot"></i><b data-slot="card-title">Inspector Vane: The Quiet Room</b><small data-slot="card-body">Drama · 20:00 · NOW</small></a>
+        <a class="prog drama s2 next" href="listing.html"><i class="dot"></i><b data-slot="card-title">Theatre Night: Curtain Up</b><small data-slot="card-body">Drama · 22:00 · NEXT</small></a>
+        <a class="prog factual s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Night Verses</b><small data-slot="card-body">Factual · 23:00</small></a>
+      </div>
+
+      <div class="row">
+        <div class="chan comedy"><span class="badge" data-slot="card-title">KDZ</span><small data-slot="card-body">Kidzone</small></div>
+        <a class="prog comedy s1" href="listing.html"><i class="dot"></i><b data-slot="card-title">Wobblevision</b><small data-slot="card-body">Kids · 18:00</small></a>
+        <a class="prog comedy s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Captain Cosmo</b><small data-slot="card-body">Kids · 18:30</small></a>
+        <a class="prog comedy s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Teen Beat</b><small data-slot="card-body">Music · 19:30</small></a>
+        <a class="prog film s3 now" href="listing.html"><i class="dot"></i><b data-slot="card-title">Anime Vault: Chrome Saga</b><small data-slot="card-body">Film · 20:30 · NOW</small></a>
+        <a class="prog comedy s2 next" href="listing.html"><i class="dot"></i><b data-slot="card-title">Late Replay</b><small data-slot="card-body">Comedy · 22:00 · NEXT</small></a>
+        <a class="prog factual s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">Closedown Cartoon</b><small data-slot="card-body">Factual · 23:00</small></a>
+      </div>
+
+      <div class="row">
+        <div class="chan news"><span class="badge" data-slot="card-title">N24</span><small data-slot="card-body">Newswire 24</small></div>
+        <a class="prog news s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">The Evening Report</b><small data-slot="card-body">News · 18:00</small></a>
+        <a class="prog news s1" href="listing.html"><i class="dot"></i><b data-slot="card-title">Markets &amp; Money</b><small data-slot="card-body">News · 19:00</small></a>
+        <a class="prog news s2" href="listing.html"><i class="dot"></i><b data-slot="card-title">The World Tonight</b><small data-slot="card-body">News · 19:30</small></a>
+        <a class="prog news s2 now" href="listing.html"><i class="dot"></i><b data-slot="card-title">The Briefing</b><small data-slot="card-body">News · 20:30 · NOW</small></a>
+        <a class="prog news s2 next" href="listing.html"><i class="dot"></i><b data-slot="card-title">Face to Face</b><small data-slot="card-body">Interview · 21:30 · NEXT</small></a>
+        <a class="prog news s3" href="listing.html"><i class="dot"></i><b data-slot="card-title">Through the Night</b><small data-slot="card-body">News · 22:30</small></a>
+      </div>
+
+      <div class="row">
+        <div class="chan film"><span class="badge" data-slot="card-title">CNX</span><small data-slot="card-body">Cinenox</small></div>
+        <a class="prog film s4" href="listing.html"><i class="dot"></i><b data-slot="card-title">Harbour Lights (1991)</b><small data-slot="card-body">Film · 18:00</small></a>
+        <a class="prog film s4 now" href="listing.html"><i class="dot"></i><b data-slot="card-title">Velvet Alibi (1994)</b><small data-slot="card-body">Film · 20:00 · NOW</small></a>
+        <a class="prog film s4 next" href="listing.html"><i class="dot"></i><b data-slot="card-title">Midnight Freeway (1989)</b><small data-slot="card-body">Film · 22:00 · NEXT</small></a>
+      </div>
+    </div>
+    </div>
+
+    <nav class="fastext">
+      <a class="factual" href="index.html" data-slot="nav-item">TONIGHT</a>
+      <a class="film" href="listing.html" data-slot="nav-item">FILMS</a>
+      <a class="sport" href="index.html" data-slot="nav-item">SPORT</a>
+      <a class="comedy" href="index.html" data-slot="nav-item">A–Z INDEX</a>
+    </nav>
+
+    <footer data-slot="footer">TELEGUIDE · P601 · transmitted nightly since 1986 · press REVEAL to see tomorrow</footer>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

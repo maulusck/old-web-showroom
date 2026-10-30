@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teleguide P602 · Programme</title>
+<!-- tv-guide — single programme billing page, teletext P602. Shares style.css. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="tbar">
+    <span class="pg" data-slot="nav-item">P602</span>
+    <span class="svc"><b data-slot="site-name">TELEGUIDE</b><span data-slot="tagline">full programme billing</span></span>
+    <span class="clk" data-slot="nav-item">THU 30 OCT · 20:47:12</span>
+  </header>
+
+  <div class="wrap">
+    <div class="strip">
+      <h1 data-slot="hero-title">Programme Billing</h1>
+      <p data-slot="hero-body">The long version of a grid cell: synopsis, cast, and every other showing this week.</p>
+    </div>
+
+    <div class="detail">
+      <section class="hero film">
+        <div class="meta">
+          <span class="badge" data-slot="card-title">KEM1</span>
+          <span data-slot="card-body">The Nine O'Clock Film</span>
+          <span data-slot="card-body">20:00–22:00 · 118 min</span>
+          <span data-slot="card-body">Film · 1991 · PG</span>
+        </div>
+        <h1 data-slot="page-title">Desert Convoy</h1>
+        <p data-slot="page-body">A broken-down radio engineer and a smuggler with a borrowed lorry agree to split one last run across the salt flats before the rains close the pass. Neither mentions that the cargo is already being tracked from the air.</p>
+        <p class="syn" data-slot="card-body">Premiere of the restored print, letterboxed and uncut. Contains mild peril and one very large explosion the director still insists was an accident.</p>
+      </section>
+
+      <div class="cols">
+        <section class="box">
+          <h2 data-slot="card-title">The Billing</h2>
+          <dl>
+            <dt data-slot="card-title">Director</dt><dd data-slot="card-body">Marguerite Vane</dd>
+            <dt data-slot="card-title">Country</dt><dd data-slot="card-body">UK / Morocco · in English</dd>
+            <dt data-slot="card-title">Subtitles</dt><dd data-slot="card-body">888 · Teletext for the hard of hearing</dd>
+            <dt data-slot="card-title">Widescreen</dt><dd data-slot="card-body">Presented in 16:9 where your set allows</dd>
+          </dl>
+        </section>
+        <section class="box">
+          <h2 data-slot="card-title">Cast</h2>
+          <ul class="cast">
+            <li data-slot="card-body">Theo Marsh <span>Len Garrow</span></li>
+            <li data-slot="card-body">Priya Okafor <span>The Engineer</span></li>
+            <li data-slot="card-body">Bill Hask <span>Sergeant Droom</span></li>
+            <li data-slot="card-body">Nina Colt <span>Voice on the Radio</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="box">
+        <h2 data-slot="card-title">Showing Again</h2>
+        <div class="again">
+          <a href="index.html" data-slot="card-body">FRI 02:10 · KEM1</a>
+          <a href="index.html" data-slot="card-body">SAT 14:30 · BX2</a>
+          <a href="index.html" data-slot="card-body">SUN 21:00 · CNX</a>
+          <a href="index.html" data-slot="card-body">WED 23:45 · RWD</a>
+        </div>
+      </section>
+    </div>
+
+    <nav class="fastext">
+      <a class="factual" href="index.html" data-slot="nav-item">BACK TO GRID</a>
+      <a class="film" href="listing.html" data-slot="nav-item">MORE FILM</a>
+      <a class="sport" href="index.html" data-slot="nav-item">TONIGHT</a>
+      <a class="comedy" href="index.html" data-slot="nav-item">A–Z INDEX</a>
+    </nav>
+
+    <footer data-slot="footer">TELEGUIDE · P602 · hold REVEAL for the end credits · subtitles on 888</footer>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
