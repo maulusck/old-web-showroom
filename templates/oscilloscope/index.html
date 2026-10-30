@@ -74,11 +74,11 @@
     </section>
 
     <!-- faked control knobs -->
-    <section class="controls" aria-hidden="true">
-      <div class="ctl"><span class="knob"></span><span class="lbl">VOLTS/DIV</span><span class="val">0.5 V</span></div>
-      <div class="ctl"><span class="knob k2"></span><span class="lbl">TIME/DIV</span><span class="val">50 µs</span></div>
-      <div class="ctl"><span class="knob k3"></span><span class="lbl">TRIGGER</span><span class="val">AUTO</span></div>
-      <div class="ctl"><span class="knob k4"></span><span class="lbl">FOCUS</span><span class="val">∞</span></div>
+    <section class="controls">
+      <div class="ctl"><button type="button" class="knob" aria-label="Volts per division" data-var="--amp" data-min="0.5" data-max="1.7"></button><span class="lbl">VOLTS/DIV</span><span class="val">0.5 V</span></div>
+      <div class="ctl"><button type="button" class="knob k2" aria-label="Time per division" data-var="--tscale" data-min="0.6" data-max="1.6"></button><span class="lbl">TIME/DIV</span><span class="val">50 µs</span></div>
+      <div class="ctl"><button type="button" class="knob k3" aria-label="Trigger / beam brightness" data-var="--bright" data-min="0.6" data-max="1.5"></button><span class="lbl">TRIGGER</span><span class="val">AUTO</span></div>
+      <div class="ctl"><button type="button" class="knob k4" aria-label="Focus" data-var="--blur" data-min="0" data-max="3.5" data-unit="px"></button><span class="lbl">FOCUS</span><span class="val">∞</span></div>
     </section>
 
     <div class="grid">
@@ -110,6 +110,27 @@
   </div>
 
   <footer data-slot="footer">PHOSPHOR OS-7 · Cal. 1983 · Signal held in green · Do not stare into the beam</footer>
+  <script>
+  // Cosmetic only: each knob steps through 7 detents, turning the pointer and
+  // nudging a CSS var the trace already reads. No state, no network, no storage.
+  (function(){
+    var root = document.documentElement;
+    document.querySelectorAll('.knob').forEach(function(k){
+      var name = k.dataset.var, lo = +k.dataset.min, hi = +k.dataset.max,
+          unit = k.dataset.unit || '', i = 3;          // start mid-travel
+      function apply(){
+        k.style.setProperty('--rot', (-135 + i * 45) + 'deg');
+        root.style.setProperty(name, (lo + (i / 6) * (hi - lo)) + unit);
+      }
+      function step(d){ i = (i + d + 7) % 7; apply(); }
+      k.addEventListener('click', function(){ step(1); });
+      k.addEventListener('keydown', function(e){
+        if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { step(1); e.preventDefault(); }
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { step(-1); e.preventDefault(); }
+      });
+    });
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>

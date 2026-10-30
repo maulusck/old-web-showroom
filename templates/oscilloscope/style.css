@@ -47,12 +47,17 @@ nav a:hover,nav a[aria-current]{color:var(--phos);border-color:var(--phos-dk);
   background-color:#060a07;overflow:hidden;
   box-shadow:0 0 0 2px var(--edge),0 0 40px #000 inset,0 6px 24px #000a}
 .scope{display:block;width:100%;height:auto;
-  background:radial-gradient(ellipse at 50% 45%,#0e1a10 0%,#060c07 70%,#020402 100%)}
+  background:radial-gradient(ellipse at 50% 45%,#0e1a10 0%,#060c07 70%,#020402 100%);
+  /* FOCUS + TRIGGER knobs nudge these; defaults = sharp, normal brightness */
+  filter:brightness(var(--bright,1)) blur(var(--blur,0px))}
 .grid line{stroke:var(--grid);stroke-width:1}
 .grid line.axis{stroke:var(--grid-ax);stroke-width:1.4}
 .trace{stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .trace.ch1{stroke:var(--phos);
   filter:url(#glow);
+  /* VOLTS/DIV (--amp) and TIME/DIV (--tscale) knobs scale the trace */
+  transform:scaleX(var(--tscale,1)) scaleY(var(--amp,1));
+  transform-box:fill-box;transform-origin:center;
   stroke-dasharray:1400;animation:sweep1 7s linear infinite}
 .trace.ch2{stroke:#7df0c8;opacity:.92;
   animation:drift 11s ease-in-out infinite;transform-origin:50% 50%}
@@ -76,15 +81,18 @@ nav a:hover,nav a[aria-current]{color:var(--phos);border-color:var(--phos-dk);
   background:linear-gradient(var(--panel),var(--panel-2));
   border:2px solid var(--edge);border-radius:8px;padding:18px 16px;margin:24px 0}
 .ctl{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:84px}
-.knob{width:52px;height:52px;border-radius:50%;
+.knob{width:52px;height:52px;border-radius:50%;--rot:0deg;
   background:radial-gradient(circle at 38% 30%,#3a4636,#171c13 70%,#0a0d08);
-  border:2px solid #0a0d08;position:relative;
+  border:2px solid #0a0d08;position:relative;padding:0;cursor:pointer;appearance:none;
   box-shadow:0 2px 5px #000a,0 0 0 4px #00000030}
+.knob::after{transition:transform .12s ease-out}
+.knob:focus-visible{outline:2px solid var(--phos);outline-offset:4px}
 .knob::after{content:"";position:absolute;top:5px;left:calc(50% - 1.5px);
-  width:3px;height:18px;border-radius:2px;background:var(--amber);box-shadow:0 0 4px var(--amber)}
-.knob.k2::after{transform:rotate(70deg);transform-origin:50% 150%}
-.knob.k3::after{transform:rotate(-120deg);transform-origin:50% 150%}
-.knob.k4::after{transform:rotate(30deg);transform-origin:50% 150%}
+  width:3px;height:18px;border-radius:2px;background:var(--amber);box-shadow:0 0 4px var(--amber);
+  transform:rotate(var(--rot));transform-origin:50% 150%}
+.knob.k2{--rot:70deg}
+.knob.k3{--rot:-120deg}
+.knob.k4{--rot:30deg}
 .lbl{font-size:10px;letter-spacing:.18em;color:var(--dim)}
 .val{font-size:12px;color:var(--phos);text-shadow:0 0 6px var(--phos-dk)}
 
@@ -105,5 +113,7 @@ footer{text-align:center;font-size:11px;letter-spacing:.14em;color:var(--dim);
   padding:22px 16px 40px;border-top:2px solid var(--edge);margin-top:8px}
 
 @media (prefers-reduced-motion:reduce){
-  .trace.ch1,.trace.ch2{animation:none;stroke-dashoffset:0;transform:none}
+  .trace.ch1{animation:none;stroke-dashoffset:0}
+  .trace.ch2{animation:none;transform:none}
+  .knob::after{transition:none}
 }
