@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Amber Room BBS · Message Base 02 · TechTalk</title>
+<!-- bbs — message base reader. Same amber phosphor, box-drawing, fixed-width.
+     Thread list up top, one message opened below in the phosphor glow. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- carrier / login handshake -->
+  <pre class="connect" aria-hidden="true">sysop@amber: reading base...
+<span class="ok">AREA 02 / TechTalk</span> selected — 1340 msgs, 22 new
+Scanning for new... <span class="cur">_</span></pre>
+
+  <header class="banner">
+    <pre class="logo" aria-hidden="true">
+ ██  █   █ ███  ████ ███      ███  ███  ███
+█  █ ██ ██ █  █ █    █  █     █  █ █  █ █
+████ █ █ █ ███  ███  ███  ███ ███  ███  ███
+█  █ █   █ █  █ █    █ █      █  █ █  █    █
+█  █ █   █ ███  ████ █  █     ███  ███  ███ </pre>
+    <h1 data-slot="site-name">THE AMBER ROOM</h1>
+    <p class="tagline" data-slot="tagline">· Message Base 02 · TechTalk · Hardware, modems, overclocking ·</p>
+  </header>
+
+  <div class="prompt"><b>sysop</b>@amber:<span class="ok">online</span>$ read base --area=02 --new</div>
+
+  <nav aria-label="Main menu">
+    <a href="messages.html" data-slot="nav-item" aria-current="page">[M] Message Areas</a>
+    <a href="files.html" data-slot="nav-item">[F] File Libraries</a>
+    <a href="index.html" data-slot="nav-item">[D] Door Games</a>
+    <a href="index.html" data-slot="nav-item">[W] Who's Online</a>
+    <a href="index.html" data-slot="nav-item">[G] Goodbye / Logoff</a>
+  </nav>
+
+  <div class="wrap">
+    <section class="hero">
+      <pre class="rule" aria-hidden="true">╔══════════════════════════════════════════════════╗</pre>
+      <span class="badge">** 22 UNREAD · PRESS ENTER TO WALK THE THREAD **</span>
+      <h2 data-slot="hero-title">TechTalk — where the modems never sleep.</h2>
+      <p data-slot="hero-body">Hardware gripes, overclocking war stories, and the eternal
+      quest for a clean 14.4 connection. Quote sparingly, trim your sig to four lines, and
+      no ALL CAPS unless the magic smoke actually got out. Netmail the SysOp for access bumps.</p>
+      <pre class="rule" aria-hidden="true">╚══════════════════════════════════════════════════╝</pre>
+    </section>
+
+    <h3 class="sec">┤ THREADS · AREA 02 ├─────────────────────────────────</h3>
+    <pre class="list" data-slot="page-body" tabindex="0">  #  SUBJECT                              FROM             DATE          RE
+───  ───────────────────────────────────  ───────────────  ──────────  ────
+ ▸   USR Courier won't negotiate V.32bis   Static_Burn      02-28 21:50   14
+     Re: SIMM parity errors after upgrade  Modem_Molly      02-28 19:12    6
+     DIY null-modem cable — pinout inside   The_Archivist    02-27 23:40    9
+     Overclocking a 486DX2 past 66MHz?     Phosphor_Kid     02-27 18:03   21
+     Best term program: Telix vs Qmodem    Null_Modem_Nick  02-26 14:55   18
+     ANSI music in your login screen       Static_Burn      02-25 09:30    3
+     WANTED: working 2400 external, cheap  Modem_Molly      02-24 20:48    5
+     PSA: back up before you flash the ROM The_Archivist    02-24 08:15    2</pre>
+
+    <h3 class="sec">┤ READING MSG #1341 OF 1340+1 ├──────────────────────</h3>
+    <section class="sysop">
+      <pre class="rule2" aria-hidden="true">┌─[ MSG 1341 · TechTalk · PUBLIC ]─────────────────────┐</pre>
+      <pre class="list" data-slot="card-title" tabindex="0">From: Static_Burn           To: ALL
+Subj: USR Courier won't negotiate V.32bis
+Date: Tue 28 Feb 1995  21:50   Area: 02/TechTalk   Reads: 37</pre>
+      <p data-slot="card-body">Pulled a USR Courier HST Dual Standard out of a parts bin and
+      it answers fine, but every caller drops to 9600 — it flat refuses to climb to V.32bis.
+      Dialed the board from a second line and watched the handshake: it trains, backs off, trains
+      again, then gives up and settles. S-register voodoo, or is the ROM just too old to know the
+      trick? I've tried AT&amp;F then ATB0, no joy. The line itself is clean — 14.4 on the Supra
+      next to it, same wall jack.</p>
+      <p data-slot="card-body">Before anyone says it: yes, I reseated the DAA board. Twice.
+      Reply here or netmail me — I'll be lurking the base till the dragon respawns. — Static</p>
+      <pre class="rule2" aria-hidden="true">└─[ (R)eply · (N)ext · (Q)uit to menu ]────────────────┘</pre>
+    </section>
+
+    <p class="hero" style="margin-top:22px"><a href="index.html" data-slot="nav-item">« [Q] Back to Main Menu</a></p>
+  </div>
+
+  <footer data-slot="footer">END OF MESSAGES  ·  The Amber Room BBS © 1988–2026  ·  Base 02 · 1340 msgs · 22 new  ·  &lt;Q&gt;uit</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

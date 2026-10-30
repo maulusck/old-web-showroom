@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Amber Room BBS · File Library · Utils &amp; ANSI</title>
+<!-- bbs — file area listing. Same amber phosphor, box-drawing, fixed-width.
+     ZMODEM-flavored download board: names, sizes, descriptions, DL counts. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- carrier / login handshake -->
+  <pre class="connect" aria-hidden="true">sysop@amber: opening library...
+<span class="ok">LIB: UTILS</span> mounted — ZMODEM ready, ratio 1:3
+Type the number to flag for download... <span class="cur">_</span></pre>
+
+  <header class="banner">
+    <pre class="logo" aria-hidden="true">
+ ██  █   █ ███  ████ ███      ███  ███  ███
+█  █ ██ ██ █  █ █    █  █     █  █ █  █ █
+████ █ █ █ ███  ███  ███  ███ ███  ███  ███
+█  █ █   █ █  █ █    █ █      █  █ █  █    █
+█  █ █   █ ███  ████ █  █     ███  ███  ███ </pre>
+    <h1 data-slot="site-name">THE AMBER ROOM</h1>
+    <p class="tagline" data-slot="tagline">· File Library · ZMODEM up &amp; down · Leech ratio 1:3 ·</p>
+  </header>
+
+  <div class="prompt"><b>sysop</b>@amber:<span class="ok">online</span>$ list files --lib=utils --sort=new</div>
+
+  <nav aria-label="Main menu">
+    <a href="messages.html" data-slot="nav-item">[M] Message Areas</a>
+    <a href="files.html" data-slot="nav-item" aria-current="page">[F] File Libraries</a>
+    <a href="index.html" data-slot="nav-item">[D] Door Games</a>
+    <a href="index.html" data-slot="nav-item">[W] Who's Online</a>
+    <a href="index.html" data-slot="nav-item">[G] Goodbye / Logoff</a>
+  </nav>
+
+  <div class="wrap">
+    <section class="hero">
+      <pre class="rule" aria-hidden="true">╔══════════════════════════════════════════════════╗</pre>
+      <span class="badge">** UPLOAD SOMETHING GOOD · EARN YOUR LEECH **</span>
+      <h2 data-slot="hero-title">The File Library — shareware, mods, and ANSI gold.</h2>
+      <p data-slot="hero-body">Everything here was uploaded by a caller like you. Flag a file,
+      hit download, and let ZMODEM do the rest — it'll resume if the line drops. Ratio is 1:3,
+      so one good upload buys three grabs. Virus-scanned nightly; post bad files and lose your flag.</p>
+      <pre class="rule" aria-hidden="true">╚══════════════════════════════════════════════════╝</pre>
+    </section>
+
+    <h3 class="sec">┤ LIBRARIES ├────────────────────────────────────────</h3>
+    <div class="grid">
+      <div class="card">
+        <h3 data-slot="card-title">[1] Utils &amp; Tools</h3>
+        <p data-slot="card-body">Disk utilities, archivers, modem dialers. The stuff that keeps
+        a 386 limping along one more year. You're browsing this one now.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">[2] ANSI &amp; Art Packs</h3>
+        <p data-slot="card-body">Login screens, ANSI music, and whole art-group packs. View with
+        your terminal in ANSI mode or it's just a mess of brackets.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">[3] MOD / S3M Music</h3>
+        <p data-slot="card-body">Tracker tunes for your Sound Blaster or Gravis. Needs a player —
+        grab one from the Utils lib if you haven't got MODPLAY.</p>
+      </div>
+      <div class="card">
+        <h3 data-slot="card-title">[4] Shareware Games</h3>
+        <p data-slot="card-body">Episode-one classics and the odd homebrew. Register the ones you
+        love; the authors are callers too. No cracks — SysOp's rule, non-negotiable.</p>
+      </div>
+    </div>
+
+    <h3 class="sec">┤ LIB 1 · UTILS &amp; TOOLS ├────────────────────────────</h3>
+    <pre class="list" data-slot="page-body" tabindex="0">  #  FILENAME        SIZE    DATE     DL   DESCRIPTION
+───  ──────────────  ──────  ──────  ────  ─────────────────────────────
+ 01  PKZ204G.EXE     202 KB  02-28    918  PKZIP/PKUNZIP 2.04g — the archiver
+ 02  LHA255.EXE       47 KB  02-27    512  LHarc 2.55 — tighter than ZIP, slower
+ 03  TELIX322.ZIP    318 KB  02-26    744  Telix 3.22 — term prog w/ SALT scripts
+ 04  QMPRO15.ZIP     286 KB  02-25    631  Qmodem Pro 1.5 — the Telix rival
+ 05  4DOS580.ZIP     241 KB  02-24    402  4DOS 5.80 — a COMMAND.COM worth having
+ 06  LIST97B.ZIP      61 KB  02-23    289  Vernon Buerg's LIST — file viewer, legend
+ 07  MODPLAY2.ZIP     38 KB  02-22    356  MODPLAY 2.0 — plays .MOD on a Sound Blaster
+ 08  SCAN-NEW.ZIP    124 KB  02-21    198  McAfee VirusScan defs — run before you post
+ 09  ANSIVIEW.ZIP     29 KB  02-20    177  Standalone ANSI/ANS pack viewer
+ 10  DSZ0528.ZIP      88 KB  02-19    845  DSZ — the ZMODEM engine this board runs on</pre>
+
+    <h3 class="sec">┤ TOP DOWNLOADS ├────────────────────────────────────</h3>
+    <pre class="list" data-slot="card-body" tabindex="0">RANK  FILENAME        DL     UPLOADED BY        LIB
+────  ──────────────  ────   ─────────────────  ──────
+  1   PKZ204G.EXE      918   The_Archivist      Utils
+  2   DSZ0528.ZIP      845   The_Archivist      Utils
+  3   TELIX322.ZIP     744   Null_Modem_Nick    Utils
+  4   QMPRO15.ZIP      631   Static_Burn        Utils
+  5   AMBER-LOGO.ANS   577   Phosphor_Kid       ANSI</pre>
+
+    <section class="sysop">
+      <pre class="rule2" aria-hidden="true">┌─[ UPLOAD DESK ]──────────────────────────────────────┐</pre>
+      <h3 data-slot="card-title">Feeding The Library</h3>
+      <p data-slot="card-body">Got something the board hasn't seen? ZMODEM it up, fill in a one-line
+      description, and the gate opens three-to-one. No warez, no cracks, no duplicates — the SysOp
+      scans every upload before it goes public and a bad file costs you your flag. ANSI packs and
+      fresh MOD tunes jump the queue. Thanks for keeping the shelves stocked. — The Archivist</p>
+      <pre class="rule2" aria-hidden="true">└──────────────────────────────────────────────────────┘</pre>
+    </section>
+
+    <p class="hero" style="margin-top:22px"><a href="index.html" data-slot="nav-item">« [Q] Back to Main Menu</a></p>
+  </div>
+
+  <footer data-slot="footer">END OF LIBRARY  ·  The Amber Room BBS © 1988–2026  ·  Lib 1 · 10 files · ZMODEM ready  ·  &lt;Q&gt;uit</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
