@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overprint Quarterly</title>
+<!-- Risograph — two-ink zine. Fluoro pink + teal overprinting on off-white
+     stock, visible misregistration, halftone, grain. Blend-mode multiply fakes
+     the ink overprint; offset text-shadows fake the plate misalignment. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- off-register halftone/grain plates, purely decorative -->
+<div class="plates" aria-hidden="true">
+  <div class="plate plate-teal"></div>
+  <div class="plate plate-pink"></div>
+  <svg class="grain" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <filter id="riso-grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter>
+    <rect width="100%" height="100%" filter="url(#riso-grain)"/>
+  </svg>
+</div>
+
+<header class="masthead">
+  <p class="dateline">
+    <span data-slot="issue">Issue No. 07</span> &middot;
+    <span data-slot="price">Trade or ¥free</span>
+  </p>
+  <h1 class="wordmark" data-slot="site-name">Overprint Quarterly</h1>
+  <p class="tagline" data-slot="tagline">A two-ink field guide to beautiful mistakes</p>
+</header>
+
+<nav aria-label="Sections">
+  <a href="index.html" data-slot="nav-item" aria-current="page">Cover</a>
+  <a href="index.html" data-slot="nav-item">Features</a>
+  <a href="index.html" data-slot="nav-item">Letters</a>
+  <a href="index.html" data-slot="nav-item">Colophon</a>
+  <a href="index.html" data-slot="nav-item">Subscribe</a>
+</nav>
+
+<main class="sheet">
+
+  <section class="hero">
+    <span class="stamp">Hand-pulled · Edition of 300</span>
+    <h2 class="hero-title" data-slot="hero-title">Everything prints twice,<br>nothing lines up, it&rsquo;s perfect.</h2>
+    <p data-slot="hero-body">We run two drums and two passes: fluorescent pink, then teal, each
+    a hair out of register. Where they overlap the inks multiply into a bruised third colour nobody
+    mixed on purpose. The grain is real, the dots are showing, and we wouldn&rsquo;t trade a single
+    misfeed for a clean laser print.</p>
+  </section>
+
+  <div class="feed">
+
+    <article class="cut">
+      <span class="kicker">Process</span>
+      <h3 data-slot="card-title">Two Drums, One Stencil</h3>
+      <p data-slot="card-body">How a thermal master, a tube of soy ink and a mis-aligned paper
+      guide turn a boring flyer into something that smells like a print shop.</p>
+    </article>
+
+    <article class="cut">
+      <span class="kicker">Gallery</span>
+      <h3 data-slot="card-title">The Misregister Hall of Fame</h3>
+      <p data-slot="card-body">Readers send us their worst offsets. This issue: a gig poster so
+      shifted the band&rsquo;s name reads double, and we love it more for it.</p>
+    </article>
+
+    <article class="cut">
+      <span class="kicker">Swatches</span>
+      <h3 data-slot="card-title">Pink + Teal = Something Else</h3>
+      <p data-slot="card-body">A full spread of overprint chips, from a whisper of overlap to a
+      dense multiply that lands somewhere near aubergine. Tear one out, tape it up.</p>
+    </article>
+
+    <article class="cut">
+      <span class="kicker">Letters</span>
+      <h3 data-slot="card-title">Dear Smudge Desk</h3>
+      <p data-slot="card-body">&ldquo;My halftone looks like gravel.&rdquo; Good. &ldquo;My rollers
+      left streaks.&rdquo; Better. The mailbag, answered with zero apologies.</p>
+    </article>
+
+  </div>
+
+  <aside class="pullquote" data-slot="page-body">
+    &ldquo;If you can read it on the first pass and read it again on the second, that&rsquo;s not a
+    bug &mdash; that&rsquo;s the fluoro pink saying hello before the teal arrives.&rdquo;
+  </aside>
+
+</main>
+
+<footer class="colophon">
+  <p data-slot="footer">&copy; 2026 Overprint Quarterly &middot; Printed in two colours, folded by hand, stapled with love</p>
+  <p class="imprint">Fluorescent Pink 022 &nbsp;/&nbsp; Teal 089 &nbsp;/&nbsp; 80gsm off-white stock</p>
+</footer>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

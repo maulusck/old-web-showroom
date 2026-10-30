@@ -1,0 +1,167 @@
+/* Risograph — two spot inks overprinting on off-white stock.
+   Paper is the page background; pink + teal are "ink" layers that multiply.
+   Everything decorative is faked with blend modes, gradients and SVG noise —
+   no raster assets, no remote fonts, works offline on file://. */
+
+:root{
+  --paper:#f3ece0;        /* 80gsm off-white */
+  --pink:#ff4d8d;         /* fluorescent pink 022 */
+  --teal:#009ca6;         /* teal 089 */
+  --over:#3a2340;         /* where pink + teal multiply */
+  --ink:#241a2b;          /* near-black overprint for body text */
+  --edge:#d9cdb8;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#171318; --edge:#2c2430; --ink:#efe6d6; --over:#ff8fc4;
+}}
+:root[data-theme="dark"]{
+  --paper:#171318; --edge:#2c2430; --ink:#efe6d6; --over:#ff8fc4;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font:16px/1.6 "Helvetica Neue",Arial,"Liberation Sans",system-ui,sans-serif;
+  overflow-x:hidden;
+}
+
+/* ---- the two off-register ink plates + grain, fixed over the whole page ---- */
+.plates{position:fixed;inset:0;z-index:0;pointer-events:none}
+.plate{position:absolute;inset:-6% -6% -6% -6%;mix-blend-mode:multiply;opacity:.5}
+/* a halftone dot field; each plate is the same dots nudged out of register */
+.plate-teal{
+  background:radial-gradient(var(--teal) 28%,transparent 29%) 0 0/9px 9px;
+  transform:translate(2.5px,-2px) rotate(.3deg);
+}
+.plate-pink{
+  background:radial-gradient(var(--pink) 22%,transparent 23%) 0 0/9px 9px;
+  transform:translate(-3px,2px);
+  opacity:.42;
+}
+.grain{position:absolute;inset:0;width:100%;height:100%;mix-blend-mode:multiply;opacity:.12}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .plate{mix-blend-mode:screen}
+  :root:not([data-theme="light"]) .grain{mix-blend-mode:screen;opacity:.2}}
+:root[data-theme="dark"] .plate{mix-blend-mode:screen}
+:root[data-theme="dark"] .grain{mix-blend-mode:screen;opacity:.2}
+
+/* lift real content above the plates */
+.masthead,nav,.sheet,.colophon{position:relative;z-index:1}
+
+/* ---- misregistration helper: pink behind, teal ahead, ink on top ---- */
+.riso-offset{
+  color:var(--ink);
+  text-shadow:
+    -1.5px 1.5px 0 var(--pink),
+    2px -1px 0 var(--teal);
+}
+
+/* ---- masthead ---- */
+.masthead{max-width:760px;margin:0 auto;padding:40px 20px 18px;text-align:center}
+.dateline{
+  margin:0 0 10px;font:700 12px/1 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--teal)
+}
+.wordmark{
+  margin:0;
+  font:900 clamp(40px,12vw,104px)/.9 "Helvetica Neue",Arial Black,Arial,sans-serif;
+  letter-spacing:-.03em;text-transform:uppercase;
+  color:var(--ink);
+  text-shadow:-3px 3px 0 var(--pink),4px -2px 0 var(--teal);
+}
+.tagline{
+  margin:14px 0 0;font-size:15px;font-style:italic;color:var(--over);
+  letter-spacing:.01em
+}
+
+/* ---- nav: inky tab strip, each tab a slight overprint ---- */
+nav{
+  max-width:760px;margin:22px auto 0;padding:0 20px;
+  display:flex;flex-wrap:wrap;gap:0;justify-content:center;
+  border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)
+}
+nav a{
+  flex:1 1 auto;text-align:center;min-width:88px;
+  padding:11px 10px;text-decoration:none;
+  font:700 12px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);
+  border-left:1px dashed var(--edge);
+  background:transparent;
+}
+nav a:first-child{border-left:0}
+nav a:hover{background:var(--pink);color:var(--paper)}
+nav a[aria-current]{background:var(--teal);color:var(--paper)}
+
+/* ---- sheet ---- */
+.sheet{max-width:760px;margin:0 auto;padding:12px 20px 48px}
+
+/* hero */
+.hero{padding:44px 0 40px;border-bottom:3px solid var(--ink)}
+.stamp{
+  display:inline-block;margin-bottom:20px;padding:5px 12px;
+  border:2px solid var(--teal);transform:rotate(-2.2deg);
+  font:700 11px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal);mix-blend-mode:multiply
+}
+.hero-title{
+  margin:0 0 20px;
+  font:900 clamp(28px,6.5vw,56px)/1.02 "Helvetica Neue",Arial Black,Arial,sans-serif;
+  letter-spacing:-.02em;
+  color:var(--ink);
+  text-shadow:-2.5px 2.5px 0 var(--pink),3px -1.5px 0 var(--teal);
+}
+.hero p{margin:0;max-width:52ch;font-size:17px;color:var(--ink)}
+
+/* feed of clippings */
+.feed{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0}
+.cut{
+  padding:28px 26px;
+  border-bottom:2px solid var(--ink);
+  border-right:2px solid var(--ink);
+}
+.cut:nth-child(2n){border-right:0}
+.kicker{
+  display:inline-block;margin-bottom:10px;padding:2px 8px;
+  background:var(--pink);color:var(--paper);mix-blend-mode:multiply;
+  font:700 10px/1.4 "Helvetica Neue",Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase
+}
+.cut h3{
+  margin:0 0 10px;
+  font:800 22px/1.1 "Helvetica Neue",Arial,sans-serif;letter-spacing:-.01em;
+  color:var(--ink);
+  text-shadow:-1.5px 1.5px 0 var(--teal);
+}
+.cut p{margin:0;font-size:15px;color:var(--ink)}
+
+/* pull quote spans full width, big overprint */
+.pullquote{
+  margin:0;padding:40px 10px;text-align:center;
+  font:800 clamp(20px,3.6vw,30px)/1.25 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:-.01em;
+  color:var(--over);
+  text-shadow:-2px 2px 0 var(--pink),3px -1px 0 var(--teal);
+}
+
+/* ---- colophon ---- */
+.colophon{
+  max-width:760px;margin:0 auto;padding:26px 20px 64px;text-align:center;
+  border-top:3px solid var(--ink)
+}
+.colophon p{margin:0;font-size:13px;color:var(--ink)}
+.imprint{
+  margin-top:8px !important;
+  font:700 11px/1.5 "Helvetica Neue",Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal)
+}
+
+@media (max-width:560px){
+  .feed{grid-template-columns:1fr}
+  .cut{border-right:0}
+  nav a{flex:1 1 40%}
+}
+
+/* grain is static; nothing animates. reduced-motion left as a courtesy guard
+   in case an editor adds motion later. */
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
