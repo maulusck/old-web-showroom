@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meadow Quest · Pocket·8</title>
+<!-- gameboy-dmg — 1989 grey brick handset. Dark-taupe plastic body, olive 4-shade
+     dot-matrix LCD (the nav + content), red power LED, maroon D-pad, magenta A/B at
+     an angle, START/SELECT pills, diagonal speaker grille. Device + pixels in CSS/SVG. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="gb" aria-label="Pocket·8 handheld">
+
+  <!-- ===== upper shell: bezel + LCD ===== -->
+  <div class="shell-top">
+    <div class="bezel">
+
+      <!-- power LED + battery rail, left of screen -->
+      <div class="power" aria-hidden="true">
+        <span class="led"></span>
+        <span class="power-txt">BATTERY</span>
+      </div>
+
+      <!-- the olive 4-shade LCD — everything here is the site -->
+      <div class="lcd" role="region" aria-label="Game screen">
+        <div class="scan" aria-hidden="true"></div>
+        <div class="lcd-inner">
+
+          <div class="startscreen">
+            <h1 class="title" data-slot="site-name">MEADOW QUEST</h1>
+            <p class="press" data-slot="tagline">© 1989 FOURSHADE SOFT · PUSH START</p>
+            <div class="sprite" aria-hidden="true">
+              <!-- a chunky 4-shade hero sprite, hand-plotted in SVG rects -->
+              <svg viewBox="0 0 11 11" shape-rendering="crispEdges" width="66" height="66" role="img" aria-label="hero sprite">
+                <rect x="3" y="0" width="5" height="2" class="p3"/>
+                <rect x="2" y="2" width="7" height="2" class="p2"/>
+                <rect x="3" y="2" width="1" height="1" class="p0"/>
+                <rect x="7" y="2" width="1" height="1" class="p0"/>
+                <rect x="3" y="4" width="5" height="1" class="p1"/>
+                <rect x="4" y="5" width="3" height="4" class="p2"/>
+                <rect x="3" y="6" width="1" height="2" class="p3"/>
+                <rect x="7" y="6" width="1" height="2" class="p3"/>
+                <rect x="4" y="9" width="1" height="2" class="p0"/>
+                <rect x="6" y="9" width="1" height="2" class="p0"/>
+              </svg>
+            </div>
+          </div>
+
+          <nav class="menu" aria-label="Main menu">
+            <a href="index.html" class="mi" data-slot="nav-item" aria-current="page">NEW GAME</a>
+            <a href="index.html" class="mi" data-slot="nav-item">WORLD MAP</a>
+            <a href="index.html" class="mi" data-slot="nav-item">BESTIARY</a>
+            <a href="index.html" class="mi" data-slot="nav-item">ITEM SHOP</a>
+            <a href="index.html" class="mi" data-slot="nav-item">PASSWORD</a>
+          </nav>
+
+          <section class="quest">
+            <h2 class="quest-h" data-slot="hero-title">THE GREEN KINGDOM AWAITS</h2>
+            <p class="quest-b" data-slot="hero-body">Four shades of courage are all a hero
+            needs. Cross the pixel meadows, raise the drawbridge, and reach the last save
+            point before the batteries fade to a whisper.</p>
+          </section>
+
+          <div class="tiles">
+            <div class="tile">
+              <h3 class="tile-h" data-slot="card-title">WORLDS</h3>
+              <p class="tile-b" data-slot="card-body">Eight scrolling realms, from Dot Meadow
+              to the Static Caves. No two tiles repeat — we counted.</p>
+            </div>
+            <div class="tile">
+              <h3 class="tile-h" data-slot="card-title">BESTIARY</h3>
+              <p class="tile-b" data-slot="card-body">Forty-two blips to befriend or bonk. The
+              Grue only renders when the room light drops.</p>
+            </div>
+            <div class="tile">
+              <h3 class="tile-h" data-slot="card-title">SOUNDTRACK</h3>
+              <p class="tile-b" data-slot="card-body">Four channels of square-wave glory. You
+              will hum it on the bus and blame no one.</p>
+            </div>
+            <div class="tile">
+              <h3 class="tile-h" data-slot="card-title">SAVE SLOTS</h3>
+              <p class="tile-b" data-slot="card-body">Three cartridge saves and one brave
+              password. Lose the paper, lose the kingdom.</p>
+            </div>
+          </div>
+
+          <p class="lcd-foot" data-slot="footer">FOURSHADE SOFT · PLAY IT TIL THE LINK
+          CABLE FRAYS · EST. 1989</p>
+
+        </div>
+      </div>
+
+      <!-- curved printed bezel caption -->
+      <svg class="dotmatrix" viewBox="0 0 300 34" aria-hidden="true">
+        <path id="arc" d="M14,8 Q150,38 286,8" fill="none"/>
+        <text><textPath href="#arc" startOffset="50%" text-anchor="middle">DOT MATRIX WITH STEREO SOUND</textPath></text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- printed console model name under the screen -->
+  <div class="brand" aria-hidden="true">
+    <span class="brand-mk">POCKET</span><span class="brand-dot">·</span><span class="brand-no">8</span>
+    <span class="brand-tm">TM</span>
+  </div>
+
+  <!-- ===== controls ===== -->
+  <div class="controls" aria-hidden="true">
+    <div class="dpad"><span class="dpad-dot"></span></div>
+
+    <div class="ab">
+      <div class="btn-wrap b"><span class="btn"></span><span class="lbl">B</span></div>
+      <div class="btn-wrap a"><span class="btn"></span><span class="lbl">A</span></div>
+    </div>
+
+    <div class="startsel">
+      <div class="pillwrap"><span class="pill"></span><span class="lbl">SELECT</span></div>
+      <div class="pillwrap"><span class="pill"></span><span class="lbl">START</span></div>
+    </div>
+  </div>
+
+  <!-- speaker grille, bottom-right -->
+  <div class="speaker" aria-hidden="true"></div>
+
+</main>
+<script src="../../edit.js" defer></script>
+</body>
+</html>
