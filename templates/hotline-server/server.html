@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixel Harbor — Connected</title>
+<!-- Hotline Connect server — a single connected server's detail, Mac OS 8 platinum. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Menu bar ===== -->
+  <div class="menubar" role="navigation">
+    <span class="apple" aria-hidden="true"></span>
+    <a href="index.html" class="appname" data-slot="site-name">Pixel Harbor</a>
+    <a href="index.html" data-slot="nav-item">Trackers</a>
+    <a href="#" data-slot="nav-item">News</a>
+    <a href="#" data-slot="nav-item">Chat</a>
+    <a href="#" data-slot="nav-item">Files</a>
+    <a href="#" data-slot="nav-item">Users</a>
+    <span class="clock" data-slot="nav-item">11:26 PM</span>
+  </div>
+
+  <!-- ===== Connection banner ===== -->
+  <div class="connbar">
+    <span class="led" aria-hidden="true"></span>
+    <strong data-slot="tagline">Connected to Pixel Harbor &mdash; a cozy harbor for old machines, est. 1998</strong>
+    <a href="index.html" class="discon" data-slot="nav-item">Disconnect / Back to Tracker</a>
+  </div>
+
+  <!-- ===== Desktop ===== -->
+  <main class="desk">
+
+    <!-- Agreement / MOTD window (spans full width) -->
+    <section class="win tracker">
+      <div class="titlebar">
+        <span class="box close" aria-hidden="true"></span>
+        <span class="title" data-slot="hero-title">Server Agreement &amp; Message of the Day</span>
+        <span class="box zoom" aria-hidden="true"></span>
+      </div>
+      <div class="pane news-body">
+        <h2 data-slot="hero-body">Welcome to the Harbor. Make yourself at home.</h2>
+        <p class="agree" data-slot="page-body">By dropping anchor here you agree to the house rules, and they're easy ones:
+
+1. Be kind. We're all somebody's favorite stranger.
+2. Share freely. Everything in /Public is yours to copy and pass along.
+3. Credit the maker when you know them, and no selling what others gave away.
+4. Keep chat friendly enough for your grandmother, and keep it on the old machines we love.
+
+Sign off with a wave, and the floppies will be here when you get back.</p>
+      </div>
+    </section>
+
+    <!-- News thread window -->
+    <section class="win news">
+      <div class="titlebar">
+        <span class="box close" aria-hidden="true"></span>
+        <span class="title" data-slot="page-title">News &mdash; Harbor Bulletin</span>
+        <span class="box zoom" aria-hidden="true"></span>
+      </div>
+      <div class="pane news-body">
+        <div class="post">
+          <span class="post-head" data-slot="card-title">New stacks in the Harbor &middot; Marguerite</span>
+          <p data-slot="card-body">Three fresh HyperCard stacks landed this week, including a tide chart
+          that still works and a recipe box from 1994. Grab them before the floppies cool.</p>
+        </div>
+        <div class="thread">
+          <span class="post-head" data-slot="card-title">Trivia Tuesday returns &middot; Sysop</span>
+          <p data-slot="card-body">Meet in Public Chat at 8pm harbor time. This round: name that startup
+          chime. Winner gets bragging rights and a hand-drawn certificate.</p>
+          <p class="reply"><span class="by" data-slot="nav-item">Beto:</span> <span data-slot="card-body">I've been practicing the Quadra boot bong all week, see you there.</span></p>
+          <p class="reply"><span class="by" data-slot="nav-item">Dottie:</span> <span data-slot="card-body">Bringing the certificate pens, mine ran dry last round.</span></p>
+        </div>
+        <div class="thread">
+          <span class="post-head" data-slot="card-title">Zine Reading Room reshelved &middot; Quill</span>
+          <p data-slot="card-body">Tidied the vintage zine folder and added a fresh index card so nothing
+          gets lost. Please whisper near the plants, as ever.</p>
+          <p class="reply"><span class="by" data-slot="nav-item">Pixelpete:</span> <span data-slot="card-body">Thank you! Found that modem poetry issue I'd been hunting for years.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Files window -->
+    <section class="win files">
+      <div class="titlebar">
+        <span class="box close" aria-hidden="true"></span>
+        <span class="title" data-slot="card-title">Files &mdash; Pixel Harbor /Public</span>
+        <span class="box zoom" aria-hidden="true"></span>
+      </div>
+      <ul class="list filelist">
+        <li class="fldr"><span class="c-name" data-slot="card-title">Games &amp; Demos</span><span class="sz" data-slot="card-meta">214 items</span></li>
+        <li class="fldr"><span class="c-name" data-slot="card-title">Manuals &amp; Scans</span><span class="sz" data-slot="card-meta">88 items</span></li>
+        <li class="fldr"><span class="c-name" data-slot="card-title">Pixel Art Swap</span><span class="sz" data-slot="card-meta">340 items</span></li>
+        <li class="fldr"><span class="c-name" data-slot="card-title">HyperCard Stacks</span><span class="sz" data-slot="card-meta">55 items</span></li>
+        <li class="fldr"><span class="c-name" data-slot="card-title">Fonts &amp; Icons</span><span class="sz" data-slot="card-meta">126 items</span></li>
+        <li class="fldr"><span class="c-name" data-slot="card-title">Zine Reading Room</span><span class="sz" data-slot="card-meta">42 items</span></li>
+      </ul>
+    </section>
+
+    <!-- Connected users window -->
+    <section class="win">
+      <div class="titlebar">
+        <span class="box close" aria-hidden="true"></span>
+        <span class="title" data-slot="card-title">Connected Users</span>
+        <span class="box zoom" aria-hidden="true"></span>
+      </div>
+      <div class="pane users">
+        <span class="users-head" data-slot="card-title">Online &mdash; 18</span>
+        <ul class="list people">
+          <li class="usr" data-slot="nav-item">Sysop</li>
+          <li class="usr" data-slot="nav-item">Marguerite</li>
+          <li class="usr" data-slot="nav-item">Beto</li>
+          <li class="usr" data-slot="nav-item">Pixelpete</li>
+          <li class="usr" data-slot="nav-item">Dottie</li>
+          <li class="usr away" data-slot="nav-item">Quill (idle)</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Status bar ===== -->
+  <footer class="status" data-slot="footer">
+    Pixel Harbor &middot; 18 users online &middot; 861 files shared &middot; be kind, share freely &copy; 1998&ndash;2026
+  </footer>
+
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
