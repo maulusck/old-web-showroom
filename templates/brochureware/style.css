@@ -1,0 +1,94 @@
+/* brochureware — Web 1.0 corporate homepage, ~1997. Nested tables, bevels,
+   grey/navy/teal, Times + Arial. One stylesheet themes index + products. */
+:root{
+  --page:#c8c8c8; --panel:#dcdcdc; --paper:#ffffff; --ink:#1a1a1a;
+  --navy:#002b5c; --navy-dk:#001c3d; --teal:#0a7d7d; --teal-dk:#065656;
+  --rule:#808080; --lite:#f4f4f4; --dark:#5a5a5a; --link:#0000aa; --vlink:#551a8b;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --page:#1d1f22; --panel:#2a2d31; --paper:#24272b; --ink:#dfe2e6;
+  --navy:#8fb3e0; --navy-dk:#aac4ea; --teal:#5fc8c8; --teal-dk:#3fa8a8;
+  --rule:#55595e; --lite:#34383d; --dark:#9aa0a6; --link:#8fb3ff; --vlink:#c59fff;
+}}
+:root[data-theme="dark"]{
+  --page:#1d1f22; --panel:#2a2d31; --paper:#24272b; --ink:#dfe2e6;
+  --navy:#8fb3e0; --navy-dk:#aac4ea; --teal:#5fc8c8; --teal-dk:#3fa8a8;
+  --rule:#55595e; --lite:#34383d; --dark:#9aa0a6; --link:#8fb3ff; --vlink:#c59fff;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:12px;background:var(--page);color:var(--ink);
+  font:16px/1.5 "Times New Roman",Times,Georgia,serif}
+a{color:var(--link)}
+a:visited{color:var(--vlink)}
+hr{border:0;border-top:2px groove var(--rule);margin:14px 0}
+
+/* shell: a centered, beveled "page" like a 1997 homepage */
+.sheet{max-width:760px;margin:0 auto;background:var(--panel);
+  border:3px outset var(--lite);padding:6px}
+table{border-collapse:collapse}
+
+/* beveled banner logo */
+.banner{width:100%;background:var(--navy);
+  border:4px ridge var(--teal);}
+.banner td{padding:14px 18px;vertical-align:middle}
+.crest{width:58px;height:58px;display:block}
+.wordmark{font-family:Arial,Helvetica,sans-serif;color:#fff;
+  font-size:clamp(22px,5.5vw,38px);font-weight:bold;letter-spacing:.04em;
+  margin:0;text-shadow:2px 2px 0 var(--navy-dk)}
+.motto{font-family:Arial,Helvetica,sans-serif;color:#cfe0f5;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:4px 0 0}
+
+/* layout: left nav rail + content */
+.layout{width:100%;margin-top:8px}
+.layout>tbody>tr>td{vertical-align:top}
+.rail{width:168px;background:var(--lite);border:2px inset var(--rule);
+  padding:10px 8px}
+.rail h4{font:bold 12px Arial,Helvetica,sans-serif;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--teal-dk);margin:0 0 8px;text-align:center}
+.btn{display:block;font:bold 14px Arial,Helvetica,sans-serif;text-align:center;
+  color:#fff !important;text-decoration:none;background:var(--teal);
+  border:3px outset var(--lite);padding:7px 4px;margin:0 0 7px;letter-spacing:.02em}
+.btn:visited{color:#fff !important}
+.btn:hover{background:var(--teal-dk)}
+.btn[aria-current]{border-style:inset;background:var(--navy)}
+
+.main{background:var(--paper);border:2px inset var(--rule);padding:14px 18px 20px}
+.main h2{font:normal 26px/1.2 "Times New Roman",Times,serif;color:var(--navy);
+  margin:0 0 4px}
+.main h3{font:bold 15px Arial,Helvetica,sans-serif;color:var(--teal-dk);
+  letter-spacing:.03em;margin:18px 0 4px}
+.main p{margin:8px 0}
+.updated{font:italic 12px "Times New Roman",Times,serif;color:var(--dark);margin:0}
+
+/* "New!" starburst — inline SVG, deliberately still */
+.flag{float:right;margin:0 0 6px 12px;width:72px;height:72px}
+
+/* products table */
+.catalog{width:100%;margin:10px 0;border:2px groove var(--rule)}
+.catalog caption{font:bold 12px Arial,Helvetica,sans-serif;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--teal-dk);padding:6px;text-align:left}
+.catalog th{background:var(--navy);color:#fff;font:bold 13px Arial,Helvetica,sans-serif;
+  text-align:left;padding:6px 8px;border:1px solid var(--navy-dk)}
+.catalog td{padding:6px 8px;border:1px solid var(--rule);vertical-align:top;font-size:15px}
+.catalog tr:nth-child(even) td{background:var(--lite)}
+.pn{font-family:"Courier New",monospace;font-size:13px;white-space:nowrap}
+
+/* visitor counter — odometer box */
+.counter{margin:14px auto 2px;text-align:center}
+.odo{display:inline-block;background:#000;border:2px inset #444;padding:3px 5px}
+.odo span{display:inline-block;font:bold 18px "Courier New",monospace;color:#39ff5a;
+  background:#0a1a0a;width:15px;padding:2px 0;margin:0 1px;text-align:center}
+.counter small{display:block;font:11px Arial,Helvetica,sans-serif;color:var(--dark);
+  letter-spacing:.08em;margin-top:5px;text-transform:uppercase}
+
+footer{width:100%;margin-top:8px;background:var(--lite);border:2px inset var(--rule)}
+footer td{padding:10px 14px;text-align:center;
+  font:12px "Times New Roman",Times,serif;color:var(--dark)}
+.webmaster{font-family:Arial,Helvetica,sans-serif}
+
+@media (max-width:620px){
+  .layout,.layout>tbody>tr,.layout>tbody>tr>td{display:block;width:auto}
+  .rail{width:auto;margin-bottom:8px}
+  .btn{display:inline-block;margin:0 5px 6px 0}
+  .flag{width:58px;height:58px}
+}

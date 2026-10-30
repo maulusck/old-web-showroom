@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POCKETNET WAP</title>
+<!-- wap-mobile — 2001 WAP phone deck. Grey-green LCD inside a chunky handset.
+     Monochrome screen, numbered menu deck, soft keys, pay-per-minute. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="phone">
+    <div class="earpiece"></div>
+
+    <div class="screen">
+      <div class="statusbar">
+        <span class="sig" aria-hidden="true">
+          <svg viewBox="0 0 22 12" width="22" height="12"><g fill="currentColor">
+            <rect x="0" y="9" width="3" height="3"/><rect x="5" y="6" width="3" height="6"/>
+            <rect x="10" y="3" width="3" height="9"/><rect x="15" y="1" width="3" height="11"/>
+            <rect x="20" y="9" width="2" height="3" opacity=".35"/>
+          </g></svg>
+        </span>
+        <span class="carrier" data-slot="site-name">POCKETNET</span>
+        <span class="batt" aria-hidden="true">
+          <svg viewBox="0 0 24 12" width="24" height="12"><g fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="1" y="1.5" width="18" height="9"/></g>
+            <rect x="20" y="4" width="2.5" height="4" fill="currentColor"/>
+            <g fill="currentColor"><rect x="3" y="3.5" width="4" height="5"/><rect x="8" y="3.5" width="4" height="5"/><rect x="13" y="3.5" width="3" height="5" opacity=".3"/></g>
+          </svg>
+        </span>
+      </div>
+
+      <h1 class="decktitle" data-slot="hero-title">MAIN MENU</h1>
+      <p class="blurb" data-slot="hero-body">WELCOME 2 THE LIVE DECK. SELECT A NUMBER OR SCROLL. STD RATES 12P/MIN WHILE CONNECTED.</p>
+
+      <ol class="deck">
+        <li><a href="news.html"><span class="num">1</span><span data-slot="nav-item" class="lbl">NEWS WIRE</span><span class="arr">&rsaquo;</span></a></li>
+        <li><a href="news.html"><span class="num">2</span><span data-slot="nav-item" class="lbl">FOOTY SCORES</span><span class="arr">&rsaquo;</span></a></li>
+        <li><a href="news.html"><span class="num">3</span><span data-slot="nav-item" class="lbl">RINGTONES &amp; LOGOS</span><span class="arr">&rsaquo;</span></a></li>
+        <li><a href="news.html"><span class="num">4</span><span data-slot="nav-item" class="lbl">CHAT &amp; FLIRT</span><span class="arr">&rsaquo;</span></a></li>
+        <li><a href="news.html"><span class="num">5</span><span data-slot="nav-item" class="lbl">WEATHER MAP</span><span class="arr">&rsaquo;</span></a></li>
+        <li><a href="news.html"><span class="num">6</span><span data-slot="nav-item" class="lbl">LUCKY DIP LOTTO</span><span class="arr">&rsaquo;</span></a></li>
+      </ol>
+
+      <div class="ticker">
+        <span class="dot" aria-hidden="true"></span>
+        <span data-slot="card-body">NEW: send a txt 2 vote in tonite's BIG PHONE-IN. reply STOP 2 quit.</span>
+      </div>
+
+      <div class="softkeys">
+        <span class="sk sk-l" data-slot="nav-item">Options</span>
+        <span class="sk sk-r" data-slot="nav-item">Exit</span>
+      </div>
+    </div>
+
+    <div class="keypad" aria-hidden="true">
+      <div class="dpad"><span class="ok">OK</span></div>
+      <div class="keys">
+        <button type="button">1<i>&nbsp;</i></button><button type="button">2<i>abc</i></button><button type="button">3<i>def</i></button>
+        <button type="button">4<i>ghi</i></button><button type="button">5<i>jkl</i></button><button type="button">6<i>mno</i></button>
+        <button type="button">7<i>pqrs</i></button><button type="button">8<i>tuv</i></button><button type="button">9<i>wxyz</i></button>
+        <button type="button">*<i>+</i></button><button type="button">0<i>&#8295;</i></button><button type="button">#<i>&#9251;</i></button>
+      </div>
+    </div>
+  </div>
+
+  <p class="legal" data-slot="footer">POCKETNET WAP &copy; 2001 &middot; 12p/min &middot; helpline 0906 anytime &middot; must be 18+ with bill-payer's permission</p>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
