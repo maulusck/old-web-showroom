@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Orpheum</title>
+<!-- cinema-marquee — a grand movie-house sign at night. Chasing bulbs, red
+     changeable-letter boards, a vertical blade sign, amber glow on night blue.
+     All in CSS + inline-SVG + system fonts; offline on file://. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sky">
+
+  <!-- vertical blade sign bolted to the facade -->
+  <aside class="blade" aria-hidden="true">
+    <span class="blade-bulbs"></span>
+    <span class="blade-name" data-slot="site-name">ORPHEUM</span>
+    <svg class="blade-cap" viewBox="0 0 40 40"><polygon points="20,2 38,20 20,38 2,20"/></svg>
+  </aside>
+
+  <header class="marquee">
+    <div class="bulbs bulbs-t"></div>
+    <div class="bulbs bulbs-b"></div>
+    <div class="bulbs bulbs-l"></div>
+    <div class="bulbs bulbs-r"></div>
+
+    <div class="marquee-inner">
+      <p class="deco" data-slot="tagline">· PALACE OF MOVING PICTURES · EST. 1927 ·</p>
+      <h1 class="now" data-slot="hero-title">NOW SHOWING</h1>
+      <p class="feature" data-slot="hero-body">THE LAST CABLE CAR &nbsp;—&nbsp; A MIDNIGHT ROMANCE IN SILVER &amp; SMOKE</p>
+      <p class="sub" data-slot="page-title">IN GLORIOUS SINGLE SCREEN · DOORS 7:00 · ORGAN PRELUDE 7:30</p>
+    </div>
+  </header>
+
+  <nav class="ribbon">
+    <a href="#" data-slot="nav-item" aria-current="page">Box Office</a>
+    <a href="#" data-slot="nav-item">This Week</a>
+    <a href="#" data-slot="nav-item">Matinées</a>
+    <a href="#" data-slot="nav-item">The Balcony</a>
+    <a href="#" data-slot="nav-item">Concessions</a>
+  </nav>
+
+  <main class="lobby">
+
+    <section class="board">
+      <p class="board-head" data-slot="page-body">THE CHANGEABLE-LETTER BOARD · PROGRAMME FOR THE WEEK</p>
+
+      <div class="listings">
+        <article class="bill">
+          <h3 data-slot="card-title">The Last Cable Car</h3>
+          <p class="plot" data-slot="card-body">A conductor and a thief share one rain-soaked ride across a sleeping city. Director's new print, struck from the original negative.</p>
+          <p class="times"><span>2:15</span><span>5:40</span><span>8:55</span></p>
+        </article>
+
+        <article class="bill">
+          <h3 data-slot="card-title">Neon for the Lonely</h3>
+          <p class="plot" data-slot="card-body">A diner, a dime, and a radio that only plays at three in the morning. Shot entirely under working marquees. Not suitable for the faint of heart.</p>
+          <p class="times"><span>1:00</span><span>4:20</span><span>9:30</span></p>
+        </article>
+
+        <article class="bill">
+          <h3 data-slot="card-title">Smoke &amp; Silver</h3>
+          <p class="plot" data-slot="card-body">Two rival magicians, one vanishing act that refuses to end. Winner, Golden Usher Award. Presented in luminous nitrate black-and-white.</p>
+          <p class="times"><span>12:30</span><span>3:45</span><span>7:05</span></p>
+        </article>
+
+        <article class="bill">
+          <h3 data-slot="card-title">Moon Over the Mezzanine</h3>
+          <p class="plot" data-slot="card-body">The usherette falls for the man in seat J-7, who comes every night and never watches the film. A matinée favourite returns by popular demand.</p>
+          <p class="times"><span>11:00</span><span>2:40</span><span>6:15</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="strip">
+      <div class="ticket">
+        <h4 data-slot="card-title">Midnight Serial</h4>
+        <p data-slot="card-body">Saturdays at the witching hour — ten cents, free popcorn to anyone who stays awake through the newsreel.</p>
+      </div>
+      <div class="ticket">
+        <h4 data-slot="card-title">Organ at Dusk</h4>
+        <p data-slot="card-body">Our mighty Wurlitzer rises from the pit nightly at half past seven. Requests scribbled on your stub, please.</p>
+      </div>
+      <div class="ticket">
+        <h4 data-slot="card-title">The Balcony Club</h4>
+        <p data-slot="card-body">Velvet seats, a private bar, and the best sightline in the house. Members enter by the brass door on Marquee Lane.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="facade" data-slot="footer">THE ORPHEUM · 112 MARQUEE LANE · BOX OFFICE OPEN TILL THE LAST REEL · &copy; 1927–2026</footer>
+
+</div>
+<script src="../../edit.js" defer></script>
+</body>
+</html>

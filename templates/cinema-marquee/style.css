@@ -1,0 +1,140 @@
+/* cinema-marquee — a lit movie-house sign at night.
+   Night-blue sky, chasing amber bulbs, red changeable-letter boards,
+   a vertical blade sign. CSS + inline-SVG + system fonts only. */
+:root{
+  --night:#0a1026; --night2:#141c3a; --sky-glow:#2a1c40;
+  --amber:#ffcf6b; --amber-hot:#fff2cf; --amber-dim:#6b4a1e;
+  --red:#b0202a; --red-dk:#6e1218; --board:#160a0c; --board-ink:#f4e9d8;
+  --brass:#caa24a; --ink:#f3e7cf; --dim:#b79a6a;
+  --bulb-gap:28px;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  /* even "light" keeps a theatre dim — just lift the sky a touch */
+  --night:#191f3c; --night2:#242c52; --sky-glow:#3a2a52;
+}}
+:root[data-theme="light"]{--night:#191f3c; --night2:#242c52; --sky-glow:#3a2a52;}
+
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);
+  font-family:"Arial Narrow","Helvetica Neue",Impact,system-ui,sans-serif}
+.sky{min-height:100vh;padding:28px 16px 0 16px;
+  background:
+    radial-gradient(120% 70% at 50% 0%, var(--sky-glow) 0%, transparent 60%),
+    radial-gradient(90% 50% at 50% 12%, rgba(255,207,107,.14) 0%, transparent 55%),
+    linear-gradient(180deg, var(--night) 0%, var(--night2) 55%, var(--night) 100%);
+  background-attachment:fixed}
+
+/* ---- vertical blade sign ------------------------------------------------ */
+.blade{position:fixed;top:14px;left:14px;width:52px;z-index:5;
+  display:flex;flex-direction:column;align-items:center;
+  background:linear-gradient(90deg,var(--red-dk),var(--red) 45%,var(--red-dk));
+  border:2px solid var(--brass);border-radius:6px 6px 0 0;
+  padding:10px 0 6px;box-shadow:0 0 22px rgba(255,160,40,.4)}
+.blade-bulbs{display:block;width:100%;height:12px;margin-bottom:6px;
+  background:radial-gradient(circle at 10px 6px,var(--amber-hot) 0 2px,var(--amber) 2px 3px,transparent 4px) 0 0/20px 12px;
+  filter:drop-shadow(0 0 3px var(--amber))}
+.blade-name{writing-mode:vertical-rl;letter-spacing:.32em;font-weight:700;
+  font-size:22px;color:var(--amber-hot);
+  text-shadow:0 0 6px var(--amber),0 0 16px rgba(255,160,40,.7)}
+.blade-cap{width:28px;height:28px;margin-top:8px;fill:var(--brass);
+  filter:drop-shadow(0 0 5px rgba(255,160,40,.6))}
+@media(max-width:720px){.blade{position:static;flex-direction:row;width:auto;
+  justify-content:center;margin:0 auto 20px;max-width:260px;padding:6px 14px}
+  .blade-bulbs{width:16px;height:100%;margin:0 8px 0 0;
+    background:radial-gradient(circle at 8px 10px,var(--amber-hot) 0 2px,var(--amber) 2px 3px,transparent 4px) 0 0/16px 20px}
+  .blade-name{writing-mode:horizontal-tb;font-size:20px}
+  .blade-cap{margin:0 0 0 8px}}
+
+/* ---- the marquee + chasing bulb ring ------------------------------------ */
+.marquee{position:relative;max-width:760px;margin:0 auto;
+  background:
+    repeating-linear-gradient(90deg,var(--red) 0 22px,var(--red-dk) 22px 44px);
+  border-radius:12px;padding:30px;
+  box-shadow:0 0 50px rgba(255,170,50,.35),inset 0 0 0 3px var(--brass),
+             inset 0 0 70px rgba(0,0,0,.55)}
+.marquee-inner{position:relative;z-index:2;
+  background:linear-gradient(180deg,#201316,var(--board));
+  border:3px solid var(--brass);border-radius:6px;
+  padding:28px 22px;text-align:center;
+  box-shadow:inset 0 0 40px rgba(0,0,0,.8)}
+
+/* four bulb tracks hugging the frame edge */
+.bulbs{position:absolute;z-index:3;pointer-events:none;
+  filter:drop-shadow(0 0 4px var(--amber)) drop-shadow(0 0 9px rgba(255,150,40,.6))}
+.bulbs-t,.bulbs-b{left:12px;right:12px;height:12px;
+  background:radial-gradient(circle at 6px 6px,var(--amber-hot) 0 2.2px,var(--amber) 2.2px 3.4px,var(--amber-dim) 3.4px 4.4px,transparent 5px) 0 0/var(--bulb-gap) 12px;
+  animation:runH 1.1s linear infinite}
+.bulbs-t{top:9px}
+.bulbs-b{bottom:9px}
+.bulbs-l,.bulbs-r{top:12px;bottom:12px;width:12px;
+  background:radial-gradient(circle at 6px 6px,var(--amber-hot) 0 2.2px,var(--amber) 2.2px 3.4px,var(--amber-dim) 3.4px 4.4px,transparent 5px) 0 0/12px var(--bulb-gap);
+  animation:runV 1.1s linear infinite}
+.bulbs-l{left:9px}
+.bulbs-r{right:9px}
+@keyframes runH{to{background-position:var(--bulb-gap) 0}}
+@keyframes runV{to{background-position:0 var(--bulb-gap)}}
+
+.deco{margin:0 0 10px;color:var(--brass);letter-spacing:.3em;font-size:12px;font-weight:700}
+.now{margin:0;font-size:clamp(40px,11vw,86px);font-weight:900;letter-spacing:.06em;
+  color:var(--amber-hot);line-height:.95;
+  text-shadow:0 0 10px var(--amber),0 0 26px rgba(255,150,40,.8),0 0 55px rgba(255,120,20,.5)}
+.feature{margin:14px 0 8px;font-size:clamp(15px,3.4vw,22px);font-weight:700;
+  letter-spacing:.08em;color:var(--board-ink);
+  text-shadow:0 0 8px rgba(255,220,160,.35)}
+.sub{margin:0;color:var(--amber);letter-spacing:.14em;font-size:12px}
+
+/* ---- ribbon nav --------------------------------------------------------- */
+.ribbon{max-width:760px;margin:22px auto 0;display:flex;flex-wrap:wrap;
+  justify-content:center;gap:0;border:2px solid var(--brass);border-radius:4px;
+  overflow:hidden;background:var(--board)}
+.ribbon a{flex:1 1 auto;text-align:center;padding:12px 16px;min-width:120px;
+  color:var(--amber);text-decoration:none;font-weight:700;letter-spacing:.12em;
+  font-size:13px;text-transform:uppercase;
+  border-right:1px solid rgba(202,162,74,.4)}
+.ribbon a:last-child{border-right:0}
+.ribbon a:hover,.ribbon a[aria-current]{background:var(--red);color:var(--amber-hot);
+  text-shadow:0 0 8px rgba(255,200,120,.7)}
+
+/* ---- lobby / listings --------------------------------------------------- */
+.lobby{max-width:760px;margin:0 auto;padding:30px 0 10px}
+.board{background:var(--board);border:3px solid var(--brass);border-radius:6px;
+  padding:20px;box-shadow:inset 0 0 36px rgba(0,0,0,.7),0 0 26px rgba(255,160,40,.18)}
+.board-head{margin:0 0 18px;text-align:center;color:var(--amber);
+  letter-spacing:.2em;font-size:12px;font-weight:700;
+  border-bottom:1px dashed rgba(202,162,74,.5);padding-bottom:12px}
+.listings{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.listings{grid-template-columns:1fr}}
+.bill{background:linear-gradient(180deg,#120607,#0b0304);
+  border:1px solid rgba(202,162,74,.5);border-left:4px solid var(--red);
+  border-radius:3px;padding:14px 16px}
+.bill h3{margin:0 0 6px;color:var(--amber-hot);font-size:20px;font-weight:900;
+  letter-spacing:.03em;text-shadow:0 0 7px rgba(255,170,60,.6)}
+.plot{margin:0 0 12px;color:var(--dim);font-size:14px;line-height:1.5}
+.times{margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.times span{background:var(--red-dk);color:var(--amber-hot);border:1px solid var(--brass);
+  border-radius:2px;padding:3px 9px;font-size:13px;font-weight:700;letter-spacing:.05em;
+  font-family:"Courier New",monospace}
+
+/* ---- ticket strip ------------------------------------------------------- */
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 0}
+@media(max-width:560px){.strip{grid-template-columns:1fr}}
+.ticket{position:relative;background:#f3e7cf;color:#2a1410;
+  border-radius:4px;padding:16px 16px 16px 20px;
+  box-shadow:0 2px 0 rgba(0,0,0,.4);
+  /* perforated ticket stub edge */
+  background-image:radial-gradient(circle at 0 10px,var(--night) 0 4px,transparent 4px);
+  background-size:12px 20px;background-repeat:repeat-y;background-position:left}
+.ticket h4{margin:0 0 7px;color:var(--red-dk);font-size:17px;font-weight:900;
+  letter-spacing:.06em;text-transform:uppercase}
+.ticket p{margin:0;font-size:13px;line-height:1.5;font-family:Georgia,serif}
+
+/* ---- facade footer ------------------------------------------------------ */
+.facade{max-width:760px;margin:34px auto 0;text-align:center;color:var(--amber);
+  letter-spacing:.16em;font-size:12px;font-weight:700;
+  border-top:2px solid var(--brass);padding:22px 10px 40px;
+  text-shadow:0 0 7px rgba(255,160,40,.5)}
+
+/* reduced motion — freeze the chasing bulbs */
+@media(prefers-reduced-motion:reduce){
+  .bulbs-t,.bulbs-b,.bulbs-l,.bulbs-r{animation:none}
+}
