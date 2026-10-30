@@ -114,3 +114,10 @@ extra pages sharing their `style.css` — tracked for a later pass, not urgent):
 geocities (home/links/guestbook), newspaper (front → inside page),
 bbs (board → message area), winamp (player → playlist), myspace (profile →
 friends/comments), dos-commander (panel navigation).
+
+### Seamless gate
+
+A tracked pre-commit hook runs `check.py` on every commit and blocks anything
+that fails. It's active in this repo; after a fresh clone, re-enable with one
+line: `git config core.hooksPath hooks`. Override a single commit with
+`git commit --no-verify`.
