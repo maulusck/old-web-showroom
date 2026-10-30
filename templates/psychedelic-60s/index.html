@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Melting Eye</title>
+<!-- psychedelic-60s — 1960s Fillmore / Wes Wilson rock poster. Vibrating
+     complementary colours, concentric rings, liquid blobs, warped SVG
+     lettering on a curve. CSS + inline-SVG + system fonts only. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="poster">
+
+  <!-- all-over swirling ground: concentric rings + conic sunburst, pure CSS -->
+  <div class="rings" aria-hidden="true"></div>
+  <div class="sunburst" aria-hidden="true"></div>
+  <span class="blob b1" aria-hidden="true"></span>
+  <span class="blob b2" aria-hidden="true"></span>
+  <span class="blob b3" aria-hidden="true"></span>
+
+  <header class="top">
+    <p class="present" data-slot="site-name">The Luminous Eye Society presents</p>
+    <p class="tagline" data-slot="tagline">A Trips Festival for the Mind &amp; the Marrow</p>
+  </header>
+
+  <!-- warped hand-lettered headliner on a wavy curve (SVG textPath) -->
+  <div class="arc">
+    <svg viewBox="0 0 600 220" role="img" aria-label="Headliner">
+      <defs>
+        <path id="curveTop" d="M30,150 Q150,40 300,150 T570,150"/>
+        <path id="curveBot" d="M30,120 Q150,210 300,120 T570,120"/>
+      </defs>
+      <text class="warp warp-a">
+        <textPath href="#curveTop" startOffset="50%" text-anchor="middle"
+          data-slot="hero-title">The Velvet Kaleidoscope</textPath>
+      </text>
+      <text class="warp warp-b">
+        <textPath href="#curveBot" startOffset="50%" text-anchor="middle"
+          data-slot="card-title">with The Marigold Transmission</textPath>
+      </text>
+    </svg>
+  </div>
+
+  <section class="hero">
+    <h2 class="hidden-h">Show</h2>
+    <p class="hero-body" data-slot="hero-body">Two nights of liquid sound and oil-lamp light —
+      bring your own halo. Doors melt open at eight, the room dissolves by midnight.
+      No squares, no straight lines, no exit before the encore.</p>
+  </section>
+
+  <!-- the bill: supports / venue / date, each a card -->
+  <section class="bill">
+    <div class="act">
+      <h3 class="act-name" data-slot="card-title">Sunflower Telephone</h3>
+      <p class="act-note" data-slot="card-body">freak-folk from the fog</p>
+    </div>
+    <div class="act">
+      <h3 class="act-name" data-slot="card-title">The Crimson Owls</h3>
+      <p class="act-note" data-slot="card-body">feedback &amp; tambourines</p>
+    </div>
+    <div class="act">
+      <h3 class="act-name" data-slot="card-title">Jefferson Marmalade</h3>
+      <p class="act-note" data-slot="card-body">organ raga, side two forever</p>
+    </div>
+  </section>
+
+  <section class="where">
+    <p class="venue" data-slot="card-title">The Avalon Lighthouse Ballroom</p>
+    <p class="venue-sub" data-slot="card-body">Sutter &amp; Van Ness · San Francisco</p>
+    <p class="date" data-slot="card-title">Fri &amp; Sat · March 15–16</p>
+    <p class="year" data-slot="card-body">Nineteen Hundred &amp; Sixty-Eight · Tickets $3 at the door</p>
+  </section>
+
+  <footer class="foot" data-slot="footer">Light show by the Dancing Mercury Collective · Posters still wet — do not touch</footer>
+
+</div>
+<script src="../../edit.js" defer></script>
+</body>
+</html>
