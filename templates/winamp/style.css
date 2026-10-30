@@ -111,6 +111,8 @@ input[type=range]::-moz-range-thumb{width:11px;height:18px;border-radius:2px;
 .plfoot{display:flex;justify-content:space-between;padding:5px 12px;
   font-family:"Courier New",monospace;font-size:11px;color:var(--green-dk);
   background:#0b0d10;border-top:1px solid var(--bezel);border-radius:0 0 3px 3px}
+.plfoot a{color:var(--green);text-decoration:none}
+.plfoot a:hover{text-decoration:underline}
 
 /* ---- jukebox cards ---- */
 .cards nav{display:flex;gap:4px;padding:8px;justify-content:center;flex-wrap:wrap}
