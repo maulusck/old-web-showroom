@@ -66,6 +66,9 @@ nav a:hover,nav a[aria-current]{background:linear-gradient(var(--gold),#cc9900);
 .links a{color:var(--link);text-decoration:underline;font-weight:bold;font-size:16px}
 .links a:visited{color:var(--vlink)}
 .note{display:block;font-size:13px;color:#555;margin-top:2px;font-family:Verdana,sans-serif}
+/* trophy case rows — badge beside its citation */
+.trophy{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.trophy svg{border:1px solid #000;flex:none}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .note{color:#b8a8cc}}
 :root[data-theme="dark"] .note{color:#b8a8cc}
 
