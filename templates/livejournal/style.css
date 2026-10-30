@@ -1,0 +1,143 @@
+/* livejournal — 2003 early-blogging. Periwinkle pastel, tiled bg, narrow
+   centered column + sidebar. System sans, small text, diaristic. One
+   stylesheet themes index.html (the journal) and entry.html (one entry). */
+:root{
+  --bg:#b8bce0; --tile:#aeb3da; --col:#ffffff; --ink:#2b2b3a; --dim:#6f6f88;
+  --sub:#5a5a8c; --subink:#ffffff; --box:#ececf7; --line:#c3c3e0;
+  --link:#4a4a9c; --lock:#9a7b2e; --mood:#e8b84b;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1b1c2b; --tile:#20223a; --col:#24263a; --ink:#dcdcf0; --dim:#9a9ab8;
+  --sub:#3a3a66; --subink:#e4e4ff; --box:#2b2d47; --line:#3a3c5e;
+  --link:#aab0ff; --lock:#d4b25a; --mood:#e8b84b;
+}}
+:root[data-theme="dark"]{
+  --bg:#1b1c2b; --tile:#20223a; --col:#24263a; --ink:#dcdcf0; --dim:#9a9ab8;
+  --sub:#3a3a66; --subink:#e4e4ff; --box:#2b2d47; --line:#3a3c5e;
+  --link:#aab0ff; --lock:#d4b25a; --mood:#e8b84b;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  font:13px/1.55 Verdana,Geneva,"DejaVu Sans",Tahoma,sans-serif;
+  background:var(--bg);
+  /* tiled pastel: hand-drawn gingham-ish weave, no raster */
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0 13px,rgba(255,255,255,.06) 13px 14px),
+    repeating-linear-gradient(90deg,transparent 0 13px,rgba(0,0,0,.04) 13px 14px);
+}
+a{color:var(--link)}
+a:hover{color:var(--sub)}
+
+/* masthead */
+.masthead{background:var(--sub);color:var(--subink);text-align:center;
+  padding:22px 16px 18px;border-bottom:3px solid #fff3}
+.masthead h1{margin:0;font-size:clamp(22px,5vw,34px);font-weight:bold;
+  letter-spacing:.02em;text-shadow:1px 1px 0 #0003}
+.masthead .tagline{margin:6px 0 0;font-size:12px;font-style:italic;opacity:.92}
+
+nav{display:flex;flex-wrap:wrap;gap:0;justify-content:center;
+  background:var(--box);border-bottom:1px solid var(--line)}
+nav a{padding:7px 14px;color:var(--link);text-decoration:none;font-size:11px;
+  text-transform:lowercase;letter-spacing:.06em;border-right:1px solid var(--line)}
+nav a:first-child{border-left:1px solid var(--line)}
+nav a:hover,nav a[aria-current]{background:var(--sub);color:var(--subink)}
+
+/* page frame: main column + sidebar */
+.page{max-width:820px;margin:18px auto;padding:0 14px;
+  display:grid;grid-template-columns:1fr 200px;gap:16px;align-items:start}
+@media(max-width:620px){.page{grid-template-columns:1fr}}
+main{min-width:0}
+
+/* a journal entry */
+.entry{background:var(--col);border:1px solid var(--line);
+  box-shadow:2px 2px 0 #0001;margin-bottom:18px}
+.entry-date{background:var(--box);color:var(--dim);font-size:11px;
+  padding:4px 10px;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.subject{background:var(--sub);color:var(--subink);margin:0;
+  padding:7px 10px;font-size:14px;font-weight:bold;
+  display:flex;align-items:center;gap:7px}
+.subject .lock{flex:0 0 auto}
+.body{padding:12px 14px}
+.body p{margin:0 0 11px}
+.body p:last-child{margin-bottom:0}
+.body blockquote{margin:11px 0;padding:6px 12px;border-left:3px solid var(--line);
+  color:var(--dim);font-style:italic}
+
+/* current mood / music metadata footer */
+.meta{border-top:1px dashed var(--line);margin:4px 14px 0;padding:10px 0;
+  font-size:11px;color:var(--dim)}
+.meta div{display:flex;align-items:center;gap:6px;margin:2px 0}
+.meta .k{color:var(--sub);font-weight:bold}
+.meta .moodface{flex:0 0 auto}
+.comments{padding:8px 14px 12px;font-size:11px}
+.comments a{text-decoration:none;font-weight:bold}
+.comments a:hover{text-decoration:underline}
+
+/* sidebar boxes */
+aside{display:flex;flex-direction:column;gap:14px}
+.box{background:var(--col);border:1px solid var(--line);box-shadow:2px 2px 0 #0001}
+.box h2{margin:0;background:var(--sub);color:var(--subink);
+  font-size:11px;text-transform:uppercase;letter-spacing:.08em;padding:5px 9px}
+.box .inner{padding:9px 10px}
+
+/* userinfo */
+.user{display:flex;gap:8px;align-items:center}
+.user .face{flex:0 0 auto}
+.uname{font-weight:bold;color:var(--sub)}
+.online{display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:#4caf50;margin-right:4px;vertical-align:middle;
+  animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.bio{font-size:11px;color:var(--dim);margin:8px 0 0}
+.stats{list-style:none;margin:8px 0 0;padding:0;font-size:11px;color:var(--dim)}
+.stats li{display:flex;justify-content:space-between;padding:2px 0;
+  border-top:1px dotted var(--line)}
+.stats b{color:var(--ink);font-weight:normal}
+
+/* calendar */
+.cal{width:100%;border-collapse:collapse;font-size:10px;text-align:center}
+.cal caption{font-size:11px;font-weight:bold;color:var(--sub);padding-bottom:5px}
+.cal th{color:var(--dim);font-weight:normal;padding:2px 0}
+.cal td{padding:2px 0;color:var(--dim)}
+.cal td.on{color:var(--link);font-weight:bold}
+.cal td.on a{text-decoration:none}
+.cal td.today{background:var(--sub);color:var(--subink);border-radius:2px}
+
+/* friends list / links box */
+.links{list-style:none;margin:0;padding:0;font-size:11px}
+.links li{padding:3px 0;border-top:1px dotted var(--line);display:flex;
+  align-items:center;gap:6px}
+.links li:first-child{border-top:0}
+
+/* comment thread (entry.html) */
+.thread{margin-top:6px}
+.thread h2.section{font-size:13px;color:var(--sub);margin:22px 0 10px;
+  border-bottom:1px solid var(--line);padding-bottom:4px}
+.cmt{background:var(--box);border:1px solid var(--line);margin:0 0 10px;padding:9px 11px}
+.cmt.reply{margin-left:26px;background:var(--col)}
+.cmt .chead{display:flex;align-items:center;gap:6px;font-size:11px;
+  color:var(--dim);margin-bottom:5px}
+.cmt .chead .uname{font-size:12px}
+.cmt .ctime{margin-left:auto}
+.cmt .cbody{font-size:12px}
+.cmt .cbody p{margin:0 0 8px}
+.cmt .cbody p:last-child{margin:0}
+.cmt .cmood{font-size:10px;color:var(--dim);margin-top:6px;display:flex;
+  align-items:center;gap:5px}
+
+/* leave-a-comment stub */
+.leave{background:var(--col);border:1px solid var(--line);padding:12px 14px;margin-top:16px}
+.leave h2{margin:0 0 8px;font-size:12px;color:var(--sub)}
+.leave .fakefield{background:var(--box);border:1px solid var(--line);
+  padding:7px 9px;color:var(--dim);font-size:11px;font-style:italic}
+.leave .fakefield.area{min-height:52px}
+.leave .btn{display:inline-block;margin-top:9px;background:var(--sub);
+  color:var(--subink);border:1px outset var(--line);padding:4px 14px;font-size:11px}
+
+footer{text-align:center;color:var(--sub);font-size:11px;padding:8px 16px 36px}
+footer a{color:var(--sub)}
+
+@media(prefers-reduced-motion:reduce){
+  .online{animation:none}
+}
