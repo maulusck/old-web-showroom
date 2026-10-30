@@ -1,0 +1,151 @@
+/* casio-watch — 1991 Casio F-91W. Resin case, grey-green LCD, CSS/SVG 7-seg.
+   Mode switching is pure CSS radio tabs; the only "JS" is none. */
+:root{
+  --bg:#c7c9c3; --bg2:#b4b7b0; --page-ink:#2a2d28;
+  --resin:#23262d; --resin-hi:#40454f; --resin-lo:#14161b;
+  --bezel:#2d313a; --btn:#1b1d23; --btn-hi:#4a4f59;
+  --lcd:#9aa890; --lcd-lo:#8b9a82; --lcd-ink:#16231b;
+  --silk:#c9cdc6; --silk-dim:#8d9a86;
+  --red:#b1352f;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#101216; --bg2:#0a0b0e; --page-ink:#d4d7d0;
+  --lcd:#8ea07f; --lcd-lo:#7c9070;
+}}
+:root[data-theme="dark"]{
+  --bg:#101216; --bg2:#0a0b0e; --page-ink:#d4d7d0;
+  --lcd:#8ea07f; --lcd-lo:#7c9070;
+}
+*{box-sizing:border-box}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+body{margin:0;color:var(--page-ink);
+  background:radial-gradient(120% 90% at 50% 0,var(--bg),var(--bg2));
+  font:15px/1.6 "Helvetica Neue",Arial,sans-serif;min-height:100vh}
+
+.stage{max-width:520px;margin:0 auto;padding:28px 16px 60px}
+.tab{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+
+/* ---- the watch ------------------------------------------------------- */
+.watch{display:flex;flex-direction:column;align-items:center}
+.strap{width:148px;background:
+    linear-gradient(90deg,var(--resin-lo),var(--resin) 18%,var(--resin-hi) 50%,var(--resin) 82%,var(--resin-lo));
+  position:relative}
+.strap-top{height:60px;border-radius:26px 26px 6px 6px}
+.strap-bottom{height:76px;border-radius:6px 6px 26px 26px}
+.holes{position:absolute;inset:14px 0 auto 0;display:block;height:8px;
+  background:radial-gradient(circle,var(--resin-lo) 2.6px,transparent 3px) 0 0/22px 8px repeat-x;
+  background-position:center}
+.buckle{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);
+  width:52px;height:20px;border:3px solid var(--resin-hi);border-radius:4px;opacity:.7}
+
+.case{position:relative;width:min(340px,86vw);
+  background:linear-gradient(150deg,var(--resin-hi),var(--resin) 30%,var(--resin-lo));
+  border-radius:40px/34px;padding:30px 26px;margin:-6px 0;
+  box-shadow:inset 0 2px 2px rgba(255,255,255,.14),inset 0 -5px 10px rgba(0,0,0,.6),
+    0 14px 30px rgba(0,0,0,.4);z-index:2}
+
+/* side buttons — decorative resin nubs */
+.btn{position:absolute;background:linear-gradient(var(--btn-hi),var(--btn));
+  color:var(--silk);font:700 7px/1 Arial,sans-serif;letter-spacing:.08em;
+  padding:5px 3px;border-radius:4px;box-shadow:0 2px 3px rgba(0,0,0,.5);
+  writing-mode:vertical-rl;text-orientation:mixed;user-select:none}
+.btn-tl{top:22px;left:-11px}
+.btn-bl{bottom:22px;left:-11px}
+.btn-tr{top:22px;right:-11px}
+.btn-br{bottom:22px;right:-11px}
+
+.bezel{background:linear-gradient(160deg,#363b45,var(--bezel) 40%,#1d2027);
+  border-radius:16px;padding:14px 16px 12px;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
+
+.print{color:var(--silk);text-align:center;font-family:Arial,sans-serif}
+.print-brand{font-weight:800;letter-spacing:.34em;font-size:15px;
+  padding-left:.34em;margin:0 0 1px}
+.print-sub{font-size:8px;letter-spacing:.24em;color:var(--silk-dim);margin-bottom:9px}
+.print-foot{display:flex;align-items:center;justify-content:space-between;
+  margin-top:9px;color:var(--silk-dim);font-size:7px;line-height:1.25;
+  letter-spacing:.1em;font-weight:700;text-align:left}
+.print-foot span:last-child{text-align:right}
+.wr-badge{color:var(--silk);border:1px solid var(--silk-dim);border-radius:10px;
+  padding:3px 7px;font-size:8px;letter-spacing:.05em}
+
+/* ---- the LCD --------------------------------------------------------- */
+.lcd{position:relative;width:100%;aspect-ratio:233/128;
+  background:linear-gradient(165deg,var(--lcd),var(--lcd-lo));
+  border-radius:7px;padding:12px 16px;
+  box-shadow:inset 0 0 0 2px #5f6b58,inset 0 3px 8px rgba(0,0,0,.4);
+  overflow:hidden}
+.lcd::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,rgba(255,255,255,.22),transparent 42%)}
+.readout{position:absolute;left:16px;right:16px;bottom:11px;
+  fill:var(--lcd-ink)}
+.readout.ghost{opacity:.08}
+.ro-wrap{position:absolute;inset:0;display:none}
+.lcd-head{position:absolute;top:11px;left:17px;right:17px;
+  display:flex;justify-content:space-between;align-items:center;
+  color:var(--lcd-ink);font:700 11px/1 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.12em}
+.lcd-head .tag{font-size:9px;opacity:.8;border:1.5px solid var(--lcd-ink);
+  border-radius:3px;padding:1px 4px}
+
+/* reveal the active readout + its head */
+#m-time:checked   ~ .watch .ro-time,
+#m-alarm:checked  ~ .watch .ro-alarm,
+#m-chrono:checked ~ .watch .ro-chrono,
+#m-dual:checked   ~ .watch .ro-dual{display:block}
+
+@media (prefers-reduced-motion:no-preference){
+  .blink{animation:blink 1s step-end infinite}
+}
+@keyframes blink{50%{opacity:0}}
+
+/* ---- mode nav (doubles as the physical mode cycle) ------------------- */
+.modes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+  max-width:340px;margin:22px auto 0;width:min(340px,86vw)}
+.mode{cursor:pointer;text-align:center;font:700 11px/1 Arial,sans-serif;
+  letter-spacing:.08em;color:var(--page-ink);background:var(--silk);
+  border:1px solid rgba(0,0,0,.25);border-radius:6px;padding:9px 2px;
+  box-shadow:0 2px 0 rgba(0,0,0,.25);user-select:none;transition:transform .06s}
+.mode:hover{background:#fff}
+.mode:active{transform:translateY(2px);box-shadow:0 0 0 rgba(0,0,0,.25)}
+#m-time:checked   ~ .modes .mode[for="m-time"],
+#m-alarm:checked  ~ .modes .mode[for="m-alarm"],
+#m-chrono:checked ~ .modes .mode[for="m-chrono"],
+#m-dual:checked   ~ .modes .mode[for="m-dual"]{
+  background:var(--lcd-ink);color:var(--lcd);border-color:var(--lcd-ink)}
+#m-time:focus-visible   ~ .modes .mode[for="m-time"],
+#m-alarm:focus-visible  ~ .modes .mode[for="m-alarm"],
+#m-chrono:focus-visible ~ .modes .mode[for="m-chrono"],
+#m-dual:focus-visible   ~ .modes .mode[for="m-dual"]{outline:2px solid var(--red);outline-offset:2px}
+
+/* ---- content panels -------------------------------------------------- */
+.panels{max-width:420px;margin:26px auto 0}
+.panel{display:none}
+#m-time:checked   ~ .panels .p-time,
+#m-alarm:checked  ~ .panels .p-alarm,
+#m-chrono:checked ~ .panels .p-chrono,
+#m-dual:checked   ~ .panels .p-dual{display:block}
+.panel h2{margin:0 0 10px;font-size:19px;letter-spacing:.02em;
+  display:flex;align-items:center;gap:10px}
+.panel h2::before{content:"";width:12px;height:12px;background:var(--lcd-ink);
+  box-shadow:0 0 0 3px var(--lcd);flex:none}
+.panel p{margin:0 0 20px;max-width:46ch}
+
+.spec{margin:0;display:grid;gap:1px;background:rgba(0,0,0,.18);
+  border:1px solid rgba(0,0,0,.18)}
+.spec>div{display:flex;justify-content:space-between;gap:12px;
+  background:var(--silk);padding:9px 12px}
+.spec dt{margin:0;font-weight:700;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--page-ink);opacity:.7}
+.spec dd{margin:0;font-size:13px;text-align:right}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .spec>div{background:#1b1e23}}
+:root[data-theme="dark"] .spec>div{background:#1b1e23}
+
+.colophon{text-align:center;margin:40px auto 0;max-width:420px;
+  font:700 9px/1.6 Arial,sans-serif;letter-spacing:.18em;opacity:.55}
+
+@media (max-width:360px){
+  .print-brand{letter-spacing:.2em}
+  .modes{gap:5px}
+  .mode{font-size:10px;letter-spacing:.04em}
+}

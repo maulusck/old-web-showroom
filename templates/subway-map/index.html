@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vellmorrow Transit</title>
+<!-- subway-map — Harry Beck style schematic metro diagram. Fictional system.
+     Lines + nodes are hand-written inline SVG; stations/lines are the content. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="cartouche">
+    <div class="rondel" aria-hidden="true"><span></span></div>
+    <div class="cart-text">
+      <h1 data-slot="site-name">Vellmorrow Transit</h1>
+      <p class="tagline" data-slot="tagline">City Rail Diagram · not to geographic scale</p>
+    </div>
+  </header>
+
+  <nav aria-label="Featured stops">
+    <a href="#stops" data-slot="nav-item" aria-current="page">◉ Kestrel Cross</a>
+    <a href="#stops" data-slot="nav-item">Elderford Junction</a>
+    <a href="#stops" data-slot="nav-item">Beacon Hill</a>
+    <a href="#stops" data-slot="nav-item">Candleford</a>
+    <a href="#stops" data-slot="nav-item">Marrow Quay</a>
+    <a href="#stops" data-slot="nav-item">Pelican Yard</a>
+  </nav>
+
+  <div class="wrap">
+    <section class="intro">
+      <h2 data-slot="hero-title">Four lines. One crossing. Mind the gap.</h2>
+      <p data-slot="hero-body">The diagram below is schematic: every corner is a true
+      45° or right angle, every station a tick on the run. Distances lie on purpose so
+      the junctions tell the truth. You are standing at Kestrel Cross — the only point
+      where every colour meets.</p>
+    </section>
+
+    <figure class="map">
+      <svg viewBox="0 0 720 500" role="img"
+           aria-label="Schematic diagram of the Vellmorrow Transit network: four coloured lines meeting at interchange rings.">
+        <title>Vellmorrow Transit network diagram</title>
+
+        <!-- ROUTE LINES (45°/90° only) -->
+        <polyline class="line harbour"    points="60,120 240,120 360,240 660,240"/>
+        <polyline class="line vermillion" points="360,60 360,240 480,360 660,360"/>
+        <polyline class="line orchard"    points="120,60 240,180 240,420 540,420"/>
+        <polyline class="line lantern"    points="60,300 240,300 360,180 600,180"/>
+
+        <!-- REGULAR STATION TICKS (white dots) -->
+        <g class="dot harbour">
+          <circle cx="60" cy="120" r="5"/><circle cx="120" cy="120" r="5"/>
+          <circle cx="300" cy="180" r="5"/><circle cx="420" cy="240" r="5"/>
+          <circle cx="480" cy="240" r="5"/><circle cx="540" cy="240" r="5"/>
+          <circle cx="600" cy="240" r="5"/><circle cx="660" cy="240" r="5"/>
+        </g>
+        <g class="dot vermillion">
+          <circle cx="360" cy="60" r="5"/><circle cx="360" cy="120" r="5"/>
+          <circle cx="420" cy="300" r="5"/><circle cx="480" cy="360" r="5"/>
+          <circle cx="540" cy="360" r="5"/><circle cx="600" cy="360" r="5"/>
+          <circle cx="660" cy="360" r="5"/>
+        </g>
+        <g class="dot orchard">
+          <circle cx="120" cy="60" r="5"/><circle cx="240" cy="240" r="5"/>
+          <circle cx="240" cy="360" r="5"/><circle cx="300" cy="420" r="5"/>
+          <circle cx="360" cy="420" r="5"/><circle cx="420" cy="420" r="5"/>
+          <circle cx="480" cy="420" r="5"/><circle cx="540" cy="420" r="5"/>
+        </g>
+        <g class="dot lantern">
+          <circle cx="60" cy="300" r="5"/><circle cx="120" cy="300" r="5"/>
+          <circle cx="420" cy="180" r="5"/><circle cx="480" cy="180" r="5"/>
+          <circle cx="540" cy="180" r="5"/><circle cx="600" cy="180" r="5"/>
+        </g>
+
+        <!-- INTERCHANGE RINGS -->
+        <circle class="interchange" cx="180" cy="120" r="10"/>
+        <circle class="interchange" cx="360" cy="180" r="10"/>
+        <circle class="interchange" cx="240" cy="300" r="10"/>
+
+        <!-- YOU ARE HERE — Kestrel Cross -->
+        <circle class="here-pulse" cx="360" cy="240" r="13"/>
+        <circle class="interchange here" cx="360" cy="240" r="10"/>
+
+        <!-- STATION LABELS (diagram typography) -->
+        <g class="lbl">
+          <text x="120" y="48" text-anchor="middle">Garland Hill</text>
+          <text x="360" y="48" text-anchor="middle">North Gate</text>
+          <text x="48" y="124" text-anchor="end">Saltmarket</text>
+          <text x="196" y="110" text-anchor="start">Elderford Junction</text>
+          <text x="372" y="172" text-anchor="start">Candleford</text>
+          <text x="612" y="184" text-anchor="start">Copperworks</text>
+          <text x="376" y="236" text-anchor="start" class="big">Kestrel Cross</text>
+          <text x="672" y="244" text-anchor="end">Marrow Quay</text>
+          <text x="226" y="304" text-anchor="end">Beacon Hill</text>
+          <text x="48" y="304" text-anchor="end">Tidelock</text>
+          <text x="672" y="382" text-anchor="end">Foundry End</text>
+          <text x="540" y="442" text-anchor="middle">Pelican Yard</text>
+        </g>
+        <text class="here-tag" x="376" y="258" text-anchor="start">▸ you are here</text>
+      </svg>
+    </figure>
+
+    <section class="key" id="stops">
+      <h2 class="key-head">Route Key</h2>
+      <ul class="lines">
+        <li>
+          <h3 data-slot="card-title">Harbour Line</h3>
+          <p data-slot="card-body">Saltmarket to Marrow Quay, tracing the old waterfront.
+          Trains every four minutes; last boat-connection at half eleven.</p>
+        </li>
+        <li>
+          <h3 data-slot="card-title">Vermillion Line</h3>
+          <p data-slot="card-body">The spine — North Gate down through the market to the
+          foundries at Foundry End. Steepest grade on the network; hold the rail.</p>
+        </li>
+        <li>
+          <h3 data-slot="card-title">Orchard Line</h3>
+          <p data-slot="card-body">Garland Hill to Pelican Yard, the long green way round
+          the river flats. Runs above ground past the allotments in summer.</p>
+        </li>
+        <li>
+          <h3 data-slot="card-title">Lantern Line</h3>
+          <p data-slot="card-body">Tidelock through the theatre district to Copperworks.
+          Night service only — follow the lamps, not the clock.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="stops">
+      <h2 class="key-head">Featured Stops</h2>
+      <ul class="stop-list">
+        <li class="is-here">
+          <h3 data-slot="card-title">Kestrel Cross ◉</h3>
+          <p data-slot="card-body">Every line meets here under the glass vault. Four
+          platforms, one clock, and a busker who only knows three songs.</p>
+        </li>
+        <li>
+          <h3 data-slot="card-title">Elderford Junction</h3>
+          <p data-slot="card-body">Change for Harbour and Orchard. Cross the footbridge;
+          the eastbound platform is the one that smells of coffee.</p>
+        </li>
+        <li>
+          <h3 data-slot="card-title">Candleford</h3>
+          <p data-slot="card-body">Vermillion meets Lantern beneath the chandlery. Mind
+          the low arch between the running lamps.</p>
+        </li>
+        <li>
+          <h3 data-slot="card-title">Beacon Hill</h3>
+          <p data-slot="card-body">Orchard and Lantern, highest stop on the map. On a
+          clear night you can see the whole diagram light up below.</p>
+        </li>
+      </ul>
+    </section>
+
+    <footer data-slot="footer">&copy; 1972–2026 Vellmorrow Transit Authority · Keep to the left · Diagram not to scale</footer>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

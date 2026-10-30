@@ -123,6 +123,14 @@ const T=[
  {s:"hypercard",     n:"HyperCard",           d:"1-bit Mac stack — cards, link buttons, Home/Prev/Next", done:true},
  {s:"jukebox",       n:"Jukebox",             d:"Wurlitzer selector — title strips, chrome, chasing bulbs", done:true},
  {s:"comic-book",    n:"Comic Book",          d:"Bronze-age page — panels, balloons, halftone, KRAKOW!", done:true},
+ {s:"test-card",     n:"Test Card",           d:"Broadcast standby — colour bars, grid, ident clock", done:true},
+ {s:"casio-watch",   n:"Casio F-91W",         d:"Digital watch LCD — 7-seg, MODE/LIGHT, mode tabs", done:true},
+ {s:"pinball-backglass",n:"Pinball Backglass",d:"Lit backglass — score reels, feature lamps, TILT", done:true},
+ {s:"encarta",       n:"CD-ROM Encyclopedia", d:"90s Encarta — article tree, media panes, narration", done:true},
+ {s:"atari-2600",    n:"Atari 2600",          d:"Woodgrain console + TV — fat-pixel SELECT GAME", done:true},
+ {s:"polaroid",      n:"Polaroid Wall",       d:"Instant photos on cork — frames, marker captions", done:true},
+ {s:"dot-matrix-receipt",n:"Dot-Matrix Printout",d:"Fanfold invoice — sprocket strips, green bars", done:true},
+ {s:"subway-map",    n:"Transit Map",         d:"Beck-style diagram — coloured lines, interchanges", done:true},
 ];
 const shown=T.filter(t=>t.s[0]!=="_");
 document.getElementById("floor").innerHTML=shown.map((t,i)=>{

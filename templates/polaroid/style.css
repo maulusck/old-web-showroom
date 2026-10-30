@@ -1,0 +1,137 @@
+/* Polaroid — instant photos pinned to a corkboard. One stylesheet, no JS. */
+:root{
+  --cork:#c9a267; --cork-dk:#a67c45; --frame:#fbfaf5; --frame-dk:#e7e2d4;
+  --ink:#2c2824; --marker:#1a3a6b; --faded:#6b6456; --pin:#c0392b;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --cork:#3a3228; --cork-dk:#2a241c; --frame:#eae5d8; --frame-dk:#cfc9ba;
+  --ink:#201c18; --marker:#24406f; --faded:#5a5446; --pin:#d14b3c;
+}}
+:root[data-theme="dark"]{
+  --cork:#3a3228; --cork-dk:#2a241c; --frame:#eae5d8; --frame-dk:#cfc9ba;
+  --ink:#201c18; --marker:#24406f; --faded:#5a5446; --pin:#d14b3c;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif;line-height:1.5;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0,0,0,.05) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 65%, rgba(0,0,0,.05) 0 2px, transparent 3px),
+    radial-gradient(circle at 45% 85%, rgba(255,255,255,.06) 0 2px, transparent 3px),
+    linear-gradient(135deg,var(--cork),var(--cork-dk));
+  background-size:140px 140px,190px 190px,160px 160px,cover;
+}
+
+/* label-maker masthead, like a strip stuck to the board */
+.masthead{text-align:center;padding:44px 20px 8px;max-width:620px;margin:0 auto}
+.masthead h1{
+  display:inline-block;margin:0;padding:10px 22px;
+  font-family:"Courier New",monospace;font-weight:700;letter-spacing:.06em;
+  font-size:clamp(26px,6vw,46px);color:var(--frame);
+  background:var(--ink);border-radius:3px;transform:rotate(-1.5deg);
+  box-shadow:3px 4px 7px rgba(0,0,0,.35);
+}
+.tagline{margin:18px 0 0;font-style:italic;color:#3a2f1c}
+.hero-note{margin:10px auto 0;max-width:46ch;font-size:15px;color:#352b19}
+
+/* the wall */
+.board{
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;
+  gap:14px 10px;max-width:960px;margin:0 auto;padding:30px 18px 70px;
+}
+
+/* a snapshot */
+.photo{
+  position:relative;margin:0;width:230px;
+  background:var(--frame);
+  padding:12px 12px 52px;            /* thick bottom border */
+  border-radius:2px;
+  box-shadow:0 1px 1px rgba(0,0,0,.2), 4px 7px 14px rgba(0,0,0,.33);
+  transition:transform .18s ease, box-shadow .18s ease, z-index 0s;
+}
+.photo:hover,.photo:focus-within{
+  transform:rotate(0) scale(1.04);z-index:5;
+  box-shadow:0 2px 2px rgba(0,0,0,.2), 7px 12px 22px rgba(0,0,0,.4);
+}
+/* scattered rotations + gentle overlap */
+.photo:nth-child(5n+1){transform:rotate(-4deg)}
+.photo:nth-child(5n+2){transform:rotate(3deg);margin-top:26px}
+.photo:nth-child(5n+3){transform:rotate(-2deg);margin-top:-8px}
+.photo:nth-child(5n+4){transform:rotate(5deg);margin-top:34px}
+.photo:nth-child(5n+5){transform:rotate(-3deg);margin-top:12px}
+
+/* the developing window — faked scenes, pure CSS */
+.window{
+  aspect-ratio:1/1;width:100%;border-radius:1px;
+  box-shadow:inset 0 0 14px rgba(0,0,0,.35);
+  background:#555;
+}
+.scene-sunset{background:
+  radial-gradient(circle at 50% 78%, #ffe08a 0 7%, #ff9e4f 16%, transparent 40%),
+  linear-gradient(#f4a65a 0 52%, #c76b3e 52% 60%, #7b4a33 60%)}
+.scene-meadow{background:
+  radial-gradient(circle at 78% 24%, #fff7c2 0 9%, transparent 22%),
+  linear-gradient(#bfe3f0 0 46%, #8fbf6a 46% 62%, #5e8f44 62%)}
+.scene-pool{background:
+  repeating-linear-gradient(115deg, rgba(255,255,255,.22) 0 8px, transparent 8px 22px),
+  linear-gradient(160deg,#6fd0d8,#2f93ad 70%,#1f6b86)}
+.scene-city{background:
+  linear-gradient(90deg,#3a3350 0 14%,#2d2740 14% 20%,#413a58 20% 33%,#2a2440 33% 44%,#4a4262 44% 60%,#2d2740 60% 72%,#3f3856 72%),
+  linear-gradient(#f2a9b8 0 40%,#8a6f9c 40%)}
+.scene-forest{background:
+  linear-gradient(#dfe7e2 0 30%, transparent 30%),
+  radial-gradient(circle at 30% 68%, #3f6b4a 0 20%, transparent 21%),
+  radial-gradient(circle at 62% 74%, #35603f 0 24%, transparent 25%),
+  linear-gradient(#c6d6cc,#6f936f)}
+.scene-snow{background:
+  radial-gradient(circle at 60% 30%, #fff 0 6%, transparent 18%),
+  linear-gradient(#d8e3ec 0 64%, #eef3f6 64%)}
+.scene-fair{background:
+  radial-gradient(circle at 25% 30%, #ffd1e8 0 5%, transparent 12%),
+  radial-gradient(circle at 70% 22%, #c9b3ff 0 5%, transparent 12%),
+  radial-gradient(circle at 48% 48%, #ffe49a 0 4%, transparent 10%),
+  linear-gradient(#5b3a6e,#2b2047)}
+.scene-dusk{background:
+  radial-gradient(circle at 50% 20%, #ffc98a 0 6%, transparent 24%),
+  linear-gradient(#5a6ea8 0 40%, #39416e 40% 58%, #20243f 58%)}
+
+/* marker caption */
+figcaption{
+  position:absolute;left:14px;right:12px;bottom:10px;
+  font-family:"Comic Sans MS","Bradley Hand","Segoe Print",cursive;
+  color:var(--marker);text-align:center;line-height:1.25;
+}
+.title{display:block;font-weight:700;font-size:15px}
+.body{display:block;font-size:11.5px;color:var(--faded);margin-top:1px}
+.date{display:block;font-size:11px;color:var(--pin);margin-top:3px;transform:rotate(-2deg)}
+
+/* fasteners */
+.photo[class*="pin-"]::after{
+  content:"";position:absolute;top:-9px;left:50%;width:17px;height:17px;
+  margin-left:-8px;border-radius:50%;
+  background:radial-gradient(circle at 36% 32%, #fff6 0 18%, var(--pinc) 40%, #0005 100%);
+  box-shadow:1px 3px 4px rgba(0,0,0,.4);
+}
+.pin-red{--pinc:#c0392b}.pin-blue{--pinc:#2c6fb0}
+.pin-yellow{--pinc:#d4a017}
+.photo[class*="tape-"]::before{
+  content:"";position:absolute;width:62px;height:22px;top:-11px;left:50%;
+  margin-left:-31px;background:rgba(222,215,180,.55);
+  border-left:1px solid rgba(255,255,255,.4);border-right:1px solid rgba(0,0,0,.08);
+  box-shadow:0 1px 2px rgba(0,0,0,.15);transform:rotate(-4deg);
+}
+.tape-tl::before{left:12px;margin-left:0;transform:rotate(-24deg)}
+.tape-tr::before{left:auto;right:12px;margin-left:0;transform:rotate(22deg)}
+.tape-dbl::before{width:50px;margin-left:-25px;transform:rotate(0)}
+
+footer{
+  text-align:center;color:var(--frame);font-family:"Courier New",monospace;
+  font-size:12px;letter-spacing:.04em;padding:10px 16px 40px;
+  text-shadow:1px 1px 2px rgba(0,0,0,.5);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .photo{transition:none}
+  .photo:hover,.photo:focus-within{transform:none;scale:1}
+}

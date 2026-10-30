@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbis — Aurora Borealis</title>
+<!-- encarta — 90s CD-ROM multimedia encyclopedia. index.html = an article;
+     article2.html cross-references it; both share style.css. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<div class="out">
+
+  <div class="caption">
+    <svg class="disc" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+      <circle cx="11" cy="11" r="10" fill="#dfe6e6" stroke="#0a6b6b"/>
+      <circle cx="11" cy="11" r="9" fill="none" stroke="#9fb9b9"/>
+      <circle cx="11" cy="11" r="3.4" fill="#0a6b6b"/>
+      <circle cx="11" cy="11" r="1.3" fill="#dfe6e6"/>
+    </svg>
+    <h1 data-slot="site-name">Orbis — The Interactive Encyclopedia '97</h1>
+    <span class="ver">CD-ROM Edition</span>
+    <span class="winbtns" aria-hidden="true"><span>_</span><span>&#9633;</span><span>&times;</span></span>
+  </div>
+
+  <div class="menu" aria-hidden="true">
+    <span><u>F</u>ile</span><span><u>E</u>dit</span><span><u>V</u>iew</span>
+    <span><u>G</u>o</span><span><u>T</u>ools</span><span><u>H</u>elp</span>
+  </div>
+
+  <div class="toolbar out">
+    <span class="tool">&#9664; Back</span>
+    <span class="tool">Forward &#9654;</span>
+    <span class="tool">&#8962; Contents</span>
+    <span class="tool">&#128269; Find</span>
+    <span class="tool">&#9733; Bookmark</span>
+    <span class="tool">&#128424; Print</span>
+  </div>
+
+  <div class="body">
+    <aside class="side">
+      <form class="search out" onsubmit="return false">
+        <label for="q" data-slot="nav-item">Search the Library</label>
+        <div class="row">
+          <input id="q" type="search" placeholder="type a topic…" aria-label="Search topics">
+          <span class="tool">Go</span>
+        </div>
+      </form>
+
+      <nav class="tree in" aria-label="Article index">
+        <ul>
+          <li><div class="cat" data-slot="nav-item">Earth &amp; Sky</div>
+            <ul>
+              <li><a href="index.html" aria-current="page" data-slot="nav-item">Aurora Borealis</a></li>
+              <li><a href="article2.html" data-slot="nav-item">Solar Wind</a></li>
+              <li><a href="#" data-slot="nav-item">Magnetosphere</a></li>
+              <li><a href="#" data-slot="nav-item">Noctilucent Clouds</a></li>
+            </ul>
+          </li>
+          <li><div class="cat" data-slot="nav-item">Physical Sciences</div>
+            <ul>
+              <li><a href="#" data-slot="nav-item">Plasma, States of</a></li>
+              <li><a href="#" data-slot="nav-item">Spectroscopy</a></li>
+              <li><a href="#" data-slot="nav-item">Geomagnetism</a></li>
+            </ul>
+          </li>
+          <li><div class="cat" data-slot="nav-item">Exploration</div>
+            <ul>
+              <li><a href="#" data-slot="nav-item">Fram Expedition</a></li>
+              <li><a href="#" data-slot="nav-item">Polar Year, International</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <article class="article in">
+      <p class="crumb">Earth &amp; Sky &rsaquo; Atmospheric Phenomena &rsaquo; Aurora Borealis</p>
+      <h2 data-slot="card-title">Aurora Borealis</h2>
+      <p class="pron" data-slot="card-body">[aw-ROR-uh bor-ee-AL-is] &middot; also &ldquo;the Northern Lights&rdquo;</p>
+
+      <figure class="media">
+        <span class="frame">
+          <svg viewBox="0 0 258 150" role="img" aria-label="Illustration of green and violet auroral curtains over a dark horizon">
+            <rect width="258" height="150" fill="#0b1526"/>
+            <circle cx="40" cy="26" r="1" fill="#cfe"/><circle cx="96" cy="18" r="1.2" fill="#cfe"/>
+            <circle cx="150" cy="30" r="1" fill="#cfe"/><circle cx="210" cy="20" r="1.3" fill="#cfe"/>
+            <circle cx="230" cy="44" r="1" fill="#cfe"/><circle cx="72" cy="40" r="1" fill="#cfe"/>
+            <path d="M8 120 C40 60 60 56 86 108 C104 150 120 70 140 104 C160 140 176 58 200 100 C220 136 236 70 252 118"
+                  fill="none" stroke="#56f0a8" stroke-width="10" opacity=".85"/>
+            <path d="M8 120 C40 60 60 56 86 108 C104 150 120 70 140 104 C160 140 176 58 200 100 C220 136 236 70 252 118"
+                  fill="none" stroke="#b08cff" stroke-width="3" opacity=".6"/>
+            <rect y="132" width="258" height="18" fill="#060c16"/>
+            <path d="M0 136 L40 130 L78 138 L120 128 L170 139 L210 131 L258 137 L258 150 L0 150 Z" fill="#101c30"/>
+          </svg>
+        </span>
+        <figcaption class="cap" data-slot="card-body">Plate 1. Discrete auroral curtains, photographed near Tromsø, Norway. Oxygen gives the dominant green; nitrogen edges the fringe violet.</figcaption>
+        <button type="button" class="play">
+          <span class="tri">&#9654;</span> Play narration (0:48)
+          <span class="bar" aria-hidden="true"><i></i></span>
+        </button>
+      </figure>
+
+      <p data-slot="card-body">The <strong>aurora borealis</strong> is a luminous display in the night sky of high northern latitudes, produced when charged particles streaming from the Sun collide with gases in the upper atmosphere. Each collision nudges an atom into an excited state; as the atom settles, it releases a single quiet packet of light. A whole sky of them becomes a curtain that ripples, folds, and fades over minutes.</p>
+
+      <p data-slot="card-body">The colours are a fingerprint of altitude and gas. Oxygen glows a soft green roughly 100 kilometres up and a rare, deep red higher still; nitrogen rims the lower edges in blue and violet. Because the particles are funnelled by Earth's magnetic field, the display crowds into an oval ring centred on the geomagnetic pole, brightest when the Sun is restless.</p>
+
+      <h3 data-slot="card-body">Why it forms a ring</h3>
+      <p data-slot="card-body">Earth behaves like a vast bar magnet. The solar wind cannot easily cross its field lines, so incoming particles are steered toward the two magnetic poles, where the field dips down into the atmosphere. The result is the <em>auroral oval</em> — a halo some 3,000 kilometres across that thickens and drifts equatorward during magnetic storms, which is why the lights are occasionally seen far to the south.</p>
+
+      <figure class="media" style="float:left;margin:0 16px 12px 0">
+        <span class="frame" style="background:#f7f5ee">
+          <svg viewBox="0 0 258 150" role="img" aria-label="Bar chart of nightly auroral activity by month, peaking at the equinoxes">
+            <rect width="258" height="150" fill="#f7f5ee"/>
+            <line x1="34" y1="12" x2="34" y2="126" stroke="#5a5e62"/>
+            <line x1="34" y1="126" x2="246" y2="126" stroke="#5a5e62"/>
+            <g fill="#0a6b6b">
+              <rect x="44"  y="70" width="14" height="56"/>
+              <rect x="62"  y="48" width="14" height="78"/>
+              <rect x="80"  y="36" width="14" height="90"/>
+              <rect x="98"  y="60" width="14" height="66"/>
+              <rect x="116" y="82" width="14" height="44"/>
+              <rect x="134" y="96" width="14" height="30"/>
+              <rect x="152" y="84" width="14" height="42"/>
+              <rect x="170" y="58" width="14" height="68"/>
+              <rect x="188" y="34" width="14" height="92"/>
+              <rect x="206" y="50" width="14" height="76"/>
+              <rect x="224" y="74" width="14" height="52"/>
+            </g>
+            <text x="10" y="20" font-size="9" fill="#4a4f52">hrs</text>
+            <text x="34" y="142" font-size="9" fill="#4a4f52">J  F  M  A  M  J  J  A  S  O  N</text>
+          </svg>
+        </span>
+        <figcaption class="cap" data-slot="card-body">Chart 1. Average hours of visible aurora per month at 68&deg;N. The twin peaks fall near the March and September equinoxes.</figcaption>
+      </figure>
+
+      <h3 data-slot="card-body">A history of watching</h3>
+      <p data-slot="card-body">Long before the physics was known, the lights were read as omens and stories. Norse sailors called them the glint of the Valkyries' armour; Sámi herders hushed their children beneath them. The Italian name <em>aurora</em> borrows the Roman goddess of dawn, and <em>borealis</em> the north wind Boreas — a label fixed by Galileo's circle in the 1600s. Only in the twentieth century did instruments on the ground and, later, satellites overhead tie the glow firmly to the Sun.</p>
+
+      <section class="seealso out">
+        <h3 data-slot="nav-item">See also</h3>
+        <ul>
+          <li><a href="article2.html" data-slot="nav-item">Solar Wind</a> — the particle stream that powers the display</li>
+          <li><a href="#" data-slot="nav-item">Magnetosphere</a> — Earth's protective magnetic cavity</li>
+          <li><a href="#" data-slot="nav-item">Spectroscopy</a> — how the colours are decoded</li>
+        </ul>
+      </section>
+
+      <p style="font-size:11px;color:var(--dim);margin-top:14px" data-slot="card-body">&copy; 1997 Orbis Media Corporation. Article cross-referenced to 4 topics, 2 charts, 1 narration. Press F1 for the index.</p>
+    </article>
+  </div>
+
+  <div class="status">
+    <span class="cell grow" data-slot="nav-item"><b>Ready.</b> Article 1 of 11,402 &middot; Topic: Aurora Borealis</span>
+    <span class="cell" data-slot="nav-item">CD-ROM Drive [D:]</span>
+    <span class="cell" data-slot="nav-item">Disc 1 of 2</span>
+  </div>
+
+</div>
+</div>
+<script src="../../edit.js" defer></script>
+</body>
+</html>

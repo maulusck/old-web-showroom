@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casio F-91W</title>
+<!-- casio-watch — the 1991 F-91W resin digital watch. Grey-green LCD, 7-seg
+     digits built in CSS + inline SVG. Modes (TIME/ALARM/CHRONO/DUAL) are the
+     nav, switched with pure CSS radio tabs — no JS. System fonts only. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 7-segment glyph set, authored once, placed by <use> in every readout. -->
+<svg class="defs" aria-hidden="true" width="0" height="0">
+  <defs>
+    <!-- segment coords in a 46x80 cell: A top, G mid, D bottom; F/B upper
+         verticals, E/C lower verticals -->
+    <polygon id="sA" points="9,3 37,3 41,7 37,11 9,11 5,7"/>
+    <polygon id="sG" points="9,36 37,36 41,40 37,44 9,44 5,40"/>
+    <polygon id="sD" points="9,69 37,69 41,73 37,77 9,77 5,73"/>
+    <polygon id="sF" points="5,10 9,14 9,34 5,38 1,34 1,14"/>
+    <polygon id="sB" points="41,10 45,14 45,34 41,38 37,34 37,14"/>
+    <polygon id="sE" points="5,42 9,46 9,66 5,70 1,66 1,46"/>
+    <polygon id="sC" points="41,42 45,46 45,66 41,70 37,66 37,46"/>
+    <g id="d0"><use href="#sA"/><use href="#sB"/><use href="#sC"/><use href="#sD"/><use href="#sE"/><use href="#sF"/></g>
+    <g id="d1"><use href="#sB"/><use href="#sC"/></g>
+    <g id="d2"><use href="#sA"/><use href="#sB"/><use href="#sG"/><use href="#sE"/><use href="#sD"/></g>
+    <g id="d3"><use href="#sA"/><use href="#sB"/><use href="#sG"/><use href="#sC"/><use href="#sD"/></g>
+    <g id="d4"><use href="#sF"/><use href="#sG"/><use href="#sB"/><use href="#sC"/></g>
+    <g id="d5"><use href="#sA"/><use href="#sF"/><use href="#sG"/><use href="#sC"/><use href="#sD"/></g>
+    <g id="d6"><use href="#sA"/><use href="#sF"/><use href="#sG"/><use href="#sE"/><use href="#sC"/><use href="#sD"/></g>
+    <g id="d7"><use href="#sA"/><use href="#sB"/><use href="#sC"/></g>
+    <g id="d8"><use href="#sA"/><use href="#sB"/><use href="#sC"/><use href="#sD"/><use href="#sE"/><use href="#sF"/><use href="#sG"/></g>
+    <g id="d9"><use href="#sA"/><use href="#sB"/><use href="#sC"/><use href="#sD"/><use href="#sF"/><use href="#sG"/></g>
+    <g id="col"><circle cx="8" cy="30" r="4"/><circle cx="8" cy="54" r="4"/></g>
+  </defs>
+</svg>
+
+<main class="stage">
+  <!-- CSS tab state: these drive the LCD readout AND the panel below -->
+  <input class="tab" type="radio" name="mode" id="m-time" checked>
+  <input class="tab" type="radio" name="mode" id="m-alarm">
+  <input class="tab" type="radio" name="mode" id="m-chrono">
+  <input class="tab" type="radio" name="mode" id="m-dual">
+
+  <div class="watch">
+    <div class="strap strap-top" aria-hidden="true"><span class="holes"></span></div>
+
+    <div class="case">
+      <span class="btn btn-tl">LIGHT</span>
+      <span class="btn btn-bl">MODE</span>
+      <span class="btn btn-tr">ADJUST</span>
+      <span class="btn btn-br">SPLIT</span>
+
+      <div class="bezel">
+        <div class="print print-brand" data-slot="site-name">CASIO</div>
+        <div class="print print-sub" data-slot="tagline">ALARM CHRONO · F-91W</div>
+
+        <div class="lcd" role="img" aria-label="Digital watch display">
+          <!-- ghost "all segments on" layer, the real LCD tell -->
+          <svg class="readout ghost" viewBox="0 0 232 80" aria-hidden="true">
+            <use href="#d8" x="0"/><use href="#d8" x="54"/>
+            <use href="#col" x="108"/>
+            <use href="#d8" x="130"/><use href="#d8" x="184"/>
+          </svg>
+
+          <div class="ro-wrap ro-time">
+            <div class="lcd-head"><span class="day">FRI</span><span class="tag">PM</span><span class="date">10-30</span></div>
+            <svg class="readout" viewBox="0 0 232 80" aria-label="10:58">
+              <use href="#d1" x="0"/><use href="#d0" x="54"/>
+              <use href="#col" x="108" class="blink"/>
+              <use href="#d5" x="130"/><use href="#d8" x="184"/>
+            </svg>
+          </div>
+
+          <div class="ro-wrap ro-alarm">
+            <div class="lcd-head"><span class="day">AL</span><span class="tag">ON</span><span class="date">DAILY</span></div>
+            <svg class="readout" viewBox="0 0 232 80" aria-label="6:30">
+              <use href="#d0" x="0"/><use href="#d6" x="54"/>
+              <use href="#col" x="108"/>
+              <use href="#d3" x="130"/><use href="#d0" x="184"/>
+            </svg>
+          </div>
+
+          <div class="ro-wrap ro-chrono">
+            <div class="lcd-head"><span class="day">CHR</span><span class="tag">LAP 3</span><span class="date">RUN</span></div>
+            <svg class="readout" viewBox="0 0 232 80" aria-label="12:45">
+              <use href="#d1" x="0"/><use href="#d2" x="54"/>
+              <use href="#col" x="108" class="blink"/>
+              <use href="#d4" x="130"/><use href="#d5" x="184"/>
+            </svg>
+          </div>
+
+          <div class="ro-wrap ro-dual">
+            <div class="lcd-head"><span class="day">T-2</span><span class="tag">GMT</span><span class="date">TOKYO</span></div>
+            <svg class="readout" viewBox="0 0 232 80" aria-label="23:58">
+              <use href="#d2" x="0"/><use href="#d3" x="54"/>
+              <use href="#col" x="108"/>
+              <use href="#d5" x="130"/><use href="#d8" x="184"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="print print-foot">
+          <span>WATER <br>RESIST</span>
+          <span class="wr-badge">50M</span>
+          <span>QUARTZ <br>MODULE 593</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="strap strap-bottom" aria-hidden="true"><span class="buckle"></span></div>
+  </div>
+
+  <!-- the mode buttons double as nav; labels toggle the radios above -->
+  <nav class="modes" aria-label="Watch modes">
+    <label class="mode" for="m-time"   data-slot="nav-item">TIME</label>
+    <label class="mode" for="m-alarm"  data-slot="nav-item">ALARM</label>
+    <label class="mode" for="m-chrono" data-slot="nav-item">CHRONO</label>
+    <label class="mode" for="m-dual"   data-slot="nav-item">DUAL-T</label>
+  </nav>
+
+  <div class="panels">
+    <article class="panel p-time">
+      <h2 data-slot="card-title">Timekeeping</h2>
+      <p data-slot="card-body">Hold a steady second since 1991. The hourly beep is off by
+      default, the hands never were — because there are none. Accurate to ±30 seconds a
+      month, which on a watch this cheap feels like a small miracle. Press MODE to cycle;
+      LIGHT burns the little green bulb for exactly one impatient second.</p>
+      <dl class="spec">
+        <div><dt data-slot="card-title">Accuracy</dt><dd data-slot="card-body">±30 sec / month</dd></div>
+        <div><dt data-slot="card-title">Format</dt><dd data-slot="card-body">12h / 24h, auto-calendar to 2099</dd></div>
+        <div><dt data-slot="card-title">Battery</dt><dd data-slot="card-body">CR2016 · about seven stubborn years</dd></div>
+      </dl>
+    </article>
+
+    <article class="panel p-alarm">
+      <h2 data-slot="card-title">Daily Alarm</h2>
+      <p data-slot="card-body">One alarm. One beep pattern. No snooze, no mercy, no app.
+      Set it with ADJUST, confirm with MODE, then forget it exists until 06:30 reminds you
+      loudly that you made a decision last night. The tiny bell glyph lights when armed —
+      the only commitment this watch asks of you.</p>
+      <dl class="spec">
+        <div><dt data-slot="card-title">Alarm</dt><dd data-slot="card-body">Single daily · 20-second buzz</dd></div>
+        <div><dt data-slot="card-title">Signal</dt><dd data-slot="card-body">Hourly time-beep, toggleable</dd></div>
+        <div><dt data-slot="card-title">Volume</dt><dd data-slot="card-body">Louder than you remember</dd></div>
+      </dl>
+    </article>
+
+    <article class="panel p-chrono">
+      <h2 data-slot="card-title">Stopwatch</h2>
+      <p data-slot="card-body">1/100-second chronograph that counts for an hour before it
+      shrugs and starts over. SPLIT freezes the lap without stopping the clock — the one
+      genuinely clever trick in a watch that cost less than lunch. Time your eggs, your
+      intervals, your excuses. It will not judge the result, only record it.</p>
+      <dl class="spec">
+        <div><dt data-slot="card-title">Resolution</dt><dd data-slot="card-body">1/100 second</dd></div>
+        <div><dt data-slot="card-title">Capacity</dt><dd data-slot="card-body">59' 59.99" elapsed</dd></div>
+        <div><dt data-slot="card-title">Modes</dt><dd data-slot="card-body">Net · Split · Lap</dd></div>
+      </dl>
+    </article>
+
+    <article class="panel p-dual">
+      <h2 data-slot="card-title">Dual Time</h2>
+      <p data-slot="card-body">A second time zone for the version of you that is somewhere
+      else. Home stays on the main line; the other city lives here, one button away, so you
+      always know whether it is polite to call. Set the offset once and it keeps both
+      honest — no roaming charges, no daylight-saving apology emails.</p>
+      <dl class="spec">
+        <div><dt data-slot="card-title">Zone</dt><dd data-slot="card-body">Independent 24h offset</dd></div>
+        <div><dt data-slot="card-title">Swap</dt><dd data-slot="card-body">Trade home ⇄ away instantly</dd></div>
+        <div><dt data-slot="card-title">Display</dt><dd data-slot="card-body">City tag + GMT marker</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <footer class="colophon" data-slot="footer">CASIO F-91W · MODULE 593 · MADE TO OUTLIVE THE OCCASION · EST. 1991</footer>
+</main>
+
+<script src="../../edit.js" defer></script>
+</body>
+</html>

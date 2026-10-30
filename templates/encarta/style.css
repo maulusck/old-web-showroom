@@ -1,0 +1,137 @@
+/* encarta — 90s CD-ROM multimedia encyclopedia. Teal desktop, grey Win9x
+   chrome, chunky bevels, an article tree and a boxed media pane. One sheet
+   themes every page. System sans only; inline-SVG media; offline on file://. */
+:root{
+  --desk:#008e8e;        /* teal "desktop" behind the window */
+  --face:#c3c7cb;        /* window grey */
+  --face-md:#d9dde1;
+  --face-lt:#ffffff;     /* bevel highlight */
+  --face-dk:#868a8e;     /* bevel shadow */
+  --face-dk2:#5a5e62;
+  --title:#0a6b6b;       /* teal caption bar */
+  --title2:#2ba3a3;
+  --ink:#121414;
+  --dim:#4a4f52;
+  --link:#0b48a8;        /* hyperlink blue */
+  --link-v:#6a2f9e;
+  --pane:#f7f5ee;        /* article paper */
+  --media:#0b1526;       /* media box night */
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --desk:#063a3a; --face:#2c3133; --face-md:#363c3f; --face-lt:#565d60;
+  --face-dk:#15181a; --face-dk2:#0c0e0f; --title:#0c5050; --title2:#148a8a;
+  --ink:#e6ece8; --dim:#9aa4a2; --link:#79b4ff; --link-v:#c79aff; --pane:#1b1f21;
+}}
+:root[data-theme="dark"]{
+  --desk:#063a3a; --face:#2c3133; --face-md:#363c3f; --face-lt:#565d60;
+  --face-dk:#15181a; --face-dk2:#0c0e0f; --title:#0c5050; --title2:#148a8a;
+  --ink:#e6ece8; --dim:#9aa4a2; --link:#79b4ff; --link-v:#c79aff; --pane:#1b1f21;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);
+  font:13px/1.45 "Segoe UI",Tahoma,Geneva,Verdana,"DejaVu Sans",sans-serif;
+  padding:14px;min-height:100vh}
+
+/* raised / sunken bevels — the whole visual language */
+.out{border:2px solid;border-color:var(--face-lt) var(--face-dk2) var(--face-dk2) var(--face-lt);
+  background:var(--face)}
+.in{border:2px solid;border-color:var(--face-dk2) var(--face-lt) var(--face-lt) var(--face-dk2)}
+
+/* the application window */
+.app{max-width:920px;margin:0 auto}
+.app>.out{display:flex;flex-direction:column}
+
+/* title / caption bar */
+.caption{display:flex;align-items:center;gap:8px;
+  background:linear-gradient(90deg,var(--title),var(--title2));
+  color:#fff;padding:4px 5px;margin:2px}
+.caption .disc{flex:0 0 auto;display:block}
+.caption h1{margin:0;font-size:14px;font-weight:700;letter-spacing:.02em;
+  text-shadow:1px 1px 0 rgba(0,0,0,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.caption .ver{margin-left:auto;font-size:11px;opacity:.85;white-space:nowrap}
+.winbtns{display:flex;gap:3px}
+.winbtns span{width:18px;height:16px;display:grid;place-items:center;
+  font:bold 11px/1 monospace;color:var(--ink);background:var(--face);
+  border:2px solid;border-color:var(--face-lt) var(--face-dk2) var(--face-dk2) var(--face-lt)}
+
+/* menu + toolbar */
+.menu{display:flex;gap:16px;padding:3px 8px;font-size:12px}
+.menu span u{text-decoration:underline}
+.toolbar{display:flex;gap:4px;flex-wrap:wrap;padding:4px;margin:0 2px 2px}
+.tool{background:var(--face);padding:4px 10px;font-size:12px;cursor:default;
+  border:2px solid;border-color:var(--face-lt) var(--face-dk2) var(--face-dk2) var(--face-lt)}
+.tool:active{border-color:var(--face-dk2) var(--face-lt) var(--face-lt) var(--face-dk2)}
+
+/* body: index tree + article */
+.body{display:flex;gap:6px;padding:0 4px 4px}
+.side{flex:0 0 232px;display:flex;flex-direction:column;gap:6px}
+@media(max-width:720px){.body{flex-direction:column}.side{flex-basis:auto}}
+
+.search{padding:7px;background:var(--face)}
+.search label{display:block;font-weight:700;font-size:12px;margin-bottom:4px}
+.search .row{display:flex;gap:4px}
+.search input{flex:1;min-width:0;background:var(--pane);color:var(--ink);
+  padding:4px 6px;font:inherit;font-size:12px;
+  border:2px solid;border-color:var(--face-dk2) var(--face-lt) var(--face-lt) var(--face-dk2)}
+.search .tool{flex:0 0 auto}
+
+.tree{background:var(--pane);color:var(--ink);padding:8px 6px;flex:1;overflow:auto;
+  font-size:12.5px}
+.tree ul{list-style:none;margin:0;padding:0}
+.tree>ul>li{margin:0 0 3px}
+.tree .cat{font-weight:700;color:var(--dim);letter-spacing:.02em;padding:3px 2px;
+  border-bottom:1px solid var(--face-dk)}
+.tree .cat::before{content:"\1F4D6  "}
+.tree li ul{padding:2px 0 6px 16px}
+.tree li ul li{padding:1px 0}
+.tree a{color:var(--link);text-decoration:none;display:inline-block}
+.tree a::before{content:"\25AA  ";color:var(--dim)}
+.tree a:hover{text-decoration:underline}
+.tree a[aria-current]{background:var(--title);color:#fff;padding:0 4px}
+.tree a[aria-current]::before{color:#fff}
+
+/* article pane */
+.article{flex:1;min-width:0;background:var(--pane);color:var(--ink);
+  padding:16px 20px 20px;overflow:auto}
+.crumb{font-size:11px;color:var(--dim);margin:0 0 6px}
+.article h2{margin:0 0 2px;font-size:23px;font-weight:700;letter-spacing:.01em}
+.pron{color:var(--dim);font-style:italic;font-size:12px;margin:0 0 14px}
+.article p{margin:0 0 11px}
+.article h3{font-size:14px;margin:18px 0 6px;color:var(--title);
+  border-bottom:1px solid var(--face-dk);padding-bottom:2px}
+.article a{color:var(--link)}
+.article a:visited{color:var(--link-v)}
+
+/* boxed media thumbnail — floats right, drops below on mobile */
+.media{float:right;width:258px;max-width:100%;margin:0 0 12px 16px;
+  background:var(--face);padding:5px}
+@media(max-width:520px){.media{float:none;width:100%;margin:0 0 14px}}
+.media .frame{background:var(--media);display:block}
+.media svg{display:block;width:100%;height:auto}
+.media .cap{font-size:11px;color:var(--dim);padding:5px 4px 2px;line-height:1.35}
+.media .play{display:flex;align-items:center;gap:6px;margin-top:5px;width:100%;
+  background:var(--face);padding:5px 8px;font:inherit;font-size:12px;cursor:pointer;color:var(--ink);
+  border:2px solid;border-color:var(--face-lt) var(--face-dk2) var(--face-dk2) var(--face-lt)}
+.media .play:active{border-color:var(--face-dk2) var(--face-lt) var(--face-lt) var(--face-dk2)}
+.media .play .tri{color:#0a6b6b;font-size:13px}
+.media .play .bar{flex:1;height:8px;background:var(--pane);
+  border:1px solid var(--face-dk2);overflow:hidden}
+.media .play .bar i{display:block;height:100%;width:34%;background:var(--title2);
+  animation:load 2.4s linear infinite}
+@keyframes load{0%{width:4%}100%{width:100%}}
+@media(prefers-reduced-motion:reduce){
+  .media .play .bar i{animation:none;width:34%}
+}
+
+/* see also box */
+.seealso{clear:both;margin:16px 0 4px;background:var(--face);padding:8px 10px}
+.seealso h3{margin:0 0 5px;border:0;color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.seealso ul{margin:0;padding-left:18px}
+.seealso li{margin:2px 0}
+
+/* status bar */
+.status{display:flex;gap:4px;padding:3px 4px 4px;font-size:11px;color:var(--dim)}
+.status .cell{background:var(--face);padding:3px 8px;
+  border:2px solid;border-color:var(--face-dk2) var(--face-lt) var(--face-lt) var(--face-dk2)}
+.status .grow{flex:1}
+.status .cell b{color:var(--ink);font-weight:700}

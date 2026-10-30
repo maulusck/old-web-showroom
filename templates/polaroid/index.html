@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shoebox</title>
+<!-- Polaroid — instant-photo wall / scrapbook. Corkboard, taped snapshots,
+     marker captions, faked developing gradients. System fonts + CSS gradients only. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="masthead">
+    <h1 data-slot="site-name">The Shoebox</h1>
+    <p class="tagline" data-slot="tagline">everything we meant to put in an album</p>
+    <p class="hero-note" data-slot="hero-body">Found it under the stairs — one roll of summer, half a roll of winter,
+    and a stack of doubles nobody ever mailed. Pinned them up before they faded any more.</p>
+  </header>
+
+  <main class="board" aria-label="Photo wall">
+
+    <figure class="photo tape-tl">
+      <div class="window scene-sunset" role="img" aria-label="Orange sunset over water"></div>
+      <figcaption>
+        <span class="title" data-slot="card-title">Last ferry, Cedar Point</span>
+        <span class="body" data-slot="card-body">we missed it by four minutes & didn't care</span>
+        <span class="date" data-slot="card-date">Aug '91</span>
+      </figcaption>
+    </figure>
+
+    <figure class="photo pin-red">
+      <div class="window scene-meadow" role="img" aria-label="Green hills under blue sky"></div>
+      <figcaption>
+        <span class="title" data-slot="card-title">Grandpa's back forty</span>
+        <span class="body" data-slot="card-body">he named all three of the cows after us</span>
+        <span class="date" data-slot="card-date">June '89</span>
+      </figcaption>
+    </figure>
+
+    <figure class="photo tape-dbl">
+      <div class="window scene-pool" role="img" aria-label="Turquoise pool water"></div>
+      <figcaption>
+        <span class="title" data-slot="card-title">Motel 6, highway 9</span>
+        <span class="body" data-slot="card-body">cannonball contest, Dad lost on purpose</span>
+        <span class="date" data-slot="card-date">July '93</span>
+      </figcaption>
+    </figure>
+
+    <figure class="photo pin-blue">
+      <div class="window scene-city" role="img" aria-label="City skyline at dusk"></div>
+      <figcaption>
+        <span class="title" data-slot="card-title">First apartment, 4B</span>
+        <span class="body" data-slot="card-body">no furniture yet, pizza on the floor</span>
+        <span class="date" data-slot="card-date">Sept '94</span>
+      </figcaption>
+    </figure>
+
+    <figure class="photo tape-tr">
+      <div class="window scene-forest" role="img" aria-label="Misty pine forest"></div>
+      <figcaption>
+        <span class="title" data-slot="card-title">Trailhead before the rain</span>
+        <span class="body" data-slot="card-body">wrong boots, right company</span>
+        <span class="date" data-slot="card-date">Oct '90</span>
+      </figcaption>
+    </figure>
+
+    <figure class="photo pin-yellow">
+      <div class="window scene-snow" role="img" aria-label="Pale winter morning"></div>
+      <figcaption>
+        <span class="title" data-slot="card-title">Snow day, Elm Street</span>
+        <span class="body" data-slot="card-body">built him a hat out of a traffic cone</span>
+        <span class="date" data-slot="card-date">Feb '92</span>
+      </figcaption>
+    </figure>
+
+    <figure class="photo tape-tl">
+      <div class="window scene-fair" role="img" aria-label="Pink and violet fairground lights"></div>
+      <figcaption>
+        <span class="title" data-slot="card-title">County fair, closing night</span>
+        <span class="body" data-slot="card-body">won the goldfish, lost my voice</span>
+        <span class="date" data-slot="card-date">Aug '95</span>
+      </figcaption>
+    </figure>
+
+    <figure class="photo pin-red">
+      <div class="window scene-dusk" role="img" aria-label="Deep blue road at dusk"></div>
+      <figcaption>
+        <span class="title" data-slot="card-title">The long way home</span>
+        <span class="body" data-slot="card-body">radio on, windows down, nowhere to be</span>
+        <span class="date" data-slot="card-date">Sept '93</span>
+      </figcaption>
+    </figure>
+
+  </main>
+
+  <footer data-slot="footer">&copy; developed 1989&ndash;2026 &middot; shake it like a Polaroid picture</footer>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

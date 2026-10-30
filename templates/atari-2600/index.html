@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Woodgrain 2600</title>
+<!-- atari-2600 — 1977 woodgrain console + wood-cabinet TV in a warm living room.
+     Woodgrain, silver switches and fat-pixel art are all CSS + inline SVG. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="den">
+  <main class="room">
+
+    <!-- ============ THE TELEVISION ============ -->
+    <section class="tv" aria-label="television set">
+      <div class="cabinet">
+        <div class="bezel">
+          <div class="screen">
+            <div class="crt">
+              <!-- fat-pixel title sprite: a TIA-palette space critter -->
+              <svg class="sprite" viewBox="0 0 99 72" aria-hidden="true" shape-rendering="crispEdges">
+                <g class="s-body">
+                  <rect x="18" y="0" width="9" height="9"/><rect x="72" y="0" width="9" height="9"/>
+                  <rect x="27" y="9" width="9" height="9"/><rect x="63" y="9" width="9" height="9"/>
+                  <rect x="18" y="18" width="63" height="9"/>
+                  <rect x="9" y="27" width="27" height="9"/><rect x="54" y="27" width="27" height="9"/>
+                  <rect x="36" y="27" width="9" height="9" class="s-eye"/><rect x="54" y="27" width="9" height="9" class="s-eye"/>
+                  <rect x="0" y="36" width="99" height="9"/>
+                  <rect x="0" y="45" width="18" height="9"/><rect x="27" y="45" width="45" height="9"/><rect x="81" y="45" width="18" height="9"/>
+                  <rect x="0" y="54" width="9" height="9"/><rect x="18" y="54" width="9" height="9"/><rect x="72" y="54" width="9" height="9"/><rect x="90" y="54" width="9" height="9"/>
+                  <rect x="27" y="63" width="18" height="9" class="s-foot"/><rect x="54" y="63" width="18" height="9" class="s-foot"/>
+                </g>
+              </svg>
+
+              <h1 class="logo" data-slot="site-name">WOODGRAIN 2600</h1>
+              <p class="sub" data-slot="tagline">Video Computer System · 128 glorious colors</p>
+
+              <p class="prompt">▶ SELECT GAME</p>
+              <nav class="menu" aria-label="game select">
+                <a href="#" data-slot="nav-item" aria-current="page">1 · STARFIELD RAIDERS</a>
+                <a href="#" data-slot="nav-item">2 · CAVERN QUEST</a>
+                <a href="#" data-slot="nav-item">3 · TURBO CANYON</a>
+                <a href="#" data-slot="nav-item">4 · ROBOT RANCH</a>
+                <a href="#" data-slot="nav-item">5 · NEON PADDLE</a>
+              </nav>
+
+              <div class="scan" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tv-knobs" aria-hidden="true">
+          <span class="dial"></span><span class="dial"></span>
+          <span class="grille"></span>
+        </div>
+      </div>
+      <div class="tv-legs" aria-hidden="true"><span></span><span></span></div>
+    </section>
+
+    <!-- ============ THE CONSOLE ============ -->
+    <section class="console" aria-label="game console">
+      <div class="cart-slot" aria-hidden="true"><span></span></div>
+      <div class="wood"></div>
+      <div class="controls">
+        <div class="switch"><span class="toggle up" aria-hidden="true"></span><label>POWER</label></div>
+        <div class="switch"><span class="toggle down" aria-hidden="true"></span><label>TV TYPE</label></div>
+        <div class="switch"><span class="toggle up" aria-hidden="true"></span><label>GAME SELECT</label></div>
+        <div class="switch"><span class="toggle down" aria-hidden="true"></span><label>GAME RESET</label></div>
+      </div>
+    </section>
+
+    <!-- ============ CARTRIDGE SHELF ============ -->
+    <section class="shelf">
+      <h2 class="shelf-head" data-slot="hero-title">The Cartridge Library</h2>
+      <p class="shelf-intro" data-slot="hero-body">Four classics still warm from the slot. Blow the dust off, flip the
+      silver switch, and settle into the shag carpet — the whole den glows orange when the tubes warm up.</p>
+
+      <div class="carts">
+        <article class="cart c1">
+          <div class="cart-label">
+            <h3 data-slot="card-title">Starfield Raiders</h3>
+            <p data-slot="card-body">Pilot a single-pixel cruiser through nine waves of blocky invaders. Score rolls over at 99,999 and the aliens get meaner.</p>
+          </div>
+        </article>
+        <article class="cart c2">
+          <div class="cart-label">
+            <h3 data-slot="card-title">Cavern Quest</h3>
+            <p data-slot="card-body">Swing across torch-lit pits for golden idols. Mind the bats — one touch and it's back to the mouth of the cave.</p>
+          </div>
+        </article>
+        <article class="cart c3">
+          <div class="cart-label">
+            <h3 data-slot="card-title">Turbo Canyon</h3>
+            <p data-slot="card-body">A top-down desert dash where the horizon scrolls forever. Collect fuel cans, dodge the boulders, beat the clock.</p>
+          </div>
+        </article>
+        <article class="cart c4">
+          <div class="cart-label">
+            <h3 data-slot="card-title">Robot Ranch</h3>
+            <p data-slot="card-body">Herd runaway androids back into the corral before sundown. Two-player mode lets a friend grab the second joystick.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer data-slot="footer">&copy; 1977–2026 Woodgrain Interactive · Made for the family room · Please be kind, rewind the TV guide</footer>
+  </main>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>

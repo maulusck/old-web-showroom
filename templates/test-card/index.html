@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northwood Two — Test Transmission</title>
+<!-- test-card — broadcast standby. Colour bars + Test Card F crosshatch,
+     greyscale wedge, central ident circle, 1kHz tone. Pure CSS + inline SVG. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="raster" aria-label="Off-air test transmission">
+
+  <!-- top caption strip -->
+  <div class="strip">
+    <span class="dot" aria-hidden="true"></span>
+    <span data-slot="page-title">NORTHWOOD TELEVISION · ENGINEERING TEST TRANSMISSION</span>
+    <span class="standby">OFF AIR</span>
+  </div>
+
+  <!-- 7-bar colour reference -->
+  <div class="bars" role="img" aria-label="Colour bar reference"></div>
+
+  <!-- the card itself: crosshatch grid + central ident -->
+  <section class="card">
+    <svg class="hatch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 100" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
+          <path d="M8 0H0V8" fill="none" stroke="#c9c9c9" stroke-width="0.4"/>
+        </pattern>
+      </defs>
+      <rect width="160" height="100" fill="url(#grid)"/>
+      <line x1="80" y1="0" x2="80" y2="100" stroke="#fff" stroke-width="0.6"/>
+      <line x1="0" y1="50" x2="160" y2="50" stroke="#fff" stroke-width="0.6"/>
+    </svg>
+
+    <div class="ident">
+      <div class="disc">
+        <h1 data-slot="site-name">NORTHWOOD<br><span>TWO</span></h1>
+      </div>
+      <p class="tag" data-slot="tagline">The quiet hours between programmes</p>
+      <p class="resume" data-slot="hero-title">TRANSMISSION RESUMES AT 06:00</p>
+      <p class="body" data-slot="hero-body">Programmes have closed down for the night. This caption and the reference
+        tone are radiated so engineers may align their receivers. Please do not adjust your set &mdash; normal service
+        continues at first light.</p>
+    </div>
+
+    <!-- corner convergence crosses -->
+    <span class="cross tl" aria-hidden="true"></span>
+    <span class="cross tr" aria-hidden="true"></span>
+    <span class="cross bl" aria-hidden="true"></span>
+    <span class="cross br" aria-hidden="true"></span>
+  </section>
+
+  <!-- greyscale step wedge + tone note -->
+  <div class="wedge" role="img" aria-label="Greyscale step wedge, black to white"></div>
+  <p class="tone" data-slot="tagline-2">&#9664; 1&nbsp;kHz REFERENCE TONE &#9654; &nbsp;·&nbsp; AUDIO LINE-UP AT 0&nbsp;dB</p>
+
+  <!-- return schedule + clock -->
+  <section class="panel">
+    <div class="sched">
+      <h2 class="when">WHEN WE RETURN</h2>
+      <ul>
+        <li><b data-slot="card-title">06:00 Pages from Teletext</b><span data-slot="card-body">Today&rsquo;s headlines, tide tables and the overnight shipping forecast, set to the dawn chorus.</span></li>
+        <li><b data-slot="card-title">06:25 The Morning Bulletin</b><span data-slot="card-body">Regional news read live from Studio B, with reports from the valley and the coast road.</span></li>
+        <li><b data-slot="card-title">06:55 Weather for the Regions</b><span data-slot="card-body">A full outlook for Northwood and the shires before the day&rsquo;s schedule begins.</span></li>
+      </ul>
+    </div>
+    <div class="clockbox" aria-label="Transmitter clock">
+      <time id="clock" datetime="00:00:00">00:00:00</time>
+      <span class="date" id="cdate">— · — · ——</span>
+    </div>
+  </section>
+
+  <footer data-slot="footer">&copy; NORTHWOOD TELEVISION LIMITED · TRANSMITTER NW&#8209;2 · 625 LINES / 50 FIELDS · PAL&#8209;I</footer>
+
+</main>
+<script>
+  // Broadcast clock: live HH:MM:SS + date. Static fallback shows if JS is off.
+  (function(){
+    var t=document.getElementById("clock"),d=document.getElementById("cdate");
+    if(!t)return;
+    var M=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+    function p(n){return(n<10?"0":"")+n;}
+    function tick(){
+      var n=new Date();
+      t.textContent=p(n.getHours())+":"+p(n.getMinutes())+":"+p(n.getSeconds());
+      t.setAttribute("datetime",t.textContent);
+      if(d)d.textContent=p(n.getDate())+" · "+M[n.getMonth()]+" · "+n.getFullYear();
+    }
+    tick();setInterval(tick,1000);
+  })();
+</script>
+<script src="../../edit.js" defer></script>
+</body>
+</html>

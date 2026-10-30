@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbis — Solar Wind</title>
+<!-- encarta — cross-referenced article. Shares style.css with index.html. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<div class="out">
+
+  <div class="caption">
+    <svg class="disc" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+      <circle cx="11" cy="11" r="10" fill="#dfe6e6" stroke="#0a6b6b"/>
+      <circle cx="11" cy="11" r="9" fill="none" stroke="#9fb9b9"/>
+      <circle cx="11" cy="11" r="3.4" fill="#0a6b6b"/>
+      <circle cx="11" cy="11" r="1.3" fill="#dfe6e6"/>
+    </svg>
+    <h1 data-slot="site-name">Orbis — The Interactive Encyclopedia '97</h1>
+    <span class="ver">CD-ROM Edition</span>
+    <span class="winbtns" aria-hidden="true"><span>_</span><span>&#9633;</span><span>&times;</span></span>
+  </div>
+
+  <div class="menu" aria-hidden="true">
+    <span><u>F</u>ile</span><span><u>E</u>dit</span><span><u>V</u>iew</span>
+    <span><u>G</u>o</span><span><u>T</u>ools</span><span><u>H</u>elp</span>
+  </div>
+
+  <div class="toolbar out">
+    <span class="tool">&#9664; Back</span>
+    <span class="tool">Forward &#9654;</span>
+    <span class="tool">&#8962; Contents</span>
+    <span class="tool">&#128269; Find</span>
+    <span class="tool">&#9733; Bookmark</span>
+    <span class="tool">&#128424; Print</span>
+  </div>
+
+  <div class="body">
+    <aside class="side">
+      <form class="search out" onsubmit="return false">
+        <label for="q" data-slot="nav-item">Search the Library</label>
+        <div class="row">
+          <input id="q" type="search" placeholder="type a topic…" aria-label="Search topics">
+          <span class="tool">Go</span>
+        </div>
+      </form>
+
+      <nav class="tree in" aria-label="Article index">
+        <ul>
+          <li><div class="cat" data-slot="nav-item">Earth &amp; Sky</div>
+            <ul>
+              <li><a href="index.html" data-slot="nav-item">Aurora Borealis</a></li>
+              <li><a href="article2.html" aria-current="page" data-slot="nav-item">Solar Wind</a></li>
+              <li><a href="#" data-slot="nav-item">Magnetosphere</a></li>
+              <li><a href="#" data-slot="nav-item">Noctilucent Clouds</a></li>
+            </ul>
+          </li>
+          <li><div class="cat" data-slot="nav-item">Physical Sciences</div>
+            <ul>
+              <li><a href="#" data-slot="nav-item">Plasma, States of</a></li>
+              <li><a href="#" data-slot="nav-item">Spectroscopy</a></li>
+              <li><a href="#" data-slot="nav-item">Geomagnetism</a></li>
+            </ul>
+          </li>
+          <li><div class="cat" data-slot="nav-item">Exploration</div>
+            <ul>
+              <li><a href="#" data-slot="nav-item">Fram Expedition</a></li>
+              <li><a href="#" data-slot="nav-item">Polar Year, International</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <article class="article in">
+      <p class="crumb">Earth &amp; Sky &rsaquo; The Sun &rsaquo; Solar Wind</p>
+      <h2 data-slot="card-title">Solar Wind</h2>
+      <p class="pron" data-slot="card-body">[SOH-ler wind] &middot; the Sun's outward breath of plasma</p>
+
+      <figure class="media">
+        <span class="frame" style="background:#f7f5ee">
+          <svg viewBox="0 0 258 150" role="img" aria-label="Diagram of the Sun emitting a particle stream that bends around Earth's magnetic field">
+            <rect width="258" height="150" fill="#f7f5ee"/>
+            <circle cx="30" cy="75" r="26" fill="#f2a63b"/>
+            <circle cx="30" cy="75" r="26" fill="none" stroke="#c97a1a" stroke-width="2"/>
+            <g stroke="#0a6b6b" stroke-width="2" fill="none" opacity=".8">
+              <path d="M58 62 C110 54 150 58 196 56"/>
+              <path d="M58 75 C110 72 150 76 200 78"/>
+              <path d="M58 88 C110 94 150 92 196 96"/>
+            </g>
+            <g fill="#0a6b6b"><polygon points="196,52 206,56 196,60"/>
+              <polygon points="200,74 210,78 200,82"/><polygon points="196,92 206,96 196,100"/></g>
+            <circle cx="220" cy="76" r="12" fill="#2ba3a3"/>
+            <circle cx="220" cy="76" r="12" fill="none" stroke="#0a6b6b"/>
+            <path d="M220 52 C244 60 244 92 220 100" fill="none" stroke="#b08cff" stroke-width="2.5"/>
+            <text x="18" y="130" font-size="9" fill="#4a4f52">Sun</text>
+            <text x="206" y="130" font-size="9" fill="#4a4f52">Earth</text>
+          </svg>
+        </span>
+        <figcaption class="cap" data-slot="card-body">Plate 1. The wind streams outward at 400&ndash;800 km/s and drapes around Earth's magnetic field (violet), carving a teardrop cavity.</figcaption>
+        <button type="button" class="play">
+          <span class="tri">&#9654;</span> Play narration (1:05)
+          <span class="bar" aria-hidden="true"><i></i></span>
+        </button>
+      </figure>
+
+      <p data-slot="card-body">The <strong>solar wind</strong> is a continuous flow of charged particles — mostly protons and electrons — boiling off the Sun's outer atmosphere, the corona. The corona is so hot, over a million degrees, that the Sun's gravity cannot hold it; the gas simply streams away in every direction, filling the whole solar system with a thin, electrically charged breeze.</p>
+
+      <p data-slot="card-body">At Earth's distance the wind is faint — only a handful of particles per cubic centimetre — yet it never stops, and it carries the Sun's magnetic field with it. When a storm on the Sun flings out a denser, faster gust, that gust can shake Earth's own magnetic field hard enough to light the <a href="index.html" data-slot="card-body">aurora</a>, disturb compasses, and ripple through power grids.</p>
+
+      <h3 data-slot="card-body">How it was discovered</h3>
+      <p data-slot="card-body">For centuries comet tails offered a clue: they always point away from the Sun, no matter which way the comet travels, as if blown by some invisible current. In the 1950s the physicist Eugene Parker argued the corona must be expanding outward supersonically. The idea was doubted until spacecraft flew straight through the stream and measured it directly, confirming a wind that is always on.</p>
+
+      <figure class="media" style="float:left;margin:0 16px 12px 0">
+        <span class="frame" style="background:#f7f5ee">
+          <svg viewBox="0 0 258 150" role="img" aria-label="Line chart of solar wind speed across a week, with a sharp storm spike midweek">
+            <rect width="258" height="150" fill="#f7f5ee"/>
+            <line x1="32" y1="12" x2="32" y2="126" stroke="#5a5e62"/>
+            <line x1="32" y1="126" x2="248" y2="126" stroke="#5a5e62"/>
+            <polyline fill="none" stroke="#a5613a" stroke-width="2"
+              points="32,98 62,94 92,100 120,58 134,30 150,70 182,88 214,92 248,96"/>
+            <text x="6" y="30" font-size="9" fill="#4a4f52">800</text>
+            <text x="6" y="100" font-size="9" fill="#4a4f52">300</text>
+            <text x="110" y="142" font-size="9" fill="#4a4f52">storm &rarr;</text>
+          </svg>
+        </span>
+        <figcaption class="cap" data-slot="card-body">Chart 1. Wind speed (km/s) over one week. The midweek spike marks a coronal mass ejection sweeping past Earth.</figcaption>
+      </figure>
+
+      <h3 data-slot="card-body">Why it matters</h3>
+      <p data-slot="card-body">The solar wind blows a vast bubble, the heliosphere, that shields the planets from much of the harsher radiation drifting between the stars. Nearer home it governs &ldquo;space weather&rdquo; — the swings in the near-Earth environment that engineers now forecast to protect satellites, radio links, and astronauts. The same gusts that endanger a spacecraft are the ones that paint the polar sky.</p>
+
+      <section class="seealso out">
+        <h3 data-slot="nav-item">See also</h3>
+        <ul>
+          <li><a href="index.html" data-slot="nav-item">Aurora Borealis</a> — the wind's most beautiful consequence</li>
+          <li><a href="#" data-slot="nav-item">Magnetosphere</a> — the cavity the wind carves</li>
+          <li><a href="#" data-slot="nav-item">Plasma, States of</a> — the fourth state of matter</li>
+        </ul>
+      </section>
+
+      <p style="font-size:11px;color:var(--dim);margin-top:14px" data-slot="card-body">&copy; 1997 Orbis Media Corporation. Article cross-referenced to 5 topics, 2 charts, 1 narration. Press F1 for the index.</p>
+    </article>
+  </div>
+
+  <div class="status">
+    <span class="cell grow" data-slot="nav-item"><b>Ready.</b> Article 2 of 11,402 &middot; Topic: Solar Wind</span>
+    <span class="cell" data-slot="nav-item">CD-ROM Drive [D:]</span>
+    <span class="cell" data-slot="nav-item">Disc 1 of 2</span>
+  </div>
+
+</div>
+</div>
+<script src="../../edit.js" defer></script>
+</body>
+</html>

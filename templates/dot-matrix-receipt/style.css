@@ -1,0 +1,107 @@
+/* Dot-Matrix Receipt — tractor-feed green-bar fanfold. CSS builds the sprocket
+   holes, the green bars, and the faint double-strike dot-matrix ink. */
+:root{
+  --desk:#6b6456;            /* grey-green office desk behind the paper */
+  --paper:#f3efe2;           /* off-white fanfold stock */
+  --bar:#cfe3c4;             /* the pale green bar */
+  --ink:#2b3327;             /* dark olive dot-matrix ink */
+  --faint:#5a6450;           /* lighter ink for notes */
+  --perf:#b9b19a;            /* perforation / rule line */
+  --hole:#6b6456;            /* sprocket hole (shows the desk) */
+  --strip:#eae4d3;           /* sprocket margin strip */
+  --stamp:#9c3b2e;           /* red rubber stamp */
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --desk:#15181a; --paper:#242a22; --bar:#2e3a2b; --ink:#cfe0c0;
+  --faint:#8f9c82; --perf:#44503e; --hole:#15181a; --strip:#2b312a; --stamp:#d06a58;
+}}
+:root[data-theme="dark"]{
+  --desk:#15181a; --paper:#242a22; --bar:#2e3a2b; --ink:#cfe0c0;
+  --faint:#8f9c82; --perf:#44503e; --hole:#15181a; --strip:#2b312a; --stamp:#d06a58;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);
+  font:14px/1.5 "Courier New",Courier,monospace;letter-spacing:.02em;
+  padding:24px 10px;
+  /* faint double-strike: a ghosted copy of the glyph, the dot-matrix "ragged ink" */
+  text-shadow:.4px .4px 0 rgba(0,0,0,.12), -.3px .2px 0 rgba(0,0,0,.06);
+}
+
+/* the full continuous form: paper flanked by two sprocket strips */
+.feed{display:flex;max-width:760px;margin:0 auto;
+  box-shadow:0 10px 26px rgba(0,0,0,.4);align-items:stretch}
+
+/* sprocket margins — holes punched by a repeating radial gradient */
+.sprockets{flex:0 0 30px;background:var(--strip);position:relative}
+.sprockets::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at center, var(--hole) 0 3.4px, transparent 3.8px);
+  background-size:100% 26px;background-position:center 12px}
+/* inner tractor rule, where the strip tears from the page */
+.sprockets:first-child{border-right:1px dashed var(--perf)}
+.sprockets:last-child{border-left:1px dashed var(--perf)}
+
+.form{flex:1 1 auto;min-width:0;background:var(--paper);padding:0 22px 6px}
+
+/* tear-off perforation bands top and bottom of the sheet */
+.tear{height:0;border-top:1px dashed var(--perf);margin:0 -22px}
+.tear.top{margin-top:0}
+.tear.bot{margin-bottom:0}
+
+/* ---- masthead ---- */
+.masthead{text-align:center;padding:16px 0 10px;border-bottom:1px solid var(--perf)}
+.logo{margin:0 auto 10px;display:inline-block;font-size:9px;line-height:1.05;
+  color:var(--ink);text-shadow:none;white-space:pre;overflow-x:auto;max-width:100%}
+.masthead h1{margin:0;font-size:clamp(18px,5vw,30px);font-weight:700;
+  letter-spacing:.14em}
+.sub{margin:6px 0 0;font-size:10px;letter-spacing:.22em;color:var(--faint)}
+.addr{margin:6px 0 0;font-size:11px;letter-spacing:.06em;color:var(--faint)}
+
+/* ---- invoice meta grid ---- */
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:2px 20px;
+  padding:12px 0;border-bottom:1px solid var(--perf);font-size:12px}
+.meta .k{color:var(--faint);display:inline-block;min-width:88px}
+.meta .v{font-weight:700}
+
+/* ---- the ledger: green-bar rows ---- */
+.ledger{margin:0 -22px;padding:0}
+.row{display:grid;grid-template-columns:3.2em 1fr 7em;gap:10px;
+  padding:5px 22px;align-items:baseline}
+/* alternate green bars — the signature of the stock */
+.row:nth-child(even){background:var(--bar)}
+.row.head{font-weight:700;letter-spacing:.12em;font-size:11px;
+  border-bottom:1px solid var(--perf);background:none;color:var(--faint)}
+.qty{text-align:right;font-variant-numeric:tabular-nums}
+.desc{letter-spacing:.03em}
+.amt{text-align:right;font-variant-numeric:tabular-nums}
+
+/* ---- totals ---- */
+.totals{margin-left:auto;max-width:300px;padding:12px 0 4px}
+.trow{display:flex;justify-content:space-between;gap:16px;padding:2px 0;font-size:12px}
+.trow .k{color:var(--faint)}
+.trow .v{font-variant-numeric:tabular-nums}
+.trow.grand{border-top:2px solid var(--ink);margin-top:4px;padding-top:6px;
+  font-size:15px;font-weight:700;color:var(--ink)}
+.trow.grand .k,.trow.grand .v{color:var(--ink)}
+
+/* ---- paid stamp + note ---- */
+.stamp{text-align:center;padding:14px 0 6px;border-top:1px dashed var(--perf);margin-top:10px}
+.paid{display:inline-block;color:var(--stamp);border:3px double var(--stamp);
+  padding:4px 16px;font-weight:700;letter-spacing:.2em;transform:rotate(-4deg);
+  font-size:15px;text-shadow:none;opacity:.88}
+.note{margin:14px auto 0;max-width:52ch;font-size:11px;color:var(--faint);
+  letter-spacing:.04em}
+
+/* ---- run-out footer ---- */
+.runout{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  padding:12px 0;margin-top:8px;border-top:1px solid var(--perf);
+  font-size:10px;letter-spacing:.14em;color:var(--faint)}
+
+@media (max-width:560px){
+  .sprockets{flex-basis:20px}
+  .sprockets::before{background-size:100% 22px}
+  .meta{grid-template-columns:1fr}
+  .form{padding:0 14px 6px}
+  .tear,.ledger{margin-left:-14px;margin-right:-14px}
+  .row{grid-template-columns:2.6em 1fr 5.6em;padding-left:14px;padding-right:14px;gap:6px;font-size:12px}
+  .logo{font-size:7px}
+}

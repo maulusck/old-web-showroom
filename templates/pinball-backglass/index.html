@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Nights</title>
+<!-- pinball-backglass — 80s/90s solid-state illuminated backglass.
+     Segment displays + feature lamps hand-built in CSS; starburst is inline SVG.
+     Always dark: a backglass is lit against black. No libs, offline on file://. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="glass">
+
+  <!-- manufacturer plate -->
+  <div class="plate"><span data-slot="site-name">GALAXITRON</span> &middot; SOLID STATE</div>
+
+  <!-- illustrated title logo -->
+  <header class="logo">
+    <svg class="burst" viewBox="0 0 200 200" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="g" cx="50%" cy="46%" r="60%">
+          <stop offset="0%" stop-color="#ffe14d"/>
+          <stop offset="34%" stop-color="#ff7a1a"/>
+          <stop offset="70%" stop-color="#b5177a"/>
+          <stop offset="100%" stop-color="#1a0033"/>
+        </radialGradient>
+      </defs>
+      <rect width="200" height="200" fill="url(#g)"/>
+      <g fill="#ffe14d" opacity=".30">
+        <path d="M100 92 L300 -40 L300 40 Z"/><path d="M100 92 L300 60 L300 150 Z"/>
+        <path d="M100 92 L300 170 L260 300 Z"/><path d="M100 92 L120 300 L40 300 Z"/>
+        <path d="M100 92 L-60 300 L-100 180 Z"/><path d="M100 92 L-100 150 L-100 60 Z"/>
+        <path d="M100 92 L-100 40 L-100 -40 Z"/><path d="M100 92 L-40 -80 L60 -100 Z"/>
+      </g>
+    </svg>
+    <h1 data-slot="hero-title">NEON NIGHTS</h1>
+    <p class="sub" data-slot="tagline">MULTIBALL MADNESS &middot; 4 PLAYERS</p>
+  </header>
+
+  <!-- score displays (seven-segment) -->
+  <section class="scores" aria-label="Score displays">
+    <div class="disp disp-red">
+      <span class="dlabel" data-slot="card-title">PLAYER 1</span>
+      <span class="ssd" role="img" aria-label="847,200">
+        <span class="d d8"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+        <span class="d d4"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+        <span class="d d7"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+        <span class="d d2"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+        <span class="d d0"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+        <span class="d d0"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+      </span>
+    </div>
+    <div class="disp disp-cyan">
+      <span class="dlabel" data-slot="card-title">CREDITS</span>
+      <span class="ssd" role="img" aria-label="02">
+        <span class="d d0"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+        <span class="d d2"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+      </span>
+    </div>
+    <div class="disp disp-amber">
+      <span class="dlabel" data-slot="card-title">BALL</span>
+      <span class="ssd" role="img" aria-label="3">
+        <span class="d d3"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+      </span>
+    </div>
+  </section>
+
+  <!-- mechanical scorereel -->
+  <section class="reels">
+    <span class="rlabel" data-slot="card-title">HIGH SCORE TO BEAT</span>
+    <div class="reel-row" role="img" aria-label="1,284,500">
+      <span class="reel">1</span><span class="reel">2</span><span class="reel">8</span><span class="reel">4</span><span class="reel">5</span><span class="reel">0</span><span class="reel">0</span>
+    </div>
+  </section>
+
+  <!-- feature / bonus lamp bank — the content -->
+  <section class="lamps" aria-label="Feature lamps">
+    <article class="lamp">
+      <span class="bulb" aria-hidden="true"></span>
+      <h3 class="lname" data-slot="card-title">EXTRA BALL</h3>
+      <p class="ldesc" data-slot="card-body">Spell N-E-O-N across the top lanes to light the shooter and keep the silver rolling.</p>
+    </article>
+    <article class="lamp">
+      <span class="bulb" aria-hidden="true"></span>
+      <h3 class="lname" data-slot="card-title">JACKPOT</h3>
+      <p class="ldesc" data-slot="card-body">Lock three balls in the Skyline Tower, then let the whole glass pay out at once.</p>
+    </article>
+    <article class="lamp">
+      <span class="bulb" aria-hidden="true"></span>
+      <h3 class="lname" data-slot="card-title">MULTIBALL</h3>
+      <p class="ldesc" data-slot="card-body">Three balls, no mercy. Flippers flaming, bumpers screaming — the glass goes supernova.</p>
+    </article>
+    <article class="lamp">
+      <span class="bulb" aria-hidden="true"></span>
+      <h3 class="lname" data-slot="card-title">BONUS 5X</h3>
+      <p class="ldesc" data-slot="card-body">Every drop target you knocked down multiplies the instant the ball drains the outlane.</p>
+    </article>
+    <article class="lamp">
+      <span class="bulb" aria-hidden="true"></span>
+      <h3 class="lname" data-slot="card-title">SKILL SHOT</h3>
+      <p class="ldesc" data-slot="card-body">Ease the plunger to the flashing rollover and bank the opening bonus before first flip.</p>
+    </article>
+    <article class="lamp">
+      <span class="bulb" aria-hidden="true"></span>
+      <h3 class="lname" data-slot="card-title">SPECIAL</h3>
+      <p class="ldesc" data-slot="card-body">Light all six star rollovers for a free game — the knocker tells the whole arcade.</p>
+    </article>
+    <article class="lamp">
+      <span class="bulb" aria-hidden="true"></span>
+      <h3 class="lname" data-slot="card-title">LANE CHANGE</h3>
+      <p class="ldesc" data-slot="card-body">Tap a flipper to shuffle the top lanes and chase down that last unlit letter.</p>
+    </article>
+    <article class="lamp">
+      <span class="bulb" aria-hidden="true"></span>
+      <h3 class="lname" data-slot="card-title">REPLAY</h3>
+      <p class="ldesc" data-slot="card-body">Beat the score on the card and the machine owes you another round, on the house.</p>
+    </article>
+  </section>
+
+  <!-- tilt & match bottom bar -->
+  <footer class="bottombar">
+    <span class="tilt" data-slot="card-title">TILT</span>
+    <span class="matchbox">
+      <span class="dlabel" data-slot="card-title">MATCH</span>
+      <span class="ssd" role="img" aria-label="70">
+        <span class="d d7 disp-green"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+        <span class="d d0 disp-green"><i class="sa"></i><i class="sb"></i><i class="sc"></i><i class="sd"></i><i class="se"></i><i class="sf"></i><i class="sg"></i></span>
+      </span>
+    </span>
+    <p class="colophon" data-slot="footer">&copy; 1989 GALAXITRON AMUSEMENTS &middot; GAME OVER &middot; INSERT COIN</p>
+  </footer>
+
+</main>
+<script src="../../edit.js" defer></script>
+</body>
+</html>
