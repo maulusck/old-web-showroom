@@ -120,6 +120,40 @@
     </footer>
 
   </div>
+  <script>
+  // on-air cosmetics only: live clock, radar sweep, broadcast-loop highlight.
+  (function(){
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // clock reads the real local time (ticking unless reduced-motion)
+    var clock = document.querySelector('.clock .time');
+    function tick(){
+      clock.textContent = new Date().toLocaleTimeString([],
+        {hour:'numeric', minute:'2-digit', timeZoneName:'short'});
+    }
+    if(clock){ tick(); if(!reduce) setInterval(tick, 1000); }
+
+    // radar sweep arm ghosted over the conditions scope
+    var icon = document.querySelector('.icon');
+    if(icon && !reduce){
+      var sweep = document.createElement('span');
+      sweep.className = 'sweep';
+      sweep.setAttribute('aria-hidden','true');
+      icon.appendChild(sweep);
+    }
+
+    // cycle a highlight through the regional panels, like the loop
+    var panels = document.querySelectorAll('.regional li');
+    if(panels.length && !reduce){
+      var i = 0;
+      panels[0].classList.add('on');
+      setInterval(function(){
+        panels[i % panels.length].classList.remove('on');
+        panels[++i % panels.length].classList.add('on');
+      }, 2600);
+    }
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>

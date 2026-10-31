@@ -93,6 +93,19 @@ body{margin:0;background:var(--screen-bot);color:var(--ink);
   font-weight:700;letter-spacing:.06em;color:var(--cream);font-size:14px;
   animation:crawl 28s linear infinite}
 @keyframes crawl{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+/* on-air cosmetics — only shown once the inline script runs; JS off = unchanged */
+.icon{position:relative}
+.icon .sweep{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 0deg,
+    rgba(143,227,224,.55),rgba(143,227,224,0) 55%,rgba(143,227,224,0));
+  mix-blend-mode:screen;opacity:.6;animation:sweep 6s linear infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+
+.regional li{transition:background .5s,box-shadow .5s}
+.regional li.on{background:var(--panel-lt);
+  box-shadow:0 0 0 2px var(--amber) inset,0 0 12px rgba(255,213,74,.5)}
+
 @media(prefers-reduced-motion:reduce){
   .crawl-track{animation:none;padding-left:0;white-space:normal;padding:0 16px}
+  .icon .sweep{animation:none}
 }
