@@ -25,6 +25,9 @@
     <div class="colorbar" aria-hidden="true"></div>
   </div>
 
+  <!-- ==== PAGE 101 · NEWS (the red button) ==== -->
+  <div class="page" data-page="101">
+
   <!-- lead story -->
   <section class="lead">
     <h2 class="rowhead hc" data-slot="page-title">HEADLINES 101</h2>
@@ -68,14 +71,91 @@
     </div>
   </section>
 
+  </div><!-- /page 101 -->
+
+  <!-- ==== PAGE 300 · SPORT (the green button) ==== -->
+  <div class="page" data-page="300">
+    <section class="lead">
+      <h2 class="rowhead hg" data-slot="page-title">SPORT 300</h2>
+      <h3 class="big" data-slot="hero-title">COUNTY UNITED EDGE DERBY 2–1</h3>
+      <p data-slot="hero-body">A late header settled a bruising local derby as County
+      held firm through six added minutes. The win lifts them to third with a game in
+      hand. Manager praises "a proper teletext scoreline" after the final whistle.</p>
+    </section>
+    <section class="brief">
+      <h2 class="rowhead hm">RESULTS SERVICE</h2>
+      <div class="row">
+        <span class="bt" data-slot="card-title">FOOTBALL 301</span>
+        <span class="bb" data-slot="card-body">Full classified results, league tables and the pools check. Hold page for scrolling fixtures.</span>
+      </div>
+      <div class="row">
+        <span class="bt" data-slot="card-title">RACING 320</span>
+        <span class="bb" data-slot="card-body">Going soft at the two meetings. The 3·40 goes to the favourite by a length and a half.</span>
+      </div>
+      <div class="row">
+        <span class="bt" data-slot="card-title">RUGBY 340</span>
+        <span class="bb" data-slot="card-body">County 18, Rovers 12. A penalty try in the last play seals a hard-fought bonus point.</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==== PAGE 400 · WEATHER (the yellow button) ==== -->
+  <div class="page" data-page="400">
+    <section class="lead">
+      <h2 class="rowhead hc" data-slot="page-title">WEATHER 400</h2>
+      <h3 class="big" data-slot="hero-title">FOG CLEARS TO A BRIGHT DAY</h3>
+      <p data-slot="hero-body">Overnight fog patches lift by dawn to leave a bright,
+      blustery day with highs of 14°. A brisk westerly freshens along the coast through
+      the afternoon. Clear spells overnight, turning chilly inland by first light.</p>
+    </section>
+    <section class="brief">
+      <h2 class="rowhead hg">REGIONAL OUTLOOK</h2>
+      <div class="row">
+        <span class="bt" data-slot="card-title">COAST 401</span>
+        <span class="bb" data-slot="card-body">Bright and breezy, gusts to 30mph on exposed headlands. Sea state moderate.</span>
+      </div>
+      <div class="row">
+        <span class="bt" data-slot="card-title">HILLS 402</span>
+        <span class="bb" data-slot="card-body">Cloud on the tops to start, lifting by midday. A cold night to follow with ground frost.</span>
+      </div>
+      <div class="row">
+        <span class="bt" data-slot="card-title">SHIPPING 409</span>
+        <span class="bb" data-slot="card-body">Lundy, Fastnet: westerly 4 to 6. Showers then fair. Good, occasionally moderate.</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==== PAGE 100 · INDEX (the blue button) ==== -->
+  <div class="page" data-page="100">
+    <section class="brief">
+      <h2 class="rowhead hc" data-slot="page-title">INDEX 100</h2>
+      <div class="row">
+        <span class="bt" data-slot="card-title">NEWS 101</span>
+        <span class="bb" data-slot="card-body">Headlines, the lead story and news in brief. Press the red button.</span>
+      </div>
+      <div class="row">
+        <span class="bt" data-slot="card-title">SPORT 300</span>
+        <span class="bb" data-slot="card-body">Results, racing and rugby. Press the green button.</span>
+      </div>
+      <div class="row">
+        <span class="bt" data-slot="card-title">WEATHER 400</span>
+        <span class="bb" data-slot="card-body">Today's outlook and the regional forecast. Press the yellow button.</span>
+      </div>
+      <div class="row">
+        <span class="bt" data-slot="card-title">KEY A PAGE</span>
+        <span class="bb" data-slot="card-body">Type any three digits on your keypad to call a page direct. Hold page to read.</span>
+      </div>
+    </section>
+  </div>
+
   <footer data-slot="footer">VERITEXT · A PUBLIC INFORMATION SERVICE · HOLD PAGE TO READ · © 1974–2026</footer>
 
   <!-- fastext coloured button bar -->
   <nav class="fastext">
-    <a href="index.html" class="fx red" data-slot="nav-item" aria-current="page">NEWS 101</a>
-    <a href="index.html" class="fx grn" data-slot="nav-item">SPORT 300</a>
-    <a href="index.html" class="fx yel" data-slot="nav-item">WEATHER 400</a>
-    <a href="index.html" class="fx blu" data-slot="nav-item">INDEX 100</a>
+    <button type="button" class="fx red" data-go="101" data-slot="nav-item" aria-current="page">NEWS 101</button>
+    <button type="button" class="fx grn" data-go="300" data-slot="nav-item">SPORT 300</button>
+    <button type="button" class="fx yel" data-go="400" data-slot="nav-item">WEATHER 400</button>
+    <button type="button" class="fx blu" data-go="100" data-slot="nav-item">INDEX 100</button>
   </nav>
 
 </div>
@@ -89,6 +169,34 @@ dt=document.getElementById('dt'),ck=document.getElementById('clk');
 function tick(){var n=new Date();if(dt)dt.textContent=D[n.getDay()]+' '+p(n.getDate())+' '+M[n.getMonth()];
 if(ck)ck.textContent=p(n.getHours())+'·'+p(n.getMinutes())+'·'+p(n.getSeconds());}
 tick();setInterval(tick,1000);})();
+
+/* ponytail: fastext page-switch — show/hide sections already in the markup, no fetch/storage.
+   JS off => every .page stays visible (nothing hidden in CSS); this adds the switching. */
+(function(){
+  var pages={},btns=[].slice.call(document.querySelectorAll('.fx')),
+  pg=document.querySelector('.pg'),cur='101',buf='',iv,
+  reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  [].forEach.call(document.querySelectorAll('.page'),function(p){pages[p.dataset.page]=p;});
+  function show(t){for(var k in pages)pages[k].hidden=(k!==t);}
+  function mark(t){btns.forEach(function(b){
+    if(b.dataset.go===t)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});}
+  function go(t){
+    clearInterval(iv);mark(t);
+    if(!pages[t]){ // real teletext searches for a page that never arrives, then gives up
+      pg.textContent='P'+t;setTimeout(function(){pg.textContent='P'+cur;mark(cur);},700);return;}
+    if(reduce){pg.textContent='P'+t;show(t);cur=t;return;}
+    var n=0;iv=setInterval(function(){ // "searching" — spin the acquiring digits
+      pg.textContent='P'+t.slice(0,2)+Math.floor(Math.random()*10);
+      if(++n>4){clearInterval(iv);pg.textContent='P'+t;show(t);cur=t;}},110);
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){go(b.dataset.go);});});
+  addEventListener('keydown',function(e){ // key a 3-digit page direct, like the remote
+    if(e.target.isContentEditable||e.key<'0'||e.key>'9')return;
+    buf=(buf+e.key).slice(-3);pg.textContent='P'+(buf+'___').slice(0,3);
+    if(buf.length===3){var t=buf;buf='';go(t);}
+  });
+  show(cur);pg.textContent='P'+cur; // JS adds the hiding here => no-JS shows all
+})();
 </script>
 <script src="../../edit.js" defer></script>
 </body>

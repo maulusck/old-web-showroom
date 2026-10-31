@@ -82,14 +82,15 @@ footer{margin:14px 8px 6px;color:var(--cyn);font-size:.68em;
 /* ---- fastext coloured button bar ---- */
 .fastext{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
   background:var(--blk);padding:6px 4px 4px}
-.fx{color:var(--blk);text-decoration:none;text-align:center;
-  padding:6px 2px;font-size:.66em;font-weight:bold;letter-spacing:.02em;
-  border-top:4px solid}
+.fx{appearance:none;-webkit-appearance:none;border:0;border-top:4px solid;
+  width:100%;cursor:pointer;font-family:inherit;color:var(--blk);
+  text-decoration:none;text-align:center;
+  padding:6px 2px;font-size:.66em;font-weight:bold;letter-spacing:.02em}
 .fx.red{background:var(--red);border-color:#fff}
 .fx.grn{background:var(--grn)}
 .fx.yel{background:var(--yel)}
 .fx.blu{background:var(--blu);color:var(--wht)}
-.fx:hover,.fx:focus{outline:2px solid var(--wht);outline-offset:-2px}
+.fx:hover,.fx:focus,.fx[aria-current="page"]{outline:2px solid var(--wht);outline-offset:-2px}
 
 /* ---- flashing text (teletext flash control) ---- */
 @keyframes tx-flash{50%{opacity:0}}
