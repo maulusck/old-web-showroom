@@ -85,7 +85,43 @@
       <span class="slash">/</span>
       <span data-slot="footer">0:12 LEFT ON T-120 &middot; EJECT WHEN DONE</span>
     </div>
+
+    <!-- front panel: cosmetic only, hidden until JS enhances the page -->
+    <div class="panel" aria-label="VCR transport">
+      <button type="button" data-mode="REW">&#9664;&#9664; REW</button>
+      <button type="button" data-mode="PLAY" aria-pressed="true">&#9654; PLAY</button>
+      <button type="button" data-mode="PAUSE">&#10074;&#10074; PAUSE</button>
+      <button type="button" data-mode="STOP">&#9632; STOP</button>
+      <button type="button" data-mode="FF">&#9654;&#9654; FF</button>
+      <label class="trk">TRACKING <input type="range" min="0" max="2" step="0.1" value="1" aria-label="Tracking noise"></label>
+    </div>
   </div>
+  <script>
+  (function(){
+    var screen=document.querySelector('.screen'); if(!screen)return;
+    screen.classList.add('live');  // reveal the panel only when JS is live
+    var tri=screen.querySelector('.status .tri'),
+        word=screen.querySelector('.status .word'),
+        count=screen.querySelector('.status .count'),
+        range=screen.querySelector('.panel input');
+    var M={PLAY:{s:'▶',n:5}, STOP:{s:'■',n:null}, PAUSE:{s:'❚❚',n:0},
+           FF:{s:'▶▶',n:60}, REW:{s:'◀◀',n:-60}};
+    function fmt(s){s=s<0?0:s;var h=s/3600|0,m=s/60%60|0;
+      return h+':'+('0'+m).slice(-2)+':'+('0'+s%60).slice(-2);}
+    function press(name){
+      var m=M[name],b=screen.querySelectorAll('.panel [data-mode]'),i;
+      for(i=0;i<b.length;i++)b[i].setAttribute('aria-pressed',b[i].dataset.mode===name);
+      tri.textContent=m.s; word.textContent=name;
+      if(m.n===null){count.textContent='0:00:00';}
+      else if(m.n){var p=count.textContent.trim().split(':');
+        count.textContent=fmt((+p[0]*3600+ +p[1]*60+ +p[2]||0)+m.n);}
+    }
+    screen.addEventListener('click',function(e){
+      var b=e.target.closest&&e.target.closest('[data-mode]'); if(b)press(b.dataset.mode);});
+    if(range)range.addEventListener('input',function(){
+      screen.style.setProperty('--track',range.value);});
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>

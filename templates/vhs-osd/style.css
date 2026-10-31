@@ -6,6 +6,7 @@
   --blue:#1726b4; --blue-lt:#3a4ad8; --blue-edge:#0b1270;
   --amber:#ffcf4a; --red:#ff3a2e; --green:#49e07a;
   --bleed-r:#ff2d7a; --bleed-c:#2de3ff;
+  --track:1;  /* tracking noise level; 1 = factory default, raised/lowered by the panel */
 }
 /* OSD screens read the same day or night; keep the dark tube in both. */
 *{box-sizing:border-box}
@@ -32,8 +33,8 @@ body{background:#05070a;color:var(--osd);
 /* scanlines + a soft chroma vignette, non-interactive */
 .scan{position:absolute;inset:0;pointer-events:none;z-index:5;
   background:
-    repeating-linear-gradient(0deg,rgba(0,0,0,.26) 0 1px,rgba(0,0,0,0) 1px 3px),
-    linear-gradient(90deg,rgba(45,227,255,.05),rgba(255,45,122,.05));
+    repeating-linear-gradient(0deg,rgba(0,0,0,calc(.26*var(--track))) 0 1px,rgba(0,0,0,0) 1px 3px),
+    linear-gradient(90deg,rgba(45,227,255,calc(.05*var(--track))),rgba(255,45,122,calc(.05*var(--track))));
   mix-blend-mode:screen;
   animation:roll 9s linear infinite}
 .scan::after{content:"";position:absolute;inset:0;
@@ -101,6 +102,21 @@ body{background:#05070a;color:var(--osd);
 .rec .dot{color:var(--red);font-size:1.3em;animation:blink 1s steps(1) infinite}
 .rec .slash{color:var(--osd-dim)}
 .rec [data-slot="footer"]{color:var(--osd-dim);letter-spacing:.12em}
+
+/* front panel — hidden with no JS, so the page reads exactly as the OSD alone */
+.panel{display:none}
+.screen.live .panel{position:absolute;left:50%;bottom:clamp(10px,2vw,20px);
+  transform:translateX(-50%);z-index:7;display:flex;flex-wrap:wrap;gap:8px;
+  align-items:center;justify-content:center;max-width:calc(100% - 2*clamp(16px,4vw,54px));
+  background:rgba(4,6,10,.85);border:2px solid #cdd6ff;padding:8px 12px;
+  box-shadow:0 0 0 2px #04060a,0 0 18px rgba(58,74,216,.45)}
+.panel button{font:inherit;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--screen2);color:var(--osd);border:2px solid #3a4654;
+  padding:6px 10px;cursor:pointer}
+.panel button:hover,.panel button:focus-visible{outline:none;color:var(--amber);border-color:var(--amber)}
+.panel button[aria-pressed="true"]{background:var(--amber);color:var(--blue-edge);border-color:var(--amber)}
+.panel .trk{display:flex;align-items:center;gap:6px;color:var(--osd-dim);font-size:.8em}
+.panel input[type="range"]{accent-color:var(--amber);cursor:pointer}
 
 @media (max-width:560px){
   .screen{grid-template-columns:1fr;grid-template-areas:"status" "clock" "box" "ptitle" "progs" "rec"}
