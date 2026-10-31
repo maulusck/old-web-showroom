@@ -148,6 +148,14 @@ body{margin:0;color:var(--ink);
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:.12}}
 @media (prefers-reduced-motion:reduce){.led{animation:none}}
 
+/* ───── cosmetic playback (JS only; static styling, no animation) ───── */
+.btn.play.lit{filter:brightness(1.12);box-shadow:0 3px 0 #4e8e3f,inset 0 1px 0 #fffb,0 0 24px #8dff7ecc}
+.msg.playing{box-shadow:0 0 0 2px var(--seg-on),0 2px 0 #00000030,0 10px 22px -8px #ff3421aa}
+.msg.playing .num{color:var(--seg-on);text-shadow:0 0 11px #ff3421}
+.msg.seen .flag{opacity:.4}
+.msg.deleted{opacity:.4;filter:grayscale(.6)}
+.readout.played .led{animation:none;opacity:.14;box-shadow:none}
+
 @media (max-width:540px){
   .panel{grid-template-columns:1fr;grid-template-areas:"brand" "screen" "deck" "grille"}
   .readout{justify-self:start}

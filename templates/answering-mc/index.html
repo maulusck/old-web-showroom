@@ -147,6 +147,38 @@
   </section>
 
 </main>
+<script>
+/* cosmetic playback only — lights buttons, steps the highlight + counter. No audio/storage. */
+(function(){
+  var SEG={0:'1111110',1:'0110000',2:'1101101',3:'1111001',4:'0110011',
+           5:'1011011',6:'1011111',7:'1110000',8:'1111111',9:'1111011'};  /* a b c d e f g */
+  var segs=[].slice.call(document.querySelectorAll('.digit .seg'));
+  var msgs=[].slice.call(document.querySelectorAll('.msg'));
+  var play=document.querySelector('.btn.play');
+  var readout=document.querySelector('.readout');
+  var screen=document.querySelector('.screen');
+  var count=document.querySelector('.scount');
+  var i=-1;
+  function digit(n){ var p=SEG[n]||SEG[0];
+    segs.forEach(function(s,k){ s.classList.toggle('on',p[k]==='1'); });
+    if(count) count.textContent=n; if(screen) screen.setAttribute('aria-label','message count: '+n); }
+  function show(n){
+    msgs.forEach(function(m,k){ m.classList.toggle('playing',k===n); });
+    if(msgs[n]) msgs[n].classList.add('seen');
+    digit(n+1); readout.classList.add('played'); play.classList.add('lit');
+  }
+  function advance(){ var n=i;
+    do{ n++; }while(msgs[n]&&msgs[n].classList.contains('deleted')&&n<msgs.length-1);
+    if(n<msgs.length){ i=n; show(i); } }
+  function stop(){ i=-1; msgs.forEach(function(m){ m.classList.remove('playing'); });
+    play.classList.remove('lit'); digit(0); }
+  play.addEventListener('click',advance);
+  document.querySelector('.btn.skip').addEventListener('click',advance);
+  document.querySelector('.btn.stop').addEventListener('click',stop);
+  document.querySelector('.btn.del').addEventListener('click',function(){
+    if(i>=0&&msgs[i]) msgs[i].classList.add('deleted'); advance(); });
+})();
+</script>
 <script src="../../edit.js" defer></script>
 </body>
 </html>
