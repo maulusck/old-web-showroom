@@ -44,6 +44,7 @@ class Scan(html.parser.HTMLParser):
         self.style_tag = self.data_slot = self.edit_js = False
         self.stylesheets = []          # hrefs of <link rel=stylesheet>
         self.remote = []               # remote resource refs in attributes
+        self.local = []                # (attr, url) local file refs — must resolve
         self.text_parts = []           # visible text only — comments excluded
 
     def handle_data(self, data):
@@ -64,13 +65,23 @@ class Scan(html.parser.HTMLParser):
                 continue  # namespace declaration, not a fetch
             if k in ("src", "href", "poster", "data", "xlink:href"):
                 u = v.strip()
+                if not u:
+                    continue
                 if (u.startswith("//") or re.match(r"https?://", u, re.I)) and not NS_OK.search(u):
                     self.remote.append(f"{k}={u}")
+                elif u.startswith("#") or re.match(r"[a-z][a-z0-9+.\-]*:", u, re.I):
+                    continue  # in-page anchor, or mailto:/tel:/javascript:/data: (http caught above)
+                else:
+                    self.local.append((k, u))  # a local file ref — must resolve
 
+
+EDIT_LAST = re.compile(
+    r'(?is)<script src="\.\./\.\./edit\.js" defer></script>\s*</body>\s*</html>\s*$')
 
 def check_html(path, fails):
+    raw = path.read_text(encoding="utf-8", errors="replace")
     s = Scan()
-    s.feed(path.read_text(encoding="utf-8", errors="replace"))
+    s.feed(raw)
     b = path.name
     if s.style_tag:
         fails.append(f"{b}: inline <style> tag")
@@ -78,13 +89,18 @@ def check_html(path, fails):
         fails.append(f"{b}: no data-slot")
     if not s.edit_js:
         fails.append(f'{b}: missing <script src="{EDIT_JS}">')
+    elif not EDIT_LAST.search(raw):
+        fails.append(f"{b}: edit.js line must be the exact last line of <body>")
     if not s.stylesheets:
         fails.append(f"{b}: no external stylesheet <link>")
-    for href in s.stylesheets:
-        if not href.startswith(("http", "//")) and not (path.parent / href).is_file():
-            fails.append(f"{b}: stylesheet '{href}' not found")
     for r in s.remote:
         fails.append(f"{b}: remote resource {r}")
+    for k, u in s.local:                       # dead nav / missing asset between pages
+        if u == EDIT_JS:                       # the shared editor — checked once at repo root
+            continue
+        tgt = u.split("#", 1)[0].split("?", 1)[0]
+        if tgt and not (path.parent / tgt).is_file():
+            fails.append(f"{b}: {k}='{u}' → file not found")
     if "lorem ipsum" in " ".join(s.text_parts).lower():
         fails.append(f"{b}: lorem ipsum placeholder in visible text")
 
@@ -123,8 +139,9 @@ def validate(root, quiet=False):
             out("  " + c("✗", "91") + " " + c(slug, "1"))
             for x in fails:
                 out("      " + c(x, "2"))
-        else:
-            out("  " + c("✓", "92") + " " + slug)
+        else:                                  # dotted leader → the old POST/setup.exe "....OK"
+            dots = "." * max(3, 38 - len(slug))
+            out("  " + c("✓", "92") + " " + slug + " " + c(dots, "2") + " " + c("OK", "92"))
 
     if not quiet:
         for ln in banner():
@@ -133,6 +150,9 @@ def validate(root, quiet=False):
 
     if not index.is_file():
         out("  " + c("✗", "91") + " no index.html at repo root"); return 1
+    root_fail = not (root / "edit.js").is_file()
+    if root_fail:
+        out("  " + c("✗", "91") + " edit.js missing from repo root (every template links it)")
     idx_text = index.read_text(encoding="utf-8")
     reg = set(re.findall(r'\bs\s*:\s*"([^"]+)"', idx_text))
     folders = {p.name for p in tdir.iterdir() if p.is_dir()}
@@ -148,11 +168,11 @@ def validate(root, quiet=False):
         verdict(slug, ["registered in index.html but no template folder"])
 
     out("  " + c("─" * (_BW + 2), "2"))
-    if bad == 0:
+    if bad == 0 and not root_fail:
         out("  " + c(f"{total} templates · all clear", "92"))
     else:
         out("  " + c(f"{total - bad} ok · {bad} failed", "91"))
-    return 1 if bad else 0
+    return 1 if (bad or root_fail) else 0
 
 
 def selftest():
@@ -164,6 +184,7 @@ def selftest():
         <script src="../../edit.js" defer></script></body></html>''')
     with tempfile.TemporaryDirectory() as t:
         r = Path(t); (r / "templates" / "good").mkdir(parents=True)
+        (r / "edit.js").write_text("// editor")
         (r / "index.html").write_text('<script>const T=[{s:"good"}]</script>')
         (r / "templates" / "good" / "index.html").write_text(good)
         (r / "templates" / "good" / "style.css").write_text("body{color:red}")
@@ -177,6 +198,8 @@ def selftest():
             good + "<style>x{}</style>",                                      # inline style
             good.replace('<rect/>', '<image href="https://evil.test/x.png"/>'),  # remote attr
             good.replace('>Hi<', '>lorem ipsum<'),                            # filler in text
+            good.replace('>Hi</h1>', '>Hi</h1><a href="gone.html">x</a>'),    # dead local link
+            good.replace('</script></body>', '</script><p>x</p></body>'),     # edit.js not last
         ]:
             g.write_text(bad)
             assert validate(r, quiet=True) == 1, f"should fail: {bad[:40]!r}"
