@@ -109,6 +109,29 @@
       <p data-slot="footer">SOLARI CENTRALE · BINARIO 1–18 · the flaps turn on the quarter hour</p>
     </footer>
   </div>
+  <script>
+  (function(){
+    if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    var GLYPHS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-/', STEP=55;
+    function rnd(){ return GLYPHS[Math.floor(Math.random()*GLYPHS.length)]; }
+    document.querySelectorAll('.cell span[data-slot]').forEach(function(span){
+      var text=span.textContent, len=text.length, cell=span.parentNode;
+      var ov=document.createElement('span');
+      ov.className='riffle'; ov.setAttribute('aria-hidden','true');
+      cell.appendChild(ov); cell.classList.add('flapping');
+      var ticks=4+Math.floor(Math.random()*4), t=0;   // flaps per settle
+      var id=setInterval(function(){
+        t++; var out='';
+        for (var i=0;i<len;i++){
+          var c=text[i], lockAt=Math.ceil((i+1)/len*ticks);
+          out += (t>=lockAt || c===' ') ? c : rnd();
+        }
+        ov.textContent=out;
+        if (t>=ticks){ clearInterval(id); cell.classList.remove('flapping'); ov.remove(); }
+      }, STEP);
+    });
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
