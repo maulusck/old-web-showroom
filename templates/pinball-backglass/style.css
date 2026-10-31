@@ -109,6 +109,19 @@ body{margin:0;background:
 .lname{margin:0 0 5px;font:900 13px/1 "Arial Black",sans-serif;letter-spacing:.06em;
   text-transform:uppercase;color:#fff;text-shadow:0 0 7px var(--magenta)}
 .ldesc{margin:0;font:400 12px/1.45 "Arial",sans-serif;color:#cdbdf0}
+.lamp{cursor:pointer}
+/* lamp lit solid by the launch chase or a click — stop pulsing, bloom brighter */
+.lamp.on .bulb{animation:none;filter:brightness(1.4);
+  box-shadow:0 0 9px var(--c),0 0 20px var(--c),0 0 34px var(--c)}
+
+/* start control */
+.launch{font:900 clamp(13px,2.8vw,18px)/1 "Arial Black",sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:#07040c;cursor:pointer;padding:9px 22px;
+  border:3px solid var(--frame);border-radius:30px;
+  background:radial-gradient(circle at 35% 28%,#fff,var(--green) 58%,#0a4728 125%);
+  box-shadow:0 0 12px var(--green),0 0 26px rgba(57,255,136,.45),inset 0 0 8px rgba(0,0,0,.3)}
+.launch:active{transform:translateY(1px)}
+.launch:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 
 /* ---- tilt + match bar ---- */
 .bottombar{display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:center;

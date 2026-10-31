@@ -120,6 +120,7 @@
 
   <!-- tilt & match bottom bar -->
   <footer class="bottombar">
+    <button type="button" class="launch" data-slot="launch">LAUNCH</button>
     <span class="tilt" data-slot="card-title">TILT</span>
     <span class="matchbox">
       <span class="dlabel" data-slot="card-title">MATCH</span>
@@ -132,6 +133,28 @@
   </footer>
 
 </main>
+<script>
+// pinball-backglass — cosmetic power-on: lamp chase + score tick. No game, no rules, no state.
+(function(){
+  var lamps=[].slice.call(document.querySelectorAll('.lamp')),
+      digits=[].slice.call(document.querySelectorAll('.disp-red .d')),
+      btn=document.querySelector('.launch'),
+      still=matchMedia('(prefers-reduced-motion:reduce)').matches,
+      score=847200,timers=[];
+  function show(n){var s=String(n).padStart(digits.length,'0');
+    digits.forEach(function(d,i){d.className='d d'+s[i];});}
+  function launch(){
+    timers.forEach(clearTimeout);timers=[];
+    lamps.forEach(function(l){l.classList.remove('on');});
+    lamps.forEach(function(l,i){
+      timers.push(setTimeout(function(){l.classList.add('on');score+=4400;show(score);},still?0:i*150));});
+  }
+  if(btn)btn.addEventListener('click',launch);
+  lamps.forEach(function(l){l.addEventListener('click',function(){l.classList.toggle('on');});});
+  addEventListener('keydown',function(e){
+    if((e.key===' '||e.key==='Enter')&&document.activeElement!==btn){e.preventDefault();launch();}});
+})();
+</script>
 <script src="../../edit.js" defer></script>
 </body>
 </html>
