@@ -43,8 +43,8 @@
       <p data-slot="hero-body">Three waves stand between you and the core. Pilot the last
       interceptor, hoard your plasma, and do not let the swarm reach the floor. One quarter,
       one chance, one legend.</p>
-      <p class="insert" data-slot="insert-coin">INSERT COIN</p>
-      <p class="start"><b data-slot="start">PRESS START</b></p>
+      <button type="button" class="insert" data-slot="insert-coin">INSERT COIN</button>
+      <button type="button" class="start"><b data-slot="start">PRESS START</b></button>
     </section>
 
     <section class="scores">
@@ -93,6 +93,33 @@
       <rect x="3" y="7" width="2" height="1"/><rect x="6" y="7" width="2" height="1"/>
     </g>
   </svg>
+  <!-- coin-op cosmetics: coin -> credits + PRESS START -> PLAYER 1 READY. No game. -->
+  <script>
+  (function(){
+    var ins=document.querySelector('.insert'),start=document.querySelector('.start'),
+        cred=document.querySelector('[data-slot="credits"]'),
+        player=document.querySelector('.player'),screen=document.querySelector('.screen'),
+        credits=parseInt(cred.textContent,10)||0,ready=false;
+    start.hidden=true;                       // JS off: both prompts stay visible as now
+    function coin(){
+      if(ready)return;
+      cred.textContent=String(++credits).padStart(2,'0');
+      ins.hidden=true; start.hidden=false; start.focus();   // swap blink to PRESS START
+    }
+    function go(){
+      if(ready)return;
+      ready=true; start.hidden=true; ins.hidden=true;
+      player.textContent='PLAYER 1 — READY'; screen.classList.add('ready');
+    }
+    ins.addEventListener('click',coin);
+    start.addEventListener('click',go);      // buttons: Enter/Space come free
+    addEventListener('keydown',function(e){  // arcade keys: 5/C coin, 1 start
+      var k=e.key.toLowerCase();
+      if(k==='5'||k==='c')coin();
+      else if(k==='1'&&!start.hidden)go();
+    });
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>

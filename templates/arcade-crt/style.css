@@ -70,6 +70,10 @@ nav a:hover,nav a[aria-current]{color:#fff;text-shadow:0 0 10px var(--cyan)}
   font-weight:900;letter-spacing:.2em;animation:blink 1.1s steps(1) infinite;
   text-shadow:0 0 14px rgba(255,206,31,.7)}
 .start{margin:0}
+/* INSERT COIN / PRESS START double as coin-op controls — strip button chrome */
+.insert,.start{display:inline-block;font-family:inherit;background:none;border:0;padding:0;cursor:pointer}
+/* READY state: cosmetic flip after PRESS START, no motion (reduced-motion safe) */
+.screen.ready .player{color:var(--cyan);font-size:clamp(16px,4vw,22px);text-shadow:0 0 14px var(--cyan)}
 .start b{color:var(--red);font-size:14px;letter-spacing:.28em;
   border:2px solid var(--red);padding:5px 14px;display:inline-block;
   box-shadow:0 0 12px rgba(255,43,72,.5)}
