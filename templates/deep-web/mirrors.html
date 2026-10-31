@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIRRORS &mdash; HOLLOW INDEX</title>
+<!-- deep-web — mirror/sibling directory list. Same shell as index.html. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="relay" role="status">
+    <span class="dot"></span> connected via 3 relays &middot; circuit rebuilt in 0.91s &middot; exit node <span class="mono">fi7</span> &middot; <span class="mono">reached via fallback</span>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <pre class="logo" aria-hidden="true">  _  _ ___ _    _    ___series
+ | || / _ \ |  | |  / _ \ \    directory
+ | __ \_, / |__| |_| (_) \ \   of the
+ |_||_|/_/|____|____\___/ \_\  unlit</pre>
+      <h1 data-slot="site-name">HOLLOW INDEX</h1>
+      <p class="tagline" data-slot="tagline">no logo. no owner. no record that you were here.</p>
+    </header>
+
+    <nav>
+      <a href="index.html" data-slot="nav-item">[index]</a>
+      <a href="mirrors.html" data-slot="nav-item" aria-current="page">[mirrors]</a>
+      <a href="listing.html" data-slot="nav-item">[curio]</a>
+    </nav>
+
+    <section class="hero">
+      <h2 data-slot="hero-title">// the front door is not the only door</h2>
+      <p data-slot="hero-body">When the primary address goes dark, come in through one of these. Each
+      mirror serves the same ledger from a different node; none of them is more trustworthy than the
+      key at the bottom says it is. Check the fingerprint before you lean on any one of them. If every
+      mirror here is down at once, that is not an accident &mdash; stop, and wait for the canary.</p>
+    </section>
+
+    <div class="notice" data-slot="page-body">
+      MIRROR SWEEP 2026-10-16 04:31 UTC &middot; 4 of 7 reflections answered &middot;
+      3 marked <span class="dead">STALE</span> &middot; all mirrors carry the same signed ledger &middot;
+      a mirror that asks you to log in is not ours.
+    </div>
+
+    <h3 class="section" data-slot="page-title">:: MIRRORS OF THIS INDEX ::</h3>
+    <ul class="dir">
+      <li class="card">
+        <a class="addr" href="index.html">hol7&middot;&middot;&middot;w1ndx4.onion/</a>
+        <span class="up">UP</span>
+        <h4 data-slot="card-title">Primary reflection</h4>
+        <p data-slot="card-body">The canonical entry. If this answers, you do not need the rest of this page.</p>
+      </li>
+      <li class="card">
+        <a class="addr" href="index.html">hol7&middot;&middot;&middot;b2koff.onion/</a>
+        <span class="up">UP</span>
+        <h4 data-slot="card-title">Northern mirror</h4>
+        <p data-slot="card-body">Synced hourly off the primary. Lags the sweep by one pass at most.</p>
+      </li>
+      <li class="card">
+        <a class="addr" href="index.html">hol7&middot;&middot;&middot;q9sletime.onion/</a>
+        <span class="down">STALE</span>
+        <h4 data-slot="card-title">Cold-storage copy</h4>
+        <p data-slot="card-body">Updated by hand when someone remembers. Treat its dates as rumour.</p>
+      </li>
+    </ul>
+
+    <h3 class="section" data-slot="page-title">:: SIBLING DIRECTORIES ::</h3>
+    <ul class="dir">
+      <li class="card">
+        <a class="addr" href="index.html">drip&middot;&middot;&middot;5knot2.onion/</a>
+        <span class="up">UP</span>
+        <h4 data-slot="card-title">The Drip List</h4>
+        <p data-slot="card-body">Smaller index, slower sweep, longer memory. Keeps entries we have already pruned.</p>
+      </li>
+      <li class="card">
+        <a class="addr" href="index.html">void&middot;&middot;&middot;0hush9.onion/</a>
+        <span class="down">STALE</span>
+        <h4 data-slot="card-title">Hush Registry</h4>
+        <p data-slot="card-body">Invitation only beyond the front page. We mirror its public leaf and nothing deeper.</p>
+      </li>
+    </ul>
+
+    <section class="pgp">
+      <h3 class="section">:: VERIFY ANY MIRROR ::</h3>
+      <p class="fp">key fingerprint &rarr; <span class="mono">7C4E 1A9F D033 66BB 2E80  51C7 F19A 44DD 0C62 E3F0</span></p>
+      <pre class="block" aria-hidden="true">-----BEGIN SIGNED NOTICE-----
+every mirror on this page is signed with the
+fingerprint above. a copy you cannot verify
+against this key is somebody else wearing our
+coat. do not enter it.
+-----END SIGNED NOTICE-----</pre>
+    </section>
+
+    <footer data-slot="footer">no cookies &middot; no logs &middot; no promises &middot; mirror table v0.3.9 &middot; a door that moves is still a door<span class="cur" aria-hidden="true">_</span></footer>
+  </div>
+  <script src="../../edit.js" defer></script>
+</body>
+</html>
