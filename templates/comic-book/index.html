@@ -106,6 +106,42 @@
     </footer>
 
   </div>
+  <script>
+  // guided view: spotlight one panel at a time, dim the rest — pure reading focus, no story state.
+  (function(){
+    var panels=[].slice.call(document.querySelectorAll('.strip .panel'));
+    if(!panels.length)return;
+    var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches, i=-1;
+    var bar=document.createElement('div');
+    bar.className='guide';
+    bar.innerHTML='<button class="g-prev" aria-label="Previous panel">◄</button>'+
+      '<span class="g-pos" aria-live="polite">Guided view</span>'+
+      '<button class="g-next" aria-label="Next panel">►</button>'+
+      '<button class="g-close" aria-label="Show full page">✕</button>';
+    document.body.appendChild(bar);
+    var pos=bar.querySelector('.g-pos');
+    function show(n){
+      i=(n+panels.length)%panels.length;
+      document.body.classList.add('reading');
+      panels.forEach(function(p,x){p.classList.toggle('spot',x===i);});
+      panels[i].scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});
+      pos.textContent=(i+1)+' / '+panels.length;
+    }
+    function close(){document.body.classList.remove('reading');
+      panels.forEach(function(p){p.classList.remove('spot');});i=-1;pos.textContent='Guided view';}
+    panels.forEach(function(p,x){p.tabIndex=0;
+      p.addEventListener('click',function(){show(x);});
+      p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(x);}});});
+    bar.querySelector('.g-prev').onclick=function(){show(i<0?0:i-1);};
+    bar.querySelector('.g-next').onclick=function(){show(i+1);};
+    bar.querySelector('.g-close').onclick=close;
+    addEventListener('keydown',function(e){
+      if(i<0)return;
+      if(e.key==='ArrowRight'){e.preventDefault();show(i+1);}
+      else if(e.key==='ArrowLeft'){e.preventDefault();show(i-1);}
+      else if(e.key==='Escape')close();});
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>

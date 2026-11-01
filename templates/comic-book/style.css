@@ -135,6 +135,20 @@ nav a:hover,nav a:focus{background:var(--yellow);transform:translate(1px,1px);
 @keyframes pop{0%,100%{transform:translate(-50%,-50%) scale(1)}
   50%{transform:translate(-50%,-50%) scale(1.06)}}
 
+/* ---- guided view (JS enhancement; no JS = full spread, nothing dimmed) ---- */
+.strip .panel{cursor:pointer;transition:opacity .3s,filter .3s}
+.panel:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.reading .page>:not(.strip),
+.reading .strip .panel:not(.spot){opacity:.14;filter:grayscale(.4)}
+.reading .strip .panel.spot{z-index:4;box-shadow:0 0 0 4px var(--yellow),8px 8px 0 rgba(0,0,0,.35)}
+.guide{position:fixed;z-index:20;left:50%;bottom:16px;transform:translateX(-50%);
+  display:flex;align-items:center;gap:8px;background:var(--paper);color:var(--ink);
+  border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:6px 10px}
+.guide button{font:inherit;font-weight:700;cursor:pointer;background:var(--yellow);
+  color:var(--ink);border:2px solid var(--ink);padding:4px 10px;line-height:1}
+.guide button:hover,.guide button:focus-visible{background:var(--red);color:#fff;outline:none}
+.guide .g-pos{font-weight:700;font-size:13px;min-width:66px;text-align:center}
+
 @media (max-width:620px){
   .strip{grid-template-columns:1fr;gap:14px}
   .strip .panel,
@@ -146,4 +160,5 @@ nav a:hover,nav a:focus{background:var(--yellow);transform:translate(1px,1px);
 @media (prefers-reduced-motion:reduce){
   .sfx-big .burst{animation:none}
   nav a:hover,nav a:focus{transform:none}
+  .strip .panel{transition:none}
 }
