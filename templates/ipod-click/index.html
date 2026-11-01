@@ -18,47 +18,112 @@
 
       <p class="tagline" data-slot="tagline">10,000 songs. One thumb.</p>
 
-      <ul class="menu">
-        <li class="row sel">
-          <span data-slot="nav-item">Now Playing</span>
-          <span class="chev" aria-hidden="true">&rsaquo;</span>
-        </li>
-        <li class="row">
-          <span data-slot="nav-item">Playlists</span>
-          <span class="chev" aria-hidden="true">&rsaquo;</span>
-        </li>
-        <li class="row">
-          <span data-slot="nav-item">Artists</span>
-          <span class="chev" aria-hidden="true">&rsaquo;</span>
-        </li>
-        <li class="row">
-          <span data-slot="nav-item">Shuffle Songs</span>
-          <span class="chev" aria-hidden="true">&rsaquo;</span>
-        </li>
-        <li class="row">
-          <span data-slot="nav-item">Settings</span>
-          <span class="chev" aria-hidden="true">&rsaquo;</span>
-        </li>
-      </ul>
+      <div class="view menu-view active">
+        <ul class="menu">
+          <li class="row sel" data-view="v-now">
+            <span data-slot="nav-item">Now Playing</span>
+            <span class="chev" aria-hidden="true">&rsaquo;</span>
+          </li>
+          <li class="row" data-view="v-playlists">
+            <span data-slot="nav-item">Playlists</span>
+            <span class="chev" aria-hidden="true">&rsaquo;</span>
+          </li>
+          <li class="row" data-view="v-artists">
+            <span data-slot="nav-item">Artists</span>
+            <span class="chev" aria-hidden="true">&rsaquo;</span>
+          </li>
+          <li class="row" data-view="v-shuffle">
+            <span data-slot="nav-item">Shuffle Songs</span>
+            <span class="chev" aria-hidden="true">&rsaquo;</span>
+          </li>
+          <li class="row" data-view="v-settings">
+            <span data-slot="nav-item">Settings</span>
+            <span class="chev" aria-hidden="true">&rsaquo;</span>
+          </li>
+        </ul>
+      </div>
 
-      <div class="nowplaying">
+      <div class="view nowplaying" id="v-now">
         <h1 class="np-title" data-slot="hero-title">Static on the Boardwalk</h1>
         <p class="np-sub" data-slot="hero-body">The Cassette Kids &mdash; Summer in Low Fidelity</p>
         <div class="bar" aria-hidden="true"><span class="bar-fill"></span></div>
         <div class="times" aria-hidden="true"><span>1:42</span><span>-2:11</span></div>
       </div>
+
+      <div class="view" id="v-playlists">
+        <ul class="menu">
+          <li class="row"><span data-slot="nav-item">Beach Tapes '04</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+          <li class="row"><span data-slot="nav-item">Late-Night Static</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+          <li class="row"><span data-slot="nav-item">Rewind &amp; Repeat</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+          <li class="row"><span data-slot="nav-item">Ninety Minutes of Rain</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+        </ul>
+      </div>
+
+      <div class="view" id="v-artists">
+        <ul class="menu">
+          <li class="row"><span data-slot="nav-item">The Cassette Kids</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+          <li class="row"><span data-slot="nav-item">Velvet Static</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+          <li class="row"><span data-slot="nav-item">Lo-Fi Lauren</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+          <li class="row"><span data-slot="nav-item">The Walkman Set</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+        </ul>
+      </div>
+
+      <div class="view nowplaying" id="v-shuffle">
+        <h1 class="np-title" data-slot="hero-title">Tape Hiss Lullaby</h1>
+        <p class="np-sub" data-slot="hero-body">Velvet Static &mdash; B-Sides &amp; Rarities</p>
+        <div class="bar" aria-hidden="true"><span class="bar-fill"></span></div>
+        <div class="times" aria-hidden="true"><span>0:12</span><span>-3:48</span></div>
+      </div>
+
+      <div class="view" id="v-settings">
+        <ul class="menu">
+          <li class="row"><span data-slot="nav-item">Shuffle: Songs</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+          <li class="row"><span data-slot="nav-item">Repeat: Off</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+          <li class="row"><span data-slot="nav-item">Backlight: 10 sec</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+          <li class="row"><span data-slot="nav-item">Clicker: On</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+          <li class="row"><span data-slot="nav-item">About this iPod</span><span class="chev" aria-hidden="true">&rsaquo;</span></li>
+        </ul>
+      </div>
     </div>
 
     <div class="wheel">
-      <span class="label menu-lbl" data-slot="card-title">MENU</span>
-      <svg class="icon prev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M19 6l-8 6 8 6z" fill="currentColor"/></svg>
-      <svg class="icon next" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6v12M5 6l8 6-8 6z" fill="currentColor"/></svg>
+      <button class="zone menu-lbl" data-slot="card-title" type="button">MENU</button>
+      <button class="zone prev" type="button" aria-label="Scroll up"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M19 6l-8 6 8 6z" fill="currentColor"/></svg></button>
+      <button class="zone next" type="button" aria-label="Scroll down"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6v12M5 6l8 6-8 6z" fill="currentColor"/></svg></button>
       <svg class="icon play" viewBox="0 0 34 24" aria-hidden="true"><path d="M3 5v14l9-7zM19 5h4v14h-4zM26 5h4v14h-4z" fill="currentColor"/></svg>
       <button class="center" data-slot="card-body" type="button">SELECT</button>
     </div>
 
     <p class="footer" data-slot="footer">&copy; 2004&ndash;2026 Pocket Rockit &middot; Designed by hand, played by thumb</p>
   </div>
+  <script>
+  // Drive the LCD: wheel/arrows move the menu highlight, center opens an in-device
+  // screen, MENU returns. Progressive: no JS -> all screens stay stacked & readable.
+  (function () {
+    var pod = document.querySelector('.ipod');
+    pod.classList.add('js');
+    var views = pod.querySelectorAll('.view');
+    var menu = pod.querySelector('.menu-view');
+    var rows = Array.prototype.slice.call(menu.querySelectorAll('.row'));
+    var i = 0;
+    function show(v) { views.forEach(function (x) { x.classList.toggle('active', x === v); }); }
+    function move(n) { rows[i].classList.remove('sel'); i = (n + rows.length) % rows.length; rows[i].classList.add('sel'); }
+    function open() { var v = pod.querySelector('#' + rows[i].dataset.view); if (v) show(v); }
+    function back() { show(menu); }
+    show(menu); move(0);
+    pod.querySelector('.prev').onclick = function () { move(i - 1); };
+    pod.querySelector('.next').onclick = function () { move(i + 1); };
+    pod.querySelector('.center').onclick = open;
+    pod.querySelector('.menu-lbl').onclick = back;
+    addEventListener('keydown', function (e) {
+      var atMenu = menu.classList.contains('active');
+      if (e.key === 'ArrowUp' && atMenu) { move(i - 1); e.preventDefault(); }
+      else if (e.key === 'ArrowDown' && atMenu) { move(i + 1); e.preventDefault(); }
+      else if (e.key === 'Enter' && atMenu && e.target.tagName !== 'BUTTON') { open(); }
+      else if (e.key === 'Escape') { back(); }
+    });
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
