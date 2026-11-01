@@ -153,6 +153,37 @@
 
     <footer data-slot="footer">&copy; 1972–2026 Vellmorrow Transit Authority · Keep to the left · Diagram not to scale</footer>
   </div>
+  <script>
+  (function(){
+    var svg=document.querySelector('.map svg'),
+        cards=document.querySelectorAll('.lines li'),
+        head=document.querySelector('.key .key-head');
+    if(!svg||cards.length!==4||!head)return;
+    var names=['harbour','vermillion','orchard','lantern'],active=null;
+    var all=document.createElement('button');
+    all.className='route-toggle all';all.textContent='All lines';
+    head.appendChild(all);
+    function apply(){
+      svg.querySelectorAll('.line,.dot').forEach(function(el){
+        el.classList.toggle('faded',!!active&&!el.classList.contains(active));
+      });
+      cards.forEach(function(li,i){
+        li.classList.toggle('faded',!!active&&names[i]!==active);
+        li.querySelector('.route-toggle').setAttribute('aria-pressed',names[i]===active);
+      });
+      all.setAttribute('aria-pressed',active===null);
+    }
+    cards.forEach(function(li,i){
+      var b=document.createElement('button');
+      b.className='route-toggle';
+      b.setAttribute('aria-label','Highlight the '+li.querySelector('h3').textContent);
+      b.addEventListener('click',function(){active=active===names[i]?null:names[i];apply();});
+      li.insertBefore(b,li.firstChild);
+    });
+    all.addEventListener('click',function(){active=null;apply();});
+    apply();
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>

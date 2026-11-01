@@ -77,3 +77,19 @@ nav a:hover,nav a[aria-current]{background:var(--ink);color:var(--paper);border-
 
 footer{margin-top:40px;padding-top:18px;border-top:2px solid var(--ink);
   color:var(--dim);font-size:12px;letter-spacing:.06em;text-align:center}
+
+/* interactive route highlighting — added by inline script, absent with JS off */
+.faded{opacity:.13;transition:opacity .25s ease}
+@media (prefers-reduced-motion:reduce){.faded{transition:none}}
+.route-toggle{font:inherit;cursor:pointer}
+.route-toggle:focus-visible{outline:2px solid var(--l-vermillion);outline-offset:2px}
+.lines li .route-toggle{position:absolute;top:13px;right:14px;width:20px;height:20px;padding:0;
+  border:2px solid var(--ink);border-radius:50%;background:currentColor}
+.lines li:nth-child(1) .route-toggle{color:var(--l-harbour)}
+.lines li:nth-child(2) .route-toggle{color:var(--l-vermillion)}
+.lines li:nth-child(3) .route-toggle{color:var(--l-orchard)}
+.lines li:nth-child(4) .route-toggle{color:var(--l-lantern)}
+.lines li .route-toggle[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
+.route-toggle.all{float:right;margin-top:-2px;padding:3px 11px;border:1px solid var(--edge);
+  border-radius:999px;background:var(--card);color:var(--ink);font-size:11px;letter-spacing:.1em}
+.route-toggle.all[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
