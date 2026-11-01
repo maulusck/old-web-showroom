@@ -108,6 +108,11 @@ nav a[aria-current]{color:var(--ink)}
   font-size:21px;line-height:1.18;
   font-family:"Old English Text MT",Luminari,"Palatino Linotype",Palatino,Georgia,serif}
 .card p{margin:0;font-size:15.5px;color:var(--ink-soft);line-height:1.6}
+/* in-prose links (rite index + cross-references): kept in the parchment palette */
+.wrap a{color:var(--blood);text-decoration-color:var(--gold);text-underline-offset:3px}
+.wrap a:hover,.wrap a:focus-visible{color:var(--gold)}
+.card h3 a{text-decoration:none}
+.card h3 a:hover,.card h3 a:focus-visible{text-decoration:underline}
 
 /* --- folio / colophon prose --- */
 .folio{border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);padding:26px 0;margin:6px 0}
