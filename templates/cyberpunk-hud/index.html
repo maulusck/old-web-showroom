@@ -82,6 +82,68 @@
       </svg>
     </section>
 
+    <section class="targeting" aria-label="target acquisition">
+      <div class="scope">
+        <div class="scan-sweep" aria-hidden="true"></div>
+        <div class="lock" aria-hidden="true"></div>
+        <button type="button" class="node" style="left:24%;top:30%" data-dos="dos-1" aria-pressed="false">
+          <span class="gl" aria-hidden="true">塔</span><span data-slot="target-name">HANZO TOWER</span>
+        </button>
+        <button type="button" class="node" style="left:72%;top:22%" data-dos="dos-2" aria-pressed="false">
+          <span class="gl" aria-hidden="true">取</span><span data-slot="target-name">KAIRO EXCHANGE</span>
+        </button>
+        <button type="button" class="node" style="left:38%;top:70%" data-dos="dos-3" aria-pressed="false">
+          <span class="gl" aria-hidden="true">亡</span><span data-slot="target-name">GHOST RELAY 07</span>
+        </button>
+        <button type="button" class="node" style="left:80%;top:64%" data-dos="dos-4" aria-pressed="false">
+          <span class="gl" aria-hidden="true">軌</span><span data-slot="target-name">ORBITAL SPIRE</span>
+        </button>
+        <div class="controls">
+          <button type="button" class="scan" data-slot="scan-label">&#9626; SCAN SECTOR</button>
+          <span class="hint" aria-hidden="true">&larr;&rarr; / TAB cycle nodes</span>
+        </div>
+      </div>
+      <div class="dossier" aria-live="polite">
+        <span class="kbracket" aria-hidden="true">[ 標的データ · DOSSIER ]</span>
+        <article class="dos" id="dos-1">
+          <h3 data-slot="target-name">HANZO TOWER</h3>
+          <p class="coord" data-slot="target-coord">34.69°N 135.19°E · GRID 07-A</p>
+          <dl>
+            <dt>ICE</dt><dd data-slot="dossier-ice">gen-4 black · 半蔵雷壁</dd>
+            <dt>PAYDATA</dt><dd data-slot="dossier-data">executive root keys · 2.4 TB</dd>
+            <dt>STATUS</dt><dd data-slot="dossier-status">hardened · trace armed</dd>
+          </dl>
+        </article>
+        <article class="dos" id="dos-2">
+          <h3 data-slot="target-name">KAIRO EXCHANGE</h3>
+          <p class="coord" data-slot="target-coord">34.68°N 135.20°E · GRID 07-C</p>
+          <dl>
+            <dt>ICE</dt><dd data-slot="dossier-ice">gen-2 grey · 海路門</dd>
+            <dt>PAYDATA</dt><dd data-slot="dossier-data">laundered credit flows</dd>
+            <dt>STATUS</dt><dd data-slot="dossier-status">open relay · low heat</dd>
+          </dl>
+        </article>
+        <article class="dos" id="dos-3">
+          <h3 data-slot="target-name">GHOST RELAY 07</h3>
+          <p class="coord" data-slot="target-coord">34.70°N 135.18°E · GRID 07-K</p>
+          <dl>
+            <dt>ICE</dt><dd data-slot="dossier-ice">none · dead node 亡霊</dd>
+            <dt>PAYDATA</dt><dd data-slot="dossier-data">exit route · dummy logs</dd>
+            <dt>STATUS</dt><dd data-slot="dossier-status">ghosted · clean walk-out</dd>
+          </dl>
+        </article>
+        <article class="dos" id="dos-4">
+          <h3 data-slot="target-name">ORBITAL SPIRE</h3>
+          <p class="coord" data-slot="target-coord">34.71°N 135.22°E · GRID 07-Z</p>
+          <dl>
+            <dt>ICE</dt><dd data-slot="dossier-ice">gen-5 ablative · 軌道壁</dd>
+            <dt>PAYDATA</dt><dd data-slot="dossier-data">satellite uplink codes</dd>
+            <dt>STATUS</dt><dd data-slot="dossier-status">contested · trace active</dd>
+          </dl>
+        </article>
+      </div>
+    </section>
+
     <div class="grid">
       <article class="card">
         <span class="cc" aria-hidden="true">侵</span>
@@ -116,6 +178,34 @@
     </footer>
   </div>
 
+  <script>
+  (function(){
+    var scope=document.querySelector('.targeting');if(!scope)return;
+    var nodes=[].slice.call(scope.querySelectorAll('.node'));
+    var dos=[].slice.call(scope.querySelectorAll('.dos'));
+    var lock=scope.querySelector('.lock'),scan=scope.querySelector('.scan');
+    function select(n){
+      nodes.forEach(function(b){var on=b===n;
+        b.classList.toggle('locked',on);b.setAttribute('aria-pressed',on);});
+      dos.forEach(function(d){d.hidden=d.id!==n.getAttribute('data-dos');});
+      lock.style.left=n.style.left;lock.style.top=n.style.top;lock.style.opacity=1;
+    }
+    nodes.forEach(function(n,i){
+      n.addEventListener('focus',function(){select(n);});
+      n.addEventListener('click',function(){select(n);});
+      n.addEventListener('keydown',function(e){
+        var d=/Right|Down/.test(e.key)?1:/Left|Up/.test(e.key)?-1:0;
+        if(d){e.preventDefault();nodes[(i+d+nodes.length)%nodes.length].focus();}
+      });
+    });
+    scan.addEventListener('click',function(){
+      scope.classList.remove('sweeping');void scope.offsetWidth;
+      scope.classList.add('sweeping');
+    });
+    scope.addEventListener('animationend',function(){scope.classList.remove('sweeping');});
+    select(nodes[0]);
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
