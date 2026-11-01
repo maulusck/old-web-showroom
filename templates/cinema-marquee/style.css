@@ -83,6 +83,16 @@ body{margin:0;color:var(--ink);
   text-shadow:0 0 8px rgba(255,220,160,.35)}
 .sub{margin:0;color:var(--amber);letter-spacing:.14em;font-size:12px}
 
+/* feature selector — flips the marquee between the week's bills (JS-added) */
+.selector{display:flex;align-items:center;justify-content:center;gap:16px;margin:16px 0 4px}
+.selector .arrow{cursor:pointer;background:var(--red-dk);color:var(--amber-hot);
+  border:2px solid var(--brass);border-radius:4px;width:40px;height:34px;line-height:1;
+  font-size:16px;font-weight:700;
+  box-shadow:0 0 10px rgba(255,160,40,.3),inset 0 0 8px rgba(0,0,0,.5)}
+.selector .arrow:hover{background:var(--red);text-shadow:0 0 8px rgba(255,200,120,.8)}
+.selector .arrow:focus-visible{outline:3px solid var(--amber-hot);outline-offset:2px}
+.selnum{color:var(--amber);letter-spacing:.2em;font-size:11px;font-weight:700;min-width:120px;text-align:center}
+
 /* ---- ribbon nav --------------------------------------------------------- */
 .ribbon{max-width:760px;margin:22px auto 0;display:flex;flex-wrap:wrap;
   justify-content:center;gap:0;border:2px solid var(--brass);border-radius:4px;
@@ -114,6 +124,11 @@ body{margin:0;color:var(--ink);
 .times span{background:var(--red-dk);color:var(--amber-hot);border:1px solid var(--brass);
   border-radius:2px;padding:3px 9px;font-size:13px;font-weight:700;letter-spacing:.05em;
   font-family:"Courier New",monospace}
+.cert{margin:10px 0 0;color:var(--dim);font-size:11px;letter-spacing:.1em;font-weight:700;text-transform:uppercase}
+/* the feature currently up on the marquee */
+.bill.active{border-left-color:var(--amber);
+  box-shadow:0 0 20px rgba(255,170,60,.35),inset 0 0 0 1px rgba(255,207,107,.5)}
+.bill.active h3{color:var(--amber-hot);text-shadow:0 0 12px rgba(255,180,70,.9)}
 
 /* ---- ticket strip ------------------------------------------------------- */
 .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 0}

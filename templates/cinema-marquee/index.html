@@ -51,24 +51,28 @@
           <h3 data-slot="card-title">The Last Cable Car</h3>
           <p class="plot" data-slot="card-body">A conductor and a thief share one rain-soaked ride across a sleeping city. Director's new print, struck from the original negative.</p>
           <p class="times"><span>2:15</span><span>5:40</span><span>8:55</span></p>
+          <p class="cert" data-slot="card-meta">Certificate A · 98 min · Silent, with titles</p>
         </article>
 
         <article class="bill">
           <h3 data-slot="card-title">Neon for the Lonely</h3>
           <p class="plot" data-slot="card-body">A diner, a dime, and a radio that only plays at three in the morning. Shot entirely under working marquees. Not suitable for the faint of heart.</p>
           <p class="times"><span>1:00</span><span>4:20</span><span>9:30</span></p>
+          <p class="cert" data-slot="card-meta">Certificate A · 104 min · Adults only</p>
         </article>
 
         <article class="bill">
           <h3 data-slot="card-title">Smoke &amp; Silver</h3>
           <p class="plot" data-slot="card-body">Two rival magicians, one vanishing act that refuses to end. Winner, Golden Usher Award. Presented in luminous nitrate black-and-white.</p>
           <p class="times"><span>12:30</span><span>3:45</span><span>7:05</span></p>
+          <p class="cert" data-slot="card-meta">Certificate U · 112 min · In nitrate black-and-white</p>
         </article>
 
         <article class="bill">
           <h3 data-slot="card-title">Moon Over the Mezzanine</h3>
           <p class="plot" data-slot="card-body">The usherette falls for the man in seat J-7, who comes every night and never watches the film. A matinée favourite returns by popular demand.</p>
           <p class="times"><span>11:00</span><span>2:40</span><span>6:15</span></p>
+          <p class="cert" data-slot="card-meta">Certificate U · 89 min · Matinée revival</p>
         </article>
       </div>
     </section>
@@ -92,6 +96,39 @@
   <footer class="facade" data-slot="footer">THE ORPHEUM · 112 MARQUEE LANE · BOX OFFICE OPEN TILL THE LAST REEL · &copy; 1927–2026</footer>
 
 </div>
+<script>
+// cinema-marquee — flip the marquee between the week's features. Cosmetic only:
+// no tickets, no state. JS off → every film below still reads in full.
+(function () {
+  var bills = [].slice.call(document.querySelectorAll('.bill'));
+  var feature = document.querySelector('.feature'), sub = document.querySelector('.sub');
+  if (bills.length < 2 || !feature || !sub) return;
+  var films = bills.map(function (b) {
+    return {
+      title: b.querySelector('h3').textContent.trim(),
+      times: [].slice.call(b.querySelectorAll('.times span')).map(function (s) { return s.textContent; }).join('  ·  '),
+      cert: (b.querySelector('.cert') || {}).textContent || ''
+    };
+  });
+  var sel = document.createElement('div');
+  sel.className = 'selector';
+  sel.innerHTML = '<button type="button" class="arrow" aria-label="Previous feature">◄</button>'
+    + '<span class="selnum" aria-live="polite"></span>'
+    + '<button type="button" class="arrow" aria-label="Next feature">►</button>';
+  feature.after(sel);
+  var i = 0, n = films.length, arrows = sel.querySelectorAll('.arrow'), num = sel.querySelector('.selnum');
+  function show(k) {
+    i = (k + n) % n;
+    feature.textContent = films[i].title.toUpperCase();
+    sub.textContent = films[i].times + '  —  ' + films[i].cert;
+    num.textContent = 'FEATURE ' + (i + 1) + ' OF ' + n;
+    bills.forEach(function (b, j) { b.classList.toggle('active', j === i); });
+  }
+  arrows[0].onclick = function () { show(i - 1); };
+  arrows[1].onclick = function () { show(i + 1); };
+  show(0);
+})();
+</script>
 <script src="../../edit.js" defer></script>
 </body>
 </html>
