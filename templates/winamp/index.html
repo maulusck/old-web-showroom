@@ -99,6 +99,38 @@
 
     <footer data-slot="footer">&copy; 1999&ndash;2026 SlackJaw &middot; Hand-coded in Notepad &middot; Best viewed at 800&times;600</footer>
   </div>
+  <script>
+  (function(){
+    var player=document.querySelector('.player'),
+        marq=document.querySelector('.marquee span'),
+        time=document.querySelector('.player .time'),
+        eq=document.querySelector('.eq'),
+        seek=document.querySelector('.seek'), vol=document.querySelector('.vol'),
+        items=[].slice.call(document.querySelectorAll('.tracks li')), cur=0;
+    var tracks=items.map(function(li){
+      var p=li.querySelector('.t').textContent.trim().split(':');
+      return {name:li.querySelector('[data-slot=playlist-track]').textContent.trim(),
+              dur:(+p[0])*60+(+p[1])};
+    });
+    function fmt(s){s=Math.max(0,s|0);return (s/60|0)+':'+('0'+(s%60)).slice(-2);}
+    function state(s){player.classList.toggle('paused',s=='pause');
+      player.classList.toggle('stopped',s=='stop');}
+    function show(){
+      marq.textContent='»» '+tracks[cur].name+' — SlackJaw ««';
+      time.textContent=fmt(seek.value/100*tracks[cur].dur);
+      items.forEach(function(li,i){li.classList.toggle('now',i==cur);});
+    }
+    document.querySelector('.play').onclick=function(){state('play');};
+    document.querySelector('.pause').onclick=function(){state('pause');};
+    document.querySelector('.stop').onclick=function(){state('stop');time.textContent='0:00';};
+    document.querySelector('.prev').onclick=function(){cur=(cur+tracks.length-1)%tracks.length;state('play');show();};
+    document.querySelector('.next').onclick=function(){cur=(cur+1)%tracks.length;state('play');show();};
+    seek.oninput=function(){if(!player.classList.contains('stopped'))
+      time.textContent=fmt(seek.value/100*tracks[cur].dur);};
+    vol.oninput=function(){eq.style.setProperty('--amp',(0.2+vol.value/100*0.8).toFixed(2));};
+    show();
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
