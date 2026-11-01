@@ -74,4 +74,21 @@ nav a:hover,nav a:focus{background:var(--green);color:var(--bg);outline:none}
 .stats{background:#000;color:#58c85a;border:1px solid var(--edge);
   padding:8px 12px;font-size:13px;letter-spacing:.02em;overflow-x:auto;white-space:nowrap;margin:0 0 14px}
 
+/* operable cursor: movement pad + pack/map toggle. JS-only chrome (hidden until
+   the script adds .js), so with JS off the full map + pack stay readable. */
+.controls{display:none;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 16px}
+.screen.js .controls{display:flex}
+.dpad{display:grid;grid-template-columns:repeat(3,2.3em);grid-template-rows:repeat(2,2.1em);gap:3px}
+.controls button{background:var(--panel);color:var(--green);border:1px solid var(--edge);
+  font:inherit;font-size:15px;line-height:1;cursor:pointer;padding:0}
+.controls button:hover,.controls button:focus{background:var(--green);color:var(--bg);outline:none}
+.btn-up{grid-column:2;grid-row:1}
+.btn-left{grid-column:1;grid-row:2}
+.btn-down{grid-column:2;grid-row:2}
+.btn-right{grid-column:3;grid-row:2}
+.btn-inv{padding:0 14px;letter-spacing:.08em}
+/* screen swap: map view vs pack view (only once JS is in charge) */
+.screen.js.inv .map,.screen.js.inv .log{display:none}
+.screen.js:not(.inv) .pack,.screen.js:not(.inv) .grid{display:none}
+
 footer{color:var(--grey);font-size:12px;text-align:center;padding:8px 0 4px}

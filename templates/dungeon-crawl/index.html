@@ -38,6 +38,16 @@
      <span class="wall">-------</span>
     </pre>
 
+    <div class="controls" aria-label="movement controls">
+      <div class="dpad" role="group" aria-label="move cursor">
+        <button type="button" class="btn-up" data-dir="up" aria-label="move north">&#8593;</button>
+        <button type="button" class="btn-left" data-dir="left" aria-label="move west">&#8592;</button>
+        <button type="button" class="btn-down" data-dir="down" aria-label="move south">&#8595;</button>
+        <button type="button" class="btn-right" data-dir="right" aria-label="move east">&#8594;</button>
+      </div>
+      <button type="button" class="btn-inv" data-inv aria-label="toggle inventory / map">[i] Pack / Map</button>
+    </div>
+
     <nav aria-label="commands">
       <a href="#" data-slot="nav-item">[&gt;] Descend</a>
       <a href="#" data-slot="nav-item">[i] Inventory</a>
@@ -106,6 +116,57 @@
     <footer data-slot="footer">&copy; 1987&ndash;2026 Nethrack &middot; you have not died yet &middot; the Amulet is still down there</footer>
 
   </div>
+  <script>
+  (function(){
+    var scr=document.querySelector('.screen'), pre=document.querySelector('.map');
+    if(!scr||!pre) return;
+    scr.classList.add('js');                 // JS-only: reveal controls, enable screen swap
+    var map=[                                // base dungeon (no @); @ overlaid at hero tile
+      "                      ------------",
+      "                      |..........|",
+      "       -----          |....d.....+----",
+      "       |...|          |..........|   |",
+      "       |.$.+########+----.-----|   |",
+      "       |...|          .        . |   |",
+      "       -.---          .  ----  . +---+----",
+      "        .              ####|..|###    |..|",
+      "     ---+---             |.k|       |r.|",
+      "     |.....|             ----       ----",
+      "     |.....|","     |.....|","     -------"];
+    var hr=10,hc=8,                          // @ start tile (centre of the low room)
+        cls={'.':'floor','#':'corr','|':'wall','-':'wall','+':'door','$':'gold','d':'mob','k':'mob','r':'mob'},
+        flav=["You shuffle across the cold flagstones.","Your torch gutters; something skitters off.",
+          "The corridor breathes a damp, mineral draft.","You step over a gnawed bone and keep going.",
+          "Dust sifts from the ceiling as you pass."],
+        msg=document.querySelector('.log [data-slot="msg1"]');
+    function at(r,c){var row=map[r];return row&&c>=0&&c<row.length?row[c]:' ';}
+    function draw(){
+      var out='';
+      for(var r=0;r<map.length;r++){
+        for(var c=0;c<map[r].length;c++){
+          var hero=r===hr&&c===hc, ch=hero?'@':map[r][c], k=hero?'hero':cls[ch];
+          out+=k?'<span class="'+k+'">'+ch+'</span>':ch;
+        }
+        out+=(r===hr?'  &lt; you are here':'')+'\n';
+      }
+      pre.innerHTML=out;
+    }
+    function move(dr,dc){                     // collision = one tile lookup
+      var nr=hr+dr,nc=hc+dc;
+      if('.#+$'.indexOf(at(nr,nc))<0){ if(msg)msg.textContent="You bump the wall. It is unimpressed."; return; }
+      hr=nr;hc=nc;draw(); if(msg)msg.textContent=flav[(Math.random()*flav.length)|0];
+    }
+    var keys={ArrowUp:[-1,0],k:[-1,0],ArrowDown:[1,0],j:[1,0],ArrowLeft:[0,-1],h:[0,-1],ArrowRight:[0,1],l:[0,1]};
+    addEventListener('keydown',function(e){
+      if(e.key==='i'||e.key==='I'){scr.classList.toggle('inv');e.preventDefault();return;}
+      var d=keys[e.key]; if(d){move(d[0],d[1]);e.preventDefault();}
+    });
+    var dirs={up:[-1,0],down:[1,0],left:[0,-1],right:[0,1]};
+    scr.querySelectorAll('[data-dir]').forEach(function(b){b.onclick=function(){var d=dirs[b.dataset.dir];move(d[0],d[1]);};});
+    scr.querySelector('[data-inv]').onclick=function(){scr.classList.toggle('inv');};
+    draw();
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
