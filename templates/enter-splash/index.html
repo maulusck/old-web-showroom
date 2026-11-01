@@ -41,6 +41,34 @@
       </p>
     </div>
   </div>
+  <script>
+  // SPLASH SEQUENCE: cosmetic fill, then light up ENTER. Pure theatre — no real
+  // loading. No JS? The CSS leaves ENTER/skip live and the bar reads as-is.
+  (function(){
+    var stage=document.querySelector('.stage'),
+        fill=document.querySelector('.fill'),
+        pct=document.querySelector('[data-slot="load-pct"]'),
+        label=document.querySelector('[data-slot="load-label"]'),
+        enter=document.querySelector('.enter');
+    if(!stage||!fill||!enter)return;
+    stage.classList.add('loading');            // gate ENTER (JS only)
+    enter.setAttribute('aria-disabled','true');
+    enter.tabIndex=-1;
+    function ready(){
+      fill.style.width='100%'; if(pct)pct.textContent='100%';
+      if(label)label.textContent='ready';
+      stage.classList.remove('loading');
+      enter.removeAttribute('aria-disabled'); enter.tabIndex=0; enter.focus();
+    }
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches){ready();return;}
+    var n=0; fill.style.width='0%'; if(pct)pct.textContent='0%';
+    var t=setInterval(function(){
+      n=Math.min(100,n+Math.ceil(Math.random()*9));
+      fill.style.width=n+'%'; if(pct)pct.textContent=n+'%';
+      if(n===100){clearInterval(t);setTimeout(ready,200);}
+    },110);
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
