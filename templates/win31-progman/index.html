@@ -123,7 +123,7 @@
     <div class="window group" id="main">
       <div class="titlebar inactive">
         <span class="ctl box" aria-hidden="true"></span>
-        <span class="title-text" data-slot="card-title">Main</span>
+        <button type="button" class="title-text" data-slot="card-title">Main</button>
       </div>
       <div class="client sink">
         <a class="icon" href="#file"><svg aria-hidden="true"><use href="#ic-filemgr"/></svg><span class="lbl" data-slot="icon-label">File Manager</span></a>
@@ -137,7 +137,7 @@
     <div class="window group">
       <div class="titlebar inactive">
         <span class="ctl box" aria-hidden="true"></span>
-        <span class="title-text" data-slot="card-title">Accessories</span>
+        <button type="button" class="title-text" data-slot="card-title">Accessories</button>
       </div>
       <div class="client sink">
         <a class="icon" href="readme.html"><svg aria-hidden="true"><use href="#ic-notepad"/></svg><span class="lbl" data-slot="icon-label">Notepad</span></a>
@@ -151,7 +151,7 @@
     <div class="window group">
       <div class="titlebar inactive">
         <span class="ctl box" aria-hidden="true"></span>
-        <span class="title-text" data-slot="card-title">Games &amp; Guides</span>
+        <button type="button" class="title-text" data-slot="card-title">Games &amp; Guides</button>
       </div>
       <div class="client sink">
         <a class="icon" href="#window"><svg aria-hidden="true"><use href="#ic-solitaire"/></svg><span class="lbl" data-slot="icon-label">Solitaire</span></a>
@@ -174,6 +174,37 @@
 
 <span class="hint" data-slot="tagline">Double-click a program group to begin · Press ALT to walk the menu</span>
 
+<script>
+/* Program Manager window focus/open — no OS, just show/hide/raise the groups. */
+(function(){
+  var groups=document.querySelectorAll('.group'),tray=document.querySelector('.tray');
+  function raise(win){
+    groups.forEach(function(g){g.querySelector('.titlebar').classList.add('inactive');});
+    win.querySelector('.titlebar').classList.remove('inactive');
+  }
+  function toTray(win){                     // minimize/close → group icon in the tray
+    win.hidden=true;win.classList.remove('max');
+    var b=document.createElement('button');b.className='min';b.type='button';
+    b.innerHTML='<svg aria-hidden="true"><use href="#ic-pm"/></svg><span class="lbl">'+
+      win.querySelector('.title-text').textContent+'</span>';
+    b.addEventListener('click',function(){win.hidden=false;b.remove();raise(win);});
+    tray.appendChild(b);
+  }
+  groups.forEach(function(win){
+    var bar=win.querySelector('.titlebar');
+    bar.addEventListener('click',function(){raise(win);});   // title bar → bring to front
+    var btns=document.createElement('span');btns.className='btns';
+    btns.innerHTML='<button type="button" class="ctl" data-act="min" aria-label="Minimize">▼</button>'+
+      '<button type="button" class="ctl" data-act="max" aria-label="Maximize">▲</button>'+
+      '<button type="button" class="ctl" data-act="close" aria-label="Close">✕</button>';
+    bar.appendChild(btns);
+    btns.addEventListener('click',function(e){
+      var a=e.target.closest('button');if(!a)return;
+      if(a.dataset.act==='max')win.classList.toggle('max');else toTray(win);
+    });
+  });
+})();
+</script>
 <script src="../../edit.js" defer></script>
 </body>
 </html>

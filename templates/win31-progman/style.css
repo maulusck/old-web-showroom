@@ -110,5 +110,13 @@ svg .k{fill:var(--black)} svg .w{fill:var(--white)} svg .g{fill:var(--grey)}
 svg .b{fill:var(--navy)} svg .c{fill:#00a8a8} svg .y{fill:#ffff00}
 svg .r{fill:#a80000} svg .gr{fill:#008000} svg .s{fill:var(--shadow)}
 
+/* ---- live window controls (progressive enhancement; JS off = inert markup) ---- */
+button.title-text{background:none;border:0;color:inherit;font:inherit;cursor:default}
+button.ctl{border:0;padding:0;cursor:default;font-family:inherit}
+button.min{background:none;border:0;padding:0;font:inherit;cursor:default}
+.group.max{flex-basis:100%}
+button.title-text:focus-visible,button.ctl:focus-visible,button.min:focus-visible{
+  outline:1px dotted currentColor;outline-offset:1px}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (max-width:480px){body{padding:6px}.desktop{padding:6px;gap:10px}}
