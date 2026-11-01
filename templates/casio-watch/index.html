@@ -48,10 +48,10 @@
     <div class="strap strap-top" aria-hidden="true"><span class="holes"></span></div>
 
     <div class="case">
-      <span class="btn btn-tl">LIGHT</span>
-      <span class="btn btn-bl">MODE</span>
-      <span class="btn btn-tr">ADJUST</span>
-      <span class="btn btn-br">SPLIT</span>
+      <button type="button" class="btn btn-tl" data-act="light">LIGHT</button>
+      <button type="button" class="btn btn-bl" data-act="next">MODE</button>
+      <button type="button" class="btn btn-tr" data-act="prev">ADJUST</button>
+      <span class="btn btn-br" aria-hidden="true">SPLIT</span>
 
       <div class="bezel">
         <div class="print print-brand" data-slot="site-name">CASIO</div>
@@ -66,7 +66,7 @@
           </svg>
 
           <div class="ro-wrap ro-time">
-            <div class="lcd-head"><span class="day">FRI</span><span class="tag">PM</span><span class="date">10-30</span></div>
+            <div class="lcd-head"><span class="day" data-slot="time-day">FRI</span><span class="tag" data-slot="time-ampm">PM</span><span class="date" data-slot="time-date">10-30</span></div>
             <svg class="readout" viewBox="0 0 232 80" aria-label="10:58">
               <use href="#d1" x="0"/><use href="#d0" x="54"/>
               <use href="#col" x="108" class="blink"/>
@@ -75,7 +75,7 @@
           </div>
 
           <div class="ro-wrap ro-alarm">
-            <div class="lcd-head"><span class="day">AL</span><span class="tag">ON</span><span class="date">DAILY</span></div>
+            <div class="lcd-head"><span class="day" data-slot="alarm-label">AL</span><span class="tag" data-slot="alarm-state">ON</span><span class="date" data-slot="alarm-freq">DAILY</span></div>
             <svg class="readout" viewBox="0 0 232 80" aria-label="6:30">
               <use href="#d0" x="0"/><use href="#d6" x="54"/>
               <use href="#col" x="108"/>
@@ -84,7 +84,7 @@
           </div>
 
           <div class="ro-wrap ro-chrono">
-            <div class="lcd-head"><span class="day">CHR</span><span class="tag">LAP 3</span><span class="date">RUN</span></div>
+            <div class="lcd-head"><span class="day" data-slot="chrono-label">CHR</span><span class="tag" data-slot="chrono-lap">LAP 3</span><span class="date" data-slot="chrono-state">RUN</span></div>
             <svg class="readout" viewBox="0 0 232 80" aria-label="12:45">
               <use href="#d1" x="0"/><use href="#d2" x="54"/>
               <use href="#col" x="108" class="blink"/>
@@ -93,7 +93,7 @@
           </div>
 
           <div class="ro-wrap ro-dual">
-            <div class="lcd-head"><span class="day">T-2</span><span class="tag">GMT</span><span class="date">TOKYO</span></div>
+            <div class="lcd-head"><span class="day" data-slot="dual-label">T-2</span><span class="tag" data-slot="dual-zone">GMT</span><span class="date" data-slot="dual-city">TOKYO</span></div>
             <svg class="readout" viewBox="0 0 232 80" aria-label="23:58">
               <use href="#d2" x="0"/><use href="#d3" x="54"/>
               <use href="#col" x="108"/>
@@ -178,6 +178,39 @@
   <footer class="colophon" data-slot="footer">CASIO F-91W · MODULE 593 · MADE TO OUTLIVE THE OCCASION · EST. 1991</footer>
 </main>
 
+<script>
+// Drives the physical buttons: MODE/ADJUST step the in-device screens (the
+// existing CSS radio tabs), LIGHT tints the backlight. No app logic.
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function step(d){var i=tabs.findIndex(function(t){return t.checked;});
+    tabs[(i+d+tabs.length)%tabs.length].checked=true;}
+  var lcd=document.querySelector('.lcd'),off;
+  document.querySelectorAll('.btn[data-act]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var a=b.dataset.act;
+      if(a==='next')step(1); else if(a==='prev')step(-1);
+      else{lcd.classList.add('lit');clearTimeout(off);
+        off=setTimeout(function(){lcd.classList.remove('lit');},1500);}
+    });
+  });
+  // live current time on the TIME screen (JS off => static markup stands)
+  var ro=document.querySelector('.ro-time .readout'),
+      u=ro&&[].slice.call(ro.querySelectorAll('use')),
+      head=document.querySelector('.ro-time .lcd-head'),
+      DAY=['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  function p(n){return(n<10?'0':'')+n;}
+  function tick(){
+    var n=new Date(),h=n.getHours(),m=n.getMinutes(),h12=h%12||12,s=p(h12)+p(m);
+    [u[0],u[1],u[3],u[4]].forEach(function(e,i){e.setAttribute('href','#d'+s[i]);});
+    ro.setAttribute('aria-label',h12+':'+p(m));
+    head.children[0].textContent=DAY[n.getDay()];
+    head.children[1].textContent=h<12?'AM':'PM';
+    head.children[2].textContent=p(n.getMonth()+1)+'-'+p(n.getDate());
+  }
+  if(ro){tick();setInterval(tick,10000);}
+})();
+</script>
 <script src="../../edit.js" defer></script>
 </body>
 </html>

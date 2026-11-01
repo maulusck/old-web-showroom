@@ -47,8 +47,11 @@ body{margin:0;color:var(--page-ink);
 /* side buttons — decorative resin nubs */
 .btn{position:absolute;background:linear-gradient(var(--btn-hi),var(--btn));
   color:var(--silk);font:700 7px/1 Arial,sans-serif;letter-spacing:.08em;
-  padding:5px 3px;border-radius:4px;box-shadow:0 2px 3px rgba(0,0,0,.5);
-  writing-mode:vertical-rl;text-orientation:mixed;user-select:none}
+  padding:5px 3px;border:0;border-radius:4px;box-shadow:0 2px 3px rgba(0,0,0,.5);
+  writing-mode:vertical-rl;text-orientation:mixed;user-select:none;appearance:none}
+button.btn{cursor:pointer}
+button.btn:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+button.btn:active{transform:translateY(1px)}
 .btn-tl{top:22px;left:-11px}
 .btn-bl{bottom:22px;left:-11px}
 .btn-tr{top:22px;right:-11px}
@@ -77,6 +80,9 @@ body{margin:0;color:var(--page-ink);
   overflow:hidden}
 .lcd::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(105deg,rgba(255,255,255,.22),transparent 42%)}
+/* LIGHT button: the little green electroluminescent backlight */
+.lcd.lit{background:linear-gradient(165deg,#bfe39a,#a9d583)}
+@media (prefers-reduced-motion:no-preference){.lcd{transition:background .25s ease}}
 .readout{position:absolute;left:16px;right:16px;bottom:11px;
   fill:var(--lcd-ink)}
 .readout.ghost{opacity:.08}
