@@ -102,6 +102,11 @@ body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:c
 .msg.new .tag::before{content:"\25B6 "}      /* ▶ unread marker */
 .msg.read{color:var(--seg-dim)}
 .msg.read .stamp,.msg.read .tag{color:var(--seg-dim)}
+.msg.flag .tag::after{content:" \2691"}       /* ⚑ flagged via FUNC */
+
+/* JS on: step through one message at a time; JS off shows the full stack */
+.queue.step .msg{display:none}
+.queue.step .msg.sel{display:block;border-bottom:0}
 
 /* scrolling help ticker */
 .ticker{margin-top:9px;padding-top:7px;overflow:hidden;white-space:nowrap;

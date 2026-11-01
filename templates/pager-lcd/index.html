@@ -84,6 +84,30 @@
     </div>
 
   </main>
+  <script>
+  /* In-device message browsing. JS-off: the whole queue stays stacked and readable. */
+  (function(){
+    var q=document.querySelector('.queue');
+    var msgs=[].slice.call(q.querySelectorAll('.msg'));
+    var btns=document.querySelectorAll('.shell-bot .btn');   // [0] READ  [1] FUNC
+    var cnt=document.querySelector('.count b');
+    if(msgs.length<2||!btns.length||!cnt)return;             // nothing to step through
+    var i=0;
+    q.classList.add('step');
+    function show(){msgs.forEach(function(m,n){m.classList.toggle('sel',n===i);});}
+    btns[0].addEventListener('click',function(){            // READ: mark read, step to next
+      var m=msgs[i];
+      if(!m.classList.contains('read')){
+        m.classList.remove('new');m.classList.add('read');
+        var n=parseInt(cnt.textContent,10)||0;
+        if(n>0)cnt.textContent=('0'+(n-1)).slice(-2);
+      }
+      i=(i+1)%msgs.length;show();
+    });
+    btns[1].addEventListener('click',function(){msgs[i].classList.toggle('flag');}); // FUNC: flag
+    show();
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
