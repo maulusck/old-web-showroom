@@ -83,6 +83,49 @@
   <footer data-slot="footer">DOS COMMANDER (C) 1993 &mdash; Press F9 for the pull-down menus. 640K ought to be enough for anybody.</footer>
 
 </div>
+<script>
+/* Norton-style panel navigation — progressive enhancement over the static markup.
+   JS off: both panels + lists read fully and view.html is linked normally. */
+(function(){
+  var panels=[].slice.call(document.querySelectorAll('.panel'));
+  if(!panels.length)return;
+  var active=0;
+  function files(p){return [].slice.call(p.querySelectorAll('.file'));}
+  function setActive(i){
+    active=(i%panels.length+panels.length)%panels.length;
+    panels.forEach(function(p,n){p.classList.toggle('active',n===active);});
+    panels[active].focus();
+  }
+  function move(p,d){
+    var f=files(p); if(!f.length)return;
+    var i=f.findIndex(function(x){return x.classList.contains('sel');});
+    f[Math.max(i,0)].classList.remove('sel');
+    i=Math.max(0,Math.min(f.length-1,(i<0?0:i)+d));
+    f[i].classList.add('sel'); f[i].scrollIntoView({block:'nearest'});
+  }
+  function open(p){
+    var sel=p.querySelector('.file.sel'); if(!sel)return;
+    var a=sel.querySelector('a[href]');
+    location.href=a?a.getAttribute('href'):'view.html';   /* every file views in view.html */
+  }
+  panels.forEach(function(p,n){
+    p.tabIndex=0;
+    p.querySelectorAll('.file a[href]').forEach(function(a){a.tabIndex=-1;}); /* panel is one tab stop */
+    p.addEventListener('focus',function(){setActive(n);});
+    p.addEventListener('click',function(e){
+      var li=e.target.closest('.file'); if(!li)return;
+      files(p).forEach(function(x){x.classList.remove('sel');}); li.classList.add('sel');
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    var p=panels[active];
+    if(e.key==='ArrowDown'){e.preventDefault();move(p,1);}
+    else if(e.key==='ArrowUp'){e.preventDefault();move(p,-1);}
+    else if(e.key==='Enter'&&document.activeElement===p){e.preventDefault();open(p);}
+  });
+  setActive(0);
+})();
+</script>
 <script src="../../edit.js" defer></script>
 </body>
 </html>

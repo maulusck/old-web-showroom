@@ -39,6 +39,10 @@ body{margin:0;background:var(--surround);color:var(--gray);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .left .panel-head{background:var(--cyan)}
 .right .panel-head{background:var(--blue);color:var(--cyan-br)}
+/* active panel (Tab switches it; left starts active) — bright border + lit title */
+.panel{outline:none}
+.panel.active{border-color:var(--white)}
+.panel.active .panel-head{background:var(--cyan);color:var(--black)}
 
 .col-head{display:flex;justify-content:space-between;gap:12px;color:var(--yellow);
   padding:2px 8px;border-bottom:1px solid var(--cyan-br)}
