@@ -49,6 +49,15 @@
 
   <div class="rainbow" role="presentation"></div>
 
+  <!-- now-playing jukebox -->
+  <section class="jukebox">
+    <p class="juke-now">&#127925; You are listening to: <b data-slot="now-playing">TUBULAR_BELLS.MID</b></p>
+    <div class="marquee"><span data-slot="marquee">&#9834; Crank those Sound Blaster speakers &mdash; sequenced by hand in 16 glorious channels &mdash; no CD-ROM required! &#9834;</span></div>
+    <p class="btn-row"><button type="button" class="ringbtn" data-juke>&#9208; Pause</button></p>
+  </section>
+
+  <div class="rainbow" role="presentation"></div>
+
   <section class="card" id="about">
     <h3 class="card-title" data-slot="card-title">&#128100; All About Me</h3>
     <div class="card-body" data-slot="card-body">
@@ -102,10 +111,18 @@
   <!-- webring -->
   <section class="webring">
     <div class="webring-title" data-slot="card-title">This site is a proud member of the<br>&#128302; WEIRD &amp; WONDERFUL WEBRING &#128302;</div>
+    <p class="ring-label">&#9758; Now showing ring neighbor:</p>
+    <ul class="ring-sites">
+      <li data-slot="ring-site">&#128125; The Paranormal Pizza Parlor</li>
+      <li data-slot="ring-site">&#128760; Area 51 Snack Reviews</li>
+      <li data-slot="ring-site">&#128056; Todd's Live Terrarium Cam</li>
+      <li data-slot="ring-site">&#128190; The Shareware Shrine</li>
+      <li data-slot="ring-site">&#127928; GarageBand Before It Was Cool</li>
+    </ul>
     <p class="webring-nav">
-      <a href="#" data-slot="nav-item">[&lt; Prev]</a>
-      <a href="#" data-slot="nav-item">[? Random]</a>
-      <a href="#" data-slot="nav-item">[Next &gt;]</a>
+      <button type="button" class="ringbtn" data-ring="prev" data-slot="nav-item">[&lt; Prev]</button>
+      <button type="button" class="ringbtn" data-ring="random" data-slot="nav-item">[? Random]</button>
+      <button type="button" class="ringbtn" data-ring="next" data-slot="nav-item">[Next &gt;]</button>
     </p>
     <p class="small" data-slot="card-body">Want to join? E-mail me and I'll hook you up with the code!</p>
   </section>
@@ -119,6 +136,42 @@
   </footer>
 
 </div>
+<script>
+// Period live widgets: rotate the shown webring neighbor, tick the hit
+// counter, toggle the now-playing marquee. No navigation, no storage.
+(function () {
+  var ring = [].slice.call(document.querySelectorAll('.ring-sites li')), cur = 0;
+  function show(i) {
+    cur = (i + ring.length) % ring.length;
+    ring.forEach(function (li, n) { li.hidden = n !== cur; });
+  }
+  if (ring.length) {
+    show(0);
+    document.querySelectorAll('[data-ring]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var d = b.getAttribute('data-ring');
+        show(d === 'next' ? cur + 1 : d === 'prev' ? cur - 1
+             : Math.floor(Math.random() * ring.length));
+      });
+    });
+  }
+
+  var digits = [].slice.call(document.querySelectorAll('.counter b'));
+  if (digits.length) {
+    var n = parseInt(digits.map(function (d) { return d.textContent; }).join(''), 10) || 0;
+    setInterval(function () {
+      n = (n + 1) % Math.pow(10, digits.length);
+      String(n).padStart(digits.length, '0').split('')
+        .forEach(function (ch, i) { digits[i].textContent = ch; });
+    }, 4000);
+  }
+
+  var juke = document.querySelector('.jukebox'), btn = juke && juke.querySelector('[data-juke]');
+  if (btn) btn.addEventListener('click', function () {
+    btn.textContent = juke.classList.toggle('paused') ? '▶ Play' : '⏸ Pause';
+  });
+})();
+</script>
 <script src="../../edit.js" defer></script>
 </body>
 </html>
