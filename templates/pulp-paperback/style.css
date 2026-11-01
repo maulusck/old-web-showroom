@@ -80,6 +80,23 @@ body{margin:0;background:var(--paper-dk);color:var(--ink);
 .pullquote{font-family:inherit !important;font-size:10px !important;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink);opacity:.7;margin-bottom:0}
 
+/* inter-page nav — the book's flaps, printed on the inky binding */
+.flap{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  background:var(--ink);color:var(--paper);padding:8px 10px}
+.flap a,.flap span{font-size:12px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;text-decoration:none}
+.flap a{color:var(--yellow)}
+.flap a:hover{color:var(--red)}
+.flap span{opacity:.55}
+
+/* a chapter spread's drop-cap and heading, set on the cream stock */
+.chaphead{margin:0 0 4px;color:var(--red);font-size:11px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase}
+.backblurb p.chapter{text-indent:0}
+.backblurb p.chapter::first-letter{float:left;font-family:Georgia,serif;
+  color:var(--red);font-size:58px;line-height:.72;font-weight:900;
+  padding:4px 8px 0 0}
+
 @media (prefers-reduced-motion:no-preference){
   .price{transition:transform .2s}
   .cover:hover .price{transform:scale(1.12) rotate(-8deg)}
