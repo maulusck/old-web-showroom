@@ -39,6 +39,15 @@ body{margin:0;min-height:100vh;color:var(--ink);
   letter-spacing:.18em;padding:3px 9px;border-radius:2px;margin-bottom:12px}
 .hero h2{margin:0 0 10px;font-size:clamp(18px,3.5vw,26px);font-weight:800;letter-spacing:.06em}
 .hero p{margin:0;color:var(--dim);max-width:60ch}
+.hero .pix{width:48px;height:48px;image-rendering:pixelated;display:block;margin-bottom:12px;
+  border:1px solid #06093a}
+.herostats{margin:0 0 10px;color:var(--cursor);font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em}
+
+/* JS on: the detail panel is a loaded view, shown only after X/Enter on a block.
+   JS off: no .js class, so the panel stays visible and every save reads in full. */
+.js .hero{display:none}
+.js.detail .hero{display:block}
 
 .dirlabel{margin:0 0 14px;font-size:13px;letter-spacing:.24em;color:var(--dim);
   text-transform:uppercase;border-bottom:2px solid var(--line);padding-bottom:8px}
@@ -46,6 +55,7 @@ body{margin:0;min-height:100vh;color:var(--ink);
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
 .block{position:relative;padding:14px;border:2px solid var(--line);border-radius:4px;
   background:linear-gradient(180deg,var(--panel-lt),var(--panel));cursor:pointer;outline:none;
+  font:inherit;color:inherit;text-align:left;width:100%;appearance:none;-webkit-appearance:none;
   transition:border-color .12s,transform .12s}
 .block .pix{width:40px;height:40px;image-rendering:pixelated;display:block;margin-bottom:10px;
   border:1px solid #06093a}

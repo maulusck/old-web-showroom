@@ -35,68 +35,105 @@
       </div>
     </section>
 
-    <section class="hero">
+    <section class="hero" aria-live="polite">
       <span class="tag">NOW SELECTED</span>
+      <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#1a2250"/><rect x="1" y="2" width="6" height="1" fill="#e04b5a"/><rect x="1" y="4" width="6" height="1" fill="#f0c14b"/><rect x="2" y="5" width="4" height="2" fill="#4bd0e0"/></svg>
       <h2 data-slot="hero-title">CHRONO DRIFT — RACE DAY 07</h2>
+      <p class="herostats"><span data-slot="hero-time">PLAY TIME 12:47:30</span> · <span data-slot="hero-date">SAVED 2001-03-18</span></p>
       <p data-slot="hero-body">Checkpoint reached: Neon Causeway, lap 3. 14 trophies collected,
       3 shortcuts unlocked. Press the X button to load this save and keep drifting into the sunrise.</p>
     </section>
 
     <h3 class="dirlabel" data-slot="page-title">SAVE DIRECTORY</h3>
-    <div class="grid" role="list">
+    <div class="grid">
 
-      <article class="block sel" role="listitem" tabindex="0">
+      <button type="button" class="block sel" data-time="PLAY TIME 12:47:30" data-date="SAVED 2001-03-18">
         <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#1a2250"/><rect x="1" y="2" width="6" height="1" fill="#e04b5a"/><rect x="1" y="4" width="6" height="1" fill="#f0c14b"/><rect x="2" y="5" width="4" height="2" fill="#4bd0e0"/></svg>
         <h4 data-slot="card-title">CHRONO DRIFT</h4>
         <p data-slot="card-body">RACE DAY 07 · 1 BLOCK · saved 03:11</p>
-      </article>
+      </button>
 
-      <article class="block" role="listitem" tabindex="0">
+      <button type="button" class="block" data-time="PLAY TIME 06:22:10" data-date="SAVED 2001-02-27">
         <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#0d3a4a"/><rect x="1" y="1" width="6" height="2" fill="#2fc2a8"/><rect x="2" y="4" width="4" height="3" fill="#bfeef0"/><rect x="3" y="5" width="2" height="1" fill="#0d3a4a"/></svg>
         <h4 data-slot="card-title">AQUA SENTINEL</h4>
         <p data-slot="card-body">DEEP RUN · 2 BLOCKS · saved 21:48</p>
-      </article>
+      </button>
 
-      <article class="block" role="listitem" tabindex="0">
+      <button type="button" class="block" data-time="PLAY TIME 03:58:44" data-date="SAVED 2001-04-02">
         <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#2a0f3a"/><rect x="1" y="3" width="6" height="2" fill="#ff5fd0"/><rect x="2" y="1" width="1" height="6" fill="#8affef"/><rect x="5" y="1" width="1" height="6" fill="#8affef"/></svg>
         <h4 data-slot="card-title">NEON GRID PRIX</h4>
         <p data-slot="card-body">TIME ATTACK · 1 BLOCK · saved 18:02</p>
-      </article>
+      </button>
 
-      <article class="block" role="listitem" tabindex="0">
+      <button type="button" class="block" data-time="PLAY TIME 19:05:12" data-date="SAVED 2001-01-15">
         <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#3a1a0d"/><rect x="2" y="2" width="4" height="4" fill="#ff8a3c"/><rect x="3" y="3" width="2" height="2" fill="#ffe08a"/></svg>
         <h4 data-slot="card-title">TOMB OF EMBERS</h4>
         <p data-slot="card-body">CHAMBER IX · 2 BLOCKS · saved 00:57</p>
-      </article>
+      </button>
 
-      <article class="block" role="listitem" tabindex="0">
+      <button type="button" class="block" data-time="PLAY TIME 08:30:00" data-date="SAVED 2001-03-30">
         <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#0a1030"/><rect x="3" y="1" width="2" height="1" fill="#fff"/><rect x="1" y="3" width="6" height="1" fill="#9db4ff"/><rect x="2" y="5" width="4" height="2" fill="#4466cc"/></svg>
         <h4 data-slot="card-title">STARLING SQUADRON</h4>
         <p data-slot="card-body">WING 04 · 1 BLOCK · saved 12:30</p>
-      </article>
+      </button>
 
-      <article class="block" role="listitem" tabindex="0">
+      <button type="button" class="block" data-time="PLAY TIME 02:11:47" data-date="SAVED 2001-04-11">
         <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#10261f"/><rect x="1" y="5" width="6" height="2" fill="#6b8f6b"/><rect x="3" y="2" width="2" height="3" fill="#cfe0cf"/></svg>
         <h4 data-slot="card-title">SILENT HARBOR</h4>
         <p data-slot="card-body">CHAPTER II · 1 BLOCK · saved 06:14</p>
-      </article>
+      </button>
 
-      <article class="block empty" role="listitem" tabindex="0">
+      <button type="button" class="block empty">
         <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#141a38"/></svg>
         <h4 data-slot="card-title">· FREE BLOCK ·</h4>
         <p data-slot="card-body">no data — available for a new save</p>
-      </article>
+      </button>
 
-      <article class="block empty" role="listitem" tabindex="0">
+      <button type="button" class="block empty">
         <svg class="pix" viewBox="0 0 8 8" aria-hidden="true"><rect width="8" height="8" fill="#141a38"/></svg>
         <h4 data-slot="card-title">· FREE BLOCK ·</h4>
         <p data-slot="card-body">no data — available for a new save</p>
-      </article>
+      </button>
 
     </div>
   </main>
 
   <footer data-slot="footer">MEMORY CARD (PS) · SLOT 1 · do not remove the card while saving</footer>
+  <script>
+  // In-device block browsing: move the BIOS cursor, X/Enter loads a save's detail, Triangle/Esc backs out.
+  (function () {
+    var root = document.documentElement, blocks = [].slice.call(document.querySelectorAll('.block'));
+    var hero = document.querySelector('.hero'), sel = blocks.findIndex(function (b) { return b.classList.contains('sel'); });
+    root.className += ' js';
+    if (sel < 0) sel = 0;
+    function mark(i) {
+      i = Math.max(0, Math.min(blocks.length - 1, i));
+      blocks[sel].classList.remove('sel'); sel = i;
+      blocks[sel].classList.add('sel'); blocks[sel].focus();
+    }
+    function open() {
+      var b = blocks[sel], pick = function (s) { return hero.querySelector('[data-slot=' + s + ']'); };
+      pick('hero-title').textContent = b.querySelector('[data-slot=card-title]').textContent;
+      pick('hero-time').textContent = b.dataset.time || '— NO PLAY DATA —';
+      pick('hero-date').textContent = b.dataset.date || 'EMPTY BLOCK';
+      pick('hero-body').textContent = b.querySelector('[data-slot=card-body]').textContent;
+      hero.querySelector('.pix').replaceWith(b.querySelector('.pix').cloneNode(true));
+      root.classList.add('detail'); hero.scrollIntoView({ block: 'nearest' });
+    }
+    blocks.forEach(function (b, i) { b.addEventListener('click', function () { mark(i); open(); }); });
+    addEventListener('keydown', function (e) {
+      if (root.classList.contains('detail')) {
+        if (e.key === 'Escape' || e.key === 't') { root.classList.remove('detail'); blocks[sel].focus(); e.preventDefault(); }
+        return;
+      }
+      var cols = blocks.filter(function (b) { return b.offsetTop === blocks[0].offsetTop; }).length || 1, k = e.key;
+      if (k === 'ArrowRight') mark(sel + 1); else if (k === 'ArrowLeft') mark(sel - 1);
+      else if (k === 'ArrowDown') mark(sel + cols); else if (k === 'ArrowUp') mark(sel - cols);
+      else if (k === 'Enter' || k === ' ' || k === 'x') open(); else return;
+      e.preventDefault();
+    });
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
