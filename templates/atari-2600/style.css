@@ -67,6 +67,28 @@ body{margin:0;color:var(--cream);
 .menu a:hover,.menu a:focus{color:var(--tia-ink);background:var(--tia-green);outline:none}
 .menu a[aria-current]{color:var(--tia-yellow)}
 .menu a[aria-current]::before{content:"● "}
+
+/* --- game screens the GAME SELECT switch cycles through --- */
+.screens{position:relative;max-width:320px;margin:0 auto}
+body.js [data-screen]{display:none}            /* JS on: one at a time. JS off: all stacked, readable */
+body.js [data-screen].on{display:block}
+.cartname{margin:0 0 10px;color:var(--tia-cyan);font-family:"Courier New",monospace;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase}
+.gscreen+.gscreen{margin-top:14px}
+.gnum{margin:0 0 6px;color:var(--tia-cyan);font-family:"Courier New",monospace;
+  font-size:11px;letter-spacing:.3em}
+.gtitle{margin:0 0 6px;color:var(--tia-yellow);font-family:"Courier New",monospace;
+  font-size:clamp(16px,4.5vw,22px);letter-spacing:.08em;text-transform:uppercase;
+  text-shadow:2px 2px 0 var(--tia-red)}
+.gplayers{margin:0 0 10px;color:var(--tia-green);font-family:"Courier New",monospace;
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.ghint{margin:0;color:var(--cream);font-family:"Courier New",monospace;
+  font-size:10px;letter-spacing:.18em;opacity:.65}
+
+/* cosmetic switch state on the TV screen */
+.screen.bw .crt{filter:grayscale(1)}
+.screen.hard .crt{filter:hue-rotate(-28deg) saturate(1.3)}
+.screen.off .crt{opacity:.12}
 .scan{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:repeating-linear-gradient(180deg, rgba(0,0,0,.18) 0 2px, transparent 2px 4px);
   mix-blend-mode:multiply}
@@ -102,6 +124,10 @@ body{margin:0;color:var(--cream);
 .controls{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;
   padding:18px 14px 20px;background:var(--black)}
 .switch{display:flex;flex-direction:column;align-items:center;gap:7px;min-width:92px}
+button.switch{border:0;background:none;padding:6px 4px;font:inherit;color:inherit;cursor:pointer;border-radius:5px}
+button.switch:focus-visible{outline:2px solid var(--tia-yellow);outline-offset:2px}
+.switch .state{color:var(--tia-green);font-family:"Courier New",monospace;
+  font-size:10px;letter-spacing:.14em}
 .toggle{width:20px;height:38px;border-radius:4px;position:relative;
   background:linear-gradient(90deg,var(--silver3),var(--silver1) 45%,var(--silver2) 55%,var(--silver3));
   box-shadow:inset 0 0 0 1px #000, 0 2px 3px rgba(0,0,0,.5)}

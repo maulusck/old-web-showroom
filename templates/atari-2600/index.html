@@ -35,14 +35,50 @@
               <h1 class="logo" data-slot="site-name">WOODGRAIN 2600</h1>
               <p class="sub" data-slot="tagline">Video Computer System · 128 glorious colors</p>
 
-              <p class="prompt">▶ SELECT GAME</p>
-              <nav class="menu" aria-label="game select">
-                <a href="#" data-slot="nav-item" aria-current="page">1 · STARFIELD RAIDERS</a>
-                <a href="#" data-slot="nav-item">2 · CAVERN QUEST</a>
-                <a href="#" data-slot="nav-item">3 · TURBO CANYON</a>
-                <a href="#" data-slot="nav-item">4 · ROBOT RANCH</a>
-                <a href="#" data-slot="nav-item">5 · NEON PADDLE</a>
-              </nav>
+              <!-- Screens the GAME SELECT switch cycles through. JS off: all show, stacked and readable. -->
+              <div class="screens">
+                <section class="gscreen" data-screen aria-label="game select menu">
+                  <p class="prompt">▶ SELECT GAME</p>
+                  <p class="cartname" data-slot="cart-name">CARTRIDGE · 5-IN-1 CLASSICS</p>
+                  <nav class="menu" aria-label="game select">
+                    <a href="#" data-slot="nav-item" aria-current="page">1 · STARFIELD RAIDERS</a>
+                    <a href="#" data-slot="nav-item">2 · CAVERN QUEST</a>
+                    <a href="#" data-slot="nav-item">3 · TURBO CANYON</a>
+                    <a href="#" data-slot="nav-item">4 · ROBOT RANCH</a>
+                    <a href="#" data-slot="nav-item">5 · NEON PADDLE</a>
+                  </nav>
+                </section>
+                <section class="gscreen" data-screen aria-label="game title">
+                  <p class="gnum">GAME 1</p>
+                  <h2 class="gtitle" data-slot="screen-title">Starfield Raiders</h2>
+                  <p class="gplayers" data-slot="screen-sub">1 Player · 9 Waves</p>
+                  <p class="ghint">▶ SELECT = NEXT · RESET = MENU</p>
+                </section>
+                <section class="gscreen" data-screen aria-label="game title">
+                  <p class="gnum">GAME 2</p>
+                  <h2 class="gtitle" data-slot="screen-title">Cavern Quest</h2>
+                  <p class="gplayers" data-slot="screen-sub">1 Player · Torch-lit Pits</p>
+                  <p class="ghint">▶ SELECT = NEXT · RESET = MENU</p>
+                </section>
+                <section class="gscreen" data-screen aria-label="game title">
+                  <p class="gnum">GAME 3</p>
+                  <h2 class="gtitle" data-slot="screen-title">Turbo Canyon</h2>
+                  <p class="gplayers" data-slot="screen-sub">1 Player · Beat the Clock</p>
+                  <p class="ghint">▶ SELECT = NEXT · RESET = MENU</p>
+                </section>
+                <section class="gscreen" data-screen aria-label="game title">
+                  <p class="gnum">GAME 4</p>
+                  <h2 class="gtitle" data-slot="screen-title">Robot Ranch</h2>
+                  <p class="gplayers" data-slot="screen-sub">2 Players · Co-op Corral</p>
+                  <p class="ghint">▶ SELECT = NEXT · RESET = MENU</p>
+                </section>
+                <section class="gscreen" data-screen aria-label="game title">
+                  <p class="gnum">GAME 5</p>
+                  <h2 class="gtitle" data-slot="screen-title">Neon Paddle</h2>
+                  <p class="gplayers" data-slot="screen-sub">2 Players · Volley Duel</p>
+                  <p class="ghint">▶ SELECT = NEXT · RESET = MENU</p>
+                </section>
+              </div>
 
               <div class="scan" aria-hidden="true"></div>
             </div>
@@ -61,10 +97,18 @@
       <div class="cart-slot" aria-hidden="true"><span></span></div>
       <div class="wood"></div>
       <div class="controls">
-        <div class="switch"><span class="toggle up" aria-hidden="true"></span><label>POWER</label></div>
-        <div class="switch"><span class="toggle down" aria-hidden="true"></span><label>TV TYPE</label></div>
-        <div class="switch"><span class="toggle up" aria-hidden="true"></span><label>GAME SELECT</label></div>
-        <div class="switch"><span class="toggle down" aria-hidden="true"></span><label>GAME RESET</label></div>
+        <button type="button" class="switch" data-act="power" aria-pressed="false">
+          <span class="toggle up" aria-hidden="true"></span><label>POWER</label></button>
+        <button type="button" class="switch" data-act="tvtype" aria-pressed="false">
+          <span class="toggle down" aria-hidden="true"></span><label>TV TYPE</label>
+          <span class="state" data-slot="tv-state">COLOR</span></button>
+        <button type="button" class="switch" data-act="select">
+          <span class="toggle up" aria-hidden="true"></span><label>GAME SELECT</label></button>
+        <button type="button" class="switch" data-act="reset">
+          <span class="toggle down" aria-hidden="true"></span><label>GAME RESET</label></button>
+        <button type="button" class="switch" data-act="diff" aria-pressed="false">
+          <span class="toggle up" aria-hidden="true"></span><label>DIFFICULTY</label>
+          <span class="state" data-slot="diff-state">A</span></button>
       </div>
     </section>
 
@@ -104,6 +148,42 @@
 
     <footer data-slot="footer">&copy; 1977–2026 Woodgrain Interactive · Made for the family room · Please be kind, rewind the TV guide</footer>
   </main>
+  <script>
+  // Console switches drive the TV: SELECT cycles title screens, RESET to first, TV TYPE + DIFFICULTY flip cosmetic state.
+  (function(){
+    var screens = document.querySelectorAll('[data-screen]');
+    if(!screens.length) return;
+    document.body.classList.add('js');            // CSS now shows one screen at a time
+    var screen = document.querySelector('.screen'), at = 0;
+    function show(n){
+      at = (n + screens.length) % screens.length;
+      screens.forEach(function(s,k){ s.classList.toggle('on', k === at); });
+    }
+    function flip(btn, on, off, cls){
+      var p = btn.getAttribute('aria-pressed') !== 'true';
+      btn.setAttribute('aria-pressed', p);
+      btn.querySelector('.toggle').className = 'toggle ' + (p ? 'down' : 'up');
+      var st = btn.querySelector('.state'); if(st) st.textContent = p ? off : on;
+      if(cls) screen.classList.toggle(cls, p);
+    }
+    document.querySelectorAll('.switch').forEach(function(b){
+      b.addEventListener('click', function(){
+        var a = b.dataset.act;
+        if(a === 'select') show(at + 1);
+        else if(a === 'reset') show(0);
+        else if(a === 'tvtype') flip(b, 'COLOR', 'B·W', 'bw');
+        else if(a === 'diff') flip(b, 'A', 'B', 'hard');
+        else if(a === 'power') flip(b, null, null, 'off');
+      });
+    });
+    var sel = document.querySelector('[data-act="select"]');
+    sel.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowRight'){ e.preventDefault(); show(at + 1); }
+      if(e.key === 'ArrowLeft'){ e.preventDefault(); show(at - 1); }
+    });
+    show(0);
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
