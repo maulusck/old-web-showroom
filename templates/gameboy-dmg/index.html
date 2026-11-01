@@ -12,6 +12,12 @@
 <body>
 <main class="gb" aria-label="Pocket·8 handheld">
 
+  <!-- power switch — slide to light the red LED -->
+  <button class="pwr" type="button" aria-pressed="false" aria-label="Power switch">
+    <span class="pwr-knob" aria-hidden="true"></span>
+    <span class="pwr-txt" aria-hidden="true">◁ OFF · ON ▷</span>
+  </button>
+
   <!-- ===== upper shell: bezel + LCD ===== -->
   <div class="shell-top">
     <div class="bezel">
@@ -47,12 +53,13 @@
             </div>
           </div>
 
+          <div class="home">
           <nav class="menu" aria-label="Main menu">
-            <a href="index.html" class="mi" data-slot="nav-item" aria-current="page">NEW GAME</a>
-            <a href="index.html" class="mi" data-slot="nav-item">WORLD MAP</a>
-            <a href="index.html" class="mi" data-slot="nav-item">BESTIARY</a>
-            <a href="index.html" class="mi" data-slot="nav-item">ITEM SHOP</a>
-            <a href="index.html" class="mi" data-slot="nav-item">PASSWORD</a>
+            <a href="index.html#scr-new" class="mi" data-slot="nav-item" data-screen="scr-new" aria-current="page">NEW GAME</a>
+            <a href="index.html#scr-map" class="mi" data-slot="nav-item" data-screen="scr-map">WORLD MAP</a>
+            <a href="index.html#scr-best" class="mi" data-slot="nav-item" data-screen="scr-best">BESTIARY</a>
+            <a href="index.html#scr-shop" class="mi" data-slot="nav-item" data-screen="scr-shop">ITEM SHOP</a>
+            <a href="index.html#scr-pass" class="mi" data-slot="nav-item" data-screen="scr-pass">PASSWORD</a>
           </nav>
 
           <section class="quest">
@@ -87,6 +94,48 @@
 
           <p class="lcd-foot" data-slot="footer">FOURSHADE SOFT · PLAY IT TIL THE LINK
           CABLE FRAYS · EST. 1989</p>
+          </div><!-- /.home -->
+
+          <!-- booted screens — each menu item swaps to the one it names -->
+          <section class="screen" id="scr-new" tabindex="-1" aria-labelledby="h-new">
+            <h2 class="screen-h" id="h-new" data-slot="screen-title">SAVE SLOT A · NEW HERO</h2>
+            <p class="screen-b" data-slot="screen-body">The cartridge hums awake. Pick a sprite,
+            christen your knight, and the dew-lit meadow boots one tile at a time. Your quest
+            opens at the first save point, batteries willing.</p>
+            <p class="hint" aria-hidden="true">◀ PRESS B TO GO BACK</p>
+          </section>
+
+          <section class="screen" id="scr-map" tabindex="-1" aria-labelledby="h-map">
+            <h2 class="screen-h" id="h-map" data-slot="screen-title">THE OVERWORLD</h2>
+            <p class="screen-b" data-slot="screen-body">Eight realms ring the kingdom: Dot Meadow,
+            the Static Caves, Pixel Marsh, Palette Keep, and four more past the fog. The cursor
+            blinks on the tile where you last stood.</p>
+            <p class="hint" aria-hidden="true">◀ PRESS B TO GO BACK</p>
+          </section>
+
+          <section class="screen" id="scr-best" tabindex="-1" aria-labelledby="h-best">
+            <h2 class="screen-h" id="h-best" data-slot="screen-title">FIELD GUIDE · 42 BLIPS</h2>
+            <p class="screen-b" data-slot="screen-body">No.001 GRUBLET, a shy green crawler.
+            No.017 SQUAREWING, hums off-key. No.042 THE GRUE renders only when the room light
+            fades. Bonk gently — most of them just want a nap.</p>
+            <p class="hint" aria-hidden="true">◀ PRESS B TO GO BACK</p>
+          </section>
+
+          <section class="screen" id="scr-shop" tabindex="-1" aria-labelledby="h-shop">
+            <h2 class="screen-h" id="h-shop" data-slot="screen-title">GENERAL STORE · WELCOME!</h2>
+            <p class="screen-b" data-slot="screen-body">POTION 10G · torch 15G · a spare LINK
+            CABLE 50G · one mystery cartridge, price smudged. Coins jingle in four shades. Come
+            back when the batteries are fresh.</p>
+            <p class="hint" aria-hidden="true">◀ PRESS B TO GO BACK</p>
+          </section>
+
+          <section class="screen" id="scr-pass" tabindex="-1" aria-labelledby="h-pass">
+            <h2 class="screen-h" id="h-pass" data-slot="screen-title">ENTER PASSWORD</h2>
+            <p class="screen-b" data-slot="screen-body">Sixteen glyphs stand between you and the
+            kingdom you saved last autumn. Jot them on the back of a cereal box. Lose the paper,
+            lose the realm.</p>
+            <p class="hint" aria-hidden="true">◀ PRESS B TO GO BACK</p>
+          </section>
 
         </div>
       </div>
@@ -106,17 +155,21 @@
   </div>
 
   <!-- ===== controls ===== -->
-  <div class="controls" aria-hidden="true">
-    <div class="dpad"><span class="dpad-dot"></span></div>
+  <div class="controls">
+    <div class="dpad">
+      <button class="d up" type="button" aria-label="Up — move cursor up"></button>
+      <button class="d down" type="button" aria-label="Down — move cursor down"></button>
+      <span class="dpad-dot" aria-hidden="true"></span>
+    </div>
 
     <div class="ab">
-      <div class="btn-wrap b"><span class="btn"></span><span class="lbl">B</span></div>
-      <div class="btn-wrap a"><span class="btn"></span><span class="lbl">A</span></div>
+      <div class="btn-wrap b"><button class="btn b" type="button" aria-label="B — go back"></button><span class="lbl" aria-hidden="true">B</span></div>
+      <div class="btn-wrap a"><button class="btn a" type="button" aria-label="A — boot selection"></button><span class="lbl" aria-hidden="true">A</span></div>
     </div>
 
     <div class="startsel">
-      <div class="pillwrap"><span class="pill"></span><span class="lbl">SELECT</span></div>
-      <div class="pillwrap"><span class="pill"></span><span class="lbl">START</span></div>
+      <div class="pillwrap"><span class="pill" aria-hidden="true"></span><span class="lbl" aria-hidden="true">SELECT</span></div>
+      <div class="pillwrap"><button class="pill start" type="button" aria-label="Start — boot selection"></button><span class="lbl" aria-hidden="true">START</span></div>
     </div>
   </div>
 
@@ -124,6 +177,38 @@
   <div class="speaker" aria-hidden="true"></div>
 
 </main>
+<script>
+/* cosmetic screen-switching on the handheld — no game, no state, just nav. */
+(function(){
+  var gb=document.querySelector('.gb'), $=function(s){return gb.querySelector(s);};
+  var items=[].slice.call(gb.querySelectorAll('.menu .mi'));
+  var screens=[].slice.call(gb.querySelectorAll('.screen'));
+  var cur=Math.max(0,items.findIndex(function(m){return m.hasAttribute('aria-current');}));
+  gb.classList.add('js');
+  function select(i){
+    cur=(i+items.length)%items.length;
+    items.forEach(function(m,n){ n===cur?m.setAttribute('aria-current','page'):m.removeAttribute('aria-current'); });
+    if(!gb.classList.contains('booted')) items[cur].focus();
+  }
+  function home(){ gb.classList.remove('booted'); screens.forEach(function(s){s.hidden=true;}); items[cur].focus(); }
+  function boot(){ var id=items[cur].dataset.screen; gb.classList.add('booted');
+    screens.forEach(function(s){s.hidden=s.id!==id;}); var s=gb.querySelector('#'+id); if(s)s.focus(); }
+  $('.d.up').onclick=function(){select(cur-1);};
+  $('.d.down').onclick=function(){select(cur+1);};
+  $('.btn.a').onclick=$('.pill.start').onclick=boot;
+  $('.btn.b').onclick=home;
+  $('.pwr').onclick=function(){ var on=gb.classList.toggle('on'); this.setAttribute('aria-pressed',on); };
+  items.forEach(function(m,n){ m.onclick=function(e){e.preventDefault();select(n);boot();}; });
+  addEventListener('keydown',function(e){
+    var booted=gb.classList.contains('booted');
+    if(e.key==='ArrowUp'&&!booted){e.preventDefault();select(cur-1);}
+    else if(e.key==='ArrowDown'&&!booted){e.preventDefault();select(cur+1);}
+    else if(e.key==='Enter'&&!booted){e.preventDefault();boot();}
+    else if(e.key==='Escape'&&booted){e.preventDefault();home();}
+  });
+  home();
+})();
+</script>
 <script src="../../edit.js" defer></script>
 </body>
 </html>
