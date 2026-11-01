@@ -19,13 +19,13 @@
   <nav class="sidebar" aria-label="Site navigation">
     <p class="navhead">[ MAIN MENU ]</p>
     <ul>
-      <li><a href="index.html" data-slot="nav-item" aria-current="page">&#9654; Home</a></li>
-      <li><a href="#" data-slot="nav-item">&#9654; About Us</a></li>
-      <li><a href="#" data-slot="nav-item">&#9654; The Star Log</a></li>
-      <li><a href="#" data-slot="nav-item">&#9654; Sky Charts</a></li>
-      <li><a href="#" data-slot="nav-item">&#9654; Downloads</a></li>
-      <li><a href="#" data-slot="nav-item">&#9654; Cool Links</a></li>
-      <li><a href="#" data-slot="nav-item">&#9654; Sign Guestbook</a></li>
+      <li><a href="#home" data-slot="nav-item" aria-current="page">&#9654; Home</a></li>
+      <li><a href="#about" data-slot="nav-item">&#9654; About Us</a></li>
+      <li><a href="#log" data-slot="nav-item">&#9654; The Star Log</a></li>
+      <li><a href="#charts" data-slot="nav-item">&#9654; Sky Charts</a></li>
+      <li><a href="#downloads" data-slot="nav-item">&#9654; Downloads</a></li>
+      <li><a href="#links" data-slot="nav-item">&#9654; Cool Links</a></li>
+      <li><a href="#guestbook" data-slot="nav-item">&#9654; Sign Guestbook</a></li>
     </ul>
 
     <div class="badge">
@@ -46,6 +46,8 @@
 
   <main class="content">
     <article>
+
+      <section id="home">
       <h2 data-slot="page-title">Welcome to our little corner of the night sky!</h2>
       <p data-slot="page-body">Pour yourself some coffee, dim the lights, and let your eyes adjust.
       The Dark Sky Society is a club of amateur stargazers who meet on the first clear Friday
@@ -77,6 +79,106 @@
           what you've spotted, and sign the book before you warp out.</p>
         </div>
       </div>
+      </section>
+
+      <section id="about">
+      <h2 data-slot="about-title">About the Society</h2>
+      <p data-slot="about-body">We started in the spring of 1994 when four of us &mdash; Ed, Marge, Lorraine,
+      and the fellow we only know as "Doc" &mdash; got tired of fighting the glow of the mall parking lot
+      and drove out to Culver's Ridge with a borrowed 8-inch Dob. Word got around. These days we're about
+      thirty regulars, from a retired machinist who grinds his own mirrors to a sixth-grader with a pair
+      of binoculars and more patience than any of us.</p>
+      <p data-slot="about-body2">The rules are short: no white light at the field after dark, pack out what
+      you pack in, and anyone who spots something gets to say so loud enough for the rest of us to swing
+      over and look. We meet the first clear Friday of each month. "Clear" is decided by the webmaster's
+      kitchen window and a quick call to Ed.</p>
+      <p class="rule">&middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot;</p>
+      <p data-slot="about-contact">Questions? Flag down anyone wearing a red headlamp, or leave a note in
+      the Guestbook. We answer eventually &mdash; usually on the next cloudy night.</p>
+      </section>
+
+      <section id="log">
+      <h2 data-slot="log-title">The Star Log</h2>
+      <p data-slot="log-intro">Field notes from recent outings, typed up from the clipboard the morning after.
+      Transparency and seeing are the webmaster's own guesses, so argue amongst yourselves.</p>
+      <div class="cards">
+        <div class="card">
+          <h4 data-slot="log-entry-title">Nov 7 &mdash; Culver's Ridge</h4>
+          <p data-slot="log-entry-body">Transparency 4/5, seeing poor. Chased the Double Cluster and M31
+          naked-eye before moonrise. Lorraine split the Double-Double at 180x once the air settled. Home by 1 AM, toes gone.</p>
+        </div>
+        <div class="card">
+          <h4 data-slot="log-entry-title">Oct 10 &mdash; Culver's Ridge</h4>
+          <p data-slot="log-entry-body">Best night of the fall. M33 showed spiral structure in the 12-inch.
+          Doc swears he caught the Horsehead with an H-beta filter; the rest of us saw a smudge and a rumor.</p>
+        </div>
+        <div class="card">
+          <h4 data-slot="log-entry-title">Sep 12 &mdash; Reservoir Lot</h4>
+          <p data-slot="log-entry-body">Clouded out by 10, so we stayed in the cars and swapped eyepiece
+          catalogs. Marge handed around her Hale-Bopp slides. Not a total loss.</p>
+        </div>
+      </div>
+      </section>
+
+      <section id="charts">
+      <h2 data-slot="charts-title">Sky Charts</h2>
+      <p data-slot="charts-intro">Printable finder charts drawn up by Ed in his garage. Print them on a laser
+      printer, trim the margins, and read them under a red lamp so you keep your dark adaptation. Grab the
+      files themselves over in Downloads.</p>
+      <ul class="plainlist">
+        <li data-slot="chart-item"><b>Spring Galaxies</b> &mdash; the Virgo Cluster and the Leo Triplet, naked-eye stars down to mag 5.</li>
+        <li data-slot="chart-item"><b>Summer Milky Way</b> &mdash; Sagittarius to Cygnus, with the showpiece nebulae circled.</li>
+        <li data-slot="chart-item"><b>The Double Cluster Hop</b> &mdash; a star-hop from Cassiopeia for binocular users.</li>
+        <li data-slot="chart-item"><b>Winter Showpieces</b> &mdash; Orion, the Pleiades, and the big open clusters of Auriga.</li>
+      </ul>
+      </section>
+
+      <section id="downloads">
+      <h2 data-slot="downloads-title">Downloads</h2>
+      <p data-slot="downloads-intro">Everything here is small enough to pull down over the modem if you're
+      patient. Right-click and "Save As." Zips were made with PKZIP; the PostScript prints on any laser.</p>
+      <ul class="plainlist">
+        <li data-slot="download-item"><b>virgo-chart.gif</b> &nbsp;<span class="meta">148 KB &middot; the Spring Galaxies finder, screen resolution</span></li>
+        <li data-slot="download-item"><b>virgo-chart.ps</b> &nbsp;<span class="meta">96 KB &middot; same chart, crisp for printing</span></li>
+        <li data-slot="download-item"><b>observing-log.txt</b> &nbsp;<span class="meta">11 KB &middot; blank log sheet, fixed-width, print two per page</span></li>
+        <li data-slot="download-item"><b>halebopp.zip</b> &nbsp;<span class="meta">2.3 MB &middot; Marge's fifteen scans (warning: big over dial-up!)</span></li>
+      </ul>
+      </section>
+
+      <section id="links">
+      <h2 data-slot="links-title">Cool Links</h2>
+      <p data-slot="links-intro">Other corners of the web worth your bandwidth. Copy the address into your
+      browser &mdash; we keep them as plain text so this page stays put when sites move on.</p>
+      <ul class="plainlist">
+        <li data-slot="link-item"><b>Heavens-Above</b> &mdash; satellite and ISS passes for your town. &nbsp;<span class="meta">www.heavens-above.com</span></li>
+        <li data-slot="link-item"><b>The Messier Catalog</b> &mdash; all 110 objects with finder charts. &nbsp;<span class="meta">seds.org/messier</span></li>
+        <li data-slot="link-item"><b>Clear Sky Clock</b> &mdash; cloud and transparency forecast for the Ridge. &nbsp;<span class="meta">cleardarksky.com</span></li>
+        <li data-slot="link-item"><b>sci.astro.amateur</b> &mdash; the newsgroup where we argue about eyepieces. &nbsp;<span class="meta">news:sci.astro.amateur</span></li>
+      </ul>
+      </section>
+
+      <section id="guestbook">
+      <h2 data-slot="guestbook-title">Sign the Guestbook</h2>
+      <p data-slot="guestbook-intro">The book's open again. Tell us what you've spotted. To add an entry,
+      email the webmaster and he'll paste it in by hand next time he's online &mdash; same as always.</p>
+      <div class="cards">
+        <div class="card">
+          <h4 data-slot="sign-name">Kenji from Portland</h4>
+          <p data-slot="sign-note">Found your charts searching for the Virgo Cluster. The star-hop finally
+          got me to M87. Thanks from the other coast!</p>
+        </div>
+        <div class="card">
+          <h4 data-slot="sign-name">Mrs. Alvarez, 6th grade science</h4>
+          <p data-slot="sign-note">My class used your blank log sheet for our Moon-phase project.
+          Twenty-eight future astronomers say hello.</p>
+        </div>
+        <div class="card">
+          <h4 data-slot="sign-name">NightOwl_88</h4>
+          <p data-slot="sign-note">First clear night with my new Dob and I bagged the Double Cluster off
+          your binocular chart. Hooked for life.</p>
+        </div>
+      </div>
+      </section>
 
       <p class="rule">&middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot; &middot;</p>
 
@@ -86,6 +188,33 @@
   </main>
 
 </div>
+<script>
+// frames-site — the nav frame drives the content frame, all in one page.
+// ponytail: real #anchors + a section toggle; JS off => every section stays on the page.
+(function () {
+  var nav = [].slice.call(document.querySelectorAll('.sidebar a[href^="#"]'));
+  var secs = [].slice.call(document.querySelectorAll('.content section[id]'));
+  if (!nav.length || !secs.length) return;
+  document.documentElement.classList.add('js');
+  function show(id) {
+    if (!document.getElementById(id)) id = 'home';
+    secs.forEach(function (s) { s.hidden = s.id !== id; });
+    nav.forEach(function (a) {
+      if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    var pane = document.querySelector('.content');
+    if (pane) pane.scrollTop = 0;
+  }
+  nav.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      show(a.getAttribute('href').slice(1));
+    });
+  });
+  show(location.hash.slice(1) || 'home');
+})();
+</script>
 <script src="../../edit.js" defer></script>
 </body>
 </html>
