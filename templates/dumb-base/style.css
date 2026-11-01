@@ -105,9 +105,30 @@ footer{text-align:center;color:var(--dim);font-size:11px;letter-spacing:.14em;
   padding:22px 16px 40px;border-top:2px solid var(--amber-dk);margin-top:8px;
   background:var(--panel)}
 
+/* station console — operable screen switcher (cosmetic) */
+.console-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;
+  margin:0 0 16px;border-bottom:1px dashed var(--line);padding-bottom:12px}
+.stations{display:flex;flex-wrap:wrap;gap:4px}
+.stn{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+  font-family:var(--stencil);font-weight:700;font-size:12px;letter-spacing:.14em;
+  color:var(--ink);background:var(--panel-2);border:1px solid var(--line);padding:7px 14px}
+.stn:hover,.stn:focus-visible{background:var(--amber);color:#0c0f08;outline:none}
+.stn .light{width:9px;height:9px;border-radius:50%;background:var(--phos-dk);flex:0 0 auto}
+.stn.active{background:var(--phos-dk);border-color:var(--phos)}
+.stn.active .light{background:var(--phos);box-shadow:0 0 7px var(--phos)}
+.depthout{margin:0 0 0 auto;color:var(--amber-dk);font-size:11px;letter-spacing:.1em}
+.screen .scope{float:right;width:120px;max-width:40%;color:var(--phos);
+  margin:0 0 8px 16px;background:rgba(0,0,0,.25);border:1px solid var(--line)}
+.screen .scope svg{display:block;width:100%;height:auto}
+.sweepline{transform-origin:60px 60px;animation:sweep 4s linear infinite}
+.blip{animation:blink 2s steps(1) infinite}
+.screen p{margin:0 0 10px;color:var(--ink);font-size:13.5px;max-width:62ch}
+.screen .scr-line{color:var(--phos);font-size:11.5px;letter-spacing:.06em}
+
 @keyframes blink{0%,60%{opacity:1}61%,100%{opacity:.18}}
 @keyframes ping{0%{r:4;opacity:1}100%{r:26;opacity:0}}
+@keyframes sweep{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){
-  .light,.ping{animation:none}
+  .light,.ping,.sweepline,.blip{animation:none}
   .light{opacity:1}
 }

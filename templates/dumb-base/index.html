@@ -49,6 +49,67 @@
   </nav>
 
   <main class="wrap">
+    <section class="console panel" aria-label="Station console">
+      <div class="console-bar">
+        <div class="stations" role="tablist" aria-label="Select station">
+          <button type="button" class="stn active" role="tab" aria-selected="true" aria-controls="scr-sonar" data-screen="sonar"><span class="light"></span><span data-slot="station-1">SONAR</span></button>
+          <button type="button" class="stn" role="tab" aria-selected="false" aria-controls="scr-reactor" data-screen="reactor"><span class="light"></span><span data-slot="station-2">REACTOR</span></button>
+          <button type="button" class="stn" role="tab" aria-selected="false" aria-controls="scr-hatch" data-screen="hatch"><span class="light"></span><span data-slot="station-3">HATCH</span></button>
+          <button type="button" class="stn" role="tab" aria-selected="false" aria-controls="scr-comms" data-screen="comms"><span class="light"></span><span data-slot="station-4">COMMS</span></button>
+          <button type="button" class="stn" role="tab" aria-selected="false" aria-controls="scr-roster" data-screen="roster"><span class="light"></span><span data-slot="station-5">ROSTER</span></button>
+        </div>
+        <p class="depthout" data-slot="depth-readout">DEPTH −1.410 km · HEADING 047° · AY 2026.289</p>
+      </div>
+
+      <div class="screens">
+        <article class="screen" id="scr-sonar" role="tabpanel" aria-label="Sonar">
+          <h3 class="panel-h">SONAR · PASSIVE ARRAY</h3>
+          <div class="scope" aria-hidden="true">
+            <svg viewBox="0 0 120 120" role="img" aria-label="Sonar scope sweep">
+              <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="1"/>
+              <circle cx="60" cy="60" r="38" fill="none" stroke="currentColor" stroke-width=".6"/>
+              <circle cx="60" cy="60" r="20" fill="none" stroke="currentColor" stroke-width=".6"/>
+              <line x1="4" y1="60" x2="116" y2="60" stroke="currentColor" stroke-width=".6"/>
+              <line x1="60" y1="4" x2="60" y2="116" stroke="currentColor" stroke-width=".6"/>
+              <line class="sweepline" x1="60" y1="60" x2="60" y2="4" stroke="currentColor" stroke-width="2"/>
+              <circle class="blip" cx="84" cy="44" r="3" fill="currentColor"/>
+            </svg>
+          </div>
+          <p data-slot="sonar-body">Passive array holding three contacts. The bearing-047 return fades on each
+          rotation — biologic, or the thing we logged in '71. Do not go active. Going active tells it where we are.</p>
+          <p class="scr-line" data-slot="sonar-line">CONTACT 1 · BRG 047 · RANGE 2,200 m · CLASS: UNRESOLVED</p>
+        </article>
+
+        <article class="screen" id="scr-reactor" role="tabpanel" aria-label="Reactor">
+          <h3 class="panel-h">REACTOR · CORE 2</h3>
+          <p data-slot="reactor-body">Core 2 nominal at 61% output. Coolant loop B weeps at the seal we were told
+          not to touch. Rod withdrawal stays locked to a Watch Officer signature. The hum you hear is normal. The hum you feel is not.</p>
+          <p class="scr-line" data-slot="reactor-line">COOLANT 312°C · PRESSURE 14.2 MPa · OUTPUT 61% · SCRAM ARMED</p>
+        </article>
+
+        <article class="screen" id="scr-hatch" role="tabpanel" aria-label="Hatch">
+          <h3 class="panel-h">HATCH · SECTOR E BLAST DOOR</h3>
+          <p data-slot="hatch-body">Blast door SEALED and it will remain so. Two signatures to cycle. The pressure
+          differential on the far side has not changed in forty years, which is itself the anomaly. "I heard knocking" is not a reason.</p>
+          <p class="scr-line" data-slot="hatch-line">DOOR: SEALED · CYCLES 0 · DIFFERENTIAL ∆0.00 · OVERRIDE DENIED</p>
+        </article>
+
+        <article class="screen" id="scr-comms" role="tabpanel" aria-label="Comms">
+          <h3 class="panel-h">COMMS · SURFACE NET</h3>
+          <p data-slot="comms-body">Array GREY SUNDAY keeps one line open against regulation. The last scheduled test
+          returned a reply we did not transmit, in our own callsign, timestamped nine minutes ahead. Line kept open regardless.</p>
+          <p class="scr-line" data-slot="comms-line">UPLINK: DARK · LAST RX 2026.288 · ORIGIN: SELF · CRYPTO: INTACT</p>
+        </article>
+
+        <article class="screen" id="scr-roster" role="tabpanel" aria-label="Roster">
+          <h3 class="panel-h">ROSTER · CURRENT WATCH</h3>
+          <p data-slot="roster-body">Watch of eleven on station, sublevel −9. Two names here were retired in 1987 and
+          still badge in each morning. Payroll has stopped asking. Report all anomalies through the pneumatic tube.</p>
+          <p class="scr-line" data-slot="roster-line">ON STATION 11 · OVERDUE 0 · UNACCOUNTED 2 · MORALE: ADEQUATE</p>
+        </article>
+      </div>
+    </section>
+
     <section class="hero panel">
       <span class="stamp">TOP SECRET // NOFORN</span>
       <h2 data-slot="hero-title">Welcome back to the base that does not exist.</h2>
@@ -131,6 +192,28 @@
   <footer data-slot="footer">⬣ FACILITY OMEGA · EST. 1963 · THIS FACILITY DOES NOT APPEAR ON ANY MAP ·
   DISTRIBUTION: NONE · DESTROY AFTER READING</footer>
 
+  <script>
+  // Cosmetic console: station buttons show one screen + light its lamp. No state, no logic.
+  // Progressive enhancement — with JS off every screen stays visible (nothing hidden).
+  (function () {
+    var con = document.querySelector('.console');
+    if (!con) return;
+    var btns = [].slice.call(con.querySelectorAll('.stn'));
+    var screens = [].slice.call(con.querySelectorAll('.screen'));
+    function show(name) {
+      screens.forEach(function (s) { s.hidden = s.id !== 'scr-' + name; });
+      btns.forEach(function (b) {
+        var on = b.dataset.screen === name;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on);
+      });
+    }
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () { show(b.dataset.screen); });
+    });
+    show(btns[0].dataset.screen); // JS now owns visibility: collapse to the default station
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
