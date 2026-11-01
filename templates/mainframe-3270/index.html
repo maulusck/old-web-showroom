@@ -17,6 +17,7 @@
       <span class="flush">SESSION A ─ LU0317 ─ ONLINE</span>
     </div>
 
+    <section class="term-panel" id="p-logon" data-enter="p-browse">
     <div class="panelid">
       PANEL <b data-slot="page-title">ISPF.LOGON.M01</b>
       <span class="tagline" data-slot="tagline">DISTRICT ACCOUNTING &amp; CLEARING SYSTEM</span>
@@ -39,9 +40,9 @@
     <nav class="menu" aria-label="primary option menu">
       <span class="mcap">===&gt; SELECT AN OPTION AND PRESS ENTER</span>
       <a href="index.html" aria-current="page"><b>0</b> <span data-slot="nav-item">LOGON</span></a>
-      <a href="#"><b>1</b> <span data-slot="nav-item">BROWSE</span></a>
-      <a href="#"><b>2</b> <span data-slot="nav-item">LEDGER</span></a>
-      <a href="#"><b>3</b> <span data-slot="nav-item">UTILITIES</span></a>
+      <a href="#p-browse" data-nav="p-browse"><b>1</b> <span data-slot="nav-item">BROWSE</span></a>
+      <a href="#p-browse" data-nav="p-browse"><b>2</b> <span data-slot="nav-item">LEDGER</span></a>
+      <a href="#p-detail" data-nav="p-detail"><b>3</b> <span data-slot="nav-item">UTILITIES</span></a>
       <a href="#"><b>X</b> <span data-slot="nav-item">EXIT</span></a>
     </nav>
 
@@ -69,8 +70,93 @@
     </div>
 
     <p class="ready">READY<br>===&gt; <span class="cursor" aria-hidden="true">&#9608;</span></p>
+    </section>
+
+    <section class="term-panel" id="p-browse" data-enter="p-detail">
+      <div class="panelid">
+        PANEL <b data-slot="page-title">ISPF.BROWSE.DSLIST</b>
+        <span class="tagline" data-slot="tagline">DATA SET LIST UTILITY — HARVEST.DIST09.*</span>
+      </div>
+      <h1 class="hdr" data-slot="hero-title">BROWSE &mdash; SELECT A DATA SET</h1>
+      <p class="intro" data-slot="hero-body">Place the cursor on a data set and press ENTER to
+      view it. PF3 returns to the primary option menu; PF7/PF8 scroll the list. Only data sets
+      your group is authorized to read are shown.</p>
+      <div class="dslist" role="list">
+        <div class="dshead"><span>CMD</span><span>NAME</span><span>VOL &middot; TRK &middot; REFERRED</span></div>
+        <button class="row" type="button" data-nav="p-detail" role="listitem"><span class="cmd">_</span><span class="nm" data-slot="nav-item">HARVEST.DIST09.LEDGER.CYCLE</span><span class="meta">DACS01 &middot; 1180 &middot; 2026/11/01</span></button>
+        <button class="row" type="button" data-nav="p-detail" role="listitem"><span class="cmd">_</span><span class="nm" data-slot="nav-item">HARVEST.DIST09.CLEARING.HOLD</span><span class="meta">DACS01 &middot; 0042 &middot; 2026/10/31</span></button>
+        <button class="row" type="button" data-nav="p-detail" role="listitem"><span class="cmd">_</span><span class="nm" data-slot="nav-item">HARVEST.DIST09.JCL.NIGHTPOST</span><span class="meta">DACS02 &middot; 0003 &middot; 2026/11/01</span></button>
+        <button class="row" type="button" data-nav="p-detail" role="listitem"><span class="cmd">_</span><span class="nm" data-slot="nav-item">HARVEST.DIST09.PARMLIB.RACF</span><span class="meta">DACS02 &middot; 0011 &middot; 2026/09/14</span></button>
+        <button class="row" type="button" data-nav="p-detail" role="listitem"><span class="cmd">_</span><span class="nm" data-slot="nav-item">HARVEST.DIST09.SYSOUT.J031741</span><span class="meta">SPOOL1 &middot; 0128 &middot; 2026/11/01</span></button>
+      </div>
+      <p class="ready">DSLIST&nbsp;&nbsp;ROW 00001 OF 00005<br>===&gt; <span class="cursor" aria-hidden="true">&#9608;</span></p>
+    </section>
+
+    <section class="term-panel" id="p-detail">
+      <div class="panelid">
+        PANEL <b data-slot="page-title">ISPF.BROWSE.VIEW</b>
+        <span class="tagline" data-slot="tagline">RECORD 000001 OF 000248 &middot; COL 001 080</span>
+      </div>
+      <h1 class="hdr" data-slot="hero-title">BROWSE  HARVEST.DIST09.LEDGER.CYCLE</h1>
+      <p class="intro" data-slot="hero-body">Read-only view of last night's posted clearing
+      cycle. PF3 ends BROWSE and returns to the data set list; PF7/PF8 scroll by page. This
+      member is held open shared; no updates are possible from a browse session.</p>
+      <pre class="listing" data-slot="card-body">********************************* TOP OF DATA **********************************
+SEQ      ACCT        DR/CR        AMOUNT     POSTED     JRNL     STATUS
+000001   DIST09-001  DR        12,480.00    02:14:07   J031741  CLEARED
+000002   DIST09-001  CR        12,480.00    02:14:07   J031741  CLEARED
+000003   DIST09-044  DR         3,902.55    02:14:09   J031741  CLEARED
+000004   DIST09-108  CR           817.20    02:14:11   J031741  HELD 03
+000005   DIST09-210  DR       204,006.00    02:14:14   J031741  CLEARED
+000006   DIST09-210  CR       204,006.00    02:14:14   J031741  CLEARED
+000007   DIST09-311  DR            45.99    02:14:16   J031741  REJECT
+*-------- SUMMARY: 248 RECORDS · 246 CLEARED · 1 HELD · 1 REJECT --------------*</pre>
+      <p class="ready">**** READY &mdash; PF3 TO RETURN ****<br>===&gt; <span class="cursor" aria-hidden="true">&#9608;</span></p>
+    </section>
+
+    <div class="pfbar" aria-label="active program function keys">
+      <button type="button" data-pf="enter">ENTER</button>
+      <button type="button" data-pf="3">PF3=BACK</button>
+    </div>
 
     <div class="pfkeys" data-slot="footer">PF1=HELP  PF3=EXIT  PF7=UP  PF8=DOWN  PF10=LEFT  PF12=CANCEL  &#169;1983 HARVEST-DACS</div>
+
+    <script>
+    (function(){
+      var panels = [].slice.call(document.querySelectorAll('.term-panel'));
+      if (panels.length < 2) return;                 // JS off → every panel stays visible
+      document.body.classList.add('js');
+      var stack = [panels[0].id];                     // navigation history for PF3=Back
+      function render(){
+        var cur = stack[stack.length - 1];
+        panels.forEach(function(p){ p.hidden = p.id !== cur; });
+        var p = document.getElementById(cur), f = p.querySelector('[data-nav],input,button');
+        if (f) f.focus();
+      }
+      function go(id){
+        if (id && document.getElementById(id) && id !== stack[stack.length - 1]){
+          stack.push(id); render();
+        }
+      }
+      function back(){ if (stack.length > 1){ stack.pop(); render(); } }
+      function enter(){                               // ENTER: follow focused selection, else panel default
+        var a = document.activeElement, n = a && a.closest ? a.closest('[data-nav]') : null;
+        go(n ? n.getAttribute('data-nav')
+             : document.getElementById(stack[stack.length - 1]).dataset.enter);
+      }
+      panels.forEach(function(p){ p.hidden = p.id !== stack[0]; });
+      document.addEventListener('click', function(e){
+        var n = e.target.closest('[data-nav]');
+        if (n){ e.preventDefault(); go(n.getAttribute('data-nav')); return; }
+        var b = e.target.closest('[data-pf]');
+        if (b){ e.preventDefault(); b.dataset.pf === '3' ? back() : enter(); }
+      });
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'F3'){ e.preventDefault(); back(); }
+        else if (e.key === 'Enter' && e.target.tagName === 'INPUT'){ e.preventDefault(); enter(); }
+      });
+    })();
+    </script>
 
   </div>
 </div>

@@ -72,3 +72,35 @@ body{margin:0;background:#000;color:var(--green);
 /* PF-key legend — reverse video, pinned feel */
 .pfkeys{background:var(--cyan);color:#001414;text-shadow:none;letter-spacing:.04em;
   font-size:12px;font-weight:700;padding:5px 10px;white-space:pre-wrap;word-spacing:.1em}
+
+/* screen navigation — JS off: all panels stack and read in full.
+   JS on: body.js, one panel shown at a time, the rest hidden. */
+.term-panel + .term-panel{border-top:1px dashed var(--green-dk);margin-top:22px;padding-top:4px}
+body.js .term-panel + .term-panel{border-top:0;margin-top:0;padding-top:0}
+
+/* DSLIST — selectable data-set rows (real <button>s, keyboard-focusable) */
+.dslist{border-top:1px solid var(--green-dk);border-bottom:1px solid var(--green-dk);margin:0 0 18px}
+.dshead,.row{display:grid;grid-template-columns:3ch 1fr auto;gap:0 14px;align-items:baseline}
+.dshead{color:var(--amber);font-size:13px;letter-spacing:.04em;padding:8px 6px;
+  border-bottom:1px solid var(--green-dk)}
+.row{width:100%;text-align:left;font:inherit;letter-spacing:.04em;background:transparent;
+  border:0;border-bottom:1px solid rgba(23,128,58,.4);color:var(--green);
+  padding:6px;cursor:pointer;text-shadow:0 0 4px var(--glow)}
+.row:last-child{border-bottom:0}
+.row:hover,.row:focus{outline:none;background:rgba(43,214,85,.1);color:var(--white)}
+.row .cmd{color:var(--amber)}
+.row .nm{color:var(--white)}
+.row .meta{color:var(--dim);font-size:13px}
+@media(max-width:560px){.dshead,.row{grid-template-columns:2ch 1fr}.dshead span:last-child,.row .meta{display:none}}
+
+/* browse/view listing — protected read-only member text */
+.listing{margin:0 0 18px;padding:12px 14px;border:1px solid var(--green-dk);
+  color:var(--green);font:13px/1.55 inherit;white-space:pre-wrap;overflow-x:auto}
+
+/* live PF-key controls — only meaningful with JS, so hidden until it runs */
+.pfbar{display:none}
+body.js .pfbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+.pfbar button{font:inherit;letter-spacing:.06em;cursor:pointer;background:transparent;
+  color:var(--green);border:1px solid var(--green-dk);padding:3px 14px;text-shadow:0 0 4px var(--glow)}
+.pfbar button:hover,.pfbar button:focus{outline:none;border-color:var(--green);
+  background:rgba(43,214,85,.12);color:var(--white)}
