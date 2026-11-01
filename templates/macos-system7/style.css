@@ -52,17 +52,27 @@ body{
   max-width:720px;margin:26px auto;
 }
 .window.narrow{max-width:460px}
+/* JS folds the extra windows shut; icons reopen them. Off, they read in place. */
+.window.hidden{display:none}
 
-/* pinstriped title bar with a white plaque for the name + close/zoom boxes */
+/* title bar: plain for a background window, pinstriped only for the active one —
+   the classic System 7 signal for which window is in front. */
 .titlebar{
   display:flex;align-items:center;gap:8px;
   height:20px;padding:0 6px;
   border-bottom:1px solid var(--ink);
   border-radius:6px 6px 0 0;
+  background:var(--paper);
+}
+.window.active .titlebar{
   background:repeating-linear-gradient(var(--ink) 0 1px,var(--paper) 1px 3px);
   background-clip:padding-box;
 }
+/* a background window shows no close/zoom boxes until you click it to the front */
+.window:not(.active) .box{visibility:hidden}
 .box{width:11px;height:11px;flex:none;background:var(--paper);border:1px solid var(--ink)}
+button.box{padding:0;cursor:pointer}
+button.box.close:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
 .box.zoom{position:relative}
 .box.zoom::before{content:"";position:absolute;top:0;left:0;right:3px;bottom:3px;border:1px solid var(--ink)}
 .title{
@@ -121,11 +131,13 @@ body{
   gap:6px 4px;margin:4px 0;list-style:none;padding:0;
 }
 .icons li{text-align:center}
-.icons a{
-  display:block;text-decoration:none;color:var(--ink);padding:8px 4px;border:1px solid transparent;
+.icons a,.icons button{
+  display:block;width:100%;text-align:center;text-decoration:none;color:var(--ink);
+  padding:8px 4px;border:1px solid transparent;background:none;font:inherit;cursor:pointer;
 }
-.icons a:hover,.icons a:focus{border:1px dotted var(--ink);outline:none}
-.icons a:hover .label span,.icons a:focus .label span{background:var(--ink);color:var(--paper)}
+.icons a:hover,.icons a:focus,.icons button:hover,.icons button:focus{border:1px dotted var(--ink);outline:none}
+.icons a:hover .label span,.icons a:focus .label span,
+.icons button:hover .label span,.icons button:focus .label span{background:var(--ink);color:var(--paper)}
 .icons svg{width:48px;height:42px;display:block;margin:0 auto 5px}
 .label{font-weight:bold;font-size:13px}
 .label span{padding:1px 4px;display:inline-block;line-height:1.25;background:var(--paper)}
