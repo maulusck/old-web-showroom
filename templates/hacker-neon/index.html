@@ -30,11 +30,21 @@
 
     <section class="hero">
       <p class="prompt">guest@nullroot:~$ <span data-slot="hero-title">whoami</span><span class="cur" aria-hidden="true"></span></p>
+    </section>
+
+    <nav class="cmd" aria-label="sections">
+      <button type="button" class="cmd-btn" data-cmd="whoami">./whoami</button>
+      <button type="button" class="cmd-btn" data-cmd="tools">./projects</button>
+      <button type="button" class="cmd-btn" data-cmd="writeups">./logs</button>
+      <button type="button" class="cmd-btn" data-cmd="contact">./contact</button>
+    </nav>
+
+    <section id="whoami" class="pane" data-pane>
       <p class="lede" data-slot="hero-body">Security researcher, CTF player, builder of small sharp tools.
       I break things quietly, write up how, and leave the lights off behind me.</p>
     </section>
 
-    <section id="tools" class="grid">
+    <section id="tools" class="grid pane" data-pane>
       <article class="card">
         <h3 data-slot="card-title">portwalker</h3>
         <p data-slot="card-body">Async TCP sweep that fits in one file. No deps, no noise, just open ports and honest timing.</p>
@@ -49,14 +59,50 @@
       </article>
     </section>
 
-    <section id="writeups" class="log">
+    <section id="writeups" class="log pane" data-pane>
       <h2 data-slot="page-title">// recent writeups</h2>
       <p data-slot="page-body">Notes from the lab. Every box starts with recon and ends with root; the interesting
       part is always the quiet step in between. Pull requests welcome, excuses are not.</p>
     </section>
+
+    <section id="contact" class="log pane" data-pane>
+      <h2 data-slot="contact-title">// open a channel</h2>
+      <p data-slot="contact-body">No web forms, no trackers — reach me straight over the wire. Encrypt anything that matters.</p>
+      <ul class="chan">
+        <li>mail&nbsp; <span data-slot="contact-mail">root@nullroot.sh</span></li>
+        <li>pgp&nbsp;&nbsp; <span data-slot="contact-pgp">4096R / 0xC4FE 57A3 — fingerprint on request</span></li>
+        <li>irc&nbsp;&nbsp; <span data-slot="contact-irc">#nullroot · irc.libera.chat</span></li>
+      </ul>
+    </section>
   </main>
 
-  <footer id="contact" data-slot="footer">signed: 0xC4FE · pgp on request · &copy; 2026 nullroot — stay in the shadows</footer>
+  <footer data-slot="footer">signed: 0xC4FE · pgp on request · &copy; 2026 nullroot — stay in the shadows</footer>
+  <script>
+  (function(){
+    var panes = [].slice.call(document.querySelectorAll('[data-pane]'));
+    var btns  = [].slice.call(document.querySelectorAll('.cmd-btn'));
+    var label = document.querySelector('[data-slot="hero-title"]');
+    var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var timer;
+    function type(txt){                              // one-shot "type-in" of the command
+      clearTimeout(timer);
+      if(reduce){ label.textContent = txt; return; }
+      label.textContent = ''; var i = 0;
+      (function step(){ label.textContent = txt.slice(0, ++i);
+        if(i < txt.length) timer = setTimeout(step, 55); })();
+    }
+    function show(id){
+      var btn = btns.filter(function(b){ return b.dataset.cmd === id; })[0];
+      if(!btn){ btn = btns[0]; id = btn.dataset.cmd; }
+      panes.forEach(function(p){ p.hidden = p.id !== id; });
+      btns.forEach(function(b){ b.setAttribute('aria-current', b === btn ? 'true' : 'false'); });
+      type(btn.textContent.replace(/^\.\//, ''));
+    }
+    btns.forEach(function(b){ b.addEventListener('click', function(){ location.hash = b.dataset.cmd; }); });
+    addEventListener('hashchange', function(){ show(location.hash.slice(1)); });
+    show(location.hash.slice(1));   // JS off: nothing hidden, every pane stays readable
+  })();
+  </script>
   <script src="../../edit.js" defer></script>
 </body>
 </html>
